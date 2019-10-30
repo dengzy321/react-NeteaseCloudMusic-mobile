@@ -1,0 +1,63 @@
+@import '../../style/variable.less';
+
+.createSong{
+    margin-top: 1rem;
+    padding: 0 1rem;
+    background-color: @bg-color;
+    .create-item{
+        .ci-header{
+            padding: 1rem 0;
+        }
+        .arrow_rigth{
+            width: 1.2rem;
+            height: auto;
+            margin-right: 0.5rem;
+            transition: transform 0.2s;
+        }
+        .arrow_active{
+            transform: rotate(90deg);
+        }
+        .listName{
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        .songsCount{
+            color: #666;
+            font-size: 1rem;
+        }
+        .icon_add{
+            width: 1.3rem;
+            height: auto;
+        }
+        .icon_more{
+            width: 2.2rem;
+            height: auto;
+            margin-left: 1rem;
+        }
+        .songsBox-List{
+            .pic{
+                width: 3.5rem;
+                height: 3.5rem;
+                object-fit: cover;
+                border-radius: 0.5rem;
+                margin-right: 1rem;
+            }
+            .title{
+                color: #333;
+                font-size: 1.1rem;
+                font-weight: bold;
+            }
+            .count{
+                color: #666;
+                font-size: 1rem;
+                margin-top: 0.5rem;
+            }
+            .icon_more{
+                width: 2rem;
+                padding-right: 0.1rem;
+            }
+        }
+    }
+}

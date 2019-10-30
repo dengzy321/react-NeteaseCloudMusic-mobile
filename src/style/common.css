@@ -1,0 +1,186 @@
+@charset "UTF-8";
+/* css个人约定 样式 和 样式名  开始*/
+
+html,body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{ margin:0; padding:0; }
+html,body{ font:"PingFangSC-Regular","Arial","Microsoft YaHei","黑体","宋体",sans-serif; background: #fff; -webkit-text-size-adjust:100%; height: 100%; }
+
+*{
+    -webkit-overflow-scrolling: touch; /*ios滚动流畅*/
+    -webkit-tap-highlight-color: rgba(255,0,0,0) /* 去掉ios触摸黑色遮罩 */
+ }  
+
+em,i{ font-style:normal; }
+b{ font-weight: normal; }
+li{ list-style:none; }
+img{ border:0; vertical-align:middle; }
+table{ border-collapse:collapse; border-spacing:0; }
+p{ word-wrap:break-word; }
+
+a{ color:#333; text-decoration:none; }
+a:hover{ color:#333; }
+a:hover, a:visited, a:active, a:focus{text-decoration: none;}
+
+input,textarea,[contenteditable="true"]{ outline: none;font:14px "PingFangSC-Regular","Arial","Microsoft YaHei","黑体","宋体",sans-serif; border: none; color: #333;font-size: 14px; }
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{ color:#999; }
+input::-moz-placeholder,textarea::-moz-placeholder{ color:#999; }
+input:-moz-placeholder,textarea:-moz-placeholder{ color:#999; }
+input:-ms-input-placeholder,textarea:-ms-input-placeholder{ color:#999; }
+input:focus,button:focus,textarea:focus,input[type="checkbox"]:focus,label:focus{outline: none;}
+
+/*  border-radius 样式 */
+.borR2{ -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
+.borR3{ -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+.borR4{ -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; }
+.borR5{ -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+.borR6{ -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; }
+.borR7{ -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px; }
+.borR8{ -moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
+.borR9{ -moz-border-radius: 9px; -webkit-border-radius: 9px; border-radius: 9px; }
+.borR10{ -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; }
+.borR11{ -moz-border-radius: 11px; -webkit-border-radius: 11px; border-radius: 11px; }
+.borR12{ -moz-border-radius: 12px; -webkit-border-radius: 12px; border-radius: 12px; }
+.borR50{ -moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%; }
+
+
+/* dengbb  自定义样式开始 */
+.df{display: flex;}
+.flex{flex: 1;}
+.jct{justify-content: center;}
+.jct-start{justify-content: flex-start;}
+.jct-end{justify-content: flex-end; }
+.jct-between{justify-content: space-between;}
+.jct-around{justify-content: space-around; }
+.ais{align-items: center;}
+.ais-start{align-items: flex-start;}
+.ais-end{align-items: flex-end;}
+.fdc{flex-direction: column; }
+
+.dj{
+  display: flex;
+  justify-content: center;
+}
+
+.db{
+  display: flex;
+  justify-content: space-between;
+}
+
+.da{
+  display: flex;
+  align-items: center;
+}
+
+.ds{
+  display: flex;
+  align-items: flex-start;
+}
+
+.de{
+  display: flex;
+  align-items: flex-end;
+}
+
+/* 分散两端 （水平） */
+.dbc{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 分散两端（纵向） */
+.ddb{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 水平居中 （从后面开始） */
+.da-e{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* 水平居中（纵向） */
+.ddc-h{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 垂直居中（纵向） */
+.ddc-v{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 水平垂直居中 */
+.dcc{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 水平垂直居中（纵向） */
+.dd-vh{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bob{ box-sizing: border-box; }
+
+.to-line { 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+}
+
+.to-2line { 
+  text-overflow: -o-ellipsis-lastline; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  display: -webkit-box; 
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical; 
+}
+
+.to-3line { 
+  text-overflow: -o-ellipsis-lastline; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  display: -webkit-box; 
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical; 
+}
+
+
+@media(min-width:320px){
+    html{font-size: 10px;}
+}
+@media(min-width:360px){
+    html{font-size: 11.25px;}
+}
+@media(min-width:375px){
+    html{font-size: 11.718px;}
+}
+@media(min-width:411px){
+    html{font-size: 12.843px;}
+}
+@media(min-width:414px){
+    html{font-size: 12.937px;}
+}
+@media(min-width: 414.1px){
+    html{font-size: 13px;}
+}
+@media(min-width: 768px){
+    html{font-size: 24px;}
+}
+
+/* css个人约定 样式 和 样式名  结束*/
+
+.layout{
+  margin-top: 4rem;
+}

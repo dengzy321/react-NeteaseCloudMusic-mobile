@@ -1,0 +1,60 @@
+.myCenter {
+  background-color: #f4f4f4;
+}
+.myCenter .topNav {
+  background-color: #fff;
+  font-size: 1rem;
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  border-bottom: 0.1rem solid #f5f5f5;
+}
+.myCenter .topNav .icon {
+  width: 3.5rem;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+.myCenter .topNav span {
+  color: #666;
+}
+.myCenter .playList {
+  background-color: #fff;
+}
+.myCenter .playList .play-item {
+  height: 4rem;
+}
+.myCenter .playList .play-item img {
+  width: 2.2rem;
+  height: auto;
+  padding: 0 1.5rem;
+}
+.myCenter .playList .play-item span {
+  color: #333;
+  font-size: 1.2rem;
+  display: inline-block;
+  flex: 1;
+  line-height: 4rem;
+  border-bottom: 0.1rem solid #f5f5f5;
+}
+.myCenter .recommend {
+  background-color: #fff;
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+.myCenter .recommend .head {
+  height: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+.myCenter .recommend .head .icon-heart {
+  width: 1.5rem;
+  height: auto;
+  margin-right: 0.5rem;
+}
+.myCenter .recommend .head .title {
+  color: #333;
+  font-size: 1.3rem;
+  flex: 1;
+  font-weight: bold;
+}
+.myCenter .recommend .head .close {
+  width: 1.2rem;
+  height: auto;
+}

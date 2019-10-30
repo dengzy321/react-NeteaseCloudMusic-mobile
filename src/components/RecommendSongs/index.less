@@ -1,0 +1,49 @@
+.recommendSongs{
+    .more{
+        color: #666;
+        font-size: 1rem;
+        border: 0.1rem solid #f4f4f4;
+        border-radius: 1rem;
+        padding: 0.3rem 0.7rem;
+    }
+    .recommend{
+        padding: 0 1rem;
+        .re-header{
+            padding: 1rem 0;
+            .title{
+                color: #333;
+                font-size: 1.4rem;
+                font-weight: bold;
+            }
+        }
+    }
+    .new-songs{
+        padding: 0 1rem;
+        .ns-header{
+            padding: 1rem 0;
+            .title{
+                color: #666;
+                font-size: 1.2rem;
+                font-weight: bold;
+                span{
+                    padding-right: 1.5rem;
+                    position: relative;
+                }
+                span:first-of-type::after{
+                    position: absolute;
+                    right: 0.7rem;
+                    top: 0.5rem;
+                    content: '';
+                    background-color: #ccc;
+                    height: 1rem;
+                    width: 0.1rem;
+                }
+                & .activeTitle{
+                    color: #333;
+                    font-size: 1.4rem;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

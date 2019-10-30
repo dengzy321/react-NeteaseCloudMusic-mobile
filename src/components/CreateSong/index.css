@@ -1,0 +1,57 @@
+.createSong {
+  margin-top: 1rem;
+  padding: 0 1rem;
+  background-color: #fff;
+}
+.createSong .create-item .ci-header {
+  padding: 1rem 0;
+}
+.createSong .create-item .arrow_rigth {
+  width: 1.2rem;
+  height: auto;
+  margin-right: 0.5rem;
+  transition: transform 0.2s;
+}
+.createSong .create-item .arrow_active {
+  transform: rotate(90deg);
+}
+.createSong .create-item .listName {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+.createSong .create-item .songsCount {
+  color: #666;
+  font-size: 1rem;
+}
+.createSong .create-item .icon_add {
+  width: 1.3rem;
+  height: auto;
+}
+.createSong .create-item .icon_more {
+  width: 2.2rem;
+  height: auto;
+  margin-left: 1rem;
+}
+.createSong .create-item .songsBox-List .pic {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-right: 1rem;
+}
+.createSong .create-item .songsBox-List .title {
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.createSong .create-item .songsBox-List .count {
+  color: #666;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+.createSong .create-item .songsBox-List .icon_more {
+  width: 2rem;
+  padding-right: 0.1rem;
+}
