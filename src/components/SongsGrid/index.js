@@ -6,6 +6,7 @@ import * as actions from '../../store/actions';
 import './index.css';
 import { NavLink } from 'react-router-dom'
 import { Grid } from 'antd-mobile';
+import Iconpath from '../../utils/iconpath'
 
 class SongsGrid extends React.Component {
     render(){
@@ -23,7 +24,7 @@ class SongsGrid extends React.Component {
                             {
                                 item.playCount && 
                                 <p className='videoCount da'>
-                                    <img className='icon_video' src={require('../../assets/icon_video.png')} alt="" />
+                                    <img className='icon_video' src={Iconpath.icon_video} alt="" />
                                     <span>{item.playCount}</span>
                                 </p>
                             }

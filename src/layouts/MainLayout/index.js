@@ -13,7 +13,7 @@ class MainLayout extends React.Component {
         const { match, children } = this.props;
         return (
             <div className='mainLayout'>
-                <div className='header da'>
+                <div className='ml-header da'>
                     <img className='menu_icon' src={require('../../assets/menu.png')} />
                     <div className='center dbc'>
                         {

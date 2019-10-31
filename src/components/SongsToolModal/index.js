@@ -9,25 +9,28 @@ import { NavLink } from 'react-router-dom'
 class SongsToolModal extends React.Component {
     state = {
         showModal: false,
+        endAnimation: false, //结束动画
+        modalHeight: 0,
         startpageY: 0,
-        offsetY: 0
+        offsetY: 0,
     }
     componentDidMount() {
         const { showModal } = this.state
-        if (showModal) document.getElementById("smInner").addEventListener('touchmove', this.touchMove, { passive: false });
-        this.setState({ showModal: this.props.showStatus })
+        if (showModal) document.getElementById('songsToolModal').addEventListener('touchmove', this.touchMove, { passive: false });
+        this.setState({
+            modalHeight: document.getElementById('smInner').offsetHeight / 10
+        })
     }
-    componentWillReceiveProps() {
-        console.log('componentWillReceiveProps===', this.props)
-        this.setState({ showModal: this.props.showStatus })
-    }
+    // 开始移动时
     touchStart = (event) => {
         event.persist()
         this.setState({
             startpageY: parseInt(event.touches[0].pageY)
         })
     }
-    touchMove = (event) =>{
+    // 移动过程
+    touchMove = (event) => {
+        event.persist()
         event.preventDefault()
         if (event.touches[0].pageY >= this.state.startpageY) {
             this.setState({
@@ -35,45 +38,41 @@ class SongsToolModal extends React.Component {
             })
         }
     }
+    // 移动结束时
     touchEnd = (event) => {
+        const { startpageY, modalHeight, endAnimation } = this.state
         event.persist()
-        if ((parseInt(event.changedTouches[0].pageY) - this.state.startpageY) / 10 >= 20) this.setState({ showModal: false })
+        if ((parseInt(event.changedTouches[0].pageY) - startpageY) / 5 >= modalHeight) {
+            this.setState({ endAnimation: true })
+            setTimeout(() =>{
+                this.props.onShowSongsTool()
+                this.setState({ endAnimation: false })
+            }, 100)
+        }
         else this.setState({ offsetY: 0 })
     }
-    render(){
-        const { list = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6], header = '' } = this.props
-        const { showModal, offsetY } = this.state
+    render() {
+        const { Header = '' , data } = this.props
+        const { showModal, offsetY, endAnimation } = this.state
         return (
-            <div className='bbb'>
-               {
-                    showModal && 
-                    <div className='songsToolModal'>
-                        <div className='sm-inner'
-                        id='smInner'
-                        onTouchStart={this.touchStart} 
-                        onTouchEnd={this.touchEnd}
-                        style={{ transform: `translateY(${offsetY}rem)` }}
-                        >
-                            <div className='head da'>
-                                <span>tool头</span>
-                            </div>
-                            <div className='tool-list'>
-                                <ul>
-                                    {
-                                        list.map((item,index) =>{
-                                            return(
-                                                <li key={index} className='tool-li da'>
-                                                    <img className='icon' src={require('../../assets/create.png')} />
-                                                    <span className='li-name'>创建歌单</span>
-                                                </li>
-                                            )
-                                        })
-                                    }
-                                </ul>
-                            </div>
-                        </div>
+            <div className='songsToolModal' id='songsToolModal' onTouchStart={this.touchStart} onTouchEnd={this.touchEnd}>
+                <div className={`sm-inner ${endAnimation? 'endAniClass':''}`} id='smInner' style={{ transform: `translateY(${offsetY}rem)` }} >
+                    <div className='head da'>{Header}</div>
+                    <div className='tool-list'>
+                        <ul>
+                            {
+                                data.map((item, index) => {
+                                    return (
+                                        <li key={index} className='tool-li da'>
+                                            <img className='icon' src={item.icon} />
+                                            <span className='li-name'>{item.name}</span>
+                                        </li>
+                                    )
+                                })
+                            }
+                        </ul>
                     </div>
-               }
+                </div>
             </div>
         )
     }

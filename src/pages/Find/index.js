@@ -7,6 +7,7 @@ import { Carousel } from 'antd-mobile';
 import RecommendSongs from '../../components/RecommendSongs'
 import { http } from '../../api/http'
 
+
 class myCenter extends React.Component {
     state = {
         bannerArr: []

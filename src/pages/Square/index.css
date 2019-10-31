@@ -1,0 +1,23 @@
+.square .mySquare .ms-header {
+  background: linear-gradient(90deg, #A09044, #735A22);
+  margin: 1rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  color: #fff;
+  font-size: 1.4rem;
+}
+.square .mySquare .ms-header p {
+  margin: 0;
+  padding: 0;
+}
+.square .mySquare .ms-header .arrow_right {
+  width: 1rem;
+  height: auto;
+  margin-left: 0.5rem;
+  margin-top: 0.2rem;
+}
+.square .mySquare .ms-header .tip {
+  font-size: 1rem;
+  margin-top: 1.2rem;
+  opacity: 0.6;
+}

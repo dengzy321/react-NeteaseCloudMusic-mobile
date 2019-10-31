@@ -1,4 +1,4 @@
-.mainLayout .header {
+.mainLayout .ml-header {
   background-color: #fff;
   padding: 0 1rem;
   height: 4rem;
@@ -8,21 +8,21 @@
   right: 0;
   z-index: 999;
 }
-.mainLayout .header .menu_icon {
+.mainLayout .ml-header .menu_icon {
   width: 2rem;
   height: auto;
 }
-.mainLayout .header .search_icon {
+.mainLayout .ml-header .search_icon {
   width: 2rem;
   height: auto;
 }
-.mainLayout .header .center {
+.mainLayout .ml-header .center {
   flex: 1;
   margin: 0 5rem;
   color: #666;
   font-size: 1.3rem;
 }
-.mainLayout .header .center .selected {
+.mainLayout .ml-header .center .selected {
   font-weight: bold;
   font-size: 1.4rem;
 }
