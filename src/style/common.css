@@ -181,6 +181,10 @@ input:focus,button:focus,textarea:focus,input[type="checkbox"]:focus,label:focus
 
 /* css个人约定 样式 和 样式名  结束*/
 
+#root{
+  height: 100%;
+}
+
 .layout{
   margin-top: 4rem;
 }

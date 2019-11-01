@@ -1,3 +1,6 @@
+.mainLayout {
+  height: 100%;
+}
 .mainLayout .ml-header {
   background-color: #fff;
   padding: 0 1rem;

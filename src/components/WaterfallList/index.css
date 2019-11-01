@@ -1,57 +1,55 @@
-.waterfallList {
+.waterfall-box {
   background-color: #f4f4f4;
+  padding: 10px 0 5px 15px;
 }
-.waterfallList .waterfall-ul {
+.waterfall-box .waterfall-ul {
   width: 100%;
-  flex-wrap: wrap;
-  padding: 1rem 4%;
-}
-.waterfallList .waterfall-ul .waterfall-li {
-  background-color: #fff;
-  width: 49%;
-  margin-bottom: 1rem;
-}
-.waterfallList .waterfall-ul .waterfall-li:nth-of-type(odd) {
-  margin-right: 2%;
-}
-.waterfallList .waterfall-ul .waterfall-li .pic-box {
   position: relative;
 }
-.waterfallList .waterfall-ul .waterfall-li .coverUrl {
+.waterfall-box .waterfall-ul .waterfall-li {
+  background-color: #fff;
+  position: absolute;
+  width: 160px;
+  border-radius: 0.5rem 0.5rem 0 0;
+  transition: all 0.3s;
+}
+.waterfall-box .waterfall-ul .waterfall-li .pic-box {
+  position: relative;
+}
+.waterfall-box .waterfall-ul .waterfall-li .coverUrl {
   width: 100%;
   height: auto;
   border-radius: 0.5rem 0.5rem 0 0;
 }
-.waterfallList .waterfall-ul .waterfall-li .icon {
+.waterfall-box .waterfall-ul .waterfall-li .icon {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
   width: 1rem;
   height: auto;
 }
-.waterfallList .waterfall-ul .waterfall-li .title {
+.waterfall-box .waterfall-ul .waterfall-li .title {
   color: #333;
   font-size: 1.2rem;
-  padding: 0.5rem;
+  margin: 0.5rem;
   line-height: 1.8rem;
 }
-.waterfallList .waterfall-ul .waterfall-li .footer {
+.waterfall-box .waterfall-ul .waterfall-li .footer {
   padding: 0 0.5rem 0.8rem 0.5rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #999;
 }
-.waterfallList .waterfall-ul .waterfall-li .footer .avatarUrl {
-  width: 1.5rem;
-  height: 1.5rem;
+.waterfall-box .waterfall-ul .waterfall-li .footer .avatarUrl {
+  width: 1.3rem;
+  height: 1.3rem;
   border-radius: 50%;
   margin-right: 0.3rem;
 }
-.waterfallList .waterfall-ul .waterfall-li .footer .name {
+.waterfall-box .waterfall-ul .waterfall-li .footer .name {
   flex: 1;
   width: 2rem;
 }
-.waterfallList .waterfall-ul .waterfall-li .footer .more-icon {
+.waterfall-box .waterfall-ul .waterfall-li .footer .more-icon {
   width: 1.6rem;
   height: auto;
-  margin-left: 0.3rem;
 }

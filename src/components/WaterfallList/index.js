@@ -8,19 +8,47 @@ import * as actions from '../../store/actions';
 import { Tabs } from 'antd-mobile';
 import Iconpath from '../../utils/iconpath'
 
-class Square extends React.Component {
+class WaterfallList extends React.Component {
     state = {
 
     }
     componentDidMount(){
-        const el = document.getElementsByClassName('waterfall-li')
-        console.log(el)
+        setTimeout(() =>{
+            this.getHeightRank()
+        },500)
+    }
+    getHeightRank = () =>{
+        const el = this.refs.waterfallUl.children
+        const columns = 2; // 列数
+        const gap = 10; // 间距
+        const elWidth = (document.body.clientWidth - 30 - gap) / columns
+        let heigthArr = []
+        for(let i = 0; i<el.length; i++){
+            el[i].style.width = elWidth + 'px'
+            if(i < columns){
+                el[i].style.top = 0;
+                el[i].style.left = (elWidth + gap) * i + 'px'
+                heigthArr.push(el[i].offsetHeight)
+            }else{
+                let minHeigth = heigthArr[0]
+                let index = 0;
+                for(let j = 0; j < heigthArr.length; j++){
+                    if(minHeigth > heigthArr[j]){
+                        minHeigth = heigthArr[j]
+                        index = j
+                    }
+                }
+                el[i].style.top = heigthArr[index] + gap + 'px'
+                el[i].style.left = el[index].offsetLeft + 'px'
+                heigthArr[index] = heigthArr[index] + el[i].offsetHeight + gap
+            }
+        }
     }
     render(){
         const { list } = this.props
         return(
-            <div className='waterfallList'>
-                <ul className='waterfall-ul da'>
+            <div className='waterfall-box'>
+                <ul className='waterfall-ul' ref='waterfallUl'>
                     {
                         list.map(({data}, index) =>{
                             return(
@@ -34,7 +62,7 @@ class Square extends React.Component {
                                         <p className='da footer'>
                                             <img className='avatarUrl' src={data.creator.avatarUrl} />
                                             <span className='name to-line'>{data.creator.nickname}</span>
-                                            <span>2440赞</span>
+                                            <span>{data.praisedCount}赞</span>
                                             <img className='more-icon' src={Iconpath.more_gray} />
                                         </p>
                                     </Link>
@@ -51,4 +79,4 @@ class Square extends React.Component {
 export default connect(
     state => state,
     dispatch => bindActionCreators(actions, dispatch)
-)(Square)
+)(WaterfallList)

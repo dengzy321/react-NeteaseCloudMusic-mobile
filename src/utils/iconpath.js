@@ -22,6 +22,11 @@ const arr = [
     'calendar',
     'selected',
     'arrow_right_$fff',
+    'live',
+    'vip',
+    'vip_fill',
+    'comment',
+    'forward',
 ]
 
 let obj = {}

@@ -1,10 +1,19 @@
 @import '../../style/variable.less';
 
 .square{
+    height: 100%;
+    background-color: #f4f4f4;
+    .am-tabs-tab-bar-wrap{
+        position: fixed;
+        top: 4rem;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
     .mySquare{
         .ms-header{
             background: linear-gradient(90deg,#A09044,#735A22);
-            margin: 1rem;
+            margin: 5rem 1rem 1rem 1rem;
             padding: 1.5rem;
             border-radius: 1rem;
             color: #fff;

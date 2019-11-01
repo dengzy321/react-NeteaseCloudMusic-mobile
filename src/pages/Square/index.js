@@ -8,17 +8,19 @@ import * as actions from '../../store/actions';
 import { Tabs } from 'antd-mobile';
 import Iconpath from '../../utils/iconpath'
 import WaterfallList from '../../components/WaterfallList'
+import Dynamic from '../../components/Dynamic'
 
 class Square extends React.Component {
     state = {
-        waterVideoArr: []
+        waterVideoArr: [],
+        curIndex: 0
     }
     componentWillMount(){
-        this.initWaterVideo()
+        this.initWaterVideo(3100)
     }
-    initWaterVideo(){
+    initWaterVideo(id){
         http.getVideoTabs().then(res =>{
-            http.getVideoGroup({ id: 3100 }).then(res2 =>{
+            http.getVideoGroup({ id: id }).then(res2 =>{
                 if(res2.code == 200) this.setState({ waterVideoArr: res2.datas })
             })
         })
@@ -39,20 +41,25 @@ class Square extends React.Component {
             </div>
         )
     }
+    onChange = ({title}) =>{
+        if(title == '动态') this.initWaterVideo(4104)
+        this.setState({ curIndex: title == '广场'? 0 : 1 })
+    }
     render() {
-        
         const tabs = [
             { title: '广场' },
             { title: '动态' }
         ]
+        const { curIndex, waterVideoArr } = this.state
         return (
             <div className='square layout'>
                 <Tabs
                     tabs={tabs}
                     tabBarActiveTextColor='#E82202'
                     tabBarInactiveTextColor='#333'
+                    onChange={this.onChange}
                     >
-                    {this.MySquare(this.props)}
+                        { curIndex == 0 ? this.MySquare(this.props) : <Dynamic list={waterVideoArr}/> }
                 </Tabs>
             </div>
         )
