@@ -37,19 +37,16 @@ class Dynamic extends React.Component {
                                         </div>
                                         <button className='follow'>+关注</button>
                                     </div>
-                                    <div className='content'>
-                                        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                    </div>
+                                    <div className='content'>{data.description? data.description : data.title}</div>
                                     <div className='video'>
                                         <video poster={data.coverUrl} controls>
                                             <source src={data.urlInfo.url} type="video/mp4" />
                                             <source src={data.urlInfo.url} type="video/ogg" />
                                             您的浏览器不支持 video 标签。
                                         </video>
-                                        {/* <Player src={data.urlInfo.url} /> */}
                                     </div>
                                     <div className='footer da'>
-                                        <span className='forward sa'>
+                                        <span className='forward da'>
                                             <img src={Iconpath.forward} />
                                             <b>{data.shareCount}</b>
                                         </span>

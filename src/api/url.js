@@ -59,6 +59,11 @@ export default {
     method: 'get',
     url: '/program/recommend'
   },
+  //获取动态消息
+  getDynamicInfo: {
+    method: 'get',
+    url: '/event'
+  },
   //获取 mv 排行
   getMvRanking: {
     method: 'get',

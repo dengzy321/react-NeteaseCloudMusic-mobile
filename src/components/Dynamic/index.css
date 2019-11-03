@@ -1,5 +1,5 @@
 .dynamic {
-  padding-top: 4.5rem;
+  padding-top: 3.5rem;
   background-color: #f4f4f4;
 }
 .dynamic .dynamic-li {
@@ -35,7 +35,7 @@
   padding: 0 0.5rem;
   border-radius: 0.3rem;
   color: #fff;
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   margin: 0 0.5rem;
 }
 .dynamic .dynamic-li .header .userInfo .tip .icon {
@@ -61,9 +61,8 @@
   border: 0;
 }
 .dynamic .dynamic-li .content {
-  color: #333;
+  color: #000;
   font-size: 1.2rem;
-  font-weight: bold;
   margin: 1.2rem 0 0.5rem 4.3rem;
 }
 .dynamic .dynamic-li .video {
@@ -79,6 +78,9 @@
   color: #999;
   font-size: 1.2rem;
   margin-left: 4.3rem;
+}
+.dynamic .dynamic-li .footer b {
+  margin-top: 0.1rem;
 }
 .dynamic .dynamic-li .footer .forward img {
   width: 1.5rem;

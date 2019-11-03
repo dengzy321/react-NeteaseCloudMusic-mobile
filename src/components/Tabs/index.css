@@ -1,0 +1,45 @@
+.carousel .tab-box {
+  white-space: nowrap;
+  overflow: scroll;
+  transition: all 0.3s ease;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 4rem;
+  z-index: 999;
+  background-color: #fff;
+}
+.carousel .tab-box::-webkit-scrollbar {
+  width: 0;
+}
+.carousel .tab-box .tab-list {
+  position: relative;
+  display: inline-block;
+}
+.carousel .tab-box .tab-list .tab {
+  display: inline-block;
+  padding: 0.8rem 1rem;
+  color: #333;
+  font-size: 1.2rem;
+}
+.carousel .tab-box .tab-list .tab-line {
+  width: 2rem;
+  height: 0.2rem;
+  background-color: #E82202;
+  border-radius: 1rem;
+  transform: translateX(1.2rem);
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.carousel .c-inner {
+  overflow: hidden;
+  padding-top: 3rem;
+  cursor: pointer;
+}
+.carousel .c-inner .c-ul li {
+  display: inline-block;
+  height: auto;
+}

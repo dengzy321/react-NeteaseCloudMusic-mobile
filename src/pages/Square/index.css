@@ -2,16 +2,40 @@
   height: 100%;
   background-color: #f4f4f4;
 }
-.square .am-tabs-tab-bar-wrap {
+.square .nav {
+  background-color: #fff;
+  height: 3rem;
+  color: #333;
+  font-size: 1.2rem;
   position: fixed;
-  top: 4rem;
   left: 0;
   right: 0;
+  top: 4rem;
   z-index: 1000;
+}
+.square .nav span {
+  padding: 1rem 2rem;
+}
+.square .nav .navActive {
+  color: #E82202;
+  position: relative;
+}
+.square .nav .navActive::after {
+  position: absolute;
+  content: '';
+  left: 2rem;
+  right: 0;
+  bottom: 0.2rem;
+  background-color: #E82202;
+  height: 0.2rem;
+  width: 2.4rem;
+}
+.square .mySquare {
+  padding-top: 3rem;
 }
 .square .mySquare .ms-header {
   background: linear-gradient(90deg, #A09044, #735A22);
-  margin: 5rem 1rem 1rem 1rem;
+  margin: 1rem;
   padding: 1.5rem;
   border-radius: 1rem;
   color: #fff;
