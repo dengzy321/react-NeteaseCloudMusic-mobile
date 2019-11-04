@@ -3,26 +3,11 @@ import './index.css'
 
 class Carousel extends React.Component {
     state = {
-        // data: [
-        //     { name: '推荐', component: '' }, 
-        //     { name: '头条头条', component: '' },
-        //     { name: '体育', component: '' },
-        //     { name: '娱乐娱乐', component: '' },
-        //     { name: '科技', component: '' },
-        //     { name: '生活', component: '' },
-        //     { name: '段子', component: '' },
-        //     { name: '推荐', component: '' },
-        //     { name: '头条', component: '' },
-        //     { name: '体育', component: '' },
-        //     { name: '娱乐', component: '' },
-        //     { name: '科技', component: '' },
-        //     { name: '生活', component: '' },
-        //     { name: '段子', component: '' }
-        // ],
         data: [],
         innerWidth: 0,
         offsetX: 0,
         startX: 0,
+        startY: 0,
         previousOffset: 0,
         openAnimation: false,
         currentIndex: 0,
@@ -36,27 +21,38 @@ class Carousel extends React.Component {
         })
     }
     componentDidMount() {
+        this.tabBoxRef = React.createRef()
         this.setState({
             tabWidth: this.refs.tabList.clientWidth
+        })
+    }
+    componentWillReceiveProps() {
+        this.setState({
+            data: this.props.data
         })
     }
     onTouchStart = (event) => {
         event.persist()
         this.setState({
             startX: event.changedTouches[0].pageX,
+            startY: event.changedTouches[0].pageY,
             openAnimation: false
         })
     }
     onTouchMove = (event) => {
         event.persist()
-        const { startX, previousOffset } = this.state
+        const { startX, startY, previousOffset, innerWidth } = this.state
+        if (event.changedTouches[0].pageY != startY && Math.abs(event.changedTouches[0].pageX - startX) < innerWidth / 18 ) return
         this.setState({
             offsetX: event.changedTouches[0].pageX - startX + previousOffset
         })
     }
     onTouchEnd = (event) => {
         event.persist()
-        const { startX, offsetX, innerWidth, data, tabWidth, currentIndex } = this.state
+        const { startX, offsetX, innerWidth, data, tabWidth, lineOffset } = this.state
+        // 改变后的回调函数
+        const { onChange = null } = this.props
+
         if (Math.abs(offsetX) <= innerWidth && event.changedTouches[0].pageX - startX > 0) {
             this.setState({
                 offsetX: 0,
@@ -65,6 +61,7 @@ class Carousel extends React.Component {
                 openAnimation: true,
                 lineOffset: 15
             })
+            if (onChange) this.props.onChange(0)
         }
         else if (Math.abs(offsetX) >= innerWidth * (data.length - 1) && event.changedTouches[0].pageX - startX < 0) {
             this.setState(state =>({
@@ -73,6 +70,7 @@ class Carousel extends React.Component {
                 currentIndex: Math.abs(state.previousOffset) / innerWidth,
                 openAnimation: true
             }))
+            if (onChange) this.props.onChange(Math.abs(this.state.previousOffset) / innerWidth)
         }
         else if (Math.abs(event.changedTouches[0].pageX - startX) >= innerWidth / 3) {
             let curOffset = event.changedTouches[0].pageX - startX > 0 ? this.state.previousOffset + innerWidth : this.state.previousOffset - innerWidth
@@ -83,6 +81,7 @@ class Carousel extends React.Component {
                 openAnimation: true,
                 lineOffset: event.changedTouches[0].pageX - startX > 0 ? state.lineOffset - tabWidth / data.length : state.lineOffset + tabWidth / data.length
             }))
+            if (onChange) this.props.onChange(Math.abs(curOffset) / innerWidth)
         }
         else {
             this.setState(state => ({
@@ -91,27 +90,47 @@ class Carousel extends React.Component {
                 currentIndex: Math.abs(state.previousOffset) / innerWidth,
                 openAnimation: true
             }))
+            if (onChange) this.props.onChange(Math.abs(this.state.previousOffset) / innerWidth)
         }
 
-        if (this.refs[`tab_${this.state.currentIndex}`].offsetLeft > innerWidth / 2) {
-            // console.log(this.refs[`tab_${this.state.currentIndex}`])
+
+        // console.log('scrollLeft===',this.tabBoxRef.current.scrollLeft)
+        // 设置tab滚动条的位置
+        if (lineOffset > innerWidth / 2 && event.changedTouches[0].pageX - startX > 0) {
+            var timer1 = setInterval(() => {
+                this.tabBoxRef.current.scrollLeft += 1
+            }, 5)
+            setTimeout(() => {
+                clearInterval(timer1)
+            }, 400)
         }
-        
-        const { onChange = null } = this.props
-        if (onChange) this.props.onChange(this.state.currentIndex)
+        else {
+            var timer2 = setInterval(() => {
+                this.tabBoxRef.current.scrollLeft -= 1
+            }, 5)
+            setTimeout(() => {
+                clearInterval(timer2)
+            }, 400)
+        }
     }
-
+    onClick = (index) => {
+        const { currentIndex, lineOffset, innerWidth } = this.state
+        this.setState(state => ({
+            offsetX: index > currentIndex ? state.offsetX + innerWidth * (index - currentIndex) : (index == currentIndex ? state.offsetX : state.offsetX - innerWidth * (currentIndex - index))
+        }))
+        this.props.onClick(index)
+    }
     render() {
         const { innerWidth, offsetX, openAnimation, lineOffset } = this.state
-        const { data = [], onClick = () => {} } = this.props
+        const { data } = this.props
         return (
             <div className='carousel'>
                 {/* nav */}
-                <div className='tab-box' ref='tabBox'>
+                <div className='tab-box' ref={this.tabBoxRef}>
                     <div className='tab-list' ref='tabList'>
                         {
                             data.map((item, index) => {
-                                return <span className='tab' onClick={onClick.bind(this, index)} ref={`tab_${index}`} key={index}>{item.title}</span>
+                                return <span className='tab' onClick={this.onClick.bind(this, index)} ref={`tab_${index}`} key={index}>{item.title}</span>
                             })
                         }
                         <div className='tab-line' style={{ transform: `translateX(${lineOffset}px)` }}></div>

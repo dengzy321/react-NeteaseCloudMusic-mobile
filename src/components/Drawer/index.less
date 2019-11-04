@@ -1,0 +1,22 @@
+@import '../../style/variable.less';
+
+.drawer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    .inner {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        background-color: @bg-color;
+        width: 80%;
+        transform: translateX(-100rem);
+        transition: all 0.3s ease;
+    }
+}

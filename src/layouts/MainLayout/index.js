@@ -1,8 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 import './index.css';
+import Drawer from '../../components/Drawer'
 
 class MainLayout extends React.Component {
+    state = {
+        showDrawer: false
+    }
+    changeShowStatus = () => {
+        this.setState(state => ({
+            showDrawer: !state.showDrawer
+        }))
+    }
     render() {
         const tabs = [
             { title: '我的', url: '/myCenter' },
@@ -11,10 +20,11 @@ class MainLayout extends React.Component {
             { title: '视频', url: '/video' }
         ];
         const { match, children } = this.props;
+        const { showDrawer } = this.state
         return (
             <div className='mainLayout'>
                 <div className='ml-header da'>
-                    <img className='menu_icon' src={require('../../assets/menu.png')} />
+                    <img className='menu_icon' src={require('../../assets/menu.png')} onClick={this.changeShowStatus}/>
                     <div className='center dbc'>
                         {
                             tabs.map((item, index) => {
@@ -25,6 +35,9 @@ class MainLayout extends React.Component {
                     <img className='search_icon' src={require('../../assets/search.png')} />
                 </div>                                                          
                 {children}
+
+                {/* 显示Drawer */}
+                {showDrawer && <Drawer showDrawer={showDrawer} changeShowStatus={this.changeShowStatus}/>}
             </div>
         );
     }

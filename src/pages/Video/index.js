@@ -39,8 +39,7 @@ class Video extends React.Component {
     }
     onClick = (index) => {
         const { tabs } = this.state
-        tabs.videoData = this.initListData(index, tabs[index].id)
-        this.setState({ tabs })
+        this.initListData(index, tabs[index].id)
     }
     render() {
         const { tabs } = this.state
