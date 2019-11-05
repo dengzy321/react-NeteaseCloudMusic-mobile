@@ -1,0 +1,57 @@
+@import '../../style/variable.less';
+
+.myLogin{
+    background-color: #DB2C1F;
+    height: 100%;
+    overflow: hidden;
+    .logo{
+        display: block;
+        margin: 10rem auto;
+        width: 5rem;
+        height: auto;
+    }
+    .login-box{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        padding: 2rem;
+        .phoneLogin-btn{
+            background-color: #fff;
+            border: 0;
+            color: #DB2C1F;
+            font-size: 1.2rem;
+            text-align: center;
+            width: 100%;
+            padding: 1rem 0;
+            display: block;
+            border-radius: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .immediately:extend(.myLogin .login-box .phoneLogin-btn all){
+            background: none;
+            border: 0.1rem solid #ccc;
+            color: #fff;
+        }
+        .loginType{
+            margin-bottom: 2rem;
+            padding: 0 5rem;
+            img{
+                width: 3rem;
+                height: auto;
+            }
+        }
+        .clause{
+            font-size: 0.8rem;
+            .comfirm{
+                color: #ccc;
+                font-size: 0.8rem;
+                margin: 0 0.4rem;
+            }
+            .link{ 
+                color: #fff;
+                opacity: 0.5; 
+            }
+        }
+    }
+}
