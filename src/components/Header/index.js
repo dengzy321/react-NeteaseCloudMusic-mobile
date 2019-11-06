@@ -22,7 +22,7 @@ class Header extends React.Component {
         const { showDrawer } = this.state
         return (
             <div className='myHeader da'>
-                <img className='menu_icon' src={require('../../assets/menu.png')} onClick={this.changeShowStatus} />
+                <img className='menu_icon' src={require('../../assets/menu.png')} onClick={this.changeShowStatus} alt/>
                 <div className='center dbc'>
                     {
                         tabs.map((item, index) => {
@@ -30,7 +30,7 @@ class Header extends React.Component {
                         })
                     }
                 </div>
-                <img className='search_icon' src={require('../../assets/search.png')} />
+                <img className='search_icon' src={require('../../assets/search.png')} alt/>
 
                 {/* 显示Drawer */}
                 {showDrawer && <Drawer showDrawer={showDrawer} changeShowStatus={this.changeShowStatus} />}

@@ -88,7 +88,7 @@ class Drawer extends React.Component {
                                 <span className='explain'>新客仅5元</span>
                             </p>
                             <p className='title'>天气之子原声大碟</p>
-                            <img className='coverImg' src={require('../../static/weather.jpg')} alt=''/>
+                            <img className='coverImg' src={require('../../static/weather.jpg')} alt/>
                         </div>
 
                         {/* nav */}
@@ -97,7 +97,7 @@ class Drawer extends React.Component {
                                 navArr.map((item, index) => {
                                     return (
                                         <Link className='nav-item dd-vh' key={index} to=''>
-                                            <img className='icon' src={item.icon} alt='' />
+                                            <img className='icon' src={item.icon} alt/>
                                             <span className='name'>{item.name}</span>
                                         </Link>
                                     )
@@ -116,7 +116,7 @@ class Drawer extends React.Component {
                                                     <img className='icon' src={item.icon} alt />
                                                     <span className='name'>{item.name}</span>
                                                     <span className='explain'>{item.explain}</span>
-                                                    {item.explainImg && <img className='explainImg' src={item.explainImg} alt=''/>}
+                                                    {item.explainImg && <img className='explainImg' src={item.explainImg} alt/>}
                                                 </Link>
                                             </li>
                                         )
@@ -128,15 +128,15 @@ class Drawer extends React.Component {
                         {/* footer */}
                         <div className='footer da'>
                             <Link className='footer-item da' to=''>
-                                <img className='icon' src={Iconpath.night_mode} alt='' />
+                                <img className='icon' src={Iconpath.night_mode} alt/>
                                 <span className='name'>夜间模式</span>
                             </Link>
                             <Link className='footer-item da' to=''>
-                                <img className='icon' src={Iconpath.settings} alt='' />
+                                <img className='icon' src={Iconpath.settings} alt/>
                                 <span className='name'>设置</span>
                             </Link>
                             <Link className='footer-item da' to=''>
-                                <img className='icon' src={Iconpath.quit} alt='' />
+                                <img className='icon' src={Iconpath.quit} alt/>
                                 <span className='name'>退出</span>
                             </Link>
                         </div>
