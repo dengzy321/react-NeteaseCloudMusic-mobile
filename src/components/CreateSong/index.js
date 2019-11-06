@@ -111,29 +111,27 @@ class CreateSong extends React.Component {
         return (
             <div className='createSong'>
                 {
-                    Item.map((item, index) => {
-                        return (
-                            <div key={index} className='create-item'>
-                                <div className='da ci-header'>
-                                    <div className='flex da' onClick={this.showSongsBox.bind(this, index)}>
-                                        <img className={`arrow_rigth ${item.showList ? 'arrow_active' : ''}`} src={Iconpath.arrow_rigth} />
-                                        <span className='listName'>{item.title}</span>
-                                        <span className='songsCount'>({item.count})</span>
-                                    </div>
-                                    {item.hasAdd && <img className='icon_add' src={Iconpath.add} onClick={this.openCSModal}/>}
-                                    <img className='icon_more' src={Iconpath.more} onClick={this.onShowSongsTool.bind(this,index)}/>
+                    Item.map((item, index) =>
+                        <div key={index} className='create-item'>
+                            <div className='da ci-header'>
+                                <div className='flex da' onClick={this.showSongsBox.bind(this, index)}>
+                                    <img className={`arrow_rigth ${item.showList ? 'arrow_active' : ''}`} src={Iconpath.arrow_rigth} />
+                                    <span className='listName'>{item.title}</span>
+                                    <span className='songsCount'>({item.count})</span>
                                 </div>
-                                {
-                                    item.showList &&
-                                    <div className='songsBox-List'>
-                                        <ul>
-                                            { this.SongsBoxList() }
-                                        </ul>
-                                    </div>
-                                }
+                                {item.hasAdd && <img className='icon_add' src={Iconpath.add} onClick={this.openCSModal} />}
+                                <img className='icon_more' src={Iconpath.more} onClick={this.onShowSongsTool.bind(this, index)} />
                             </div>
-                        )
-                    })
+                            {
+                                item.showList &&
+                                <div className='songsBox-List'>
+                                    <ul>
+                                        {this.SongsBoxList()}
+                                    </ul>
+                                </div>
+                            }
+                        </div>
+                    )
                 }
                 {showCreateModal && this.CreateSongsModal()}
                 {showSongsToolModal && <SongsToolModal onShowSongsTool={this.onShowSongsTool} data={SongsToolModalData} Header={this.SongsToolModalHeader()}/>}

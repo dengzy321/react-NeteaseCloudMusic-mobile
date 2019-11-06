@@ -50,25 +50,23 @@ class WaterfallList extends React.Component {
             <div className='waterfall-box'>
                 <ul className='waterfall-ul' ref='waterfallUl'>
                     {
-                        list.map(({data}, index) =>{
-                            return(
-                                <li key={index} className='waterfall-li'>
-                                    <Link to='/'>
-                                        <div className='pic-box'>
-                                            <img className='coverUrl' src={data.coverUrl} />
-                                            <img className='icon' src={Iconpath.icon_video} />
-                                        </div>
-                                        <h3 className='title to-2line'>{data.title}</h3>
-                                        <p className='da footer'>
-                                            <img className='avatarUrl' src={data.creator.avatarUrl} />
-                                            <span className='name to-line'>{data.creator.nickname}</span>
-                                            <span>{data.praisedCount}赞</span>
-                                            <img className='more-icon' src={Iconpath.more_gray} />
-                                        </p>
-                                    </Link>
-                                </li>
-                            )
-                        })
+                        list.map(({data}, index) =>
+                            <li key={index} className='waterfall-li'>
+                                <Link to='/'>
+                                    <div className='pic-box'>
+                                        <img className='coverUrl' src={data.coverUrl} />
+                                        <img className='icon' src={Iconpath.icon_video} />
+                                    </div>
+                                    <h3 className='title to-2line'>{data.title}</h3>
+                                    <p className='da footer'>
+                                        <img className='avatarUrl' src={data.creator.avatarUrl} />
+                                        <span className='name to-line'>{data.creator.nickname}</span>
+                                        <span>{data.praisedCount}赞</span>
+                                        <img className='more-icon' src={Iconpath.more_gray} />
+                                    </p>
+                                </Link>
+                            </li>
+                        )
                     }
                 </ul>
             </div>

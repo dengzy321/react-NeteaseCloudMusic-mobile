@@ -61,14 +61,12 @@ class SongsToolModal extends React.Component {
                     <div className='tool-list'>
                         <ul>
                             {
-                                data.map((item, index) => {
-                                    return (
-                                        <li key={index} className='tool-li da'>
-                                            <img className='icon' src={item.icon} />
-                                            <span className='li-name'>{item.name}</span>
-                                        </li>
-                                    )
-                                })
+                                data.map((item, index) =>
+                                    <li key={index} className='tool-li da'>
+                                        <img className='icon' src={item.icon} />
+                                        <span className='li-name'>{item.name}</span>
+                                    </li>
+                                )
                             }
                         </ul>
                     </div>

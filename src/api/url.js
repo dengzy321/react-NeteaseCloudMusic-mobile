@@ -19,6 +19,11 @@ export default {
     method: 'get',
     url: '/captcha/verify'
   },
+  //注册(修改密码)
+  register: {
+    method: 'get',
+    url: '/register/cellphone'
+  },
   //获取banner
   getBanner: {
     method: 'get',

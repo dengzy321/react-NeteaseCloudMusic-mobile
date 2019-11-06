@@ -14,7 +14,7 @@ class Login extends React.Component {
                 <img className='logo' src={Iconpath.logo} alt='' />
                 <div className='login-box'>
                     <Link to='/phoneLogin' className='phoneLogin-btn'>手机号登陆</Link>
-                    <Link to='/myCenter' className='immediately'>立即体验</Link>
+                    <Link to='/myCenter' replace className='immediately'>立即体验</Link>
                     <div className='dbc loginType'>
                         <img src={Iconpath.weixin} alt='' />
                         <img src={Iconpath.qq} alt='' />

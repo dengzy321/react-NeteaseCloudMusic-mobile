@@ -30,7 +30,7 @@ instance.interceptors.request.use(function (request) {
 
 // 响应拦截
 instance.interceptors.response.use(function (response) {
-  const { status, data, statusText, headers } = response;
+  const { status, data, headers } = response;
   Toast.hide()
   if (status === 200) {
     return headers['content-type'] === 'application/json' ? JSON.parse(data) : JSON.parse(data);

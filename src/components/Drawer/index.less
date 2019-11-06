@@ -21,19 +21,17 @@
         transition: all 0.3s ease;
         background-color: #fff;
         .inner-box{
-            &::-webkit-scrollbar{
-                width: 0;
-            }
             overflow: scroll;
             height: 100%;
+            &::-webkit-scrollbar{ border: 0; }
         }
         .header{
-            padding: 4rem 0;
+            padding: 3rem 0 4rem 0;
             background-color: #EBEBEB;
             .login{
                 padding: 0 1.5rem;
                 .avatar{
-                    margin-bottom: 0.4rem;
+                    margin-bottom: 0.6rem;
                     img{
                         width: 5rem;
                         height: 5rem;
@@ -106,7 +104,7 @@
                 position: relative;
                 &::after{
                     position: absolute;
-                    top: 0.5rem;
+                    top: 0.2rem;
                     right: 0;
                     width: 0.1rem;
                     height: 2rem;
@@ -157,7 +155,7 @@
         }
         .tool-ul{
             background-color: #fff;
-            padding: 1rem 1rem 3rem 1rem;
+            padding: 1rem 1rem 4rem 1.5rem;
             .tool-li{
                 padding: 1rem 0;
                 .icon{
@@ -186,7 +184,7 @@
         .footer{
             background-color: #fff;
             border-top: 0.1rem solid #f4f4f4;
-            padding: 1rem;
+            padding: 1rem 1.5rem;
             position: fixed;
             left: 0;
             right: 0;

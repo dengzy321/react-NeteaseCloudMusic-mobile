@@ -16,8 +16,8 @@ class myCenter extends React.Component {
     componentDidMount() {
         this.initBanner()
     }
-    initBanner =() =>{
-        http.getBanner().then(res =>{
+    initBanner = () => {
+        http.getBanner().then(res => {
             this.setState({ bannerArr: res.banners })
         })
     }
@@ -34,14 +34,12 @@ class myCenter extends React.Component {
             <div className='find layout'>
                 {/* banner图 */}
                 <div className='banner'>
-                     <Carousel
-                    autoplay={true}
-                    infinite
+                    <Carousel
+                        autoplay={true}
+                        infinite
                     >
                         {
-                            bannerArr.map((item, index) =>{
-                                return <img key={index} className='' src={item.pic} alt='' />
-                            })
+                            bannerArr.map((item, index) => <img key={index} className='' src={item.pic} alt='' />)
                         }
                     </Carousel>
                 </div>
@@ -49,14 +47,12 @@ class myCenter extends React.Component {
                 {/* 每日推荐 */}
                 <div className='da centerNav'>
                     {
-                        toolArr.map((item, index) => {
-                            return (
-                               <div key={index} className='dd-vh flex'>
-                                    <img src={item.icon} alt="" /> 
-                                    <span>{item.title}</span>
-                               </div>
-                           ) 
-                        })
+                        toolArr.map((item, index) =>
+                            <div key={index} className='dd-vh flex'>
+                                <img src={item.icon} alt="" />
+                                <span>{item.title}</span>
+                            </div>
+                        )
                     }
                 </div>
                 <RecommendSongs />

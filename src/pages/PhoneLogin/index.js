@@ -13,13 +13,15 @@ class PhoneLogin extends React.Component {
         phone: '',
         password: '',
         changePassword: '',
-        verifyCode: '',
-        showLevel: 0,  // 0： 显示 输入手机号码    1：显示输入密码     2：显示输入要修改密码     3：显示输入验证码
+        captcha: '',
+        countDown: 60,
+        showModule: 0,  // 0： 显示 输入手机号码    1：显示输入密码     2：显示输入要修改密码     3：显示输入验证码
     }
     componentDidUpdate(){
         this.onFcous()
     }
-    onChange = (event) =>{
+    onInput = (event) => {
+        if (event.target.name == 'captcha' && event.target.value.length == 4) this.modifyPassword(event.target.value)
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -28,12 +30,12 @@ class PhoneLogin extends React.Component {
         this.setState({ phone: '' })
     }
     onSelected(curIndex){
-        if(curIndex == 1 && !this.state.phone) {
-            Toast.info('请输入手机号码'); 
+        if (curIndex == 1 && !(/^1[3456789]\d{9}$/.test(this.state.phone))) {
+            Toast.info('手机号码有误'); 
             return
         }
         this.setState({
-            showLevel: curIndex
+            showModule: curIndex
         })
     }
     // 登录
@@ -52,96 +54,89 @@ class PhoneLogin extends React.Component {
         })
     }
     // 发送验证码
-    sentVerifyCode = () =>{
+    sentCaptchaCode = () =>{
         const { phone, changePassword } = this.state
         if(!changePassword){
             Toast.info('请输入要修改的密码'); 
             return
         }
-
-        this.setState({ showLevel: 3 }); return
         http.sentVerify({ phone }).then(res =>{
-            this.setState({ showLevel: 3 })
+            this.setState({ showModule: 3 })
+            const timer = setInterval(() => {
+                this.setState(state => ({
+                    countDown: state.countDown - 1
+                }))
+                if (this.setState.countDown == 1) clearInterval(timer)
+            }, 1000)
             Toast.success('发送成功');
         })
     }
     // 修改密码
-    modifyPassword = () =>{
-        
-    }
-
-    // 输入验证码
-    inputVerify = (event) =>{
-        this.setState({
-            verifyCode: event.target.value
+    modifyPassword = (captcha) =>{
+        const { phone, changePassword } = this.state
+        http.register({
+            phone,
+            captcha,
+            password: changePassword,
+            nickname: this.props.userInfo ? this.props.userInfo.nickname : phone
+        }).then(res => {
+            Toast.success('修改成功');
+            setTimeout(() => {
+                this.props.history.push('/login')
+            }, 2000);
         })
     }
     // 聚焦input
     onFcous = () =>{
-        if(this.state.showLevel == 3) this.verifyInput.focus()
-    }
-    PhoneModule = () =>{
-        const { phone } = this.state
-        return(
-            <div className='phoneModule'>
-                <p className='tip'>未注册手机号登陆后将自动创建账号</p>
-                <div className='onInput da'>
-                    <span className='area' style={{color: phone? '#333':''}}>+86</span>
-                    <input className='input' onChange={this.onChange} type='number' maxLength='11' value={phone} name='phone'  placeholder='请输入手机号'/>
-                    { phone && <img className='close' src={Iconpath.close_$ccc} alt='' onClick={this.onClose}/>}
-                </div>
-                <button className='btn' onClick={this.onSelected.bind(this, 1)}>下一步</button>
-            </div>
-        )
-    }
-    PasswordModule = () =>{
-        const { password } = this.state
-        return(
-            <div className='passwordModule phoneModule'>
-                <div className='onInput da'>
-                    <input className='input' onChange={this.onChange} type='password' value={password} name='password' placeholder='请输入密码'/>
-                    <button className='forget' onClick={this.onSelected.bind(this, 2)}>忘记密码？</button>
-                </div>
-                <button className='btn' onClick={this.onLogin}>登陆</button>
-            </div>
-        )
-    }
-    ModifyPasswordModule = () =>{
-        const { changePassword } = this.state
-        return(
-            <div className='passwordModule phoneModule'>
-                <div className='onInput da'>
-                    <input className='input' onChange={this.onChange} type='password' maxLength='11' value={changePassword} name='changePassword' placeholder='设置登录密码，不少于6位'/>
-                </div>
-                <button className='btn' onClick={this.sentVerifyCode}>下一步</button>
-            </div>
-        )
-    }
-    VerifyCodeModule = () =>{
-        const { phone, verifyCode } = this.state
-        // let encrypt = phone 
-        return(
-            <div className='inputVerifyCode' onClick={this.onFcous}>
-                <p className='title'>验证码已发送至</p>
-                <p className='info dbc'>
-                    <span className='phone'>+86 17725999414</span>
-                    <span className='limit'>59</span>
-                </p>
-                <div className='inputBox'>
-                    <input className='passwordItem' type='password' value={verifyCode[0]} disabled/>
-                    <input className='passwordItem' type='password' value={verifyCode[1]} disabled/>
-                    <input className='passwordItem' type='password' value={verifyCode[2]} disabled/>
-                    <input className='passwordItem' type='password' value={verifyCode[3]} disabled/>
-                    <input className='hideInput' onChange={this.inputVerify} ref={input => this.verifyInput = input} maxLength='4' value={verifyCode}/>
-                </div>
-            </div>
-        )
+        if (this.state.showModule == 3) this.captchaInput.focus()
     }
     render(){
-        const { showLevel } = this.state
+        const { showModule, phone, password, changePassword, captcha, countDown } = this.state
+        console.log('captcha===', captcha)
         return(
             <div className='phoneLogin'>
-                { showLevel == 0? this.PhoneModule() : showLevel == 1? this.PasswordModule() : showLevel == 2? this.ModifyPasswordModule() : this.VerifyCodeModule() }
+                {
+                    showModule == 0? // 输入手机号码模块
+                    <div className='phoneModule'>
+                        <p className='tip'>未注册手机号登陆后将自动创建账号</p>
+                        <div className='onInput da'>
+                            <span className='area' style={{color: phone? '#333':''}}>+86</span>
+                            <input className='input' onChange={this.onInput} type='number' maxLength='11' value={phone} name='phone'  placeholder='请输入手机号'/>
+                            { phone && <img className='close' src={Iconpath.close_$ccc} alt='' onClick={this.onClose}/>}
+                        </div>
+                        <button className='btn' onClick={this.onSelected.bind(this, 1)}>下一步</button>
+                    </div> :
+                    showModule == 1? // 输入密码模块
+                    <div className='passwordModule'>
+                        <div className='onInput da'>
+                            <input className='input' onChange={this.onInput} type='password' value={password} name='password' placeholder='请输入密码'/>
+                            <button className='forget' onClick={this.onSelected.bind(this, 2)}>忘记密码？</button>
+                        </div>
+                        <button className='btn' onClick={this.onLogin}>登陆</button>
+                    </div> : 
+                    showModule == 2? // 输入需要修改的密码模块
+                     <div className='passwordModule'>
+                        <div className='onInput da'>
+                            <input className='input' onChange={this.onInput} type='password' maxLength='11' value={changePassword} name='changePassword' placeholder='设置登录密码，不少于6位'/>
+                        </div>
+                        <button className='btn' onClick={this.sentCaptchaCode}>下一步</button>
+                    </div> :
+                    showModule == 3? // 输入验证码模块
+                    <div className='verifyCodeModule' onClick={this.onFcous}>
+                        <p className='title'>验证码已发送至</p>
+                        <p className='info dbc'>
+                            <span className='phone'>+86 {phone}</span>
+                            <span className={`limit ${countDown? '':'active'}`} onClick={this.sentCaptchaCode}>{countDown? countDown : '重新发送'}</span>
+                        </p>
+                        <div className='inputBox'>
+                            <input className='passwordItem' type='password' value={captcha[0] ? captcha[0] : ''} disabled/>
+                            <input className='passwordItem' type='password' value={captcha[1] ? captcha[1] : ''} disabled/>
+                            <input className='passwordItem' type='password' value={captcha[2] ? captcha[2] : ''} disabled/>
+                            <input className='passwordItem' type='password' value={captcha[3] ? captcha[3]: ''} disabled/>
+                            <input className='hideInput' onChange={this.onInput} name='captcha' ref={input => this.captchaInput = input} maxLength='4' value={captcha}/>
+                        </div>
+                    </div> : ''
+                }
             </div>
         )
     }

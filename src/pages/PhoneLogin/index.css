@@ -14,30 +14,27 @@
   margin-top: 3.5rem;
 }
 .phoneLogin .phoneModule .tip,
-.phoneLogin .phoneLogin .passwordModule .tip {
+.phoneLogin .passwordModule .tip {
   color: #999;
   font-size: 1.2rem;
   margin-bottom: 4rem;
 }
 .phoneLogin .phoneModule .onInput,
-.phoneLogin .phoneLogin .passwordModule .onInput {
+.phoneLogin .passwordModule .onInput {
   border-bottom: 0.1rem solid #f4f4f4;
   padding-bottom: 0.6rem;
-}
-.phoneLogin .phoneModule .onInput .area,
-.phoneLogin .phoneLogin .passwordModule .onInput .area {
-  color: #ccc;
   font-size: 1.4rem;
+  color: #ccc;
 }
 .phoneLogin .phoneModule .onInput .input,
-.phoneLogin .phoneLogin .passwordModule .onInput .input {
+.phoneLogin .passwordModule .onInput .input {
   color: #333;
-  font-size: 1.2rem;
   flex: 1;
   padding: 0 1rem;
+  font-size: 1.4rem;
 }
 .phoneLogin .phoneModule .onInput .close,
-.phoneLogin .phoneLogin .passwordModule .onInput .close {
+.phoneLogin .passwordModule .onInput .close {
   width: 1rem;
   height: auto;
   margin-right: 0.5rem;
@@ -51,29 +48,29 @@
   border: 0;
   background: none;
 }
-.phoneLogin .inputVerifyCode {
+.phoneLogin .verifyCodeModule {
   padding: 2rem 0;
 }
-.phoneLogin .inputVerifyCode .title {
+.phoneLogin .verifyCodeModule .title {
   color: #333;
   font-size: 1.4rem;
   margin-bottom: 1rem;
 }
-.phoneLogin .inputVerifyCode .info {
+.phoneLogin .verifyCodeModule .info {
   color: #999;
   font-size: 1.2rem;
 }
-.phoneLogin .inputVerifyCode .info .actvie {
+.phoneLogin .verifyCodeModule .info .active {
   color: #628AB7;
   font-size: 1.2rem;
 }
-.phoneLogin .inputVerifyCode .inputBox {
+.phoneLogin .verifyCodeModule .inputBox {
   position: relative;
   margin-top: 2.5rem;
   padding-left: 2rem;
   text-align: center;
 }
-.phoneLogin .inputVerifyCode .inputBox .passwordItem {
+.phoneLogin .verifyCodeModule .inputBox .passwordItem {
   width: 3.5rem;
   padding: 1rem 0;
   border-bottom: 0.2rem solid #ccc;
@@ -82,9 +79,13 @@
   color: #333;
   text-align: center;
 }
-.phoneLogin .inputVerifyCode .inputBox .hideInput {
-  color: #fff;
+.phoneLogin .verifyCodeModule .inputBox .hideInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: transparent;
   width: 0.1rem;
+  height: 0.1rem;
   border: 0;
   background: none;
 }

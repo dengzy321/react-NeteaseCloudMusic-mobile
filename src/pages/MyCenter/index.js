@@ -46,26 +46,22 @@ class Recommend extends React.Component {
             <div className='myCenter layout'>
                 <div className='topNav dbc'>
                     {
-                        topNav.map((item, index) => {
-                            return (
-                                <NavLink key={index} to='/' className='dd-vh'>
-                                    <img className='icon' src={item.icon} alt='' />
-                                    <span>{item.title}</span>
-                                </NavLink>
-                            )
-                        })
+                        topNav.map((item, index) =>
+                            <NavLink key={index} to='/' className='dd-vh'>
+                                <img className='icon' src={item.icon} alt='' />
+                                <span>{item.title}</span>
+                            </NavLink>
+                        )
                     }
                 </div>
                 <div className='playList'>
                     {
-                        playNav.map((item, index) => {
-                            return (
-                                <NavLink key={index} to='/' className='da play-item'>
-                                    <img src={item.icon} alt='' />
-                                    <span>{item.title}</span>
-                                </NavLink>
-                            )
-                        })
+                        playNav.map((item, index) =>
+                            <NavLink key={index} to='/' className='da play-item'>
+                                <img src={item.icon} alt='' />
+                                <span>{item.title}</span>
+                            </NavLink>
+                        )
                     }
                 </div>
                 <CreateSong />

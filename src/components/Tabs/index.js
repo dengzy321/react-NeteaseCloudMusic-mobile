@@ -129,9 +129,7 @@ class Carousel extends React.Component {
                 <div className='tab-box' ref={this.tabBoxRef}>
                     <div className='tab-list' ref='tabList'>
                         {
-                            data.map((item, index) => {
-                                return <span className='tab' onClick={this.onClick.bind(this, index)} ref={`tab_${index}`} key={index}>{item.title}</span>
-                            })
+                            data.map((item, index) => <span className='tab' onClick={this.onClick.bind(this, index)} ref={`tab_${index}`} key={index}>{item.title}</span>)
                         }
                         <div className='tab-line' style={{ transform: `translateX(${lineOffset}px)` }}></div>
                     </div>
@@ -141,9 +139,7 @@ class Carousel extends React.Component {
                 <div className='c-inner' onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} >
                     <ul style={{ width: innerWidth * data.length + 'px', transform: `translateX(${offsetX}px)`, transition: `all ${openAnimation? '0.2s': ''} ease`}} className='c-ul'>
                         {
-                            data.map((item, index) => {
-                                return <li className={`bg${index}`} style={{ width: innerWidth + 'px' }} key={index}>{<item.Component data={item.videoData} />}</li>
-                            })
+                            data.map((item, index) => <li className={`bg${index}`} style={{ width: innerWidth + 'px' }} key={index}>{<item.Component data={item.videoData} />}</li>)
                         }
                     </ul>
                 </div>
