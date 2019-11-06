@@ -15,6 +15,9 @@ class PhoneLogin extends React.Component {
         show_1: false,
         show_2: false
     }
+    componentWillMount(){
+        
+    }
     onChange = (event) =>{
         this.setState({
             [event.target.name]: event.target.value

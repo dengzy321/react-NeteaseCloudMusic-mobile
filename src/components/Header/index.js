@@ -5,7 +5,7 @@ import Drawer from '../../components/Drawer'
 
 class Header extends React.Component {
     state = {
-        showDrawer: true
+        showDrawer: false
     }
     changeShowStatus = () => {
         this.setState(state => ({
