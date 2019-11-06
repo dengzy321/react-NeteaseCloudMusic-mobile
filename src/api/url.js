@@ -9,6 +9,16 @@ export default {
     method: 'get',
     url: '/login'
   },
+  //发送验证码
+  sentVerify: {
+    method: 'get',
+    url: '/captcha/sent'
+  },
+  //验证验证码
+  emailLogin: {
+    method: 'get',
+    url: '/captcha/verify'
+  },
   //获取banner
   getBanner: {
     method: 'get',

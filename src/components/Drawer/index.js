@@ -8,10 +8,16 @@ import Iconpath from '@/utils/iconpath'
 
 class Drawer extends React.Component {
     state = {
-        innerTimer: false
+        innerTimer: false,
+        userInfo: null
+    }
+    componentWillMount(){
+        console.log(this)
+        this.setState({
+            userInfo: this.props.userInfo
+        })
     }
     componentDidMount() {
-        console.log('componentDidMount==', this.props.showDrawer)
         if (this.props.showDrawer) {
             setTimeout(() => {
                 this.setState({
@@ -30,7 +36,7 @@ class Drawer extends React.Component {
         }, 10)
     }
     render() {
-        const { innerTimer } = this.state
+        const { innerTimer, userInfo } = this.state
         const navArr = [
             { icon: Iconpath.messages, name: '我的消息' },
             { icon: Iconpath.people, name: '我的好友' },
@@ -55,30 +61,32 @@ class Drawer extends React.Component {
             <div className='drawer' onClick={this.onClose}>
                 <div className='inner' style={{ transform: `translateX(${innerTimer ? '0' : '-100'}rem)` }}>
                     <div className='inner-box'>
-
-                        {/* header */}
+                        
+                        {/* 头部  用户信息 */}
                         <div className='header'>
-                            <div className='unlogin'>
-                                <p className='title'>登录网易云音乐</p>
-                                <p className='title'>手机电脑多端同步，尽享海量高品质音乐</p>
-                                <Link className='login-btn' to='/login'>立即登录</Link>
-                            </div>
-                            
-                            {/* <div className='login'>
-                                <div className='avatar'>
-                                    <img src={Iconpath.defalut_avatar} alt />
+                            {
+                                Object.keys(userInfo).length != 0? 
+                                <div className='login'>
+                                    <div className='avatar'>
+                                        <img src={userInfo.avatarUrl} alt=''/>
+                                    </div>
+                                    <div className='da'>
+                                        <span className='nickname'>{userInfo.nickname}</span>
+                                        <span className='level'>Lv.0</span>
+                                        <p className='integral-box da-e'>
+                                            <span className='integral da'>
+                                                <img src={Iconpath.integral} alt=''/>
+                                                <b>签到</b>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div> :
+                                <div className='unlogin'>
+                                    <p className='title'>登录网易云音乐</p>
+                                    <p className='title'>手机电脑多端同步，尽享海量高品质音乐</p>
+                                    <Link className='login-btn' to='/login'>立即登录</Link>
                                 </div>
-                                <div className='da'>
-                                    <span className='nickname'>dengzy遥仔仔</span>
-                                    <span className='level'>Lv.0</span>
-                                    <p className='integral-box da-e'>
-                                        <span className='integral da'>
-                                            <img src={Iconpath.integral} alt />
-                                            <b>签到</b>
-                                        </span>
-                                    </p>
-                                </div>
-                            </div> */}
+                            }
                         </div>
 
                         {/* 开通黑胶VIP */}
@@ -88,7 +96,7 @@ class Drawer extends React.Component {
                                 <span className='explain'>新客仅5元</span>
                             </p>
                             <p className='title'>天气之子原声大碟</p>
-                            <img className='coverImg' src={require('../../static/weather.jpg')} alt/>
+                            <img className='coverImg' src={require('../../static/weather.jpg')} alt=''/>
                         </div>
 
                         {/* nav */}
@@ -97,7 +105,7 @@ class Drawer extends React.Component {
                                 navArr.map((item, index) => {
                                     return (
                                         <Link className='nav-item dd-vh' key={index} to=''>
-                                            <img className='icon' src={item.icon} alt/>
+                                            <img className='icon' src={item.icon} alt=''/>
                                             <span className='name'>{item.name}</span>
                                         </Link>
                                     )
@@ -113,10 +121,10 @@ class Drawer extends React.Component {
                                         return (
                                             <li className='tool-li' key={index}>
                                                 <Link to={item.url} className='da'>
-                                                    <img className='icon' src={item.icon} alt />
+                                                    <img className='icon' src={item.icon} alt='' />
                                                     <span className='name'>{item.name}</span>
                                                     <span className='explain'>{item.explain}</span>
-                                                    {item.explainImg && <img className='explainImg' src={item.explainImg} alt/>}
+                                                    {item.explainImg && <img className='explainImg' src={item.explainImg} alt=''/>}
                                                 </Link>
                                             </li>
                                         )
@@ -128,15 +136,15 @@ class Drawer extends React.Component {
                         {/* footer */}
                         <div className='footer da'>
                             <Link className='footer-item da' to=''>
-                                <img className='icon' src={Iconpath.night_mode} alt/>
+                                <img className='icon' src={Iconpath.night_mode} alt=''/>
                                 <span className='name'>夜间模式</span>
                             </Link>
                             <Link className='footer-item da' to=''>
-                                <img className='icon' src={Iconpath.settings} alt/>
+                                <img className='icon' src={Iconpath.settings} alt=''/>
                                 <span className='name'>设置</span>
                             </Link>
                             <Link className='footer-item da' to=''>
-                                <img className='icon' src={Iconpath.quit} alt/>
+                                <img className='icon' src={Iconpath.quit} alt=''/>
                                 <span className='name'>退出</span>
                             </Link>
                         </div>

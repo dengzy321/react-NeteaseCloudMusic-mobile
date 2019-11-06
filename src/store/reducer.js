@@ -1,18 +1,15 @@
 import * as actionTypes from './actionTypes';
 
 const initialState = {
-    count: 0,
-    newsList: []
+    userInfo: {}, //用户信息
 };
 
 export default function music(state = initialState, action) {
-    const { count } = state;
+    const { userInfo } = state;
     const { type, payload } = action;
     switch (type) {
-        case actionTypes.ADD_COUNT: 
-            return Object.assign({}, state, { count: count + 1 })
-        case actionTypes.REDUCE_COUNT: 
-            return Object.assign({}, state, { count: count - 1 })
+        case actionTypes.USERINFO_SAVE: 
+            return Object.assign({}, state, { userInfo: payload })
         default:
             return state;
     }

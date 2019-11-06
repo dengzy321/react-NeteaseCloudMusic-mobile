@@ -40,6 +40,7 @@
   width: 5rem;
   height: 5rem;
   object-fit: cover;
+  border-radius: 50%;
 }
 .drawer .inner .header .login .nickname {
   color: #333;

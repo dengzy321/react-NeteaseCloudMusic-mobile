@@ -6,17 +6,17 @@
   background-color: #FF3A3A;
   border: 0;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   text-align: center;
   width: 100%;
   border-radius: 2rem;
-  padding: 0.8rem 0;
-  margin-top: 3rem;
+  padding: 1rem 0;
+  margin-top: 3.5rem;
 }
 .phoneLogin .phoneModule .tip,
 .phoneLogin .phoneLogin .passwordModule .tip {
   color: #999;
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-bottom: 4rem;
 }
 .phoneLogin .phoneModule .onInput,
@@ -27,7 +27,7 @@
 .phoneLogin .phoneModule .onInput .area,
 .phoneLogin .phoneLogin .passwordModule .onInput .area {
   color: #ccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 .phoneLogin .phoneModule .onInput .input,
 .phoneLogin .phoneLogin .passwordModule .onInput .input {
@@ -47,7 +47,44 @@
 }
 .phoneLogin .passwordModule .forget {
   color: royalblue;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  border: 0;
+  background: none;
+}
+.phoneLogin .inputVerifyCode {
+  padding: 2rem 0;
+}
+.phoneLogin .inputVerifyCode .title {
+  color: #333;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.phoneLogin .inputVerifyCode .info {
+  color: #999;
+  font-size: 1.2rem;
+}
+.phoneLogin .inputVerifyCode .info .actvie {
+  color: #628AB7;
+  font-size: 1.2rem;
+}
+.phoneLogin .inputVerifyCode .inputBox {
+  position: relative;
+  margin-top: 2.5rem;
+  padding-left: 2rem;
+  text-align: center;
+}
+.phoneLogin .inputVerifyCode .inputBox .passwordItem {
+  width: 3.5rem;
+  padding: 1rem 0;
+  border-bottom: 0.2rem solid #ccc;
+  margin-right: 2rem;
+  background: none;
+  color: #333;
+  text-align: center;
+}
+.phoneLogin .inputVerifyCode .inputBox .hideInput {
+  color: #fff;
+  width: 0.1rem;
   border: 0;
   background: none;
 }

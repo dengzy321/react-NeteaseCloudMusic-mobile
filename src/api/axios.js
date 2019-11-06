@@ -35,6 +35,7 @@ instance.interceptors.response.use(function (response) {
   if (status === 200) {
     return headers['content-type'] === 'application/json' ? JSON.parse(data) : JSON.parse(data);
   } else if (status === 401) {
+    return response;
     //跳转登录
   } else {
     return response;
