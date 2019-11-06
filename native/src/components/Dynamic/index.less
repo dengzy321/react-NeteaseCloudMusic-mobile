@@ -1,0 +1,111 @@
+@import '../../style/variable.less';
+
+.dynamic{
+    padding-top: 3.5rem;
+    background-color: #f4f4f4;
+    .dynamic-li{
+        padding: 1rem;
+        margin-bottom: 0.1rem;
+        background-color: #fff;
+        .header{
+            .avatar-box{
+                position: relative;
+                .avatar{
+                    width: 3.5rem;
+                    height: 3.5rem;
+                    border-radius: 50%;
+                }
+                .icon{
+                    width: 1rem;
+                    height: auto;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                }
+            }
+            .userInfo{
+                margin-left: 0.8rem;
+                flex: 1;
+                .name{
+                    color: #333;
+                    font-size: 1.2rem;
+                }
+                .tip{
+                    background-color: #161616;
+                    padding: 0 0.5rem;
+                    border-radius: 0.3rem;
+                    color: #fff;
+                    font-size: 0.7rem;
+                    margin: 0 0.5rem;
+                    .icon{
+                        width: 1rem;
+                        height: auto;
+                        margin-right: 0.2rem;
+                    }
+                }
+                .type{
+                    color: #666;
+                    font-size: 1.2rem;
+                }
+                .liveCount{
+                    color: #666;
+                    font-size: 1rem;
+                    margin-top: 0.4rem;
+                }
+            }
+            .follow{
+                background-color: @main-color;
+                color: #fff;
+                font-size: 1rem;
+                border-radius: 1rem;
+                padding: 0.2rem 0.8rem;
+                border: 0;
+            }
+        }
+        .content{
+            color: #000;
+            font-size: 1.2rem;
+            // font-weight: bold;
+            margin: 1.2rem 0 0.5rem 4.3rem;
+        }
+        .video{
+            margin-left: 4.3rem;
+            margin-bottom: 1rem;
+            video{
+                border-radius: 0.5rem;
+                width: 100%;
+                height: auto;
+            }
+        }
+        .footer{
+            color: #999;
+            font-size: 1.2rem;
+            margin-left: 4.3rem;
+            b{
+                margin-top: 0.1rem;
+            }
+            .forward{
+                img{
+                    width: 1.5rem;
+                    height: auto;
+                    margin-right: 0.2rem;
+                }
+            }
+            .comment{
+                img{
+                    width: 1.6rem;
+                    height: auto;
+                    margin-right: 0.2rem;
+                }
+                margin: 0 2rem;
+            }
+            .live{
+                img{
+                    width: 2rem;
+                    height: auto;
+                    margin-right: 0.2rem;
+                }
+            }
+        }
+    }
+}

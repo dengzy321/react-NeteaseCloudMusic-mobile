@@ -1,0 +1,10 @@
+.cusRadio {
+  border-radius: 50%;
+  border: 0.1rem solid;
+  position: relative;
+}
+.cusRadio .icon {
+  position: absolute;
+  width: 1.5rem;
+  height: auto;
+}

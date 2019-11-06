@@ -1,0 +1,61 @@
+@import '../../style/variable.less';
+
+.songsToolModal{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+    .sm-inner{
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: @bg-color;
+        border-radius: 1.5rem 1.5rem 0 0;
+        transition: translate 0.5s;
+        animation: 0.5s ease;
+        animation-name: startAni;
+        &.endAniClass{ animation-name: endAni; }
+        .head{
+            min-height: 4rem;
+            padding: 0 1rem;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            border-bottom: 0.1rem solid #f2f2f2;
+        }
+        .tool-list{
+            max-height: 40rem;
+            overflow: scroll;
+            padding-bottom: 1rem;
+            margin-top: 4rem;
+            .tool-li{
+                height: 4rem;
+                .icon{
+                    width: 2rem;
+                    height: auto;
+                    padding: 0 1rem;
+                }
+                .li-name{
+                    display: inline-block;
+                    flex: 1;
+                    line-height: 4rem;
+                    color: #333;
+                    font-size: 1.2rem;
+                    border-bottom: 0.1rem solid #f2f2f2;
+                }
+            }
+        }
+    }
+    @keyframes startAni {
+        0%{ transform: translateY(55rem); }
+        100%{ transform: translateY(0rem); }
+    }
+    @keyframes endAni {
+        100%{ transform: translateY(55rem); }
+    }
+}

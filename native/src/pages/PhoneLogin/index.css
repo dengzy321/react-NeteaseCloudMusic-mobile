@@ -1,0 +1,53 @@
+.phoneLogin {
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+}
+.phoneLogin .btn {
+  background-color: #FF3A3A;
+  border: 0;
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+  width: 100%;
+  border-radius: 2rem;
+  padding: 0.8rem 0;
+  margin-top: 3rem;
+}
+.phoneLogin .phoneModule .tip,
+.phoneLogin .phoneLogin .passwordModule .tip {
+  color: #999;
+  font-size: 1rem;
+  margin-bottom: 4rem;
+}
+.phoneLogin .phoneModule .onInput,
+.phoneLogin .phoneLogin .passwordModule .onInput {
+  border-bottom: 0.1rem solid #f4f4f4;
+  padding-bottom: 0.6rem;
+}
+.phoneLogin .phoneModule .onInput .area,
+.phoneLogin .phoneLogin .passwordModule .onInput .area {
+  color: #ccc;
+  font-size: 1.2rem;
+}
+.phoneLogin .phoneModule .onInput .input,
+.phoneLogin .phoneLogin .passwordModule .onInput .input {
+  color: #333;
+  font-size: 1.2rem;
+  flex: 1;
+  padding: 0 1rem;
+}
+.phoneLogin .phoneModule .onInput .close,
+.phoneLogin .phoneLogin .passwordModule .onInput .close {
+  width: 1rem;
+  height: auto;
+  margin-right: 0.5rem;
+}
+.phoneLogin .passwordModule {
+  margin-top: 1rem;
+}
+.phoneLogin .passwordModule .forget {
+  color: royalblue;
+  font-size: 1rem;
+  border: 0;
+  background: none;
+}

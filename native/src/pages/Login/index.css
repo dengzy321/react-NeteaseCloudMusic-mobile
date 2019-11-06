@@ -1,0 +1,56 @@
+.myLogin {
+  background-color: #DB2C1F;
+  height: 100%;
+  overflow: hidden;
+}
+.myLogin .logo {
+  display: block;
+  margin: 10rem auto;
+  width: 5rem;
+  height: auto;
+}
+.myLogin .login-box {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 2rem;
+}
+.myLogin .login-box .phoneLogin-btn,
+.myLogin .login-box .immediately {
+  background-color: #fff;
+  border: 0;
+  color: #DB2C1F;
+  font-size: 1.2rem;
+  text-align: center;
+  width: 100%;
+  padding: 1rem 0;
+  display: block;
+  border-radius: 2rem;
+  margin-bottom: 1.5rem;
+}
+.myLogin .login-box .immediately {
+  background: none;
+  border: 0.1rem solid #ccc;
+  color: #fff;
+}
+.myLogin .login-box .loginType {
+  margin-bottom: 2rem;
+  padding: 0 5rem;
+}
+.myLogin .login-box .loginType img {
+  width: 3rem;
+  height: auto;
+}
+.myLogin .login-box .clause {
+  font-size: 0.8rem;
+}
+.myLogin .login-box .clause .comfirm {
+  color: #ccc;
+  font-size: 0.8rem;
+  margin: 0 0.4rem;
+}
+.myLogin .login-box .clause .link {
+  color: #fff;
+  opacity: 0.5;
+}

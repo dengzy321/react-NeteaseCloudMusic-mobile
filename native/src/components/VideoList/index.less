@@ -1,0 +1,78 @@
+@import '../../style/variable.less';
+
+.videoList{
+    background-color: #f4f4f4;
+    .video-li{
+        margin-bottom: 0.5rem;
+        background-color: #fff;
+        width: 100%;
+        .video-box {
+            margin: 0 1rem;
+            padding-top: 1rem;
+            video{
+                width: 100%;
+                height: auto;
+                border-radius: 0.5rem;
+            }
+        }
+        .title{
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: 400;
+            padding: 1rem;
+            border-bottom: 0.1rem solid #f4f4f4;
+        }
+        .footer{
+            padding: 1rem;
+            .avatar{
+                width: 2.3rem;
+                height: 2.3rem;
+                border-radius: 50%;
+            }
+            .nickname{
+                color: #333;
+                font-size: 1.1rem;
+                flex: 1;
+                padding-left: 0.5rem;
+            }
+            .live{
+                position: relative;
+                img{
+                    width: 2.2rem;
+                    height: auto;
+                }
+                b{
+                    position: absolute;
+                    right: -1rem;
+                    top: 0;
+                    font-size: 0.8rem;
+                    color: #999;
+                }
+            }
+            .comment{
+                position: relative;
+                margin: 0 2rem;
+                img{
+                    width: 1.8rem;
+                    height: auto;
+                }
+                b{
+                    position: absolute;
+                    right: -0.3rem;
+                    top: -0.2rem;
+                    font-size: 0.8rem;
+                    color: #999;
+                    background-color: #fff;
+                    width: 1rem;
+                    line-height: 1rem;
+                    text-align: center;
+                    border-radius: 50%;
+                }
+            }
+            .more{
+                width: 2rem;
+                height: auto;
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+.songsGrid {
+  padding-bottom: 1.5rem;
+}
+.songsGrid .pic-box {
+  position: relative;
+}
+.songsGrid .pic-box .pic {
+  width: 9.5rem;
+  height: 9.5rem;
+  border-radius: 0.5rem;
+}
+.songsGrid .pic-box .videoCount {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+}
+.songsGrid .pic-box .videoCount .icon_video {
+  width: 1rem;
+  height: auto;
+  margin-right: 0.5rem;
+}
+.songsGrid .title {
+  color: #333;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  line-height: 1.6rem;
+  height: 3.2rem;
+  padding: 0 0.5rem;
+}
+#root .am-grid .am-flexbox .am-flexbox-item .am-grid-item-content {
+  height: auto;
+  padding: 0;
+  text-align: initial;
+}

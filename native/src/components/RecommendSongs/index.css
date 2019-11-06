@@ -1,0 +1,47 @@
+.recommendSongs .more {
+  color: #666;
+  font-size: 1rem;
+  border: 0.1rem solid #f4f4f4;
+  border-radius: 1rem;
+  padding: 0.3rem 0.7rem;
+}
+.recommendSongs .recommend {
+  padding: 0 1rem;
+}
+.recommendSongs .recommend .re-header {
+  padding: 1rem 0;
+}
+.recommendSongs .recommend .re-header .title {
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.recommendSongs .new-songs {
+  padding: 0 1rem;
+}
+.recommendSongs .new-songs .ns-header {
+  padding: 1rem 0;
+}
+.recommendSongs .new-songs .ns-header .title {
+  color: #666;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.recommendSongs .new-songs .ns-header .title span {
+  padding-right: 1.5rem;
+  position: relative;
+}
+.recommendSongs .new-songs .ns-header .title span:first-of-type::after {
+  position: absolute;
+  right: 0.7rem;
+  top: 0.5rem;
+  content: '';
+  background-color: #ccc;
+  height: 1rem;
+  width: 0.1rem;
+}
+.recommendSongs .new-songs .ns-header .title .activeTitle {
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: bold;
+}

@@ -1,0 +1,48 @@
+@import '../../style/variable.less';
+
+.carousel {
+    .tab-box{
+        white-space: nowrap;
+        overflow: scroll;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 4rem;
+        z-index: 999;
+        background-color: #fff;
+        &::-webkit-scrollbar{ width: 0; }
+        .tab-list{
+            position: relative;
+            display: inline-block;
+            .tab{
+                display: inline-block;
+                padding: 0.8rem 1rem;
+                color: #333;
+                font-size: 1.2rem;
+            }
+            .tab-line{
+                width: 2rem;
+                height: 0.2rem;
+                background-color: @main-color;
+                border-radius: 1rem;
+                transform: translateX(1.2rem);
+                transition: all 0.3s ease;
+                display: inline-block;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+        }
+    }
+    .c-inner {
+        overflow: hidden;
+        padding-top: 3rem;
+        cursor: pointer;
+        .c-ul{
+            li{
+                display: inline-block;
+                height: auto;
+            }
+        }
+    }
+}

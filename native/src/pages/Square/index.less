@@ -1,0 +1,60 @@
+@import '../../style/variable.less';
+
+.square{
+    height: 100%;
+    background-color: #f4f4f4;
+    .nav{
+        background-color: #fff;
+        height: 3rem;
+        color: #333;
+        font-size: 1.2rem;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 4rem;
+        z-index: 1000;
+        span{
+            padding: 1rem 2rem;
+        }
+        .navActive{
+            color: @main-color;
+            position: relative;
+            &::after{
+                position: absolute;
+                content:'';
+                left: 2rem;
+                right: 0;
+                bottom: 0.2rem;
+                background-color: @main-color;
+                height: 0.2rem;
+                width: 2.4rem;
+            }
+        }
+    }
+    .mySquare{
+        padding-top: 3rem;
+        .ms-header{
+            background: linear-gradient(90deg,#A09044,#735A22);
+            margin: 1rem;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            color: #fff;
+            font-size: 1.4rem;
+            p{
+                margin: 0;
+                padding: 0;
+            }
+            .arrow_right{
+                width: 1rem;
+                height: auto;
+                margin-left: 0.5rem;
+                margin-top: 0.2rem;
+            }
+            .tip{
+                font-size: 1rem;
+                margin-top: 1.2rem;
+                opacity: 0.6;
+            }
+        }
+    }
+}

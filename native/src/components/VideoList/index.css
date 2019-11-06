@@ -1,0 +1,76 @@
+.videoList {
+  background-color: #f4f4f4;
+}
+.videoList .video-li {
+  margin-bottom: 0.5rem;
+  background-color: #fff;
+  width: 100%;
+}
+.videoList .video-li .video-box {
+  margin: 0 1rem;
+  padding-top: 1rem;
+}
+.videoList .video-li .video-box video {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+.videoList .video-li .title {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 400;
+  padding: 1rem;
+  border-bottom: 0.1rem solid #f4f4f4;
+}
+.videoList .video-li .footer {
+  padding: 1rem;
+}
+.videoList .video-li .footer .avatar {
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+}
+.videoList .video-li .footer .nickname {
+  color: #333;
+  font-size: 1.1rem;
+  flex: 1;
+  padding-left: 0.5rem;
+}
+.videoList .video-li .footer .live {
+  position: relative;
+}
+.videoList .video-li .footer .live img {
+  width: 2.2rem;
+  height: auto;
+}
+.videoList .video-li .footer .live b {
+  position: absolute;
+  right: -1rem;
+  top: 0;
+  font-size: 0.8rem;
+  color: #999;
+}
+.videoList .video-li .footer .comment {
+  position: relative;
+  margin: 0 2rem;
+}
+.videoList .video-li .footer .comment img {
+  width: 1.8rem;
+  height: auto;
+}
+.videoList .video-li .footer .comment b {
+  position: absolute;
+  right: -0.3rem;
+  top: -0.2rem;
+  font-size: 0.8rem;
+  color: #999;
+  background-color: #fff;
+  width: 1rem;
+  line-height: 1rem;
+  text-align: center;
+  border-radius: 50%;
+}
+.videoList .video-li .footer .more {
+  width: 2rem;
+  height: auto;
+}
