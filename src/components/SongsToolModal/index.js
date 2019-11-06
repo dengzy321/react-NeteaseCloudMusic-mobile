@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { http } from '../../api/http'
-import * as actions from '../../store/actions';
+import { http } from '@/api/http'
+import * as actions from '@/store/actions';
 import './index.css';
 import { NavLink } from 'react-router-dom'
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../store/actions';
+import * as actions from '@/store/actions';
 import './index.css';
 import { Link } from 'react-router-dom'
-import Iconpath from '../../utils/iconpath'
-import Radio from '../../components/Radio'
+import Iconpath from '@/utils/iconpath'
+import Radio from '@/components/Radio'
 
 class Login extends React.Component {
     render(){

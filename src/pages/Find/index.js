@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../store/actions';
+import * as actions from '@/store/actions';
 import './index.css';
 import { Carousel } from 'antd-mobile';
-import RecommendSongs from '../../components/RecommendSongs'
-import { http } from '../../api/http'
+import RecommendSongs from '@/components/RecommendSongs'
+import { http } from '@/api/http'
+import Iconpath from '@/utils/iconpath'
 
 
 class myCenter extends React.Component {
@@ -22,11 +23,11 @@ class myCenter extends React.Component {
     }
     render() {
         const toolArr = [
-            { icon: require('../../assets/music.png'), title: '每日推荐' },
-            { icon: require('../../assets/music.png'), title: '歌单' },
-            { icon: require('../../assets/music.png'), title: '排行榜' },
-            { icon: require('../../assets/music.png'), title: '电台' },
-            { icon: require('../../assets/music.png'), title: '直播' }
+            { icon: Iconpath.calendar, title: '每日推荐' },
+            { icon: Iconpath.music_fill, title: '歌单' },
+            { icon: Iconpath.ranking, title: '排行榜' },
+            { icon: Iconpath.radio_2, title: '电台' },
+            { icon: Iconpath.video_fill, title: '直播' }
         ]
         const { bannerArr } = this.state
         return (

@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
-import store, { persistor } from './store';
-import App from './App';
-import '../src/utils/global'
+import store, { persistor } from '@/store';
+import App from '@/App';
+import '@/utils/global'
 import 'antd-mobile/dist/antd-mobile.css';
-import './style/common.css'
-import './style/variable.css'
+import '@/style/common.css'
+import '@/style/variable.css'
 
 import { http } from './api/http'
 http.phoneLogin({

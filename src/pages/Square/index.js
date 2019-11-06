@@ -3,11 +3,11 @@ import './index.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { NavLink } from 'react-router-dom'
-import { http } from '../../api/http'
-import * as actions from '../../store/actions';
-import Iconpath from '../../utils/iconpath'
-import WaterfallList from '../../components/WaterfallList'
-import Dynamic from '../../components/Dynamic'
+import { http } from '@/api/http'
+import * as actions from '@/store/actions';
+import Iconpath from '@/utils/iconpath'
+import WaterfallList from '@/components/WaterfallList'
+import Dynamic from '@/components/Dynamic'
 
 class Square extends React.Component {
     state = {

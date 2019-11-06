@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import './index.css';
 import { Grid } from 'antd-mobile';
-import { http } from '../../api/http'
+import { http } from '@/api/http'
 import SongsGrid from '../SongsGrid'
 
 class RecommendSongs extends React.Component {

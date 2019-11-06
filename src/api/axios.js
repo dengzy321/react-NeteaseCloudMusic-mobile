@@ -1,11 +1,13 @@
 /*
  * @Author: dengzy 
  * @Date: 2019-10-17 11:35:28
- * @last modify Author:  
- * @last Date: 
-   请求借口封装    
+ * @last modify Author:  dengzy
+ * @last Date: 2019-11-06 15:55:50
+   请求接口封装    
  */
+
 import axios from 'axios';
+import { Toast } from 'antd-mobile';
 
 const instance = axios.create({
   //超时时间
@@ -16,9 +18,20 @@ const instance = axios.create({
   }
 })
 
-//响应拦截
+// 请求拦截
+instance.interceptors.request.use(function (request) {
+  // 在发送请求之前做些什么，例如加入token
+  Toast.loading()
+  return request
+}, function (error) {
+  // 对请求错误做些什么
+  return Promise.reject(error);
+});
+
+// 响应拦截
 instance.interceptors.response.use(function (response) {
   const { status, data, statusText, headers } = response;
+  Toast.hide()
   if (status === 200) {
     return headers['content-type'] === 'application/json' ? JSON.parse(data) : JSON.parse(data);
   } else if (status === 401) {

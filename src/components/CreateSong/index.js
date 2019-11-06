@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { http } from '../../api/http'
-import * as actions from '../../store/actions';
+import { http } from '@/api/http'
+import * as actions from '@/store/actions';
 import './index.css';
 import { NavLink } from 'react-router-dom'
 import SongsToolModal from '../SongsToolModal'
-import Iconpath from '../../utils/iconpath'
+import Iconpath from '@/utils/iconpath'
 import Radio from '../Radio'
 
 class CreateSong extends React.Component {

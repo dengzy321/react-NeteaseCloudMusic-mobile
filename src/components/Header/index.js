@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 import './index.css';
-import Drawer from '../../components/Drawer'
+import Drawer from '@/components/Drawer'
+import Iconpath from '@/utils/iconpath'
 
 class Header extends React.Component {
     state = {
@@ -22,7 +23,7 @@ class Header extends React.Component {
         const { showDrawer } = this.state
         return (
             <div className='myHeader da'>
-                <img className='menu_icon' src={require('../../assets/menu.png')} onClick={this.changeShowStatus} alt/>
+                <img className='menu_icon' src={Iconpath.menu} onClick={this.changeShowStatus} alt=''/>
                 <div className='center dbc'>
                     {
                         tabs.map((item, index) => {
@@ -30,7 +31,7 @@ class Header extends React.Component {
                         })
                     }
                 </div>
-                <img className='search_icon' src={require('../../assets/search.png')} alt/>
+                <img className='search_icon' src={Iconpath.search} alt=''/>
 
                 {/* 显示Drawer */}
                 {showDrawer && <Drawer showDrawer={showDrawer} changeShowStatus={this.changeShowStatus} />}

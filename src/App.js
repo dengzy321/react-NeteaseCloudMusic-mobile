@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
 import { Switch, Route, Redirect } from 'react-router';
-import { history, routes } from './router';
+import { history, routes } from '@/router';
 
 function getRouterByRoutes(routes) {
   const renderedRoutesList = [];
