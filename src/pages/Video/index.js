@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../store/actions';
+import * as actions from '@/store/actions';
 import './index.css';
-import { http } from '../../api/http'
-import VideoList from '../../components/VideoList'
-import Tabs from '../../components/Tabs'
-import { Toast } from 'antd-mobile';
+import { http } from '@/api/http'
+import VideoList from '@/components/VideoList'
+import Tabs from '@/components/Tabs'
 
 class Video extends React.Component {
     state = {
@@ -28,10 +27,8 @@ class Video extends React.Component {
     }
     initListData(index, id) {
         const { tabs } = this.state
-        Toast.loading()
         http.getVideoGroup({ id }).then(res => {
             if (res.code == 200) {
-                Toast.hide()
                 tabs[index].videoData = res.datas
                 this.setState({ tabs })
             }

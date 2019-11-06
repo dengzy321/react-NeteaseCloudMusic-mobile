@@ -13,7 +13,7 @@ const arr = [
     'menu',
     'more',
     'more_gray',
-    'music',
+    'music_fill',
     'music_black',
     'pitch',
     'search',
@@ -53,11 +53,19 @@ const arr = [
     'defalut_avatar',
     'integral',
     'logo',
+    'ranking',
+    'radio_2',
+    'video_fill',
+    'radio_1',
+    'a',
+    'space',
+    'rate_2_fill',
+    'rate_1_fill',
 ]
 
 let obj = {}
 arr.forEach(item =>{
-    obj[item] = require(`../assets/${item}.png`)
+    obj[item] = require(`@/assets/${item}.png`)
 })
 
 export default obj

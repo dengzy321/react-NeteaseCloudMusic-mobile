@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import Iconpath from '../../utils/iconpath'
+import Iconpath from '@/utils/iconpath'
 
 class Radio extends React.Component {
     render() {

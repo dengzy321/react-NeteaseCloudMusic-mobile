@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { http } from '../../api/http'
-import * as actions from '../../store/actions';
+import { http } from '@/api/http'
+import * as actions from '@/store/actions';
 import './index.css';
 import { NavLink } from 'react-router-dom'
-import Iconpath from '../../utils/iconpath'
+import Iconpath from '@/utils/iconpath'
 // import { Player } from 'video-react';
 // import 'node_modules/video-react/dist/video-react.css';
 

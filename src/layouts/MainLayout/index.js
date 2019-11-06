@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import Header from '../../components/Header'
+import Header from '@/components/Header'
 
 class MainLayout extends React.Component {
 

@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { NavLink } from 'react-router-dom'
-import { http } from '../../api/http'
-import * as actions from '../../store/actions';
+import { http } from '@/api/http'
+import * as actions from '@/store/actions';
 import './index.css';
-import CreateSong from '../../components/CreateSong'
-import SongsGrid from '../../components/SongsGrid'
-import Iconpath from '../../utils/iconpath'
+import CreateSong from '@/components/CreateSong'
+import SongsGrid from '@/components/SongsGrid'
+import Iconpath from '@/utils/iconpath'
 
 class Recommend extends React.Component {
     state = {
@@ -35,11 +35,11 @@ class Recommend extends React.Component {
     render() {
         const topNav = [
             { icon: Iconpath.calendar, title: '私人FM' },
-            { icon: Iconpath.calendar, title: '最嗨电音' },
-            { icon: Iconpath.calendar, title: 'ACG专区' },
-            { icon: Iconpath.calendar, title: 'Sati空间' },
-            { icon: Iconpath.calendar, title: '私人推荐' },
-            { icon: Iconpath.calendar, title: '因乐交友' },
+            { icon: Iconpath.radio_1, title: '最嗨电音' },
+            { icon: Iconpath.a, title: 'ACG专区' },
+            { icon: Iconpath.space, title: 'Sati空间' },
+            { icon: Iconpath.rate_2_fill, title: '私人推荐' },
+            { icon: Iconpath.rate_1_fill, title: '因乐交友' },
         ]
         const { playNav } = this.state
         return (

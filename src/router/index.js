@@ -1,12 +1,12 @@
 import { createBrowserHistory } from 'history';
-import MainLayout from '../layouts/MainLayout';
-// import Loading from '../components/Loading';
-import MyCenter from '../pages/MyCenter'
-import Find from '../pages/Find'
-import Square from '../pages/Square'
-import Video from '../pages/Video'
-import Login from '../pages/Login'
-import PhoneLogin from '../pages/PhoneLogin'
+import MainLayout from '@/layouts/MainLayout';
+// import Loading from '@/components/Loading';
+import MyCenter from '@/pages/MyCenter'
+import Find from '@/pages/Find'
+import Square from '@/pages/Square'
+import Video from '@/pages/Video'
+import Login from '@/pages/Login'
+import PhoneLogin from '@/pages/PhoneLogin'
 
 // const Home = Loadable({loader: () => import('../pages/home'),loading: Loading});
 // const ShopCart = Loadable({loader: () => import('../pages/shopCart'),loading: Loading});
