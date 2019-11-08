@@ -92,7 +92,6 @@ class PhoneLogin extends React.Component {
     }
     render(){
         const { showModule, phone, password, changePassword, captcha, countDown } = this.state
-        console.log('captcha===', captcha)
         return(
             <div className='phoneLogin'>
                 {

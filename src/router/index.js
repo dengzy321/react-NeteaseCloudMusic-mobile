@@ -7,6 +7,7 @@ import Square from '@/pages/Square'
 import Video from '@/pages/Video'
 import Login from '@/pages/Login'
 import PhoneLogin from '@/pages/PhoneLogin'
+import Settings from '@/pages/Settings'
 
 // const Home = Loadable({loader: () => import('../pages/home'),loading: Loading});
 // const ShopCart = Loadable({loader: () => import('../pages/shopCart'),loading: Loading});
@@ -49,5 +50,9 @@ export const routes = [
   {
     path: '/phoneLogin',
     component: PhoneLogin
+  },
+  {
+    path: '/settings',
+    component: Settings
   },
 ]

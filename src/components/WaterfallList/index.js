@@ -18,7 +18,7 @@ class WaterfallList extends React.Component {
         },500)
     }
     getHeightRank = () =>{
-        const el = this.refs.waterfallUl.children
+        const el = this.waterfallUl.children
         const columns = 2; // 列数
         const gap = 10; // 间距
         const elWidth = (document.body.clientWidth - 30 - gap) / columns
@@ -48,7 +48,7 @@ class WaterfallList extends React.Component {
         const { list } = this.props
         return(
             <div className='waterfall-box'>
-                <ul className='waterfall-ul' ref='waterfallUl'>
+                <ul className='waterfall-ul' ref={(el) => this.waterfallUl = el }>
                     {
                         list.map(({data}, index) =>
                             <li key={index} className='waterfall-li'>

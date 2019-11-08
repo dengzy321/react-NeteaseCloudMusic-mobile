@@ -9,22 +9,28 @@ import Iconpath from '@/utils/iconpath'
 class Drawer extends React.Component {
     state = {
         innerTimer: false,
-        userInfo: null
+        show: false
     }
     componentWillMount() {
-        console.log(this)
-        this.setState({
-            userInfo: this.props.userInfo
-        })
+        
     }
     componentDidMount() {
-        if (this.props.showDrawer) {
+        
+    }
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            show: nextProps.show
+        })
+        if(nextProps.show){
             setTimeout(() => {
-                this.setState({
-                    innerTimer: true
-                })
+                this.setState({ innerTimer: true })
             }, 1)
-        }
+            document.body.style.position = 'fixed'
+            document.body.style.top = 0
+            document.body.style.left = 0
+            document.body.style.right = 0
+            document.body.style.overflow = 'hidden'
+        }else document.body.style = ''
     }
     onClose = (event) => {
         event.persist()
@@ -32,11 +38,12 @@ class Drawer extends React.Component {
             innerTimer: false
         })
         setTimeout(() => {
-            this.props.changeShowStatus()
+            this.props.closeFN()
         }, 200)
     }
     render() {
-        const { innerTimer, userInfo } = this.state
+        const { innerTimer, show } = this.state
+        const { userInfo } = this.props
         const navArr = [
             { icon: Iconpath.messages, name: '我的消息' },
             { icon: Iconpath.people, name: '我的好友' },
@@ -58,93 +65,98 @@ class Drawer extends React.Component {
             { icon: Iconpath.security, name: '青年模式', explain: '', explainImg: '', url: '#' }
         ]
         return (
-            <div className='drawer' onClick={this.onClose}>
-                <div className='inner' style={{ transform: `translateX(${innerTimer ? '0' : '-100'}rem)` }}>
-                    <div className='inner-box'>
+            <div>
+                {
+                    show &&
+                    <div className='drawer' onClick={this.onClose}>
+                        <div className='inner' style={{ transform: `translateX(${innerTimer ? '0' : '-100'}rem)` }} onClick={(e) => e.stopPropagation()}>
+                            <div className='inner-box'>
 
-                        {/* 头部  用户信息 */}
-                        <div className='header'>
-                            {
-                                Object.keys(userInfo).length != 0 ?
-                                    <div className='login'>
-                                        <div className='avatar'>
-                                            <img src={userInfo.avatarUrl} alt='' />
-                                        </div>
-                                        <div className='da'>
-                                            <span className='nickname'>{userInfo.nickname}</span>
-                                            <span className='level'>Lv.0</span>
-                                            <p className='integral-box da-e'>
-                                                <span className='integral da'>
-                                                    <img src={Iconpath.integral} alt='' />
-                                                    <b>签到</b>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div> :
-                                    <div className='unlogin'>
-                                        <p className='title'>登录网易云音乐</p>
-                                        <p className='title'>手机电脑多端同步，尽享海量高品质音乐</p>
-                                        <Link className='login-btn' to='/login'>立即登录</Link>
-                                    </div>
-                            }
-                        </div>
+                                {/* 头部  用户信息 */}
+                                <div className='header'>
+                                    {
+                                        Object.keys(userInfo).length != 0 ?
+                                            <div className='login'>
+                                                <div className='avatar'>
+                                                    <img src={userInfo.avatarUrl} alt='' />
+                                                </div>
+                                                <div className='da'>
+                                                    <span className='nickname'>{userInfo.nickname}</span>
+                                                    <span className='level'>Lv.0</span>
+                                                    <p className='integral-box da-e'>
+                                                        <span className='integral da'>
+                                                            <img src={Iconpath.integral} alt='' />
+                                                            <b>签到</b>
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div> :
+                                            <div className='unlogin'>
+                                                <p className='title'>登录网易云音乐</p>
+                                                <p className='title'>手机电脑多端同步，尽享海量高品质音乐</p>
+                                                <Link className='login-btn' to='/login'>立即登录</Link>
+                                            </div>
+                                    }
+                                </div>
 
-                        {/* 开通黑胶VIP */}
-                        <div className='openVip da'>
-                            <p className='price ddc-h'>
-                                <span className='name'>开通黑胶VIP</span>
-                                <span className='explain'>新客仅5元</span>
-                            </p>
-                            <p className='title'>天气之子原声大碟</p>
-                            <img className='coverImg' src={require('../../static/weather.jpg')} alt='' />
-                        </div>
+                                {/* 开通黑胶VIP */}
+                                <div className='openVip da'>
+                                    <p className='price ddc-h'>
+                                        <span className='name'>开通黑胶VIP</span>
+                                        <span className='explain'>新客仅5元</span>
+                                    </p>
+                                    <p className='title'>天气之子原声大碟</p>
+                                    <img className='coverImg' src={require('../../static/weather.jpg')} alt='' />
+                                </div>
 
-                        {/* nav */}
-                        <div className='nav da'>
-                            {
-                                navArr.map((item, index) =>
-                                    <Link className='nav-item dd-vh' key={index} to=''>
-                                        <img className='icon' src={item.icon} alt='' />
-                                        <span className='name'>{item.name}</span>
-                                    </Link>
-                                )
-                            }
-                        </div>
-
-                        {/* 列表 */}
-                        <div className='tool-ul'>
-                            <ul>
-                                {
-                                    toolArr.map((item, index) =>
-                                        <li className='tool-li' key={index}>
-                                            <Link to={item.url} className='da'>
+                                {/* nav */}
+                                <div className='nav da'>
+                                    {
+                                        navArr.map((item, index) =>
+                                            <Link className='nav-item dd-vh' key={index} to=''>
                                                 <img className='icon' src={item.icon} alt='' />
                                                 <span className='name'>{item.name}</span>
-                                                <span className='explain'>{item.explain}</span>
-                                                {item.explainImg && <img className='explainImg' src={item.explainImg} alt='' />}
                                             </Link>
-                                        </li>
-                                    )
-                                }
-                            </ul>
+                                        )
+                                    }
+                                </div>
+
+                                {/* 列表 */}
+                                <div className='tool-ul'>
+                                    <ul>
+                                        {
+                                            toolArr.map((item, index) =>
+                                                <li className='tool-li' key={index}>
+                                                    <Link to={item.url} className='da'>
+                                                        <img className='icon' src={item.icon} alt='' />
+                                                        <span className='name'>{item.name}</span>
+                                                        <span className='explain'>{item.explain}</span>
+                                                        {item.explainImg && <img className='explainImg' src={item.explainImg} alt='' />}
+                                                    </Link>
+                                                </li>
+                                            )
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                            {/* footer */}
+                            <div className='footer da'>
+                                <Link className='footer-item da' to=''>
+                                    <img className='icon' src={Iconpath.night_mode} alt='' />
+                                    <span className='name'>夜间模式</span>
+                                </Link>
+                                <Link className='footer-item da' to='/settings'>
+                                    <img className='icon' src={Iconpath.settings} alt='' />
+                                    <span className='name'>设置</span>
+                                </Link>
+                                <Link className='footer-item da' to=''>
+                                    <img className='icon' src={Iconpath.quit} alt='' />
+                                    <span className='name'>退出</span>
+                                </Link>
+                            </div>
                         </div>
                     </div>
-                    {/* footer */}
-                    <div className='footer da'>
-                        <Link className='footer-item da' to=''>
-                            <img className='icon' src={Iconpath.night_mode} alt='' />
-                            <span className='name'>夜间模式</span>
-                        </Link>
-                        <Link className='footer-item da' to=''>
-                            <img className='icon' src={Iconpath.settings} alt='' />
-                            <span className='name'>设置</span>
-                        </Link>
-                        <Link className='footer-item da' to=''>
-                            <img className='icon' src={Iconpath.quit} alt='' />
-                            <span className='name'>退出</span>
-                        </Link>
-                    </div>
-                </div>
+                }
             </div>
         )
     }

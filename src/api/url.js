@@ -24,6 +24,11 @@ export default {
     method: 'get',
     url: '/register/cellphone'
   },
+  // 退出登录
+  logout: {
+    method: 'get',
+    url: '/logout'
+  },
   //获取banner
   getBanner: {
     method: 'get',
@@ -83,5 +88,10 @@ export default {
   getMvRanking: {
     method: 'get',
     url: '/top/mv'
+  },
+  //获取热门话题
+  getHotTopic: {
+    method: 'get',
+    url: '/hot/topic'
   },
 }

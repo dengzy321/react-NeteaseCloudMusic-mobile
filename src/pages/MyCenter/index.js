@@ -24,6 +24,9 @@ class Recommend extends React.Component {
     componentWillMount() {
         this.initRecommend()
     }
+    componentDidMount(){
+        
+    }
     initRecommend(){
         http.getBoutiqueSongs({ limit: 6 }).then(res =>{
             if(res.code == 200) this.setState({ recommendArr: res.playlists })

@@ -20,10 +20,13 @@ class Square extends React.Component {
     }
     // 获取瀑布流数据
     initWaterVideo(id){
-        http.getVideoTabs().then(res =>{
-            http.getVideoGroup({ id: id }).then(res2 =>{
-                if(res2.code == 200) this.setState({ waterVideoArr: res2.datas })
-            })
+        // http.getVideoTabs().then(res =>{
+        //     http.getVideoGroup({ id: id }).then(res2 =>{
+        //         if(res2.code == 200) this.setState({ waterVideoArr: res2.datas })
+        //     })
+        // })
+        http.getHotTopic({ limit: 30 }).then(res =>{
+            console.log(res)
         })
     }
     // 获取动态信息数据

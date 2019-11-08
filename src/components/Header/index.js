@@ -32,7 +32,10 @@ class Header extends React.Component {
                 <img className='search_icon' src={Iconpath.search} alt=''/>
 
                 {/* 显示Drawer */}
-                {showDrawer && <Drawer showDrawer={showDrawer} changeShowStatus={this.changeShowStatus} />}
+                <Drawer 
+                    show={showDrawer}
+                    closeFN={this.changeShowStatus} 
+                />
             </div>
         )
     }

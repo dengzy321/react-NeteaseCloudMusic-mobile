@@ -134,7 +134,12 @@ class CreateSong extends React.Component {
                     )
                 }
                 {showCreateModal && this.CreateSongsModal()}
-                {showSongsToolModal && <SongsToolModal onShowSongsTool={this.onShowSongsTool} data={SongsToolModalData} Header={this.SongsToolModalHeader()}/>}
+                <SongsToolModal 
+                    show={showSongsToolModal}
+                    closeFN={this.onShowSongsTool}
+                    data={SongsToolModalData} 
+                    Header={this.SongsToolModalHeader()}
+                />
             </div>
         )
     }
