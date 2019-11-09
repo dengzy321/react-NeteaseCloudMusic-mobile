@@ -8,6 +8,7 @@ import Video from '@/pages/Video'
 import Login from '@/pages/Login'
 import PhoneLogin from '@/pages/PhoneLogin'
 import Settings from '@/pages/Settings'
+import Search from '@/pages/Search'
 
 // const Home = Loadable({loader: () => import('../pages/home'),loading: Loading});
 // const ShopCart = Loadable({loader: () => import('../pages/shopCart'),loading: Loading});
@@ -54,5 +55,9 @@ export const routes = [
   {
     path: '/settings',
     component: Settings
+  },
+  {
+    path: '/search',
+    component: Search
   },
 ]

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import './index.css';
 import Drawer from '@/components/Drawer'
 import Iconpath from '@/utils/iconpath'
@@ -29,7 +29,7 @@ class Header extends React.Component {
                         tabs.map((item, index) => <NavLink activeClassName='selected' key={index} to={item.url}>{item.title}</NavLink>)
                     }
                 </div>
-                <img className='search_icon' src={Iconpath.search} alt=''/>
+                <Link to='/search'><img className='search_icon' src={Iconpath.search} alt=''/></Link>
 
                 {/* 显示Drawer */}
                 <Drawer 
