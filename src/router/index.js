@@ -9,6 +9,7 @@ import Login from '@/pages/Login'
 import PhoneLogin from '@/pages/PhoneLogin'
 import Settings from '@/pages/Settings'
 import Search from '@/pages/Search'
+import Test from '@/pages/Test'
 
 // const Home = Loadable({loader: () => import('../pages/home'),loading: Loading});
 // const ShopCart = Loadable({loader: () => import('../pages/shopCart'),loading: Loading});
@@ -59,5 +60,9 @@ export const routes = [
   {
     path: '/search',
     component: Search
+  },
+  {
+    path: '/test',
+    component: Test
   },
 ]
