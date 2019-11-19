@@ -9,19 +9,50 @@ import { http } from '@/api/http'
 import { Toast } from 'antd-mobile';
 import SongsHotSearch from '@/components/SongsHotSearch'
 
-export const ThemeContext = React.createContext('deng');
-
 class Search extends React.Component { 
+    state = {
+        hotSearchData: []
+    }
     componentDidMount() {
-        console.log('Search====',this)
+        console.log('Search====', this)
+        this.initHotSearch()
+    }
+    // 初始化热搜
+    initHotSearch() {
+        http.getHotSearch().then(res => {
+            this.setState({ hotSearchData: res.data })
+        })
     }
     render() {
+        const { hotSearchData } = this.state;
         return (
-            <ThemeContext.Provider value='dengzy'>
-                <div className='mySearch'>
-                    <SongsHotSearch/>
+            <div className='mySearch'>
+                <div className='header da'>
+                    <div className='input'>
+                        <input type="text" placeholder='最爱还是你 - 唐禹哲'/>
+                    </div>
+                    <img className='user_search_icon' src={Iconpath.user_search} alt=""/>
                 </div>
-            </ThemeContext.Provider>
+                <div className='searchHistory'>
+                    <div className='history-header da'>
+                        <h3>历史记录</h3>
+                        <img src="" alt=""/>
+                    </div>
+                    <div className='history-ul da'>
+                        <span>明日方舟</span>
+                        <span>明日方舟</span>
+                        <span>明日方舟</span>
+                        <span>明日方舟</span>
+                        <span>明日方舟</span>
+                        <span>明日方舟</span>
+                        <span>明日方舟</span>
+                    </div>
+                </div>
+                <div className='songsHotSearchBox'>
+                    <h3>热搜榜</h3>
+                    <SongsHotSearch data={hotSearchData} />
+                </div>
+            </div>
         )
     }
 }

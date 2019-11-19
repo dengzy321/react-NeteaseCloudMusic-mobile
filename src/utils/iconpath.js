@@ -61,6 +61,7 @@ const arr = [
     'space',
     'rate_2_fill',
     'rate_1_fill',
+    'user_search',
 ]
 
 let obj = {}

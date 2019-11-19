@@ -94,4 +94,9 @@ export default {
     method: 'get',
     url: '/hot/topic'
   },
+  //热搜列表(简略)
+  getHotSearch: {
+    method: 'get',
+    url: '/search/hot/detail'
+  },
 }

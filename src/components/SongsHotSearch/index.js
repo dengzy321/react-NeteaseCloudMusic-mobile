@@ -10,12 +10,29 @@ import { Toast } from 'antd-mobile';
 
 class SongsHotSearch extends React.Component {
     componentDidMount() {
-        console.log('songsHotSearch===c', this)
+
     }
     render() {
+        const { data } = this.props;
         return (
             <div className='songsHotSearch'>
-
+                <ul>
+                    {
+                        data.map((item, index) =>
+                            <li className='da hotSearch-li'>
+                                <span className='index' style={index < 3 ? { color: 'FF1D12' } : {}}>{index + 1}</span>
+                                <div className=''>
+                                    <p className='da'>
+                                        <span className='searchWord'>{item.searchWord}</span>
+                                        {item.iconUrl && <img style={item.iconType == 5 ? {width: '1rem'} : {}} className='iconUrl' src={item.iconUrl} alt="" /> }
+                                    </p>
+                                    <p className='content'>{item.content}</p>
+                                </div>
+                                <span className='score'>{item.score}</span>
+                            </li>
+                        )
+                    }
+                </ul>
             </div>
         )
     }
