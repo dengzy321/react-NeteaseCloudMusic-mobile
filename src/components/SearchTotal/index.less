@@ -1,0 +1,232 @@
+@import '../../style/variable.less';
+
+.searchTotal{
+    height: 100%;
+    overflow-y: scroll;
+    padding: 1rem 0 10rem 0;
+    .header{
+        padding: 0 1rem;
+        .title{
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: bold;
+            flex: 1;
+            margin-bottom: 0.5rem;
+        }
+        .totalBtn{
+            padding: 0.3rem 0.5rem;
+            border: 0.1rem solid #f5f5f5;
+            border-radius: 1.5rem;
+            color: #333;
+            font-size: 0.8rem;
+            img{
+                width: 1rem;
+                height: auto;
+                margin-right: 0.2rem;
+            }
+        }
+    }
+    .moreText{
+        text-align: center;
+        color: #999;
+        font-size: 1rem;
+        margin: 1.5rem 0 2.5rem 0;
+        border: 0;
+        background: transparent;
+        display: block;
+        width: 100%;
+    }
+    .songsModule{
+        .songs-ul{
+            padding: 1rem 1rem 0 1rem;
+            .songs-li{
+                margin-bottom: 1.4rem;
+                .songsInfo{
+                    flex: 1;
+                    .name{
+                        color: #5A84B4;
+                        font-size: 1.2rem;
+                        margin-bottom: 0.4rem;
+                        width: 20rem;
+                        margin-right: 1.1rem;
+                    }
+                    .des{
+                        color: #999;
+                        font-size: 0.9rem;
+                        width: 20rem;
+                    }
+                }
+                .play{
+                    width: 1.8rem;
+                    height: auto;
+                    margin-right: 1rem;
+                }
+                .more{
+                    width: 1.8rem;
+                    height: auto;
+                }
+            }
+        }
+    }
+    .videoModule{
+        .video-ul{
+            padding-bottom: 0rem;
+        }
+    }
+    .songsSheetModule{
+        .album-li{
+            .avatar{
+                width: 5rem;
+                height: 5rem;
+            }
+        }
+        .album-ul{
+            padding-bottom: 0;
+        }
+    }
+    .correlateModule{
+        .correlate-ul{
+            padding: 1rem 0 1rem 1rem;
+            flex-wrap: wrap;
+            .correlate-li{
+                color: #333;
+                font-size: 1rem;
+                display: inline-block;
+                padding: 0.3rem 0.6rem;
+                background-color: #f5f5f5;
+                border-radius: 2rem;
+                margin-right: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+    .mlogModule{
+        .mlog-ul{
+            padding-left: 1rem;
+            padding-right: 0.2rem;
+            .mlog-li{
+                width: 14.6rem;
+                height: auto;
+                margin-right: 0.8rem;
+                margin-top: 0.6rem;
+                padding-bottom: 1rem;
+                border-radius: 0.4rem;
+                box-shadow: 0 0.1rem 0.5rem 0.1rem #f5f5f5;
+                .shareUrl{
+                    position: relative;
+                    .coverImg{
+                        border-radius: 0.4rem 0.4rem 0 0;
+                        width: 14.6rem;
+                        height: 14.6rem;
+                        margin-bottom: 1rem;
+                        object-fit: cover;
+                    }
+                    .icon{
+                        position: absolute;
+                        top: 0.8rem;
+                        right: 0.8rem;
+                        width: 1.6rem;
+                        height: auto;
+                    }
+                }
+                .name{
+                    color: #333;
+                    font-size: 1rem;
+                    margin-bottom: 1rem;
+                    padding: 0 1rem;
+                }
+                .avatarUrl{
+                    width: 1rem;
+                    height: 1rem;
+                    border-radius: 50%;
+                    margin-right: 0.2rem;
+                    padding-left: 1rem;
+                }
+                .nickname, .likedCount{
+                    color: #999;
+                    font-size: 0.8rem;
+                    padding-right: 1rem;
+                }
+            }
+        }
+    }
+    .artistModule{
+        .avatar{
+            width: 5rem !important;
+            height: 5rem !important;
+        }
+        .artist-ul{
+            padding-bottom: 0 !important;
+        }
+    }
+    .albumModule{
+        .avatar{
+            width: 5rem !important;
+            height: 5rem !important;
+        }
+        .album-ul{
+            padding-bottom: 0 !important;
+        }
+    }
+    .radioModule{
+        .avatar{
+            width: 5rem !important;
+            height: 5rem !important;
+        }
+        .radio-ul{
+            padding-bottom: 0 !important;
+        }
+    }
+    .userModule{
+        padding-bottom: 9rem !important;
+        .avatar{
+            width: 5rem !important;
+            height: 5rem !important;
+            border-radius: 50% !important;
+        }
+        .name, .signature{
+            width: 18rem !important;
+        }
+        .user-ul{
+            padding-bottom: 0 !important;
+        }
+    }
+    .toolHeader{
+        background-color: #fff;
+        padding: 1rem 0;
+        flex: 1;
+        .songsInfo{
+            .avatar{
+                width: 3.4rem;
+                height: 3.4rem;
+                border-radius: 0.2rem;
+                object-fit: cover;
+                margin-right: 1rem;
+            }
+            .name{
+                color: #333;
+                font-size: 1.2rem;
+                font-weight: bold;
+                margin-bottom: 0.3rem;
+                margin-right: 1rem;
+            }
+            .artist{
+                color: #999;
+                font-size: 1rem;
+            }
+            .btn{
+                border: 0.1rem solid @main-color;
+                background: transparent;
+                border-radius: 1rem;
+                padding: 0.3rem 0.8rem;
+                color: @main-color;
+                font-size: 0.8rem;
+            }
+        }
+        .tip{
+            color: #999;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+    }
+}

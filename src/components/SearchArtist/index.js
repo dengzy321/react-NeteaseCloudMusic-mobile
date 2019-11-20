@@ -16,7 +16,7 @@ class SearchArtist extends React.Component {
                 {
                     data.map((item, index) =>
                         <li key={index} className='artist-li da'>
-                            <Link to='#' className='da'>
+                            <Link to='#' className='da flex'>
                                 <img className='avatar' src={item.img1v1Url} />
                                 <p className='name'>{item.name}</p>
                                 <p className='joinStatus'>

@@ -1,0 +1,212 @@
+.searchTotal {
+  height: 100%;
+  overflow-y: scroll;
+  padding: 1rem 0 10rem 0;
+}
+.searchTotal .header {
+  padding: 0 1rem;
+}
+.searchTotal .header .title {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  flex: 1;
+  margin-bottom: 0.5rem;
+}
+.searchTotal .header .totalBtn {
+  padding: 0.3rem 0.5rem;
+  border: 0.1rem solid #f5f5f5;
+  border-radius: 1.5rem;
+  color: #333;
+  font-size: 0.8rem;
+}
+.searchTotal .header .totalBtn img {
+  width: 1rem;
+  height: auto;
+  margin-right: 0.2rem;
+}
+.searchTotal .moreText {
+  text-align: center;
+  color: #999;
+  font-size: 1rem;
+  margin: 1.5rem 0 2.5rem 0;
+  border: 0;
+  background: transparent;
+  display: block;
+  width: 100%;
+}
+.searchTotal .songsModule .songs-ul {
+  padding: 1rem 1rem 0 1rem;
+}
+.searchTotal .songsModule .songs-ul .songs-li {
+  margin-bottom: 1.4rem;
+}
+.searchTotal .songsModule .songs-ul .songs-li .songsInfo {
+  flex: 1;
+}
+.searchTotal .songsModule .songs-ul .songs-li .songsInfo .name {
+  color: #5A84B4;
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+  width: 20rem;
+  margin-right: 1.1rem;
+}
+.searchTotal .songsModule .songs-ul .songs-li .songsInfo .des {
+  color: #999;
+  font-size: 0.9rem;
+  width: 20rem;
+}
+.searchTotal .songsModule .songs-ul .songs-li .play {
+  width: 1.8rem;
+  height: auto;
+  margin-right: 1rem;
+}
+.searchTotal .songsModule .songs-ul .songs-li .more {
+  width: 1.8rem;
+  height: auto;
+}
+.searchTotal .videoModule .video-ul {
+  padding-bottom: 0rem;
+}
+.searchTotal .songsSheetModule .album-li .avatar {
+  width: 5rem;
+  height: 5rem;
+}
+.searchTotal .songsSheetModule .album-ul {
+  padding-bottom: 0;
+}
+.searchTotal .correlateModule .correlate-ul {
+  padding: 1rem 0 1rem 1rem;
+  flex-wrap: wrap;
+}
+.searchTotal .correlateModule .correlate-ul .correlate-li {
+  color: #333;
+  font-size: 1rem;
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  background-color: #f5f5f5;
+  border-radius: 2rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+.searchTotal .mlogModule .mlog-ul {
+  padding-left: 1rem;
+  padding-right: 0.2rem;
+}
+.searchTotal .mlogModule .mlog-ul .mlog-li {
+  width: 14.6rem;
+  height: auto;
+  margin-right: 0.8rem;
+  margin-top: 0.6rem;
+  padding-bottom: 1rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 0.1rem 0.5rem 0.1rem #f5f5f5;
+}
+.searchTotal .mlogModule .mlog-ul .mlog-li .shareUrl {
+  position: relative;
+}
+.searchTotal .mlogModule .mlog-ul .mlog-li .shareUrl .coverImg {
+  border-radius: 0.4rem 0.4rem 0 0;
+  width: 14.6rem;
+  height: 14.6rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+.searchTotal .mlogModule .mlog-ul .mlog-li .shareUrl .icon {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  width: 1.6rem;
+  height: auto;
+}
+.searchTotal .mlogModule .mlog-ul .mlog-li .name {
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+.searchTotal .mlogModule .mlog-ul .mlog-li .avatarUrl {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  margin-right: 0.2rem;
+  padding-left: 1rem;
+}
+.searchTotal .mlogModule .mlog-ul .mlog-li .nickname,
+.searchTotal .mlogModule .mlog-ul .mlog-li .likedCount {
+  color: #999;
+  font-size: 0.8rem;
+  padding-right: 1rem;
+}
+.searchTotal .artistModule .avatar {
+  width: 5rem !important;
+  height: 5rem !important;
+}
+.searchTotal .artistModule .artist-ul {
+  padding-bottom: 0 !important;
+}
+.searchTotal .albumModule .avatar {
+  width: 5rem !important;
+  height: 5rem !important;
+}
+.searchTotal .albumModule .album-ul {
+  padding-bottom: 0 !important;
+}
+.searchTotal .radioModule .avatar {
+  width: 5rem !important;
+  height: 5rem !important;
+}
+.searchTotal .radioModule .radio-ul {
+  padding-bottom: 0 !important;
+}
+.searchTotal .userModule {
+  padding-bottom: 9rem !important;
+}
+.searchTotal .userModule .avatar {
+  width: 5rem !important;
+  height: 5rem !important;
+  border-radius: 50% !important;
+}
+.searchTotal .userModule .name,
+.searchTotal .userModule .signature {
+  width: 18rem !important;
+}
+.searchTotal .userModule .user-ul {
+  padding-bottom: 0 !important;
+}
+.searchTotal .toolHeader {
+  background-color: #fff;
+  padding: 1rem 0;
+  flex: 1;
+}
+.searchTotal .toolHeader .songsInfo .avatar {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 0.2rem;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+.searchTotal .toolHeader .songsInfo .name {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  margin-right: 1rem;
+}
+.searchTotal .toolHeader .songsInfo .artist {
+  color: #999;
+  font-size: 1rem;
+}
+.searchTotal .toolHeader .songsInfo .btn {
+  border: 0.1rem solid #E82202;
+  background: transparent;
+  border-radius: 1rem;
+  padding: 0.3rem 0.8rem;
+  color: #E82202;
+  font-size: 0.8rem;
+}
+.searchTotal .toolHeader .tip {
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}

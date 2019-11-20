@@ -13,10 +13,11 @@ import SearchAlbum from '@/components/SearchAlbum'
 import SearchSongSheet from '@/components/SearchSongSheet'
 import SearchRadio from '@/components/SearchRadio'
 import SearchUserList from '@/components/SearchUserList'
+import SearchTotal from '@/components/SearchTotal'
 
 class SearchResult extends React.Component {
     state = {
-        searchValue: '',
+        searchValue: '', 
         curActive: 0,
         curShowComponent: '',
         songsData: [],
@@ -25,21 +26,31 @@ class SearchResult extends React.Component {
         albumsData: [],
         playlistsData: [],
         userprofilesData: [],
-        djRadiosData: []
+        djRadiosData: [],
+        totalData: []
     }
     componentDidMount() {
-        this.initData()
+        this.setState({
+            searchValue: this.props.location.query.keywords
+        }, () => this.initData(1018))
     }
     initData(type) {
+        const { searchValue } = this.state
         http.getSearch({
-            keywords: '海阔天空',
-            type: type? type:1018,
+            keywords: searchValue,
+            type: type,
             limit: 30
         }).then(res => {
-            let attrName = Object.keys(res.result)[0].indexOf('Count') == -1? Object.keys(res.result)[0] : Object.keys(res.result)[1]
-            this.setState({
-                [attrName+'Data']: res.result[attrName]
-            }, () => this.CurComponent(type))
+            if (Object.keys(res.result).length > 10) {
+                this.setState({
+                    totalData: res.result
+                }, () => this.CurComponent(type))
+            } else {
+                let attrName = Object.keys(res.result)[0].indexOf('Count') == -1 ? Object.keys(res.result)[0] : Object.keys(res.result)[1]
+                this.setState({
+                    [attrName + 'Data']: res.result[attrName]
+                }, () => this.CurComponent(type))
+            }
         })
     }
     // 搜索输入框
@@ -71,12 +82,13 @@ class SearchResult extends React.Component {
             artistsData,
             playlistsData,
             userprofilesData,
-            djRadiosData
+            djRadiosData,
+            totalData
         } = this.state
         let com = ''
         switch (type) {
-            case 1018: 
-                com = ''
+            case 1018:
+                com = <SearchTotal data={totalData} onChange={this.onSelect}/>
                 break;
             case 1: 
                 com = <Songs data={songsData}/>
