@@ -19,7 +19,8 @@
 }
 .mySearch .header .user_search_icon {
   width: 2rem;
-  height: auto;
+  height: 2rem;
+  background-size: 100%;
   margin-left: 1rem;
 }
 .mySearch .searchHistory {

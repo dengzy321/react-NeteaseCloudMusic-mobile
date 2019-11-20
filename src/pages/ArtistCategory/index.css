@@ -1,0 +1,29 @@
+.artistCategory {
+  padding: 2rem 0;
+}
+.artistCategory .category-ul {
+  padding-left: 1.2rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.artistCategory .category-ul span {
+  color: #333;
+  font-size: 1.1rem;
+  margin-right: 1.2rem;
+  margin-bottom: 1.6rem;
+}
+.artistCategory .category-ul span.active {
+  color: #E82202;
+  font-weight: bold;
+}
+.artistCategory .artist-ul {
+  flex: 1;
+  overflow-y: hidden;
+}
+.artistCategory .artist-ul .title {
+  color: #999;
+  font-size: 1rem;
+  padding: 0.8rem 1rem;
+  background-color: #f5f5f5;
+  font-weight: 400;
+}

@@ -57,15 +57,20 @@ class SongsToolModal extends React.Component {
         else this.setState({ offsetY: 0 })
     }
     render() {
-        const { Header = '', data, show = false } = this.props
+        const { children, data = [], show = false } = this.props
         const { showModal, offsetY, endAnimation } = this.state
         return (
             <div>
                 {
                     show &&
-                    <div className='songsToolModal' onTouchStart={this.touchStart} onTouchMove={this.touchMove} onTouchEnd={this.touchEnd}>
-                        <div className={`sm-inner ${endAnimation ? 'endAniClass' : ''}`} ref={(el) => this.getInnerHeight = el} style={{ transform: `translateY(${offsetY}rem)` }} >
-                            <div className='head da'>{Header}</div>
+                    <div className='songsToolModal' onTouchStart={this.touchStart} onTouchMove={this.touchMove} onTouchEnd={this.touchEnd} onClick={this.props.closeFN}>
+                        <div 
+                        className={`sm-inner ${endAnimation ? 'endAniClass' : ''}`} 
+                        style={{ transform: `translateY(${offsetY}rem)` }} 
+                        ref={(el) => this.getInnerHeight = el} 
+                        onClick={e => e.stopPropagation()}
+                        >
+                            <div className='head da'>{children}</div>
                             <div className='tool-list'>
                                 <ul>
                                     {

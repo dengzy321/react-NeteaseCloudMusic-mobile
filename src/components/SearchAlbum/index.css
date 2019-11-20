@@ -1,0 +1,41 @@
+.searchAlbum {
+  height: 100%;
+  overflow-y: scroll;
+}
+.searchAlbum .album-ul {
+  padding-bottom: 9rem;
+}
+.searchAlbum .album-ul .album-li {
+  padding: 0.4rem 1rem;
+}
+.searchAlbum .album-ul .album-li .avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: cover;
+  border-radius: 0.3rem;
+}
+.searchAlbum .album-ul .album-li .info {
+  flex: 1;
+  margin-left: 0.6rem;
+}
+.searchAlbum .album-ul .album-li .info .name {
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+  width: 25rem;
+}
+.searchAlbum .album-ul .album-li .info .containedSong {
+  color: #999;
+  font-size: 0.9rem;
+}
+.searchAlbum .album-ul .album-li .info .containedSong .songName {
+  color: #5A84B4;
+  font-size: 0.9rem;
+}
+.searchAlbum .album-ul .album-li .info .artist {
+  color: #999;
+  font-size: 0.9rem;
+}
+.searchAlbum .album-ul .album-li .info .artist .artistName {
+  margin-right: 0.3rem;
+}

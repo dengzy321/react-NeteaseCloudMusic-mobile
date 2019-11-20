@@ -1,0 +1,43 @@
+@import '../../style/variable.less';
+
+.searchAlbum{
+    height: 100%;
+    overflow-y: scroll;
+    .album-ul{
+        padding-bottom: 9rem;
+        .album-li{
+            padding: 0.4rem 1rem;
+            .avatar{
+                width: 3.5rem;
+                height: 3.5rem;
+                object-fit: cover;
+                border-radius: 0.3rem;
+            }
+            .info{
+                flex: 1;
+                margin-left: 0.6rem;
+                .name{
+                    color: #333;
+                    font-size: 1.2rem;
+                    margin-bottom: 0.4rem;
+                    width: 25rem;
+                }
+                .containedSong{
+                    color: #999;
+                    font-size: 0.9rem;
+                    & .songName{
+                        color: #5A84B4;
+                        font-size: 0.9rem;
+                    }
+                }
+                .artist{
+                    color: #999;
+                    font-size: 0.9rem;
+                    .artistName{
+                        margin-right: 0.3rem;
+                    }
+                }
+            }
+        }
+    }
+}

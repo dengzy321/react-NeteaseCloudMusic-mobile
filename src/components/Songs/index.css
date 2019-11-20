@@ -1,0 +1,73 @@
+.mySongs {
+  height: 100%;
+  overflow-y: scroll;
+}
+.mySongs::-webkit-scrollbar {
+  width: 0;
+}
+.mySongs .songs-ul {
+  padding: 1rem 1.4rem 9rem 1.4rem;
+}
+.mySongs .songs-ul .songs-li {
+  margin-bottom: 1.4rem;
+}
+.mySongs .songs-ul .songs-li .songsInfo {
+  flex: 1;
+}
+.mySongs .songs-ul .songs-li .songsInfo .name {
+  color: #5A84B4;
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+  width: 20rem;
+  margin-right: 1.1rem;
+}
+.mySongs .songs-ul .songs-li .songsInfo .des {
+  color: #999;
+  font-size: 0.9rem;
+  width: 20rem;
+}
+.mySongs .songs-ul .songs-li .play {
+  width: 1.8rem;
+  height: auto;
+  margin-right: 1rem;
+}
+.mySongs .songs-ul .songs-li .more {
+  width: 1.8rem;
+  height: auto;
+}
+.mySongs .toolHeader {
+  background-color: #fff;
+  padding: 1rem 0;
+  flex: 1;
+}
+.mySongs .toolHeader .songsInfo .avatar {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 0.2rem;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+.mySongs .toolHeader .songsInfo .name {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  margin-right: 1rem;
+}
+.mySongs .toolHeader .songsInfo .artist {
+  color: #999;
+  font-size: 1rem;
+}
+.mySongs .toolHeader .songsInfo .btn {
+  border: 0.1rem solid #E82202;
+  background: transparent;
+  border-radius: 1rem;
+  padding: 0.3rem 0.8rem;
+  color: #E82202;
+  font-size: 0.8rem;
+}
+.mySongs .toolHeader .tip {
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}

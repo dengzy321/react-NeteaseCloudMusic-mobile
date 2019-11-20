@@ -1,0 +1,54 @@
+@import '../../style/variable.less';
+
+.searchVideoList{
+    height: 100%;
+    overflow: scroll;
+    .video-ul{
+        padding-top: 0.5rem;
+        padding-bottom: 5rem;
+        padding-bottom: 10rem;
+        .video-li{
+            padding: 0.5rem 1rem;
+            .coverUrl{
+                position: relative;
+                img{
+                    width: 9.5rem;
+                    height: 5.8rem;
+                    object-fit: cover;
+                    border-radius: 0.2rem;
+                }
+                .playNum{
+                    position: absolute;
+                    top: 0.4rem;
+                    right: 0.4rem;
+                    color: #fff;
+                    font-size: 0.8rem;
+                    .icon{
+                        width: 0.8rem;
+                        height: auto;
+                        margin-right: 0.2rem;
+                    }
+                }
+            }
+            .videoInfo{
+                flex: 1;
+                margin-left: 0.6rem;
+                .title{
+                    color: #333;
+                    font-size: 1.1rem;
+                    margin-bottom: 0.4rem;
+                    line-height: 1.5rem;
+                }
+                .durationms{
+                    color: #999;
+                    font-size: 0.8rem;
+                    margin-right: 0.3rem;
+                }
+                .userName{
+                    color: #999;
+                    font-size: 0.8rem;
+                }
+            }
+        }
+    }
+}

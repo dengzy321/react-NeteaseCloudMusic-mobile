@@ -99,4 +99,24 @@ export default {
     method: 'get',
     url: '/search/hot/detail'
   },
+  //歌手分类列表
+  getArtistList: {
+    method: 'get',
+    url: '/artist/list'
+  },
+  //搜索
+  getSearch: {
+    method: 'get',
+    url: '/search'
+  },
+  //搜索建议
+  getSearchSuggest: {
+    method: 'get',
+    url: '/search/suggest'
+  },
+  //搜索多重匹配
+  getSearchMultimatch: {
+    method: 'get',
+    url: '/search/multimatch'
+  },
 }

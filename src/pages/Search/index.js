@@ -23,6 +23,14 @@ class Search extends React.Component {
             this.setState({ hotSearchData: res.data })
         })
     }
+    searchSuggest(){
+        http.getSearchSuggest({
+            keywords: '海阔天空',
+            type: 'mobile'
+        }).then(res =>{
+
+        })
+    }
     render() {
         const { hotSearchData } = this.state;
         return (
@@ -31,7 +39,7 @@ class Search extends React.Component {
                     <div className='input'>
                         <input type="text" placeholder='最爱还是你 - 唐禹哲'/>
                     </div>
-                    <img className='user_search_icon' src={Iconpath.user_search} alt=""/>
+                    <Link style={{backgroundImage: `URL(${Iconpath.user_search})`}} className='user_search_icon' to='/artistCategory'/>
                 </div>
                 <div className='searchHistory'>
                     <div className='history-header da'>

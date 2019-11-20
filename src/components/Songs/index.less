@@ -1,0 +1,77 @@
+@import '../../style/variable.less';
+
+.mySongs{
+    height: 100%;
+    overflow-y: scroll;
+    &::-webkit-scrollbar{
+        width: 0;
+    }
+    .songs-ul{
+        padding: 1rem 1.4rem 9rem 1.4rem;
+        .songs-li{
+            margin-bottom: 1.4rem;
+            .songsInfo{
+                flex: 1;
+                .name{
+                    color: #5A84B4;
+                    font-size: 1.2rem;
+                    margin-bottom: 0.4rem;
+                    width: 20rem;
+                    margin-right: 1.1rem;
+                }
+                .des{
+                    color: #999;
+                    font-size: 0.9rem;
+                    width: 20rem;
+                }
+            }
+            .play{
+                width: 1.8rem;
+                height: auto;
+                margin-right: 1rem;
+            }
+            .more{
+                width: 1.8rem;
+                height: auto;
+            }
+        }
+    }
+    .toolHeader{
+        background-color: #fff;
+        padding: 1rem 0;
+        flex: 1;
+        .songsInfo{
+            .avatar{
+                width: 3.4rem;
+                height: 3.4rem;
+                border-radius: 0.2rem;
+                object-fit: cover;
+                margin-right: 1rem;
+            }
+            .name{
+                color: #333;
+                font-size: 1.2rem;
+                font-weight: bold;
+                margin-bottom: 0.3rem;
+                margin-right: 1rem;
+            }
+            .artist{
+                color: #999;
+                font-size: 1rem;
+            }
+            .btn{
+                border: 0.1rem solid @main-color;
+                background: transparent;
+                border-radius: 1rem;
+                padding: 0.3rem 0.8rem;
+                color: @main-color;
+                font-size: 0.8rem;
+            }
+        }
+        .tip{
+            color: #999;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+    }
+}

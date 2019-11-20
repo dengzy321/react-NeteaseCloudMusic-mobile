@@ -19,7 +19,7 @@ class SongsHotSearch extends React.Component {
                 <ul>
                     {
                         data.map((item, index) =>
-                            <li className='da hotSearch-li'>
+                            <li className='da hotSearch-li' key={index}>
                                 <span className='index' style={index < 3 ? { color: 'FF1D12' } : {}}>{index + 1}</span>
                                 <div className=''>
                                     <p className='da'>

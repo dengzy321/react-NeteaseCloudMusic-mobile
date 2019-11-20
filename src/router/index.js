@@ -10,6 +10,8 @@ import PhoneLogin from '@/pages/PhoneLogin'
 import Settings from '@/pages/Settings'
 import Search from '@/pages/Search'
 import Test from '@/pages/Test'
+import ArtistCategory from '@/pages/ArtistCategory'
+import SearchResult from '@/pages/SearchResult'
 
 // const Home = Loadable({loader: () => import('../pages/home'),loading: Loading});
 // const ShopCart = Loadable({loader: () => import('../pages/shopCart'),loading: Loading});
@@ -64,5 +66,13 @@ export const routes = [
   {
     path: '/test',
     component: Test
+  },
+  {
+    path: '/artistCategory',
+    component: ArtistCategory
+  },
+  {
+    path: '/searchResult',
+    component: SearchResult
   },
 ]

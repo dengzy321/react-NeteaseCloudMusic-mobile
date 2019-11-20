@@ -1,0 +1,31 @@
+@import '../../style/variable.less';
+
+.artistCategory{
+    padding: 2rem 0;
+    .category-ul{
+        padding-left: 1.2rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+        span{
+            color: #333;
+            font-size: 1.1rem;
+            margin-right: 1.2rem;
+            margin-bottom: 1.6rem;
+        }
+        span.active{
+            color: @main-color;
+            font-weight: bold;
+        }
+    }
+    .artist-ul{
+        flex: 1;
+        overflow-y: hidden;
+        .title{
+            color: #999;
+            font-size: 1rem;
+            padding: 0.8rem 1rem;
+            background-color: #f5f5f5;
+            font-weight: 400;
+        }
+    }
+}

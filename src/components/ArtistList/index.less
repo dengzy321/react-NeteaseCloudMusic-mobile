@@ -1,0 +1,36 @@
+@import '../../style/variable.less';
+
+.artistList{
+    background-color: #fff;
+    .artist-li{
+        padding: 0.6rem 1rem;
+        margin-bottom: 0.5rem;
+        .avatar{
+            width: 3.2rem;
+            height: 3.2rem;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+        .userInfo{
+            flex: 1;
+            .name{
+                color: #333;
+                font-size: 1.2rem;
+                margin-right: 0.5rem;
+            }
+            .icon{
+                width: 1rem;
+                height: auto;
+            }
+        }
+        .btn{
+            background: transparent;
+            color: @main-color;
+            font-size: 1rem;
+            padding: 0.2rem 0.8rem;
+            border: 0.1rem solid @main-color;
+            border-radius: 1rem;
+        }
+    }
+}

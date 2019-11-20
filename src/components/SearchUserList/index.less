@@ -1,0 +1,42 @@
+@import '../../style/variable.less';
+
+.searchUserList{
+    height: 100%;
+    overflow-y: scroll;
+    .user-ul{
+        padding-bottom: 9rem;
+        .user-li{
+            padding: 0.4rem 1rem;
+            box-sizing: border-box;
+            .avatar{
+                width: 3.5rem;
+                height: 3.5rem;
+                object-fit: cover;
+                border-radius: 0.3rem;
+            }
+            .info{
+                flex: 1;
+                margin-left: 0.6rem;
+                .name{
+                    color: #333;
+                    font-size: 1.2rem;
+                    margin-bottom: 0.4rem;
+                    width: 20rem;
+                }
+                .signature{
+                    color: #999;
+                    font-size: 0.9rem;
+                    width: 20rem;
+                }
+            }
+            .btn{
+                background: transparent;
+                color: @main-color;
+                font-size: 1rem;
+                padding: 0.2rem 0.8rem;
+                border: 0.1rem solid @main-color;
+                border-radius: 1rem;
+            }
+        }
+    }
+}

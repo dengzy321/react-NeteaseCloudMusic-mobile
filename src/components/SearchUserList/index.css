@@ -1,0 +1,40 @@
+.searchUserList {
+  height: 100%;
+  overflow-y: scroll;
+}
+.searchUserList .user-ul {
+  padding-bottom: 9rem;
+}
+.searchUserList .user-ul .user-li {
+  padding: 0.4rem 1rem;
+  box-sizing: border-box;
+}
+.searchUserList .user-ul .user-li .avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: cover;
+  border-radius: 0.3rem;
+}
+.searchUserList .user-ul .user-li .info {
+  flex: 1;
+  margin-left: 0.6rem;
+}
+.searchUserList .user-ul .user-li .info .name {
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+  width: 20rem;
+}
+.searchUserList .user-ul .user-li .info .signature {
+  color: #999;
+  font-size: 0.9rem;
+  width: 20rem;
+}
+.searchUserList .user-ul .user-li .btn {
+  background: transparent;
+  color: #E82202;
+  font-size: 1rem;
+  padding: 0.2rem 0.8rem;
+  border: 0.1rem solid #E82202;
+  border-radius: 1rem;
+}

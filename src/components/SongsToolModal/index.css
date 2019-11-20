@@ -36,6 +36,9 @@
   padding-bottom: 1rem;
   margin-top: 4rem;
 }
+.songsToolModal .sm-inner .tool-list::-webkit-scrollbar {
+  width: 0;
+}
 .songsToolModal .sm-inner .tool-list .tool-li {
   height: 4rem;
 }

@@ -1,0 +1,52 @@
+.searchVideoList {
+  height: 100%;
+  overflow: scroll;
+}
+.searchVideoList .video-ul {
+  padding-top: 0.5rem;
+  padding-bottom: 5rem;
+  padding-bottom: 10rem;
+}
+.searchVideoList .video-ul .video-li {
+  padding: 0.5rem 1rem;
+}
+.searchVideoList .video-ul .video-li .coverUrl {
+  position: relative;
+}
+.searchVideoList .video-ul .video-li .coverUrl img {
+  width: 9.5rem;
+  height: 5.8rem;
+  object-fit: cover;
+  border-radius: 0.2rem;
+}
+.searchVideoList .video-ul .video-li .coverUrl .playNum {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  color: #fff;
+  font-size: 0.8rem;
+}
+.searchVideoList .video-ul .video-li .coverUrl .playNum .icon {
+  width: 0.8rem;
+  height: auto;
+  margin-right: 0.2rem;
+}
+.searchVideoList .video-ul .video-li .videoInfo {
+  flex: 1;
+  margin-left: 0.6rem;
+}
+.searchVideoList .video-ul .video-li .videoInfo .title {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.5rem;
+}
+.searchVideoList .video-ul .video-li .videoInfo .durationms {
+  color: #999;
+  font-size: 0.8rem;
+  margin-right: 0.3rem;
+}
+.searchVideoList .video-ul .video-li .videoInfo .userName {
+  color: #999;
+  font-size: 0.8rem;
+}

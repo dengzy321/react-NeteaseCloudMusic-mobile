@@ -62,6 +62,20 @@ const arr = [
     'rate_2_fill',
     'rate_1_fill',
     'user_search',
+    'user_fill',
+    'close_$333',
+    'play',
+    'album',
+    'bell_$333',
+    'close_circular_$333',
+    'download',
+    'favorites_$333',
+    'news',
+    'next',
+    'play_$333',
+    'share_$333',
+    'shopCart_$333',
+    'singer',
 ]
 
 let obj = {}
