@@ -10,16 +10,16 @@ import { Toast } from 'antd-mobile';
 
 class SongsHotSearch extends React.Component {
     componentDidMount() {
-
+        
     }
     render() {
-        const { data } = this.props;
+        const { data, addSearchHistory } = this.props;
         return (
             <div className='songsHotSearch'>
                 <ul>
                     {
                         data.map((item, index) =>
-                            <li className='da hotSearch-li' key={index}>
+                            <li className='da hotSearch-li' key={index}  onClick={() => addSearchHistory(item.searchWord)}>
                                 <Link to={{ pathname: '/SearchResult', query: { keywords: item.searchWord }}} className='da'>
                                     <span className='index' style={index < 3 ? { color: 'FF1D12' } : {}}>{index + 1}</span>
                                     <div className=''>

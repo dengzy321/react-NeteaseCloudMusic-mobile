@@ -76,6 +76,7 @@ const arr = [
     'share_$333',
     'shopCart_$333',
     'singer',
+    'clear',
 ]
 
 let obj = {}

@@ -1,26 +1,27 @@
 import { createBrowserHistory } from 'history';
+import Loadable from 'react-loadable';
+import Loading from '@/components/Loading';
 import MainLayout from '@/layouts/MainLayout';
-// import Loading from '@/components/Loading';
-import MyCenter from '@/pages/MyCenter'
-import Find from '@/pages/Find'
-import Square from '@/pages/Square'
-import Video from '@/pages/Video'
-import Login from '@/pages/Login'
-import PhoneLogin from '@/pages/PhoneLogin'
-import Settings from '@/pages/Settings'
-import Search from '@/pages/Search'
-import Test from '@/pages/Test'
-import ArtistCategory from '@/pages/ArtistCategory'
-import SearchResult from '@/pages/SearchResult'
-
-// const Home = Loadable({loader: () => import('../pages/home'),loading: Loading});
-// const ShopCart = Loadable({loader: () => import('../pages/shopCart'),loading: Loading});
-// const Sort = Loadable({loader: () =>  import('../pages/sort'),loading: Loading});
-// const Mine = Loadable({loader: () => import('../pages/mine'),loading: Loading});
-// export const history = createBrowserHistory();
-
-
 export const history = createBrowserHistory(); 
+
+const Pages = [
+  'MyCenter',
+  'Find',
+  'Square',
+  'Video',
+  'Login',
+  'PhoneLogin',
+  'Settings',
+  'Test',
+  'ArtistCategory',
+  'Search',
+  'SearchResult',
+]
+
+let PagesObj = {}
+Pages.forEach(path =>{
+  PagesObj[path] = Loadable({loader: () => import(`@/pages/${path}`),loading: Loading})
+})
 
 export const routes = [
   {
@@ -30,49 +31,49 @@ export const routes = [
   {
     path: '/myCenter',
     layout:MainLayout,
-    component: MyCenter
+    component: PagesObj.MyCenter
   },
   {
     path: '/find',
     layout:MainLayout,
-    component: Find
+    component: PagesObj.Find
   },
   {
     path: '/square',
     layout:MainLayout,
-    component: Square
+    component: PagesObj.Square
   },
   {
     path: '/video',
     layout:MainLayout,
-    component: Video
+    component: PagesObj.Video
   },
   {
     path: '/login',
-    component: Login
+    component: PagesObj.Login
   },
   {
     path: '/phoneLogin',
-    component: PhoneLogin
+    component: PagesObj.PhoneLogin
   },
   {
     path: '/settings',
-    component: Settings
+    component: PagesObj.Settings
   },
   {
     path: '/search',
-    component: Search
+    component: PagesObj.Search
   },
   {
     path: '/test',
-    component: Test
+    component: PagesObj.Test
   },
   {
     path: '/artistCategory',
-    component: ArtistCategory
+    component: PagesObj.ArtistCategory
   },
   {
     path: '/searchResult',
-    component: SearchResult
+    component: PagesObj.SearchResult
   },
 ]

@@ -18,8 +18,10 @@ import SearchTotal from '@/components/SearchTotal'
 class SearchResult extends React.Component {
     state = {
         searchValue: '', 
+        historyValue: '', // 历史搜索值
         curActive: 0,
         curShowComponent: '',
+        page: 0, //页码
         songsData: [],
         videosData: [],
         artistsData: [],
@@ -30,25 +32,32 @@ class SearchResult extends React.Component {
         totalData: []
     }
     componentDidMount() {
+        console.log(this)
         this.setState({
             searchValue: this.props.location.query.keywords
         }, () => this.initData(1018))
     }
     initData(type) {
-        const { searchValue } = this.state
+        const { searchValue, historyValue } = this.state
+        this.props.addSearchHistory(searchValue? searchValue:historyValue)
         http.getSearch({
-            keywords: searchValue,
+            keywords: searchValue? searchValue:historyValue,
             type: type,
             limit: 30
         }).then(res => {
-            if (Object.keys(res.result).length > 10) {
-                this.setState({
-                    totalData: res.result
-                }, () => this.CurComponent(type))
-            } else {
+            if(res.result.order){
+                if(res.result.order.length < 8 && type == 1018) this.CurComponent(0)
+                else if (Object.keys(res.result).length > 10) {
+                    this.setState({
+                        totalData: res.result,
+                        historyValue: searchValue? searchValue:historyValue
+                    }, () => this.CurComponent(type))
+                }
+            }else {
                 let attrName = Object.keys(res.result)[0].indexOf('Count') == -1 ? Object.keys(res.result)[0] : Object.keys(res.result)[1]
                 this.setState({
-                    [attrName + 'Data']: res.result[attrName]
+                    [attrName + 'Data']: res.result[attrName],
+                    historyValue: searchValue? searchValue:historyValue
                 }, () => this.CurComponent(type))
             }
         })
@@ -58,6 +67,10 @@ class SearchResult extends React.Component {
         this.setState({
             searchValue: e.target.value
         })
+    }
+    onKeyUp = (e) =>{
+        if(e.keyCode != 13) return
+        this.initData(1018)
     }
     // 删除输入框的值
     onClear = () => {
@@ -76,6 +89,7 @@ class SearchResult extends React.Component {
     // 确定渲染那个组件
     CurComponent = (type) =>{
         const {
+            searchValue,
             songsData,
             albumsData,
             videosData,
@@ -85,31 +99,31 @@ class SearchResult extends React.Component {
             djRadiosData,
             totalData
         } = this.state
-        let com = ''
+        let com = <div className='noContent'>未找到和“{searchValue}”相关的内容</div>
         switch (type) {
             case 1018:
-                com = <SearchTotal data={totalData} onChange={this.onSelect}/>
+                com = songsData.length != 0? <SearchTotal data={totalData} onChange={this.onSelect}/> : com
                 break;
             case 1: 
-                com = <Songs data={songsData}/>
+                com = songsData.length != 0? <Songs data={songsData}/> : com
                 break;
             case 10: 
-                com = <SearchAlbum data={albumsData}/>
+                com = albumsData.length != 0? <SearchAlbum data={albumsData}/> : com
                 break;
             case 1014: 
-                com = <SearchVideoList data={videosData}/>
+                com = videosData.length != 0? <SearchVideoList data={videosData}/> : com
                 break;
             case 100: 
-                com = <SearchArtist data={artistsData}/>
+                com = artistsData.length != 0? <SearchArtist data={artistsData}/> : com
                 break;
             case 1000: 
-                com = <SearchSongSheet data={playlistsData}/>
+                com = playlistsData.length != 0? <SearchSongSheet data={playlistsData}/> : com
                 break;
             case 1002: 
-                com = <SearchUserList data={userprofilesData}/>
+                com = userprofilesData.length != 0? <SearchUserList data={userprofilesData}/> : com
                 break;
             case 1009: 
-                com = <SearchRadio data={djRadiosData}/>
+                com = djRadiosData.length != 0? <SearchRadio data={djRadiosData}/> : com
                 break;
             default:
                 break;
@@ -139,7 +153,7 @@ class SearchResult extends React.Component {
         return (
             <div className='searchResult'>
                 <div className='search da'>
-                    <input onChange={this.onChange} value={searchValue} placeholder='请输入要搜索的内容' />
+                    <input type='search' onKeyUp={this.onKeyUp} onChange={this.onChange} value={searchValue} placeholder='请输入要搜索的内容' />
                     {searchValue && <img onClick={this.onClear} className='clear' src={Iconpath.close_$333} />}
                 </div>
                 <div className='navTab'>

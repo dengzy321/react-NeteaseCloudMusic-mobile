@@ -1,7 +1,8 @@
 import React from 'react';
 import './index.less';
 
-export default function loading() {
+export default function loading(props) {
+  console.log(props)
   return (
     <div className="comp-loading">
       <div className="item-1"></div>

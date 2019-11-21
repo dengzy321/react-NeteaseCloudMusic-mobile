@@ -44,128 +44,146 @@ class SearchTotal extends React.Component {
         ]
         return (
             <div className='searchTotal'>
-                <div className='songsModule'>
-                    <div className='header da'>
-                        <span className='title'>单曲</span>
-                        <p className='totalBtn da'>
-                            <img src={Iconpath.video} />
-                            <span>播放全部</span>
-                        </p>
+                {data.song &&
+                    <div className='songsModule'>
+                        <div className='header da'>
+                            <span className='title'>单曲</span>
+                            <p className='totalBtn da'>
+                                <img src={Iconpath.video} />
+                                <span>播放全部</span>
+                            </p>
+                        </div>
+                        <div className='searchContent'>
+                            <ul className='songs-ul'>
+                                {
+                                    data.song.songs.map((item, index) =>
+                                        <li key={index} className='songs-li da'>
+                                            <div className='songsInfo'>
+                                                <p className='name to-line'>{item.name}</p>
+                                                <p className='des to-line'>{item.ar[0].name}{item.al.name && ' - ' + item.al.name}</p>
+                                            </div>
+                                            <img className='play' src={Iconpath.play} />
+                                            <img onClick={this.onOpenTool.bind(this, index)} className='more' src={Iconpath.more_gray} />
+                                        </li>
+                                    )
+                                }
+                            </ul>
+                        </div>
+                        <button className='moreText' onClick={() => onChange(1, 1)}>{data.song.moreText} ></button>
                     </div>
-                    <div className='searchContent'>
-                        <ul className='songs-ul'>
-                            {
-                                data.song.songs.map((item, index) =>
-                                    <li key={index} className='songs-li da'>
-                                        <div className='songsInfo'>
-                                            <p className='name to-line'>{item.name}</p>
-                                            <p className='des to-line'>{item.ar[0].name}{item.al.name && ' - ' + item.al.name}</p>
-                                        </div>
-                                        <img className='play' src={Iconpath.play} />
-                                        <img onClick={this.onOpenTool.bind(this, index)} className='more' src={Iconpath.more_gray} />
-                                    </li>
-                                )
-                            }
-                        </ul>
+                }
+                {data.video &&
+                    <div className='videoModule'>
+                        <div className='header da'>
+                            <span className='title'>视频</span>
+                        </div>
+                        <div className='searchContent'>
+                            <SearchVideoList data={data.video.videos} />
+                        </div>
+                        <button className='moreText' onClick={() => onChange(7, 1014)}>{data.video.moreText} ></button>
                     </div>
-                    <button className='moreText' onClick={() => onChange(1,1)}>{data.song.moreText} ></button>
-                </div>
-                <div className='videoModule'>
-                    <div className='header da'>
-                        <span className='title'>视频</span>
+                }
+                {data.playList &&
+                    <div className='songsSheetModule'>
+                        <div className='header da'>
+                            <span className='title'>歌单</span>
+                        </div>
+                        <div className='searchContent'>
+                            <SearchSongSheet data={data.playList.playLists} />
+                        </div>
+                        <button className='moreText' onClick={() => onChange(4, 1000)}>{data.playList.moreText} ></button>
                     </div>
-                    <div className='searchContent'>
-                        <SearchVideoList data={data.video.videos}/>
+                }
+                {data.sim_query &&
+                    <div className='correlateModule'>
+                        <div className='header da'>
+                            <span className='title'>相关搜索</span>
+                        </div>
+                        <div className='searchContent'>
+                            <ul className='correlate-ul da'>
+                                {
+                                    data.sim_query.sim_querys.map((item, index) =>
+                                        <li key={index} className='correlate-li'>{item.keyword}</li>
+                                    )
+                                }
+                            </ul>
+                        </div>
                     </div>
-                    <button className='moreText' onClick={() => onChange(7, 1014)}>{data.video.moreText} ></button>
-                </div>
-                <div className='songsSheetModule'>
-                    <div className='header da'>
-                        <span className='title'>歌单</span>
+                }
+                {data.mlog &&
+                    <div className='mlogModule'>
+                        <div className='header da'>
+                            <span className='title'>Mlog</span>
+                        </div>
+                        <div className='searchContent'>
+                            <ul className='mlog-ul da'>
+                                {
+                                    data.mlog.mlogs.map((item, index) =>
+                                        <li key={index} className='mlog-li'>
+                                            <div className='shareUrl'>
+                                                <img className='coverImg' src={item.resource.mlogBaseData.coverUrl} />
+                                                <img className='icon' src={Iconpath.icon_video} />
+                                            </div>
+                                            <p className='name'>{item.matchFieldContent}</p>
+                                            <p className='dbc'>
+                                                <span className='da'>
+                                                    <img className='avatarUrl' src={item.resource.userProfile.avatarUrl} />
+                                                    <b className='nickname'>{item.resource.userProfile.nickname}</b>
+                                                </span>
+                                                <span className='likedCount'>{item.resource.mlogExtVO.likedCount}赞</span>
+                                            </p>
+                                        </li>
+                                    )
+                                }
+                            </ul>
+                        </div>
+                        <button className='moreText'>{data.mlog.moreText} ></button>
                     </div>
-                    <div className='searchContent'>
-                        <SearchSongSheet data={data.playList.playLists}/>
+                }
+                {data.artist &&
+                    <div className='artistModule'>
+                        <div className='header da'>
+                            <span className='title'>歌手</span>
+                        </div>
+                        <div className='searchContent'>
+                            <SearchArtist data={data.artist.artists} />
+                        </div>
+                        <button className='moreText' onClick={() => onChange(3, 100)}>{data.artist.moreText} ></button>
                     </div>
-                    <button className='moreText' onClick={() => onChange(4, 1000)}>{data.playList.moreText} ></button>
-                </div>
-                <div className='correlateModule'>
-                    <div className='header da'>
-                        <span className='title'>相关搜索</span>
+                }
+                {data.album &&
+                    <div className='albumModule'>
+                        <div className='header da'>
+                            <span className='title'>专辑</span>
+                        </div>
+                        <div className='searchContent'>
+                            <SearchAlbum data={data.album.albums} />
+                        </div>
+                        <button className='moreText' onClick={() => onChange(2, 10)}>{data.album.moreText} ></button>
                     </div>
-                    <div className='searchContent'>
-                        <ul className='correlate-ul da'>
-                            {
-                                data.sim_query.sim_querys.map((item, index) =>
-                                    <li key={index} className='correlate-li'>{item.keyword}</li>
-                                )
-                            }
-                        </ul>
+                }
+                {data.djRadio &&
+                    <div className='radioModule'>
+                        <div className='header da'>
+                            <span className='title'>电台</span>
+                        </div>
+                        <div className='searchContent'>
+                            <SearchRadio data={data.djRadio.djRadios} />
+                        </div>
+                        <button className='moreText' onClick={() => onChange(6, 1009)}>{data.djRadio.moreText} ></button>
                     </div>
-                </div>
-                <div className='mlogModule'>
-                    <div className='header da'>
-                        <span className='title'>Mlog</span>
+                }
+                {data.user &&
+                    <div className='userModule'>
+                        <div className='header da'>
+                            <span className='title'>用户</span>
+                        </div>
+                        <div className='searchContent'>
+                            <SearchUserList data={data.user.users} />
+                        </div>
+                        <button className='moreText' onClick={() => onChange(5, 1002)}>{data.user.moreText} ></button>
                     </div>
-                    <div className='searchContent'>
-                        <ul className='mlog-ul da'>
-                            {
-                                data.mlog.mlogs.map((item, index) =>
-                                    <li key={index} className='mlog-li'>
-                                        <div className='shareUrl'>
-                                            <img className='coverImg' src={item.resource.mlogBaseData.coverUrl}/>
-                                            <img className='icon' src={Iconpath.icon_video} />
-                                        </div>
-                                        <p className='name'>{item.matchFieldContent}</p>
-                                        <p className='dbc'>
-                                            <span className='da'>
-                                                <img className='avatarUrl' src={item.resource.userProfile.avatarUrl} />
-                                                <b className='nickname'>{item.resource.userProfile.nickname}</b>
-                                            </span>
-                                            <span className='likedCount'>{item.resource.mlogExtVO.likedCount}赞</span>
-                                        </p>
-                                    </li>
-                                )
-                            }
-                        </ul>
-                    </div>
-                    <button className='moreText'>{data.mlog.moreText} ></button>
-                </div>
-                <div className='artistModule'>
-                    <div className='header da'>
-                        <span className='title'>歌手</span>
-                    </div>
-                    <div className='searchContent'>
-                        <SearchArtist data={data.artist.artists}/>
-                    </div>
-                    <button className='moreText' onClick={() => onChange(3, 100)}>{data.artist.moreText} ></button>
-                </div>
-                <div className='albumModule'>
-                    <div className='header da'>
-                        <span className='title'>专辑</span>
-                    </div>
-                    <div className='searchContent'>
-                        <SearchAlbum data={data.album.albums} />
-                    </div>
-                    <button className='moreText' onClick={() => onChange(2, 10)}>{data.album.moreText} ></button>
-                </div>
-                <div className='radioModule'>
-                    <div className='header da'>
-                        <span className='title'>电台</span>
-                    </div>
-                    <div className='searchContent'>
-                        <SearchRadio data={data.djRadio.djRadios} />
-                    </div>
-                    <button className='moreText' onClick={() => onChange(6, 1009)}>{data.djRadio.moreText} ></button>
-                </div>
-                <div className='userModule'>
-                    <div className='header da'>
-                        <span className='title'>用户</span>
-                    </div>
-                    <div className='searchContent'>
-                        <SearchUserList data={data.user.users} />
-                    </div>
-                    <button className='moreText' onClick={() => onChange(5, 1002)}>{data.user.moreText} ></button>
-                </div>
+                }
                 <SongsToolModal show={show} data={toolData} closeFN={this.onOpenTool}>
                     {curSongsInfo &&
                         <div className='toolHeader'>

@@ -13,16 +13,16 @@
   height: 3.5rem;
   object-fit: cover;
   border-radius: 0.3rem;
+  margin-right: 0.6rem;
 }
 .searchAlbum .album-ul .album-li .info {
   flex: 1;
-  margin-left: 0.6rem;
 }
 .searchAlbum .album-ul .album-li .info .name {
   color: #333;
   font-size: 1.2rem;
   margin-bottom: 0.4rem;
-  width: 25rem;
+  width: 20rem;
 }
 .searchAlbum .album-ul .album-li .info .containedSong {
   color: #999;

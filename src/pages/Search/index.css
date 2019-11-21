@@ -23,28 +23,42 @@
   background-size: 100%;
   margin-left: 1rem;
 }
-.mySearch .searchHistory {
+.mySearch .mySearchContent {
   padding-top: 5rem;
+}
+.mySearch .searchHistory {
   margin-bottom: 1rem;
 }
+.mySearch .searchHistory .history-header {
+  padding: 0 1rem;
+}
 .mySearch .searchHistory .history-header h3 {
-  padding-left: 1rem;
   color: #333;
   font-size: 1.1rem;
   margin-bottom: 0.4rem;
 }
-.mySearch .searchHistory .history-ul {
-  padding: 1rem 0.4rem 1rem 1.2rem;
-  flex-wrap: wrap;
+.mySearch .searchHistory .history-header .icon-clear {
+  width: 1.3rem;
+  height: auto;
 }
-.mySearch .searchHistory .history-ul span {
+.mySearch .searchHistory .history {
+  padding: 1rem 1rem 1rem 1.2rem;
+}
+.mySearch .searchHistory .history .history-ul {
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+.mySearch .searchHistory .history .history-ul::-webkit-scrollbar {
+  width: 0;
+}
+.mySearch .searchHistory .history .history-ul .history-li {
+  display: inline-block;
   color: #333;
   font-size: 1rem;
-  padding: 0.3rem 0.6rem;
+  padding: 0.5rem 1rem;
   background-color: #f5f5f5;
   border-radius: 1rem;
   margin-right: 0.8rem;
-  margin-bottom: 1rem;
 }
 .mySearch .songsHotSearchBox h3 {
   padding-left: 1rem;

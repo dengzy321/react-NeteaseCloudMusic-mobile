@@ -9,7 +9,7 @@ import { http } from '@/api/http'
 import { Toast } from 'antd-mobile';
 import SongsHotSearch from '@/components/SongsHotSearch'
 
-class Search extends React.Component { 
+class Search extends React.Component {
     state = {
         hotSearchData: []
     }
@@ -23,42 +23,56 @@ class Search extends React.Component {
             this.setState({ hotSearchData: res.data })
         })
     }
-    searchSuggest(){
+    searchSuggest() {
         http.getSearchSuggest({
             keywords: '海阔天空',
             type: 'mobile'
-        }).then(res =>{
+        }).then(res => {
 
         })
     }
+    // 键盘回车搜索
+    onKeyUp = (e) =>{
+        if(e.keyCode != 13) return
+        this.props.history.push({
+            pathname: '/SearchResult',
+            query: { keywords: e.target.value }
+        })
+        this.props.addSearchHistory(e.target.value)
+    }
     render() {
         const { hotSearchData } = this.state;
+        const { searchHistory, addSearchHistory, removeSearchHistory } = this.props
         return (
             <div className='mySearch'>
                 <div className='header da'>
                     <div className='input'>
-                        <input type="text" placeholder='最爱还是你 - 唐禹哲'/>
+                        <input type="search" placeholder='最爱还是你 - 唐禹哲'  onKeyUp={this.onKeyUp}/>
                     </div>
-                    <Link style={{backgroundImage: `URL(${Iconpath.user_search})`}} className='user_search_icon' to='/artistCategory'/>
+                    <Link style={{ backgroundImage: `URL(${Iconpath.user_search})` }} className='user_search_icon' to='/artistCategory' />
                 </div>
-                <div className='searchHistory'>
-                    <div className='history-header da'>
-                        <h3>历史记录</h3>
-                        <img src="" alt=""/>
+                <div className='mySearchContent'>
+                    {searchHistory.length != 0 &&
+                        <div className='searchHistory'>
+                            <div className='history-header dbc'>
+                                <h3>历史记录</h3>
+                                <img onClick={() => removeSearchHistory()} className='icon-clear' src={Iconpath.clear} alt="" />
+                            </div>
+                            <div className='history da'>
+                                <div className='history-ul'>
+                                    {
+                                        searchHistory.map((item, index) =>
+                                            <Link className='history-li' to={{ pathname: '/SearchResult', query: { keywords: item } }} key={index}>{item}</Link>
+                                        )
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div className='songsHotSearchBox'>
+                        <h3>热搜榜</h3>
+                        <SongsHotSearch data={hotSearchData} />
                     </div>
-                    <div className='history-ul da'>
-                        <span>明日方舟</span>
-                        <span>明日方舟</span>
-                        <span>明日方舟</span>
-                        <span>明日方舟</span>
-                        <span>明日方舟</span>
-                        <span>明日方舟</span>
-                        <span>明日方舟</span>
-                    </div>
-                </div>
-                <div className='songsHotSearchBox'>
-                    <h3>热搜榜</h3>
-                    <SongsHotSearch data={hotSearchData} />
                 </div>
             </div>
         )
@@ -69,4 +83,3 @@ export default connect(
     state => state,
     dispatch => bindActionCreators(actions, dispatch)
 )(Search)
-    
