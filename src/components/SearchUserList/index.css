@@ -1,7 +1,3 @@
-.searchUserList {
-  height: 100%;
-  overflow-y: scroll;
-}
 .searchUserList .user-ul {
   padding-bottom: 9rem;
 }

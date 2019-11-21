@@ -1,7 +1,3 @@
-.searchRadio {
-  height: 100%;
-  overflow-y: scroll;
-}
 .searchRadio .radio-ul {
   padding-bottom: 9rem;
 }
@@ -22,7 +18,7 @@
   color: #333;
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  width: 25rem;
+  width: 20rem;
 }
 .searchRadio .radio-ul .radio-li .info .nickname {
   color: #999;

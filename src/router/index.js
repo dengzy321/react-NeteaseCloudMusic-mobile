@@ -20,7 +20,7 @@ const Pages = [
 
 let PagesObj = {}
 Pages.forEach(path =>{
-  PagesObj[path] = Loadable({loader: () => import(`@/pages/${path}`),loading: Loading})
+  PagesObj[path] = Loadable({ loader: () => import(`@/pages/${path}`), loading: Loading })
 })
 
 export const routes = [

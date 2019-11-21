@@ -1,7 +1,3 @@
-.searchSongSheet {
-  height: 100%;
-  overflow-y: scroll;
-}
 .searchSongSheet .album-ul {
   padding-bottom: 9rem;
 }

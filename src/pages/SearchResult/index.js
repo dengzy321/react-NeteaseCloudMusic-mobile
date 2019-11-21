@@ -6,7 +6,7 @@ import './index.css';
 import { Link } from 'react-router-dom'
 import Iconpath from '@/utils/iconpath'
 import { http } from '@/api/http'
-import Songs from '@/components/Songs'
+import SearchSongs from '@/components/SearchSongs'
 import SearchVideoList from '@/components/SearchVideoList'
 import SearchArtist from '@/components/SearchArtist'
 import SearchAlbum from '@/components/SearchAlbum'
@@ -21,6 +21,7 @@ class SearchResult extends React.Component {
         historyValue: '', // 历史搜索值
         curActive: 0,
         curShowComponent: '',
+        curPageType: 1018,
         page: 0, //页码
         songsData: [],
         videosData: [],
@@ -32,33 +33,35 @@ class SearchResult extends React.Component {
         totalData: []
     }
     componentDidMount() {
-        console.log(this)
         this.setState({
             searchValue: this.props.location.query.keywords
-        }, () => this.initData(1018))
+        }, () => this.initData())
     }
-    initData(type) {
-        const { searchValue, historyValue } = this.state
+    initData = () =>{
+        const { searchValue, historyValue, page, curPageType } = this.state
         this.props.addSearchHistory(searchValue? searchValue:historyValue)
         http.getSearch({
             keywords: searchValue? searchValue:historyValue,
-            type: type,
-            limit: 30
+            type: curPageType,
+            limit: 20,
+            offset: page
         }).then(res => {
-            if(res.result.order){
-                if(res.result.order.length < 8 && type == 1018) this.CurComponent(0)
+            if (res.result.order) {
+                console.log(res.result.order.length)
+                if (res.result.order.length < 8 && curPageType == 1018) this.CurComponent(0)
                 else if (Object.keys(res.result).length > 10) {
                     this.setState({
                         totalData: res.result,
                         historyValue: searchValue? searchValue:historyValue
-                    }, () => this.CurComponent(type))
+                    }, () => this.CurComponent(curPageType))
                 }
             }else {
                 let attrName = Object.keys(res.result)[0].indexOf('Count') == -1 ? Object.keys(res.result)[0] : Object.keys(res.result)[1]
                 this.setState({
-                    [attrName + 'Data']: res.result[attrName],
+                    [attrName + 'Data']: [...this.state[attrName + 'Data'], ...res.result[attrName]],
+                    page: res.result[attrName].length > 0 ? page + 1 : page,
                     historyValue: searchValue? searchValue:historyValue
-                }, () => this.CurComponent(type))
+                }, () => this.CurComponent(curPageType))
             }
         })
     }
@@ -68,9 +71,10 @@ class SearchResult extends React.Component {
             searchValue: e.target.value
         })
     }
+    // 键盘回车搜索
     onKeyUp = (e) =>{
         if(e.keyCode != 13) return
-        this.initData(1018)
+        this.initData()
     }
     // 删除输入框的值
     onClear = () => {
@@ -80,11 +84,15 @@ class SearchResult extends React.Component {
     }
     // 点击tab切换
     onSelect = (index, type) => {
-        this.initData(type)
         this.setState({
             curActive: index,
-            curShowComponent: ''
-        })
+            curShowComponent: '',
+            curPageType: type
+        }, () => this.initData())
+    }
+    // 滚动加载更多
+    onScroll = (e) => {
+        if (window.globa.onReachBottom(e) && this.state.curPageType != 1018) this.initData()
     }
     // 确定渲染那个组件
     CurComponent = (type) =>{
@@ -102,34 +110,35 @@ class SearchResult extends React.Component {
         let com = <div className='noContent'>未找到和“{searchValue}”相关的内容</div>
         switch (type) {
             case 1018:
-                com = songsData.length != 0? <SearchTotal data={totalData} onChange={this.onSelect}/> : com
+                com = totalData.length != 0? <SearchTotal data={totalData} onChange={this.onSelect}/> : com
                 break;
             case 1: 
-                com = songsData.length != 0? <Songs data={songsData}/> : com
+                com = songsData.length != 0 ? <SearchSongs data={songsData}/> : com
                 break;
             case 10: 
-                com = albumsData.length != 0? <SearchAlbum data={albumsData}/> : com
+                com = albumsData.length != 0 ? <SearchAlbum data={albumsData}/> : com
                 break;
             case 1014: 
-                com = videosData.length != 0? <SearchVideoList data={videosData}/> : com
+                com = videosData.length != 0 ? <SearchVideoList data={videosData}/> : com
                 break;
             case 100: 
-                com = artistsData.length != 0? <SearchArtist data={artistsData}/> : com
+                com = artistsData.length != 0 ? <SearchArtist data={artistsData}/> : com
                 break;
             case 1000: 
-                com = playlistsData.length != 0? <SearchSongSheet data={playlistsData}/> : com
+                com = playlistsData.length != 0 ? <SearchSongSheet data={playlistsData}/> : com
                 break;
             case 1002: 
-                com = userprofilesData.length != 0? <SearchUserList data={userprofilesData}/> : com
+                com = userprofilesData.length != 0 ? <SearchUserList data={userprofilesData}/> : com
                 break;
             case 1009: 
-                com = djRadiosData.length != 0? <SearchRadio data={djRadiosData}/> : com
+                com = djRadiosData.length != 0 ? <SearchRadio data={djRadiosData}/> : com
                 break;
             default:
                 break;
         }
         this.setState({
-            curShowComponent: com
+            curShowComponent: com,
+            curPageType: type
         })
     }
     render() {
@@ -165,7 +174,7 @@ class SearchResult extends React.Component {
                         }
                     </ul>
                 </div>
-                <div className='content'>
+                <div className='content' onScroll={this.onScroll}>
                     {curShowComponent}
                 </div>
             </div>

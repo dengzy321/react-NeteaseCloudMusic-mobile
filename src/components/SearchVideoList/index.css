@@ -1,7 +1,3 @@
-.searchVideoList {
-  height: 100%;
-  overflow: scroll;
-}
 .searchVideoList .video-ul {
   padding-top: 0.5rem;
   padding-bottom: 5rem;

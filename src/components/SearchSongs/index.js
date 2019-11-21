@@ -25,6 +25,7 @@ class Songs extends React.Component {
             show: !state.show
         }))
     }
+    
     render(){
         const { show, curSongsInfo } = this.state
         const { data } = this.props

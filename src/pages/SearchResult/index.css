@@ -50,6 +50,7 @@
 }
 .searchResult .content {
   height: 100%;
+  overflow-y: scroll;
 }
 .searchResult .noContent {
   text-align: center;

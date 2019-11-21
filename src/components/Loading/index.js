@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.less';
+import './index.css';
 
 export default function loading(props) {
   console.log(props)

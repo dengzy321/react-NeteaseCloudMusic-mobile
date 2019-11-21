@@ -1,10 +1,3 @@
-.mySongs {
-  height: 100%;
-  overflow-y: scroll;
-}
-.mySongs::-webkit-scrollbar {
-  width: 0;
-}
 .mySongs .songs-ul {
   padding: 1rem 1.4rem 9rem 1.4rem;
 }

@@ -1,7 +1,3 @@
-.searchAlbum {
-  height: 100%;
-  overflow-y: scroll;
-}
 .searchAlbum .album-ul {
   padding-bottom: 9rem;
 }

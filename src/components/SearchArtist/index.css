@@ -1,7 +1,3 @@
-.searchArtist {
-  height: 100%;
-  overflow-y: scroll;
-}
 .searchArtist .artist-ul {
   padding-bottom: 9rem;
 }

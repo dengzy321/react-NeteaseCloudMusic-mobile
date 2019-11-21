@@ -29,6 +29,17 @@ window.globa = {
      */
     clearStore: () => {
         window.localStorage.clear();
-    }
+    },
+
+    /**
+     * 监听滚动到底
+     * */
+    onReachBottom: (event) => {
+        const scrollHight = event.target.scrollHeight; //滚动距离总长
+        const scrollTop = event.target.scrollTop;   //滚动到的当前位置
+        const boxHight = event.target.clientHeight;
+        if (scrollTop + boxHight >= scrollHight) return true
+        else return false
+    },
 }
 
