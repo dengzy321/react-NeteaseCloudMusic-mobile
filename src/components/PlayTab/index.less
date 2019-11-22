@@ -1,0 +1,43 @@
+@import '../../style/variable.less';
+
+.playTab{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    padding: 0 1rem;
+    border-top: 0.1rem solid #f0f0f0;
+    background-color: #fff;
+    .coverImg{
+        width: 3.5rem;
+        height: 3.5rem;
+        object-fit: cover;
+        margin-right: 0.5rem;
+        border-radius: 50%;
+    }
+    .songsInfo{
+        flex: 1;
+        .songsName{
+            color: #333;
+            font-size: 1.2rem;
+        }
+        .tip{
+            color: #666;
+            font-size: 0.9rem; 
+            margin-top: 0.2rem;
+        }
+    }
+    .playBtn{
+        width: 2.5rem;
+        height: auto;
+        margin-right: 1.5rem;
+    }
+    .playMenu{
+        width: 2.5rem;
+        height: auto;
+    }
+    .myAudio{
+        display: none;
+    }
+}

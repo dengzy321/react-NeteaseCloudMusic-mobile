@@ -119,4 +119,9 @@ export default {
     method: 'get',
     url: '/search/multimatch'
   },
+  //获取音乐 url
+  getSongUrl: {
+    method: 'get',
+    url: '/song/url'
+  },
 }

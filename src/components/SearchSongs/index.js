@@ -14,18 +14,24 @@ class Songs extends React.Component {
         curSongsInfo: null
     }
     componentDidMount(){
-        
+        console.log(this)
     }
     componentWillReceiveProps(nextProps){
         console.log(nextProps)
     }
+    // 打开歌曲tool
     onOpenTool = (index) =>{
         this.setState(state =>({
             curSongsInfo: this.props.data[index],
             show: !state.show
         }))
     }
-    
+    // 打开新页面
+    onLoaction = (item) =>{
+        const { history, addPlaySong } = this.props
+        addPlaySong(item)
+        history.push('/playPlatform')
+    }
     render(){
         const { show, curSongsInfo } = this.state
         const { data } = this.props
@@ -48,7 +54,7 @@ class Songs extends React.Component {
                 <ul className='songs-ul'>
                     {
                         data.map((item, index) =>
-                            <li key={index} className='songs-li da'>
+                            <li key={index} className='songs-li da' onClick={this.onLoaction.bind(this, item)}>
                                <div className='songsInfo'>
                                     <p className='name to-line'>{item.name}</p>
                                     <p className='des to-line'>{item.artists[0].name}{item.album.name && ' - '+item.album.name}</p>

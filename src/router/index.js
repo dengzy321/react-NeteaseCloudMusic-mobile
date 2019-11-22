@@ -16,6 +16,7 @@ const Pages = [
   'ArtistCategory',
   'Search',
   'SearchResult',
+  'PlayPlatform',
 ]
 
 let PagesObj = {}
@@ -75,5 +76,9 @@ export const routes = [
   {
     path: '/searchResult',
     component: PagesObj.SearchResult
+  },
+  {
+    path: '/playPlatform',
+    component: PagesObj.PlayPlatform
   },
 ]

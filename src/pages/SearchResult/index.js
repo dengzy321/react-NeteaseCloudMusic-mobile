@@ -107,13 +107,14 @@ class SearchResult extends React.Component {
             djRadiosData,
             totalData
         } = this.state
+        const { history } = this.props
         let com = <div className='noContent'>未找到和“{searchValue}”相关的内容</div>
         switch (type) {
             case 1018:
-                com = totalData.length != 0? <SearchTotal data={totalData} onChange={this.onSelect}/> : com
+                com = totalData.length != 0? <SearchTotal data={totalData} onChange={this.onSelect}  history={history}/> : com
                 break;
             case 1: 
-                com = songsData.length != 0 ? <SearchSongs data={songsData}/> : com
+                com = songsData.length != 0 ? <SearchSongs data={songsData} history={history}/> : com
                 break;
             case 10: 
                 com = albumsData.length != 0 ? <SearchAlbum data={albumsData}/> : com

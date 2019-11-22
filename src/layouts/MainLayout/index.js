@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
 import Header from '@/components/Header'
+import PlayTab from '@/components/PlayTab'
 
 class MainLayout extends React.Component {
     componentDidMount(){
@@ -10,11 +11,12 @@ class MainLayout extends React.Component {
         })
     }
     render() {
-        const { match, children } = this.props;
+        const { match, children, history } = this.props;
         return (
             <div className='mainLayout'>
                 <Header />
                 {children}
+                <PlayTab history={history}/>
             </div>
         );
     }

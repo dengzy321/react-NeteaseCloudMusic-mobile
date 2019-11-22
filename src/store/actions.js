@@ -23,3 +23,11 @@ export const removeSearchHistory = (data) => async (dispatch, getState) => {
         payload: data
     });
 }
+
+//添加播放歌曲
+export const addPlaySong = (data) => async (dispatch, getState) => {
+    dispatch({
+        type: actionTypes.ADD_PLAYSONG,
+        payload: data
+    });
+}

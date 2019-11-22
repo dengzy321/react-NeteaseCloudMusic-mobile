@@ -1,0 +1,142 @@
+@import '../../style/variable.less';
+
+.playPlatform {
+    position: relative;
+    background-color: #000;
+    height: 100%;
+    padding: 1rem 1.4rem;
+    box-sizing: border-box;
+    .header{
+        .arrowLeft{
+            width: 2rem;
+            height: auto;
+        }
+        .songInfo{
+            flex: 1;
+            color: #666;
+            font-size: 1rem;
+            padding-left: 1rem;
+            .name{
+                color: #fff;
+                font-size: 1.2rem;
+                margin-bottom: 0.3rem;
+            }
+        }
+        .share{
+            width: 1.5rem;
+            height: auto;
+        }
+    }
+    .content{
+        padding-top: 30%;
+        .songCoverBox{
+            position: relative;
+            box-shadow: 0 0 15rem 15rem #333;
+            border-radius: 50%;
+            padding: 3rem;
+            background-color: #000;
+            .songCoverImg{
+                width: 13rem;
+                height: 13rem;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 1rem solid #333;
+            }
+        }
+        .active{
+            animation: songPlayAni 30s infinite linear;
+        }
+        .music-controller{
+            position: absolute;
+            top: -7rem;
+            right: 3rem;
+            transform: rotate(-4deg);
+            transition: all 0.3s;
+        }
+    }
+    .footer{
+        position: absolute;
+        bottom: 2rem;
+        left: 1.4rem;
+        right: 1.4rem;
+        .top{
+            padding: 0 5rem;
+            .collection{
+                width: 2rem;
+                height: auto;
+            }
+            .download{
+                width: 2.6rem;
+                height: auto;
+            }
+            .dts{
+                width: 2rem;
+                height: auto;
+            }
+            .comment{
+                position: relative;
+                img{
+                    width: 1.8rem;
+                    height: auto;
+                }
+                b{
+                    color: #fff;
+                    font-size: 0.8rem;
+                    position: absolute;
+                    top: 0;
+                    right: -1rem;
+                    background-color: #000;
+                    border-radius: 2rem;
+                    opacity: 0.7;
+                }
+            }
+            .more{
+                width: 2.1rem;
+                height: auto;
+            }
+        }
+        .center{
+            margin: 1rem 0;
+            padding: 0 1rem;
+            .time{
+                color: #fff;
+                font-size: 1rem;
+            }
+            .progress{
+                width: 100%;
+                margin: 0 1rem;
+            }
+        }
+        .bottom{
+            padding: 0 5rem;
+            .randomPlay{
+                width: 2rem;
+                height: auto;
+            }
+            .per{
+                width: 1.8rem;
+                height: auto;
+                transform: rotate(180deg);
+            }
+            .play{
+                width: 4rem;
+                height: auto;
+            }
+            .next{
+                width: 1.8rem;
+                height: auto;
+            }
+            .playList{
+                width: 1.8rem;
+                height: auto;
+            }
+        }
+        .myAudio{
+            display: none;
+        }
+    }
+    @keyframes songPlayAni {
+        0%{ transform: rotate(0deg); }    
+        100%{ transform: rotate(360deg); }     
+    }
+}

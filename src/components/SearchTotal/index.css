@@ -1,6 +1,4 @@
 .searchTotal {
-  height: 100%;
-  overflow-y: scroll;
   padding: 1rem 0 10rem 0;
 }
 .searchTotal .header {
@@ -158,9 +156,6 @@
 }
 .searchTotal .radioModule .radio-ul {
   padding-bottom: 0 !important;
-}
-.searchTotal .userModule {
-  padding-bottom: 9rem !important;
 }
 .searchTotal .userModule .avatar {
   width: 5rem !important;

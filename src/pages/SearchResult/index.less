@@ -4,9 +4,15 @@
     height: 100%;
     overflow-y: hidden;
     .search{
+        position: fixed;
+        left: 1rem;
+        right: 1rem;
+        top: 0;
         border-bottom: 0.1rem solid #ccc;
-        margin: 1rem;
-        padding: 0 0.6rem 0.6rem 0.2rem;
+        padding: 0 0.6rem;
+        height: 3rem;
+        background-color: #fff;
+        z-index: 999;
         input{
             color: #333;
             font-size: 1.2rem;
@@ -17,6 +23,11 @@
         }
     }
     .navTab{
+        position: fixed;
+        top: 4rem;
+        left: 0;
+        right: 0;
+        background-color: #fff;
         border-bottom: 0.1rem solid #f5f5f5;
         .nav-ul{
             padding: 0 1rem;
@@ -50,6 +61,7 @@
         }
     }
     .content{
+        margin-top: 9rem;
         height: 100%;
         overflow-y: scroll;
     }
