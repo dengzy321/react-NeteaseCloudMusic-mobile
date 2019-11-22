@@ -6,6 +6,7 @@ import './index.css';
 import { Link } from 'react-router-dom'
 import Iconpath from '@/utils/iconpath'
 import { http } from '@/api/http'
+import { Tabs } from 'antd-mobile';
 import SearchSongs from '@/components/SearchSongs'
 import SearchVideoList from '@/components/SearchVideoList'
 import SearchArtist from '@/components/SearchArtist'
@@ -17,6 +18,18 @@ import SearchTotal from '@/components/SearchTotal'
 
 class SearchResult extends React.Component {
     state = {
+        tabs: [
+            { title: '综合', type: 1018 },
+            { title: '单曲', type: 1 },
+            { title: '专辑', type: 10 },
+            { title: '歌手', type: 100 },
+            { title: '歌单', type: 1000 },
+            { title: '用户', type: 1002 },
+            { title: '电台', type: 1009 },
+            { title: '视频', type: 1014 },
+            { title: 'MV', type: 1004 },
+            { title: '歌词', type: 1006 },
+        ],
         searchValue: '', 
         historyValue: '', // 历史搜索值
         curActive: 0,
@@ -83,12 +96,17 @@ class SearchResult extends React.Component {
         })
     }
     // 点击tab切换
-    onSelect = (index, type) => {
-        this.setState({
-            curActive: index,
-            curShowComponent: '',
-            curPageType: type
-        }, () => this.initData())
+    onSelect = (e) => {
+        const { tabs } = this.state
+        tabs.forEach((item, index) => {
+            if (item.type == e.type) {
+                this.setState({
+                    curActive: index,
+                    curShowComponent: '',
+                    curPageType: e.type
+                }, () => this.initData())
+            }
+        })
     }
     // 滚动加载更多
     onScroll = (e) => {
@@ -144,22 +162,11 @@ class SearchResult extends React.Component {
     }
     render() {
         const {
+            tabs,
             searchValue,
             curActive,
             curShowComponent,
         } = this.state;
-        const navList = [
-            { name: '综合', type: 1018 },
-            { name: '单曲', type: 1 },
-            { name: '专辑', type: 10 },
-            { name: '歌手', type: 100 },
-            { name: '歌单', type: 1000 },
-            { name: '用户', type: 1002 },
-            { name: '电台', type: 1009 },
-            { name: '视频', type: 1014 },
-            { name: 'MV', type: 1004 },
-            { name: '歌词', type: 1006 },
-        ]
         return (
             <div className='searchResult'>
                 <div className='search da'>
@@ -167,17 +174,13 @@ class SearchResult extends React.Component {
                     {searchValue && <img onClick={this.onClear} className='clear' src={Iconpath.close_$333} />}
                 </div>
                 <div className='navTab'>
-                    <ul className='nav-ul da'>
-                        {
-                            navList.map((item, index) =>
-                                <li onClick={this.onSelect.bind(this, index, item.type)} className={`nav-li ${curActive == index ? 'active' : ''}`} key={index}>{item.name}</li>
-                            )
-                        }
-                    </ul>
+                    <Tabs tabs={tabs} onChange={this.onSelect}>
+                        <div className='content' onScroll={this.onScroll}>
+                            {curShowComponent}
+                        </div>
+                    </Tabs>
                 </div>
-                <div className='content' onScroll={this.onScroll}>
-                    {curShowComponent}
-                </div>
+                
             </div>
         )
     }

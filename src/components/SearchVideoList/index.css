@@ -1,7 +1,6 @@
 .searchVideoList .video-ul {
   padding-top: 0.5rem;
-  padding-bottom: 5rem;
-  padding-bottom: 10rem;
+  padding-bottom: 1rem;
 }
 .searchVideoList .video-ul .video-li {
   padding: 0.5rem 1rem;
