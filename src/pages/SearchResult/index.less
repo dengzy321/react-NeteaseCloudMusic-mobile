@@ -2,71 +2,41 @@
 
 .searchResult{
     height: 100%;
-    overflow-y: scroll;
-    padding-top: 9rem;
-    box-sizing: border-box;
-    .searchBox{
+    overflow-y: hidden;
+    .search{
         position: fixed;
-        left: 0;
-        right: 0;
+        left: 1rem;
+        right: 1rem;
         top: 0;
-        z-index: 999;
-        padding: 0 1rem;
+        border-bottom: 0.1rem solid #ccc;
+        padding: 0 0.6rem;
+        height: 3rem;
         background-color: #fff;
-        .search{
-            border-bottom: 0.1rem solid #ccc;
-            padding: 0 0.6rem;
-            height: 3rem;
-            background-color: #fff;
-            input{
-                color: #333;
-                font-size: 1.2rem;
-                flex: 1;
-            }
-            .clear{
-                width: 1.2rem;
-            }
+        z-index: 999;
+        input{
+            color: #333;
+            font-size: 1.2rem;
+            flex: 1;
+        }
+        .clear{
+            width: 1.2rem;
         }
     }
     .navTab{
-        position: fixed;
-        top: 3.1rem;
-        left: 0;
-        right: 0;
-        z-index: 999;
-        padding-top: 1rem;
-        background-color: #fff;
-        border-bottom: 0.1rem solid #f5f5f5;
-        .nav-ul{
-            padding: 0 1rem;
-            white-space: nowrap;
-            overflow-x: scroll;
-            &::-webkit-scrollbar{
-                width: 0;
-            }
-            .nav-li{
-                display: inline-block;
-                color: #333;
-                font-size: 1.1rem;
-                font-weight: bold;
-                margin-right: 2rem;
-                padding: 0.8rem 0;
-                &.active{
-                    color: @main-color;
-                    position: relative;
-                }
-                &.active::after{
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    content: '';
-                    background-color: @main-color;
-                    height: 0.2rem;
-                    width: 100%;
-                }
-            }
+        height: 100%;
+        .am-tabs-tab-bar-wrap{
+            margin-top: 4rem !important;
         }
+        .am-tabs-default-bar-tab-active{
+            color: @main-color !important;
+        }
+        .am-tabs-default-bar-underline{
+            border-color: @main-color !important;
+        }
+    }
+    .content{
+        padding-top: 1rem;
+        box-sizing: border-box;
     }
     .noContent{
         text-align: center;
