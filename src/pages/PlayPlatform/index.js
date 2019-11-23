@@ -23,7 +23,7 @@ class PlayPlatform extends React.Component {
         const { curPlaySong } = this.props
         let min = '', second = ''
         min = parseInt(curPlaySong.duration / (60 * 1000))
-        second = curPlaySong.duration % 60 % 1000
+        second = parseInt(curPlaySong.duration / 1000) % 60
 
         this.setState({
             playDuration: `${min > 9 ? min : '0' + min}:${second > 9 ? second : '0' + second}`,
@@ -40,7 +40,9 @@ class PlayPlatform extends React.Component {
     }
     // 切换播放
     changePlay = () => {
-        if (this.state.playState) {
+        const { playState, duration } = this.state
+        const { curPlaySong } = this.props
+        if (playState) {
             this.myAudio.pause()
             clearInterval(timer)
         }
@@ -59,13 +61,24 @@ class PlayPlatform extends React.Component {
         let alreadyPlayTime = this.props.curPlaySong.duration - this.state.duration //已经播放时间
         let min = '', second = ''
         min = parseInt(alreadyPlayTime / (60 * 1000))
-        second = parseInt(alreadyPlayTime / (60 * 1000)) == 0 ? alreadyPlayTime / 1000 : alreadyPlayTime % 60 % 1000
+        second = parseInt(alreadyPlayTime / (60 * 1000)) == 0 ? alreadyPlayTime / 1000 : alreadyPlayTime / 1000 % 60
 
         this.setState(state => ({
             curplayTime: `${min > 9 ? min : '0' + min}:${second > 9 ? second : '0' + second}`,
             duration: state.duration - 1000,
             playPercentage: (alreadyPlayTime / this.props.curPlaySong.duration) * 100
-        }))
+        }), () =>{
+            if(this.state.duration < 0){
+                this.myAudio.pause()
+                clearInterval(timer)
+                this.setState({
+                    playState: false,
+                    duration: this.props.curPlaySong.duration,
+                    curplayTime: '00:00',
+                    playPercentage: 0
+                })
+            }
+        })
     }
     // 切换歌曲
     onSwitch = (type) => {
@@ -83,10 +96,18 @@ class PlayPlatform extends React.Component {
             loopType: state.loopType == 0 ? 1 : state.loopType == 1 ? 2 : 0
         }))
     }
+    // 点击收藏
     onCollect = () => {
         this.setState(state => ({
             isCollect: !state.isCollect
         }))
+    }
+    // 打开评论页面
+    openComment = () =>{
+        this.props.history.push({
+            pathname: '/Comment',
+            query:{ curPlaySong: this.props.curPlaySong }
+        })
     }
     render() {
         const { playState, songUrl, loopType, isCollect, playPercentage, playDuration, curplayTime } = this.state
@@ -112,7 +133,7 @@ class PlayPlatform extends React.Component {
                         <img onClick={this.onCollect} className='collection' src={isCollect ? Iconpath.collection_live_red : Iconpath.collection_live_$fff} />
                         <img className='download' src={Iconpath.download_$fff} />
                         <img className='dts' src={Iconpath.dts} />
-                        <p className='comment'>
+                        <p className='comment' onClick={this.openComment}>
                             <img className='share' src={Iconpath.comment_$fff} />
                             <b>11万</b>
                         </p>

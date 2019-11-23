@@ -17,6 +17,7 @@ const Pages = [
   'Search',
   'SearchResult',
   'PlayPlatform',
+  'Comment',
 ]
 
 let PagesObj = {}
@@ -80,5 +81,9 @@ export const routes = [
   {
     path: '/playPlatform',
     component: PagesObj.PlayPlatform
+  },
+  {
+    path: '/comment',
+    component: PagesObj.Comment
   },
 ]

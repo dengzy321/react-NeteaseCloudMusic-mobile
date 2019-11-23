@@ -96,6 +96,8 @@ const arr = [
     'share_$fff',
     'download_$fff',
     'music_controller',
+    'arrow_rigth_$999',
+    'live_$999',
 ]
 
 let obj = {}

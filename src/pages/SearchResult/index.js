@@ -161,10 +161,12 @@ class SearchResult extends React.Component {
             { name: '歌词', type: 1006 },
         ]
         return (
-            <div className='searchResult'>
-                <div className='search da'>
-                    <input type='search' onKeyUp={this.onKeyUp} onChange={this.onChange} value={searchValue} placeholder='请输入要搜索的内容' />
-                    {searchValue && <img onClick={this.onClear} className='clear' src={Iconpath.close_$333} />}
+            <div className='searchResult' onScroll={this.onScroll}>
+                <div className='searchBox'>
+                    <div  className='search da'>
+                        <input type='search' onKeyUp={this.onKeyUp} onChange={this.onChange} value={searchValue} placeholder='请输入要搜索的内容' />
+                        {searchValue && <img onClick={this.onClear} className='clear' src={Iconpath.close_$333} />}
+                    </div>
                 </div>
                 <div className='navTab'>
                     <ul className='nav-ul da'>
@@ -175,9 +177,7 @@ class SearchResult extends React.Component {
                         }
                     </ul>
                 </div>
-                <div className='content' onScroll={this.onScroll}>
-                    {curShowComponent}
-                </div>
+                {curShowComponent}
             </div>
         )
     }

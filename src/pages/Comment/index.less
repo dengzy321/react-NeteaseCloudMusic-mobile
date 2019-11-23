@@ -1,0 +1,113 @@
+@import '../../style/variable.less';
+
+.myComment{
+    background-color: #f5f5f5;
+    height: 100%;
+    overflow-y: scroll;
+    .header{
+        background-color: #fff;
+        padding: 1.5rem;
+        .coverImg{
+            width: 5rem;
+            height: 5rem;
+            border-radius: 0.3rem;
+            margin-right: 0.5rem;
+        }
+        .songInfo{
+            flex: 1;
+            .name{
+                color: #333;
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+            }
+            .artist{
+                color: @main-color;
+                font-size: 1rem;
+            }
+        }
+        .arrow-rigth{
+            width: 1rem;
+            height: auto;
+        }
+    }
+    .commentContent{
+        margin-top: 1.5rem;
+        padding-left: 1.5rem;
+        background-color: #fff;
+        .title{
+            color: #333;
+            font-size: 1.2rem;
+            padding: 1rem 0;
+        }
+    }
+    .commentItem{
+        .comment-ul{
+            .comment-li{
+                .userInfo{
+                    padding: 1rem 1.5rem 1rem 0;
+                    .avatar{
+                        width: 2.5rem;
+                        height: 2.5rem;
+                        margin-right: 0.5rem;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                    .nickname{
+                        display: block;
+                        color: #666;
+                        font-size: 1.1rem;
+                        margin-bottom: 0.5rem;
+                    }
+                    .time{
+                        display: block;
+                        color: #999;
+                        font-size: 0.9rem;
+                    }
+                    .liveCount{
+                        .count{
+                            color: #666;
+                            font-size: 0.9rem;
+                            margin-top: 0.2rem;
+                        }
+                        .live-icon{
+                            width: 1.8rem;
+                            height: auto;
+                            margin-left: 0.2rem;
+                        }
+                    }
+                }
+                .content{
+                    margin-left: 3rem;
+                    padding: 0 1.5rem 1rem 0;
+                    color: #333;
+                    font-size: 1.2rem;
+                    line-height: 1.8rem;
+                    border-bottom: 0.1rem solid #f4f4f4;
+                }
+            }
+        }
+    }
+    .editContent{
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 4rem;
+        background-color: #fff;
+        box-shadow: 0 -0.2rem 0.5rem 0.1rem #f5f5f5;
+        .input{
+            flex: 1;
+            color: #333;
+            font-size: 1.2rem;
+            padding-left: 1.5rem;
+        }
+        .btn{
+            line-height: 4rem;
+            padding: 0 1.5rem;
+            color: #ccc;
+            font-size: 1.2rem;
+            border: 0;
+            background: transparent;
+        }
+    }
+}

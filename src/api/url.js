@@ -124,4 +124,19 @@ export default {
     method: 'get',
     url: '/song/url'
   },
+  //获取歌曲评论
+  getMusicComment: {
+    method: 'get',
+    url: '/comment/music'
+  },
+  //给评论点赞
+  getCommentLike: {
+    method: 'get',
+    url: '/comment/like'
+  },
+  //给评论点赞
+  sendComment: {
+    method: 'get',
+    url: '/comment'
+  },
 }
