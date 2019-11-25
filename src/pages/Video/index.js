@@ -5,11 +5,12 @@ import * as actions from '@/store/actions';
 import './index.css';
 import { http } from '@/api/http'
 import VideoList from '@/components/VideoList'
-import Tabs from '@/components/Tabs'
+import { Tabs } from 'antd-mobile';
 
 class Video extends React.Component {
     state = {
-        tabs: []
+        tabs: [],
+        listData: []
     }
     componentWillMount() {
         this.initNavData()
@@ -17,32 +18,30 @@ class Video extends React.Component {
     initNavData() {
         http.getVideoTabs().then(res => {
             res.data.forEach(item => {
-                item.Component = VideoList
                 item.title = item.name
-                item.videoData = []
             })
             this.setState({ tabs: res.data })
-            this.initListData(0, res.data[0].id)
+            this.initListData(res.data[0].id)
         }) 
     }
-    initListData(index, id) {
-        const { tabs } = this.state
+    initListData(id) {
         http.getVideoGroup({ id }).then(res => {
-            if (res.code == 200) {
-                tabs[index].videoData = res.datas
-                this.setState({ tabs })
-            }
+            this.setState({
+                listData: res.datas
+            })
         })
     }
-    onClick = (index) => {
-        const { tabs } = this.state
-        this.initListData(index, tabs[index].id)
+    // 切换改变
+    onChange = (obj) => {
+        this.initListData(obj.id)
     }
     render() {
-        const { tabs } = this.state
+        const { tabs, listData } = this.state
         return (
-            <div className='video layout'>
-                {tabs.length > 0 && <Tabs data={tabs} onClick={this.onClick} onChange={this.onClick} />}
+            <div className='myVideo'>
+                <Tabs tabs={tabs} onChange={this.onChange}>
+                    <VideoList data={listData} {...this.props}/>
+                </Tabs>
             </div>
         )
     }

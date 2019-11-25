@@ -9,7 +9,7 @@ import Iconpath from '@/utils/iconpath'
 
 class VideoList extends React.Component {
     render() {
-        const { data = [] } = this.props
+        const { data = [], history } = this.props
         return (
             <div className='videoList'>
                 <ul>
@@ -17,7 +17,7 @@ class VideoList extends React.Component {
                         data.map(({ data }, index) =>
                             <li key={index} className='video-li'>
                                 <div className='video-box'>
-                                    <video controls poster={data.coverUrl}>
+                                    <video poster={data.coverUrl} controls x5-playsinline="" playsinline="" webkit-playsinline="" preload="auto">
                                         <source src={data.urlInfo.url} type="video/mp4" />
                                         <source src={data.urlInfo.url} type="video/ogg" />
                                     </video>
@@ -30,9 +30,9 @@ class VideoList extends React.Component {
                                         <img src={Iconpath.live} alt="" />
                                         <b>{data.praisedCount}</b>
                                     </span>
-                                    <span className='comment'>
+                                    <span className='comment' onClick={() => history.push({ pathname: '/VideoComment', query: { vid: data.vid }})}>
                                         <img src={Iconpath.comment} alt="" />
-                                        <b>{data.shareCount}</b>
+                                        <b>{data.commentCount}</b>
                                     </span>
                                     <img className='more' src={Iconpath.more_gray} alt=""/>
                                 </div>

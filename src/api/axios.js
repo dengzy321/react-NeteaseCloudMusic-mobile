@@ -34,7 +34,7 @@ instance.interceptors.response.use(function (response) {
   Toast.hide()
   if (status === 200) {
     return headers['content-type'] === 'application/json' ? JSON.parse(data) : JSON.parse(data);
-  } else if (status === 401) {
+  } else if (status === 301) {
     return response;
     //跳转登录
   } else {

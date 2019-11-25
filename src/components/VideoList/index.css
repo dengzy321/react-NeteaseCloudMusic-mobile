@@ -9,10 +9,11 @@
 .videoList .video-li .video-box {
   margin: 0 1rem;
   padding-top: 1rem;
+  height: 18rem;
 }
 .videoList .video-li .video-box video {
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 0.5rem;
 }
 .videoList .video-li .title {

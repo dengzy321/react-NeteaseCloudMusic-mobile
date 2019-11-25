@@ -139,4 +139,9 @@ export default {
     method: 'get',
     url: '/comment'
   },
+  //视频评论
+  getVideoComment: {
+    method: 'get',
+    url: '/comment/video'
+  },
 }
