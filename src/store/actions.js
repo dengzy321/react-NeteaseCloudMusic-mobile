@@ -31,3 +31,27 @@ export const addPlaySong = (data) => async (dispatch, getState) => {
         payload: data
     });
 }
+
+//添加播放歌曲URL地址
+export const addSongUrl = (data) => async (dispatch, getState) => {
+    dispatch({
+        type: actionTypes.ADD_MUSICURL,
+        payload: data
+    });
+}
+
+//播放音乐
+export const playMusic = (data) => async (dispatch, getState) => {
+    dispatch({
+        type: actionTypes.PLAY_MUSIC,
+        payload: data
+    });
+}
+
+//当前播放时间
+export const setPlayTime = (data) => async (dispatch, getState) => {
+    dispatch({
+        type: actionTypes.SET_PLAYTIME,
+        payload: data
+    });
+}

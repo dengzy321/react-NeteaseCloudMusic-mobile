@@ -21,6 +21,7 @@
 .playTab .songsInfo .songsName {
   color: #333;
   font-size: 1.2rem;
+  width: 16rem;
 }
 .playTab .songsInfo .tip {
   color: #666;

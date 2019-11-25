@@ -1,5 +1,8 @@
 import React from 'react';
 import './index.css';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '@/store/actions';
 import Header from '@/components/Header'
 import PlayTab from '@/components/PlayTab'
 
@@ -11,14 +14,17 @@ class MainLayout extends React.Component {
         })
     }
     render() {
-        const { match, children, history } = this.props;
+        const { children, history, curPlaySong } = this.props;
         return (
             <div className='mainLayout'>
                 <Header />
                 {children}
-                <PlayTab history={history}/>
+                { Object.keys(curPlaySong).length != 0 && <PlayTab history={history}/> }
             </div>
         );
     }
 }
-export default MainLayout;
+export default connect(
+    state => state,
+    dispatch => bindActionCreators(actions, dispatch)
+)(MainLayout)

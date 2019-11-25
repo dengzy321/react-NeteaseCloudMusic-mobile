@@ -185,6 +185,10 @@ input:focus,button:focus,textarea:focus,input[type="checkbox"]:focus,label:focus
   height: 100%;
 }
 
+.app{
+  height: 100%;
+}
+
 .layout{
   margin-top: 4rem;
 }

@@ -5,83 +5,94 @@ import * as actions from '@/store/actions';
 import './index.css';
 import { http } from '@/api/http'
 import Iconpath from '@/utils/iconpath'
-import { Progress, Button } from 'antd-mobile';
+import { Progress } from 'antd-mobile';
 
 let timer = null
 class PlayPlatform extends React.Component {
     state = {
         playState: false,
-        songUrl: '',
         loopType: 0,
         isCollect: false,
-        duration: 0, //歌曲播放时长
+        surplusDuration: 0, //剩余歌曲播放时长
         playDuration: '', //歌曲播放时长txt
-        curplayTime: '00:00',  // 歌曲当前播放时长 txt
+        curplayTime: '00:00',  // 歌曲当前播放时长txt
         playPercentage: 0, //播放百分比
     }
     componentDidMount() {
-        const { curPlaySong } = this.props
-        let min = '', second = ''
+        const { curPlaySong, surplusDuration, isPlayMusic, curSongUrl } = this.props
+        let min = '', second = '', min2 = '', second2 = ''
         min = parseInt(curPlaySong.duration / (60 * 1000))
         second = parseInt(curPlaySong.duration / 1000) % 60
 
+        if (curSongUrl) {
+            min2 = parseInt(surplusDuration / (60 * 1000))
+            second2 = parseInt(surplusDuration / 1000) % 60
+        }
+
         this.setState({
+            playState: isPlayMusic,
             playDuration: `${min > 9 ? min : '0' + min}:${second > 9 ? second : '0' + second}`,
-            duration: curPlaySong.duration
+            curplayTime: curSongUrl ? `${min2 > 9 ? min2 : '0' + min2}:${second2 > 9 ? second2 : '0' + second2}` : '00:00',
+            surplusDuration: curSongUrl ? surplusDuration : curPlaySong.duration,
+            playPercentage: curSongUrl ? (curPlaySong.duration - surplusDuration) / curPlaySong.duration : 0
         })
-        this.initSongUrl(curPlaySong.id)
+
+        if (!curSongUrl) this.initSongUrl(curPlaySong.id)
+        if (isPlayMusic) this.durationCountdown()
         console.log(this)
+    }
+    componentWillUnmount() {
+        this.props.setPlayTime(this.state.surplusDuration)
     }
     // 获取歌曲url
     initSongUrl = (id) => {
         http.getSongUrl({ id }).then(res => {
-            this.setState({ songUrl: res.data[0].url })
+            this.props.addSongUrl(res.data[0].url)
+            this.props.setPlayTime(this.state.surplusDuration)
+            this.props.playMusic()
+            this.setState({
+                playState: true
+            }, () => this.durationCountdown())
         })
     }
     // 切换播放
     changePlay = () => {
-        const { playState, duration } = this.state
-        const { curPlaySong } = this.props
-        if (playState) {
-            this.myAudio.pause()
-            clearInterval(timer)
-        }
-        else {
-            this.myAudio.play()
-            timer = setInterval(() =>{
-                this.durationCountdown()
-            }, 1000)
-        }
+        const { playState } = this.state
+        clearInterval(timer)
+        if (!playState) this.durationCountdown()
         this.setState(state => ({
             playState: !state.playState
         }))
+        this.props.playMusic()
     }
     // 播放时间倒计时
     durationCountdown = () => {
-        let alreadyPlayTime = this.props.curPlaySong.duration - this.state.duration //已经播放时间
-        let min = '', second = ''
-        min = parseInt(alreadyPlayTime / (60 * 1000))
-        second = parseInt(alreadyPlayTime / (60 * 1000)) == 0 ? alreadyPlayTime / 1000 : alreadyPlayTime / 1000 % 60
+        timer = setInterval(() => {
+            let alreadyPlayTime = this.props.curPlaySong.duration - this.state.surplusDuration //已经播放时间
+            let min = '', second = ''
+            min = parseInt(alreadyPlayTime / (60 * 1000))
+            second = parseInt(alreadyPlayTime / (60 * 1000)) == 0 ? alreadyPlayTime / 1000 : alreadyPlayTime / 1000 % 60
 
-        this.setState(state => ({
-            curplayTime: `${min > 9 ? min : '0' + min}:${second > 9 ? second : '0' + second}`,
-            duration: state.duration - 1000,
-            playPercentage: (alreadyPlayTime / this.props.curPlaySong.duration) * 100
-        }), () =>{
-            if(this.state.duration < 0){
-                this.myAudio.pause()
-                clearInterval(timer)
-                this.setState({
-                    playState: false,
-                    duration: this.props.curPlaySong.duration,
-                    curplayTime: '00:00',
-                    playPercentage: 0
-                })
-            }
-        })
+            this.setState(state => ({
+                curplayTime: `${min > 9 ? min : '0' + min}:${second > 9 ? second : '0' + second}`,
+                surplusDuration: state.surplusDuration - 1000,
+                playPercentage: (alreadyPlayTime / this.props.curPlaySong.duration) * 100
+            }), () => {
+                if (this.state.surplusDuration < 0) {
+                    this.props.playMusic()
+                    clearInterval(timer)
+                    this.setState({
+                        playState: false,
+                        surplusDuration: this.props.curPlaySong.duration,
+                        curplayTime: '00:00',
+                        playPercentage: 0
+                    })
+                }
+            })
+        }, 1000)
     }
-    // 切换歌曲
-    onSwitch = (type) => {
+    // 点击切换歌曲
+    onSwitchMusic = (type) => {
         if (type == 'per') {
 
         }
@@ -103,14 +114,14 @@ class PlayPlatform extends React.Component {
         }))
     }
     // 打开评论页面
-    openComment = () =>{
+    onComment = () => {
         this.props.history.push({
             pathname: '/Comment',
-            query:{ curPlaySong: this.props.curPlaySong }
+            query: { curPlaySong: this.props.curPlaySong }
         })
     }
     render() {
-        const { playState, songUrl, loopType, isCollect, playPercentage, playDuration, curplayTime } = this.state
+        const { playState, loopType, isCollect, playPercentage, playDuration, curplayTime } = this.state
         const { curPlaySong } = this.props
         return (
             <div className='playPlatform'>
@@ -133,7 +144,7 @@ class PlayPlatform extends React.Component {
                         <img onClick={this.onCollect} className='collection' src={isCollect ? Iconpath.collection_live_red : Iconpath.collection_live_$fff} />
                         <img className='download' src={Iconpath.download_$fff} />
                         <img className='dts' src={Iconpath.dts} />
-                        <p className='comment' onClick={this.openComment}>
+                        <p className='comment' onClick={this.onComment}>
                             <img className='share' src={Iconpath.comment_$fff} />
                             <b>11万</b>
                         </p>
@@ -146,16 +157,11 @@ class PlayPlatform extends React.Component {
                     </div>
                     <div className='bottom dbc'>
                         <img onClick={this.onLoop} className='randomPlay' src={Iconpath.randomPlay_$fff} />
-                        <img onClick={this.onSwitch.bind(this, 'per')} className='per' src={Iconpath.next_fill} />
+                        <img onClick={this.onSwitchMusic.bind(this, 'per')} className='per' src={Iconpath.next_fill} />
                         <img onClick={this.changePlay} className='play' src={playState ? Iconpath.play_start_$fff : Iconpath.play_stop_$fff} />
-                        <img onClick={this.onSwitch.bind(this, 'next')} className='next' src={Iconpath.next_fill} />
+                        <img onClick={this.onSwitchMusic.bind(this, 'next')} className='next' src={Iconpath.next_fill} />
                         <img className='playList' src={Iconpath.playList_$fff} />
                     </div>
-                    <audio controls className='myAudio' ref={(el) => this.myAudio = el}>
-                        <source src={songUrl} type="audio/ogg" />
-                        <source src={songUrl} type="audio/mpeg" />
-                        <source src={songUrl} type="audio/mp3" />
-                    </audio>
                 </div>
             </div>
         )

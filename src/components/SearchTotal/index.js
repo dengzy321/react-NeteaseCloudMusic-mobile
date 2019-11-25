@@ -26,6 +26,12 @@ class SearchTotal extends React.Component {
             curSongsInfo: song.songs[index]
         }))
     }
+    // 打开新页面
+    onLoaction = (item) => {
+        const { history, addPlaySong } = this.props
+        addPlaySong(item)
+        history.push('/playPlatform')
+    }
     render() {
         const { show, curSongsInfo } = this.state
         const { data, onChange } = this.props
@@ -57,7 +63,7 @@ class SearchTotal extends React.Component {
                             <ul className='songs-ul'>
                                 {
                                     data.song.songs.map((item, index) =>
-                                        <li key={index} className='songs-li da'>
+                                        <li key={index} className='songs-li da' onClick={this.onLoaction.bind(this, item)}>
                                             <div className='songsInfo'>
                                                 <p className='name to-line'>{item.name}</p>
                                                 <p className='des to-line'>{item.ar[0].name}{item.al.name && ' - ' + item.al.name}</p>
