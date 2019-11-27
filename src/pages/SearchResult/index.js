@@ -46,8 +46,9 @@ class SearchResult extends React.Component {
         totalData: []
     }
     componentDidMount() {
+        console.log(this)
         this.setState({
-            searchValue: this.props.location.query.keywords
+            searchValue: this.props.location.state.keywords
         }, () => this.initData())
     }
     initData = () =>{

@@ -14,21 +14,12 @@ class Search extends React.Component {
         hotSearchData: []
     }
     componentDidMount() {
-        console.log('Search====', this)
         this.initHotSearch()
     }
     // 初始化热搜
     initHotSearch() {
         http.getHotSearch().then(res => {
             this.setState({ hotSearchData: res.data })
-        })
-    }
-    searchSuggest() {
-        http.getSearchSuggest({
-            keywords: '海阔天空',
-            type: 'mobile'
-        }).then(res => {
-
         })
     }
     // 键盘回车搜索
@@ -62,7 +53,7 @@ class Search extends React.Component {
                                 <div className='history-ul'>
                                     {
                                         searchHistory.map((item, index) =>
-                                            <Link className='history-li' to={{ pathname: '/SearchResult', query: { keywords: item } }} key={index}>{item}</Link>
+                                            <Link className='history-li' to={{ pathname: '/SearchResult', state: { keywords: item } }} key={index}>{item}</Link>
                                         )
                                     }
                                 </div>

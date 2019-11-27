@@ -15,6 +15,9 @@
   margin-right: 0.5rem;
   border-radius: 50%;
 }
+.playTab .active {
+  animation: songPlayAni 20s infinite linear;
+}
 .playTab .songsInfo {
   flex: 1;
 }
@@ -39,4 +42,8 @@
 }
 .playTab .myAudio {
   display: none;
+}
+@keyframes songPlayAni {
+  0%{ transform: rotate(0deg); }    
+  100%{ transform: rotate(360deg); }     
 }

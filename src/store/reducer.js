@@ -29,23 +29,11 @@ export default function music(state = initialState, action) {
             })
         case actionTypes.ADD_PLAYSONG:
             return Object.assign({}, state, {
-                curPlaySong: payload,
-                curSongUrl: '',
-                surplusDuration: 0,
-                isPlayMusic: false
+                curPlaySong: payload
             })
         case actionTypes.ADD_MUSICURL:
             return Object.assign({}, state, { 
-                curSongUrl: payload,
-                surplusDuration: 0
-            })
-        case actionTypes.PLAY_MUSIC:
-            return Object.assign({}, state, { 
-                isPlayMusic: !isPlayMusic 
-            })
-        case actionTypes.SET_PLAYTIME:
-            return Object.assign({}, state, { 
-                surplusDuration: payload
+                curSongUrl: payload
             })
         default:
             return state;

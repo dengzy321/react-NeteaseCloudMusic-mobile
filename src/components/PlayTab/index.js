@@ -6,34 +6,34 @@ import './index.css';
 import { http } from '@/api/http'
 import Iconpath from '@/utils/iconpath'
 
+
 class PlayTab extends React.Component {
     state = {
         playState: false,
     }
     componentDidMount(){
         this.setState({
-            playState: this.props.isPlayMusic
-        })
-    }
-    componentWillReceiveProps(nextProps){
-        this.setState({
-            playState: nextProps.isPlayMusic
+            playState: !window.rootAudio.paused
         })
     }
     // 切换播放
-    changePlay = (event) =>{
-        event.stopPropagation()
-        this.props.playMusic()
-        this.setState(state =>({
-            playState: !state.playState
-        }))
+    changePlay = (e) => {
+        e.stopPropagation();
+        if(window.rootAudio.paused){
+            window.rootAudio.play()
+            this.setState({ playState: true })
+        }
+        else {
+            window.rootAudio.pause()
+            this.setState({ playState: false })
+        }
     }
     render() {
-        const { playState, songUrl, songId } = this.state
+        const { playState, songId } = this.state
         const { curPlaySong } = this.props
         return(
             <div className='playTab da' onClick={() => this.props.history.push({pathname: '/playPlatform', query:{id:songId}})}>
-                <img className='coverImg' src={curPlaySong.artists[0].img1v1Url} />
+                <img className='coverImg active' style={{ animationPlayState: playState ? 'running' : 'paused' }} src={curPlaySong.artists[0].img1v1Url} />
                 <div className='songsInfo'>
                     <p className='songsName to-line'>{curPlaySong.name}</p>
                     <p className='tip'>横滑可以切换上下首</p>
