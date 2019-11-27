@@ -6,56 +6,7 @@ import './index.css';
 import { Link } from 'react-router-dom'
 import { http } from '@/api/http'
 import Iconpath from '@/utils/iconpath'
-import Radio from '@/components/Radio'
-
-function CommentItem({ data = [], commentsId }) {
-    // 点赞
-    function onLive(item) {
-        http.getCommentLike({
-            id: commentsId,
-            cid: item.commentId,
-            t: item.liked? 0:1,
-            tpye: 0
-        }).then(res => {
-            data.forEach(item2 => {
-                if(item2 == item) item2.liked = item2.liked? 0:1
-            })
-        })
-    }
-
-    data.forEach(item => {
-        let date = new Date(item.time)
-        let year = date.getFullYear()
-        let min = date.getMonth() + 1
-        let d = date.getDay()
-        item.publishTime = `${year}年${min >= 10 ? min : '0' + min}月${d >= 10 ? d : '0' + d}日`
-        item.likeCount = item.likedCount >= 100000 ? (item.likedCount / 10000).toFixed(1) + '万' : item.likedCount
-    })
-    return (
-        <div className='commentItem'>
-            <ul className='comment-ul'>
-                {
-                    data.map((item, index) => (
-                        <li className='comment-li' key={index}>
-                            <div className='userInfo da'>
-                                <img className='avatar' src={item.user.avatarUrl} />
-                                <p className='flex'>
-                                    <span className='nickname'>{item.user.nickname}</span>
-                                    <span className='time'>{item.publishTime}</span>
-                                </p>
-                                <p className='liveCount da' onClick={onLive.bind(this, item)}>
-                                    <span className='count'>{item.likeCount}</span>
-                                    <img className='live-icon' src={item.liked ? Iconpath.live_red : Iconpath.live_$999} />
-                                </p>
-                            </div>
-                            <div className='content'>{item.content}</div>
-                        </li>
-                    ))
-                }
-            </ul>
-        </div>
-    )
-}
+import CommentList from '@/components/commentList'
 
 class Comment extends React.Component {
     state = {
@@ -97,24 +48,23 @@ class Comment extends React.Component {
     onScroll = (e) => {
         if (window.globa.onReachBottom(e)) this.initData()
     }
-
     // 输入评论内容
-    onInputComment = (e) =>{
+    onInputComment = (e) => {
         this.setState({
             inputComment: e.target.value
         })
     }
     // 发送评论
-    onSend = () =>{
+    onSend = () => {
         const { commentsId, inputComment } = this.state
-        if(!inputComment) return
+        if (!inputComment) return
         http.sendComment({
             t: 1,
             tpye: 0,
             id: commentsId,
             content: inputComment
-        }).then(res =>{
-            
+        }).then(res => {
+
         })
     }
     render() {
@@ -132,15 +82,15 @@ class Comment extends React.Component {
                 </div>
                 <div className='commentContent'>
                     <h3 className='title'>精彩评论</h3>
-                    <CommentItem data={hotComments} commentsId={commentsId} />
+                    <CommentList data={hotComments} commentsId={commentsId} />
                 </div>
                 <div className='commentContent'>
                     <h3 className='title'>最新评论</h3>
-                    <CommentItem data={newComments} commentsId={commentsId} />
+                    <CommentList data={newComments} commentsId={commentsId} />
                 </div>
                 <div className='editContent da'>
-                    <input className='input' type='text' placeholder='听说爱评论的人粉丝多' onChange={this.onInputComment}/>
-                    <button className='btn' style={inputComment? {color:'#333'}:{}} onClick={this.onSend}>发送</button>
+                    <input className='input' type='text' placeholder='听说爱评论的人粉丝多' onChange={this.onInputComment} />
+                    <button className='btn' style={inputComment ? { color: '#333' } : {}} onClick={this.onSend}>发送</button>
                 </div>
             </div>
         )

@@ -43,7 +43,7 @@ class SearchVideoList extends React.Component {
                                         <h3 className='title'>{item.title}</h3>
                                         <p>
                                             <span className='durationms'>{item.time}</span>
-                                            <span className='userName'>{item.creator[0].userName}</span>
+                                            <span className='userName'>{item.creator[0].userName}</span>    
                                         </p>
                                     </div>
                                 </Link>

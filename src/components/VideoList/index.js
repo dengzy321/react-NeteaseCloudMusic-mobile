@@ -30,7 +30,7 @@ class VideoList extends React.Component {
                                         <img src={Iconpath.live} alt="" />
                                         <b>{data.praisedCount}</b>
                                     </span>
-                                    <span className='comment' onClick={() => history.push({ pathname: '/VideoComment', query: { vid: data.vid }})}>
+                                    <span className='comment' onClick={() => history.push({ pathname: '/VideoComment', state: { vid: data.vid }})}>
                                         <img src={Iconpath.comment} alt="" />
                                         <b>{data.commentCount}</b>
                                     </span>

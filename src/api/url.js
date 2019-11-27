@@ -144,4 +144,14 @@ export default {
     method: 'get',
     url: '/comment/video'
   },
+  //相关视频
+  getRelatedVideo: {
+    method: 'get',
+    url: '/related/allvideo'
+  },
+  //关注/取消关注用户
+  changeFollowUser: {
+    method: 'get',
+    url: '/follow'
+  },
 }

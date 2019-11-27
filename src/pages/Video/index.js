@@ -20,8 +20,10 @@ class Video extends React.Component {
             res.data.forEach(item => {
                 item.title = item.name
             })
-            this.setState({ tabs: res.data })
-            this.initListData(res.data[0].id)
+            this.setState({
+                tabs: res.data.slice(1,10)
+            }, () => this.initListData(this.state.tabs[0].id))
+            
         }) 
     }
     initListData(id) {

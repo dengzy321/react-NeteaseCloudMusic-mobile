@@ -98,6 +98,9 @@ const arr = [
     'music_controller',
     'arrow_rigth_$999',
     'live_$999',
+    'collect_$333',
+    'comment_$333',
+    'live_$333',
 ]
 
 let obj = {}
