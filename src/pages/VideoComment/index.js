@@ -30,6 +30,8 @@ class VideoComment extends React.Component {
         http.getVideoDetail({
             id: this.props.location.state.vid
         }).then(res => {
+            res.data.praised = false
+            res.data.collected = false
             this.setState({ videoInfo: res.data })
         })
     }
@@ -95,6 +97,31 @@ class VideoComment extends React.Component {
             }))
         })
     }
+    // 点赞
+    onLive = (id,praisedStatus) =>{
+        http.changeResourceLive({
+            type: 5,
+            t: praisedStatus? 0 : 1,
+            id: id
+        }).then(res =>{
+            let { videoInfo } = this.state
+            videoInfo.praised = !videoInfo.praised
+            videoInfo.praisedCount = praisedStatus? videoInfo.praisedCount - 1  : videoInfo.praisedCount + 1
+            this.setState({ videoInfo })
+        })
+    }
+    // 收藏视频
+    onCollect = (id,collectedStatus) =>{
+        http.collectVideo({
+            id: id,
+            t: collectedStatus? 0 : 1,
+        }).then(res =>{
+            let { videoInfo } = this.state
+            videoInfo.collected = !videoInfo.collected
+            videoInfo.subscribeCount = collectedStatus? videoInfo.subscribeCount - 1  : videoInfo.subscribeCount + 1
+            this.setState({ videoInfo })
+        })
+    }
     render() {
         const { url, comments, relatedVideo, videoInfo, inputComment, isFollowUser } = this.state
         return (
@@ -118,13 +145,13 @@ class VideoComment extends React.Component {
                         </div>
                         <div className='handleTool'>
                             <ul className='handleTool-ul dbc'>
-                                <li className='handleTool-li dd-vh'>
-                                    <img className='live' src={Iconpath.live_$333} />
-                                    <span>{videoInfo.praisedCount}</span>
+                                <li className='handleTool-li dd-vh' onClick={this.onLive.bind(this, videoInfo.vid,videoInfo.praised)}>
+                                    <img className='live' src={videoInfo.praised? Iconpath.live_red_fill:Iconpath.live_$333} />
+                                    <span style={videoInfo.praised? {color:'#FF392D'}:{}}>{videoInfo.praisedCount}</span>
                                 </li>
-                                <li className='handleTool-li dd-vh'>
-                                    <img className='collect' src={Iconpath.collect_$333} />
-                                    <span>{videoInfo.subscribeCount}</span>
+                                <li className='handleTool-li dd-vh' onClick={this.onCollect.bind(this, videoInfo.vid,videoInfo.collected)}>
+                                    <img className='collect' src={videoInfo.collected? Iconpath.collect_red:Iconpath.collect_$333} />
+                                    <span style={videoInfo.collected? {color:'#FF392D'}:{}}>{videoInfo.subscribeCount}</span>
                                 </li>
                                 <li className='handleTool-li dd-vh'>
                                     <img className='comment' src={Iconpath.comment_$333} />

@@ -46,7 +46,7 @@
 }
 .videoList .video-li .footer .live b {
   position: absolute;
-  right: -1rem;
+  left: 1.5rem;
   top: 0;
   font-size: 0.8rem;
   color: #999;

@@ -83,6 +83,8 @@ const arr = [
     'arrow_left_$fff',
     'collection_live_$fff',
     'collection_live_red',
+    'live_red',
+    'live_red_fill',
     'comment_$fff',
     'dts',
     'listLoop_$fff',
@@ -101,6 +103,7 @@ const arr = [
     'collect_$333',
     'comment_$333',
     'live_$333',
+    'collect_red',
 ]
 
 let obj = {}

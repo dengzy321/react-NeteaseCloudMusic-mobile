@@ -34,7 +34,7 @@
   padding-bottom: 1rem;
 }
 .videoComment .videoInfo .handleTool .handleTool-ul {
-  padding: 0 2.5rem;
+  padding: 0 3rem;
 }
 .videoComment .videoInfo .handleTool .handleTool-ul .handleTool-li {
   color: #333;
@@ -76,7 +76,7 @@
   background-color: #E82202;
   border-radius: 2rem;
   border: 0;
-  padding: 0.3rem 0.8rem;
+  padding: 0.4rem 0.8rem;
 }
 .videoComment .relatedVideo {
   background-color: #fff;

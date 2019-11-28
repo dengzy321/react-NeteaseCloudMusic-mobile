@@ -154,4 +154,14 @@ export default {
     method: 'get',
     url: '/follow'
   },
+  //资源点赞( MV,电台,视频)
+  changeResourceLive: {
+    method: 'get',
+    url: '/resource/like'
+  },
+  // 收藏视频
+  collectVideo: {
+    method: 'get',
+    url: '/video/sub'
+  },
 }

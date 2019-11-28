@@ -22,22 +22,20 @@ class Square extends React.Component {
     initWaterVideo(id){
         // http.getVideoTabs().then(res =>{
         //     http.getVideoGroup({ id: id }).then(res2 =>{
-        //         if(res2.code == 200) this.setState({ waterVideoArr: res2.datas })
+        //         this.setState({ waterVideoArr: res2.datas })
         //     })
         // })
         http.getHotTopic({ limit: 30 }).then(res =>{
-            console.log(res)
+            // this.setState({ waterVideoArr: res2.datas })
         })
     }
     // 获取动态信息数据
     initDynamicInfo() {
         http.getDynamicInfo({ pagesize: 30 }).then(res =>{
-            if (res.code == 200) {
-                res.event.forEach(item => {
-                    item.json = JSON.parse(item.json)
-                })
-                console.log(res.event)
-            }
+            res.event.forEach(item => {
+                item.json = JSON.parse(item.json)
+            })
+            console.log(res.event)
         })
     }
     // 广场组件

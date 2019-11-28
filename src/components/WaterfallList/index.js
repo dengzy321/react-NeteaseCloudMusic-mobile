@@ -13,10 +13,12 @@ class WaterfallList extends React.Component {
 
     }
     componentDidMount(){
-        setTimeout(() =>{
-            this.getHeightRank()
-        },500)
+        console.log('componentDidMount==',this.props)
     }
+    componentWillReceiveProps(nextProps){
+        console.log('componentDidMount==',nextProps)
+    }
+    // 动态瀑布流
     getHeightRank = () =>{
         const el = this.waterfallUl.children
         const columns = 2; // 列数
