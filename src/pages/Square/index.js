@@ -12,6 +12,7 @@ import Dynamic from '@/components/Dynamic'
 class Square extends React.Component {
     state = {
         waterVideoArr: [],
+        dynamicArr: [],
         curIndex: 0
     }
     componentWillMount(){
@@ -35,7 +36,9 @@ class Square extends React.Component {
             res.event.forEach(item => {
                 item.json = JSON.parse(item.json)
             })
-            console.log(res.event)
+            this.setState({
+                dynamicArr: res.event
+            })
         })
     }
     // 广场组件
@@ -54,18 +57,19 @@ class Square extends React.Component {
         )
     }
     onChange = (curIndex) => {
-        if (curIndex == 1) this.initWaterVideo(4104)
+        if (curIndex == 0) this.initWaterVideo(4104)
+        else this.initDynamicInfo()
         this.setState({ curIndex })
     }
     render() {
-        const { curIndex, waterVideoArr } = this.state
+        const { curIndex, waterVideoArr, dynamicArr } = this.state
         return (
             <div className='square layout'>
                 <div className='nav dcc'>
                     <span className={curIndex == 0 ? 'navActive' : ''} onClick={this.onChange.bind(this,0)}>广场</span>
                     <span className={curIndex == 1? 'navActive':''} onClick={this.onChange.bind(this,1)}>动态</span>
                 </div>
-                { curIndex == 0 ? this.MySquare(waterVideoArr) : <Dynamic list={waterVideoArr}/> }
+                {curIndex == 0 ? this.MySquare(waterVideoArr) : <Dynamic list={dynamicArr}/> }
             </div>
         )
     }

@@ -6,26 +6,33 @@ import * as actions from '@/store/actions';
 import './index.css';
 import { NavLink } from 'react-router-dom'
 import Iconpath from '@/utils/iconpath'
-// import { Player } from 'video-react';
-// import 'node_modules/video-react/dist/video-react.css';
 
 class Dynamic extends React.Component {
+    state = {
+        list: []
+    }
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps.list)
+        this.setState({
+            list: nextProps.list
+        })
+    }
     render(){
-        const { list } = this.props;
+        const { list } = this.state;
         return(
             <div className='dynamic'>
                 <ul>
                     {
-                        list.map(({data}, index) =>
+                        list.map((item, index) =>
                             <li key={index} className='dynamic-li'>
                                 <div className='header da'>
                                     <div className='avatar-box'>
-                                        <img className='avatar' src={data.creator.avatarUrl} />
+                                        <img className='avatar' src={item.user.avatarUrl} />
                                         <img className='icon' src={Iconpath.vip_fill} />
                                     </div>
                                     <div className='userInfo'>
                                         <p className='da'>
-                                            <span className='name'>{data.creator.nickname}</span>
+                                            <span className='name'>{item.user.nickname}</span>
                                             <span className='tip da'>
                                                 <img className='icon' src={Iconpath.vip} />
                                                 <b>年</b>
@@ -36,26 +43,26 @@ class Dynamic extends React.Component {
                                     </div>
                                     <button className='follow'>+关注</button>
                                 </div>
-                                <div className='content'>{data.description? data.description : data.title}</div>
+                                <div className='content'>{item.json.msg}</div>
                                 <div className='video'>
-                                    <video poster={data.coverUrl} controls>
+                                    {/* <video poster={item.json.video.coverUrl} controls>
                                         <source src={data.urlInfo.url} type="video/mp4" />
                                         <source src={data.urlInfo.url} type="video/ogg" />
                                         您的浏览器不支持 video 标签。
-                                    </video>
+                                    </video> */}
                                 </div>
                                 <div className='footer da'>
                                     <span className='forward da'>
                                         <img src={Iconpath.forward} />
-                                        <b>{data.shareCount}</b>
+                                        <b>{item.info.shareCount}</b>
                                     </span>
                                     <span className='comment da'>
                                         <img src={Iconpath.comment} />
-                                        <b>{data.commentCount}</b>
+                                        <b>{item.info.commentCount}</b>
                                     </span>
                                     <span className='live da'>
                                         <img src={Iconpath.live} />
-                                        <b>{data.praisedCount}</b>
+                                        <b>{item.info.likedCount}</b>
                                     </span>
                                 </div>
                             </li>
