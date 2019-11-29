@@ -69,7 +69,7 @@ class Square extends React.Component {
                     <span className={curIndex == 0 ? 'navActive' : ''} onClick={this.onChange.bind(this,0)}>广场</span>
                     <span className={curIndex == 1? 'navActive':''} onClick={this.onChange.bind(this,1)}>动态</span>
                 </div>
-                {curIndex == 0 ? this.MySquare(waterVideoArr) : <Dynamic list={dynamicArr}/> }
+                {curIndex == 0 ? this.MySquare(waterVideoArr) : <Dynamic {...this.props} list={dynamicArr}/> }
             </div>
         )
     }

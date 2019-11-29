@@ -7,6 +7,9 @@
   margin-bottom: 0.1rem;
   background-color: #fff;
 }
+.dynamic .dynamic-li .txtLight {
+  color: #E82202;
+}
 .dynamic .dynamic-li .header .avatar-box {
   position: relative;
 }
@@ -63,7 +66,7 @@
 .dynamic .dynamic-li .content {
   color: #000;
   font-size: 1.2rem;
-  margin: 1.2rem 0 0.5rem 4.3rem;
+  margin: 1rem 0 0.5rem 4.3rem;
 }
 .dynamic .dynamic-li .video {
   margin-left: 4.3rem;
@@ -99,4 +102,48 @@
   width: 2rem;
   height: auto;
   margin-right: 0.2rem;
+}
+.dynamic .dynamic-li .publishAlbum,
+.dynamic .dynamic-li .publishSong {
+  width: 100%;
+  height: auto;
+  padding-left: 4.3rem;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+.dynamic .dynamic-li .publishAlbum img,
+.dynamic .dynamic-li .publishSong img {
+  width: 10rem;
+  height: auto;
+  border-radius: 0.5rem;
+}
+.dynamic .dynamic-li .publishSong {
+  width: 100%;
+  height: auto;
+  padding-left: 4.3rem;
+  box-sizing: border-box;
+}
+.dynamic .dynamic-li .creatorBox {
+  background-color: #f4f4f4;
+  padding-left: 0.5rem;
+  border-radius: 0.2rem;
+  margin-top: 0.5rem;
+}
+.dynamic .dynamic-li .creatorBox .avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.3rem;
+  margin-right: 0.5rem;
+}
+.dynamic .dynamic-li .creatorBox p {
+  padding: 0.3rem 0;
+}
+.dynamic .dynamic-li .creatorBox p .artist {
+  color: #000;
+  font-size: 1rem;
+}
+.dynamic .dynamic-li .creatorBox p .name {
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
 }

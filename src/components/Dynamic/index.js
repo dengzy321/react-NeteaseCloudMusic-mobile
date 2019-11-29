@@ -13,9 +13,16 @@ class Dynamic extends React.Component {
     }
     componentWillReceiveProps(nextProps) {
         console.log(nextProps.list)
+        nextProps.list.forEach(item => {
+            item.json.msg = item.json.msg.replace(/#(\S*)#/g, '<b className="txtLight">#$1#</b>')
+            console.log(item.json.msg)
+        })
         this.setState({
             list: nextProps.list
         })
+    }
+    onPlayMusic = (id) => {
+        
     }
     render(){
         const { list } = this.state;
@@ -37,20 +44,44 @@ class Dynamic extends React.Component {
                                                 <img className='icon' src={Iconpath.vip} />
                                                 <b>年</b>
                                             </span>
-                                            <span className='type'>发布视频：</span>
+                                            {item.type == 17 && <span className='type'></span>}
+                                            {item.type == 18 && <span className='type'>分享单曲：</span>}
+                                            {item.type == 19 && <span className='type'>分享专辑：</span>}
+                                            {item.type == 22 && <span className='type'>转发：</span>}
+                                            {item.type == 35 && <span className='type'>文字：</span>}
+                                            {item.type == 39 && <span className='type'>发布视频：</span>}
                                         </p>
                                         <p className='liveCount'>19.8万粉丝</p>
                                     </div>
                                     <button className='follow'>+关注</button>
                                 </div>
                                 <div className='content'>{item.json.msg}</div>
-                                <div className='video'>
-                                    {/* <video poster={item.json.video.coverUrl} controls>
-                                        <source src={data.urlInfo.url} type="video/mp4" />
-                                        <source src={data.urlInfo.url} type="video/ogg" />
-                                        您的浏览器不支持 video 标签。
-                                    </video> */}
-                                </div>
+                                {
+                                    item.type == 18 &&
+                                    <div className='publishSong'>
+                                        <img src={item.json.song.artists[0].picUrl} alt="" />
+                                        <div className='creatorBox da'>
+                                            <img className='avatar' src={item.json.song.artists[0].img1v1Url} alt="" />
+                                            <p className='ddc-h' onClick={this.onPlayMusic.bind(this,item.json.song.id)}>
+                                                <span className='artist'>{item.json.song.artists[0].name}</span>
+                                                <span className='name'>{item.json.song.name}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+                                {
+                                    item.type == 19 &&
+                                    <div className='publishAlbum'>
+                                        <img src={item.json.album.picUrl} alt="" />
+                                        <div className='creatorBox da'>
+                                            <img className='avatar' src={item.json.album.img80x80} alt="" />
+                                            <p className='ddc-h'>
+                                                <span className='artist'>{item.json.album.artist.name}</span>
+                                                <span className='name'>{item.json.album.name}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
                                 <div className='footer da'>
                                     <span className='forward da'>
                                         <img src={Iconpath.forward} />
