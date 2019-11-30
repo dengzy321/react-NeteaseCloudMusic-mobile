@@ -1,4 +1,4 @@
-window.globa = {
+window.global = {
     /**
      * 存储localStorage
      */

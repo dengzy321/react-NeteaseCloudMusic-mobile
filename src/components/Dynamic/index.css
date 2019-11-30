@@ -1,5 +1,4 @@
 .dynamic {
-  padding-top: 3.5rem;
   background-color: #f4f4f4;
 }
 .dynamic .dynamic-li {
@@ -7,15 +6,12 @@
   margin-bottom: 0.1rem;
   background-color: #fff;
 }
-.dynamic .dynamic-li .txtLight {
-  color: #E82202;
-}
 .dynamic .dynamic-li .header .avatar-box {
   position: relative;
 }
 .dynamic .dynamic-li .header .avatar-box .avatar {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3.2rem;
+  height: 3.2rem;
   border-radius: 50%;
 }
 .dynamic .dynamic-li .header .avatar-box .icon {
@@ -60,13 +56,22 @@
   color: #fff;
   font-size: 1rem;
   border-radius: 1rem;
-  padding: 0.2rem 0.8rem;
+  padding: 0.3rem 0.8rem;
   border: 0;
 }
 .dynamic .dynamic-li .content {
   color: #000;
   font-size: 1.2rem;
   margin: 1rem 0 0.5rem 4.3rem;
+}
+.dynamic .dynamic-li .content .txtLight {
+  color: #1296db;
+}
+.dynamic .dynamic-li .content .txtLight .link {
+  width: 1rem;
+  height: auto;
+  margin-left: 0.2rem;
+  margin-right: 0.3rem;
 }
 .dynamic .dynamic-li .video {
   margin-left: 4.3rem;
@@ -103,24 +108,76 @@
   height: auto;
   margin-right: 0.2rem;
 }
-.dynamic .dynamic-li .publishAlbum,
-.dynamic .dynamic-li .publishSong {
+.dynamic .dynamic-li .publishModal,
+.dynamic .dynamic-li .publishModal,
+.dynamic .dynamic-li .forwardModal,
+.dynamic .dynamic-li .videoModal,
+.dynamic .dynamic-li .forwardModal,
+.dynamic .dynamic-li .videoModal {
   width: 100%;
   height: auto;
   padding-left: 4.3rem;
   box-sizing: border-box;
   margin-bottom: 1rem;
 }
-.dynamic .dynamic-li .publishAlbum img,
-.dynamic .dynamic-li .publishSong img {
+.dynamic .dynamic-li .publishModal .coverImg,
+.dynamic .dynamic-li .publishModal .coverImg,
+.dynamic .dynamic-li .forwardModal .coverImg,
+.dynamic .dynamic-li .videoModal .coverImg,
+.dynamic .dynamic-li .forwardModal .coverImg,
+.dynamic .dynamic-li .videoModal .coverImg {
+  position: relative;
+}
+.dynamic .dynamic-li .publishModal .coverImg .img,
+.dynamic .dynamic-li .publishModal .coverImg .img,
+.dynamic .dynamic-li .forwardModal .coverImg .img,
+.dynamic .dynamic-li .videoModal .coverImg .img,
+.dynamic .dynamic-li .forwardModal .coverImg .img,
+.dynamic .dynamic-li .videoModal .coverImg .img {
   width: 10rem;
   height: auto;
   border-radius: 0.5rem;
 }
-.dynamic .dynamic-li .publishSong {
+.dynamic .dynamic-li .publishModal,
+.dynamic .dynamic-li .forwardModal,
+.dynamic .dynamic-li .videoModal {
   width: 100%;
   height: auto;
   padding-left: 4.3rem;
+  box-sizing: border-box;
+}
+.dynamic .dynamic-li .forwardModal {
+  background-color: #f6f6f6;
+  margin-left: 4.3rem;
+  width: auto;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border-radius: 0.2rem;
+}
+.dynamic .dynamic-li .forwardModal .content {
+  margin-left: 0;
+  margin-top: 0;
+}
+.dynamic .dynamic-li .forwardModal .creatorBox {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.dynamic .dynamic-li .videoModal .coverImg {
+  position: relative;
+}
+.dynamic .dynamic-li .videoModal .coverImg .img {
+  width: 23rem;
+  height: auto;
+  border-radius: 0.5rem;
+}
+.dynamic .dynamic-li .videoModal .coverImg .icon {
+  position: absolute;
+  width: 5rem;
+  height: auto;
+  top: calc(50% - 2.5rem);
+  left: 9rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  padding: 1rem;
   box-sizing: border-box;
 }
 .dynamic .dynamic-li .creatorBox {

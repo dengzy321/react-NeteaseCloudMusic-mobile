@@ -104,6 +104,7 @@ const arr = [
     'comment_$333',
     'live_$333',
     'collect_red',
+    'link',
 ]
 
 let obj = {}

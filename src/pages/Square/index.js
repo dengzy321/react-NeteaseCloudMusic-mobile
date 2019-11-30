@@ -32,12 +32,14 @@ class Square extends React.Component {
     }
     // 获取动态信息数据
     initDynamicInfo() {
-        http.getDynamicInfo({ pagesize: 30 }).then(res =>{
+        const { dynamicArr } = this.state
+        http.getDynamicInfo({ pagesize: 20 }).then(res =>{
             res.event.forEach(item => {
                 item.json = JSON.parse(item.json)
+                if(item.type == 22) item.json.event.json = JSON.parse(item.json.event.json)
             })
             this.setState({
-                dynamicArr: res.event
+                dynamicArr: [...dynamicArr, ...res.event]
             })
         })
     }
@@ -56,15 +58,24 @@ class Square extends React.Component {
             </div>
         )
     }
+    // 改变tab
     onChange = (curIndex) => {
         if (curIndex == 0) this.initWaterVideo(4104)
         else this.initDynamicInfo()
         this.setState({ curIndex })
     }
+    // 滚动加载更多
+    onScroll = (e)  =>{
+        const { curIndex } = this.state
+        if(window.global.onReachBottom(e)){
+            if (curIndex == 0) this.initWaterVideo(4104)
+            else this.initDynamicInfo()
+        }
+    }
     render() {
         const { curIndex, waterVideoArr, dynamicArr } = this.state
         return (
-            <div className='square layout'>
+            <div className='square' onScroll={this.onScroll}>
                 <div className='nav dcc'>
                     <span className={curIndex == 0 ? 'navActive' : ''} onClick={this.onChange.bind(this,0)}>广场</span>
                     <span className={curIndex == 1? 'navActive':''} onClick={this.onChange.bind(this,1)}>动态</span>

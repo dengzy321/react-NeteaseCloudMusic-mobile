@@ -1,6 +1,9 @@
 .square {
   height: 100%;
   background-color: #f4f4f4;
+  overflow-y: scroll;
+  padding-top: 7.5rem;
+  box-sizing: border-box;
 }
 .square .nav {
   background-color: #fff;
