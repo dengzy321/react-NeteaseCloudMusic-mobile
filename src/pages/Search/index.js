@@ -27,7 +27,7 @@ class Search extends React.Component {
         if(e.keyCode != 13) return
         this.props.history.push({
             pathname: '/SearchResult',
-            query: { keywords: e.target.value }
+            state: { keywords: e.target.value }
         })
         this.props.addSearchHistory(e.target.value)
     }

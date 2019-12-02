@@ -23,6 +23,13 @@ class SearchVideoList extends React.Component {
             item.playNum = item.playTime >= 100000? parseInt(item.playTime/10000)+'万' : item.playTime
         })
     }
+     // 查看视频
+    onViode = (vid) => {
+        this.props.history.push({
+            pathname: '/VideoComment',
+            state: { vid: vid }
+        })
+    }
     render() {
         const { data } = this.props;
         return (
@@ -30,7 +37,7 @@ class SearchVideoList extends React.Component {
                 <ul className='video-ul'>
                     {
                         data.map((item, index) =>
-                            <li key={index} className='video-li da'>
+                            <li key={index} className='video-li da' onClick={this.onViode.bind(this, item.vid)}>
                                 <Link to='#' className='da'>
                                     <div className='coverUrl'>
                                         <img src={item.coverUrl} />

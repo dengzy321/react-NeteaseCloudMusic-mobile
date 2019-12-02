@@ -1,54 +1,28 @@
 @import '../../style/variable.less';
 
 .waterfall-box{
-    background-color: #f4f4f4;
-    padding: 10px 0 5px 15px;
-    .waterfall-ul{
-        width: 100%;
-        position: relative;
-        .waterfall-li{
-            background-color: #fff;
-            position: absolute;
-            width: 160px;
-            border-radius: 0.5rem 0.5rem 0 0;
-            transition: all 0.3s;
-            .pic-box{ position: relative; }
-            .coverUrl{
+    padding-left: 1rem;
+    background-color: #f5f5f5;
+    .waterfall-list{
+        margin-right: 1rem;
+        flex: 1;
+        .wFall-ul{
+            width: 100%;
+            .wFall-li{
                 width: 100%;
-                height: auto;
-                border-radius: 0.5rem 0.5rem 0 0;
-            }
-            .icon{
-                position: absolute;
-                top: 0.5rem;
-                right: 0.5rem;
-                width: 1rem;
-                height: auto;
-            }
-            .title{
-                color: #333;
-                font-size: 1.2rem;
-                margin: 0.5rem;
-                line-height: 1.8rem;
-                font-weight: 400;
-            }
-            .footer{
-                padding: 0 0.5rem 0.8rem 0.5rem;
-                font-size: 0.9rem;
-                color: #999;
-                .avatarUrl{
-                    width: 1.3rem;
-                    height: 1.3rem;
-                    border-radius: 50%;
-                    margin-right: 0.3rem;
-                }
-                .name{
-                    flex: 1;
-                    width: 2rem;
-                }
-                .more-icon{
-                    width: 1.6rem;
+                background-color: #fff;
+                margin-bottom: 1rem;
+                padding-bottom: 0.5rem;
+                .coverImg{
+                    width: 100%;
                     height: auto;
+                    border-radius: 0.2rem;
+                }
+                .title{
+                    color: #333;
+                    font-size: 1rem;
+                    margin-top: 0.5rem;
+                    padding: 0 0.5rem;
                 }
             }
         }

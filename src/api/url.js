@@ -164,4 +164,24 @@ export default {
     method: 'get',
     url: '/video/sub'
   },
+  // 全部 mv
+  getMvAll: {
+    method: 'get',
+    url: '/mv/all'
+  },
+  // 最新 mv
+  getFirstMv: {
+    method: 'get',
+    url: '/mv/first'
+  },
+  // 网易出品mv
+  getExclusiveMv: {
+    method: 'get',
+    url: '/mv/exclusive/rcmd'
+  },
+  // 独家放送
+  getPrivatecontent: {
+    method: 'get',
+    url: '/personalized/privatecontent'
+  },
 }

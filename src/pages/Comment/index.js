@@ -46,7 +46,7 @@ class Comment extends React.Component {
     }
     // 滚动加载
     onScroll = (e) => {
-        if (window.globa.onReachBottom(e)) this.initData()
+        if (window.global.onReachBottom(e)) this.initData()
     }
     // 输入评论内容
     onInputComment = (e) => {

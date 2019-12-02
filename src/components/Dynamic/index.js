@@ -47,8 +47,17 @@ class Dynamic extends React.Component {
         })
     }
     // 打开播放器
-    onPlayMusic = (id) => {
-        
+    onPlayMusic = (item) => {
+        const { history, addPlaySong } = this.props
+        addPlaySong(item.json.song)
+        history.push('/playPlatform')
+    }
+    // 查看视频
+    onViode = (vid) => {
+        this.props.history.push({
+            pathname: '/VideoComment',
+            state: { vid: vid }
+        })
     }
     render() {
         const { list } = this.state;
@@ -88,9 +97,9 @@ class Dynamic extends React.Component {
                                         <div className='coverImg'>
                                             <img className='img' src={item.json.song.artists[0].picUrl} alt="" />
                                         </div>
-                                        <div className='creatorBox da'>
+                                        <div className='creatorBox da' onClick={this.onPlayMusic.bind(this, item)}>
                                             <img className='avatar' src={item.json.song.artists[0].img1v1Url} alt="" />
-                                            <p className='ddc-h' onClick={this.onPlayMusic.bind(this, item.json.song.id)}>
+                                            <p className='ddc-h'>
                                                 <span className='artist'>{item.json.song.artists[0].name}</span>
                                                 <span className='name'>{item.json.song.name}</span>
                                             </p>
@@ -131,7 +140,7 @@ class Dynamic extends React.Component {
                                 {
                                     item.type == 39 &&
                                     <div className='videoModal'>
-                                        <div className='coverImg'>
+                                        <div className='coverImg' onClick={this.onViode.bind(this, item.json.video.videoId)}>
                                             <img className='img' src={item.json.video.coverUrl} alt="" />
                                             <img className='icon' src={Iconpath.play} alt="" />
                                         </div>

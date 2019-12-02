@@ -1,9 +1,8 @@
 .square {
-  height: 100%;
   background-color: #f4f4f4;
+  height: 100%;
   overflow-y: scroll;
-  padding-top: 7.5rem;
-  box-sizing: border-box;
+  padding-top: 8rem;
 }
 .square .nav {
   background-color: #fff;
@@ -33,12 +32,9 @@
   height: 0.2rem;
   width: 2.4rem;
 }
-.square .mySquare {
-  padding-top: 3rem;
-}
 .square .mySquare .ms-header {
   background: linear-gradient(90deg, #A09044, #735A22);
-  margin: 1rem;
+  margin: 0 1rem 1rem 1rem;
   padding: 1.5rem;
   border-radius: 1rem;
   color: #fff;

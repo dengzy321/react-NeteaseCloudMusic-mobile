@@ -31,7 +31,6 @@ class SearchResult extends React.Component {
             { title: '歌词', type: 1006 },
         ],
         searchValue: '', 
-        historyValue: '', // 历史搜索值
         curActive: 0,
         curShowComponent: '',
         curPageType: 1018,
@@ -46,16 +45,16 @@ class SearchResult extends React.Component {
         totalData: []
     }
     componentDidMount() {
-        console.log(this)
+        if(this.props.location.state.keywords) localStorage.setItem('searchKey',this.props.location.state.keywords)
         this.setState({
-            searchValue: this.props.location.state.keywords
+            searchValue: this.props.location.state.keywords? this.props.location.state.keywords:localStorage.getItem('searchKey')
         }, () => this.initData())
     }
     initData = () =>{
         const { searchValue, historyValue, page, curPageType } = this.state
-        this.props.addSearchHistory(searchValue? searchValue:historyValue)
+        this.props.addSearchHistory(searchValue)
         http.getSearch({
-            keywords: searchValue? searchValue:historyValue,
+            keywords: searchValue,
             type: curPageType,
             limit: 20,
             offset: page
@@ -65,16 +64,14 @@ class SearchResult extends React.Component {
                 if (res.result.order.length < 8 && curPageType == 1018) this.CurComponent(0)
                 else if (Object.keys(res.result).length > 10) {
                     this.setState({
-                        totalData: res.result,
-                        historyValue: searchValue? searchValue:historyValue
+                        totalData: res.result
                     }, () => this.CurComponent(curPageType))
                 }
             }else {
                 let attrName = Object.keys(res.result)[0].indexOf('Count') == -1 ? Object.keys(res.result)[0] : Object.keys(res.result)[1]
                 this.setState({
                     [attrName + 'Data']: [...this.state[attrName + 'Data'], ...res.result[attrName]],
-                    page: res.result[attrName].length > 0 ? page + 1 : page,
-                    historyValue: searchValue? searchValue:historyValue
+                    page: res.result[attrName].length > 0 ? page + 1 : page
                 }, () => this.CurComponent(curPageType))
             }
         })
@@ -111,7 +108,7 @@ class SearchResult extends React.Component {
     }
     // 滚动加载更多
     onScroll = (e) => {
-        if (window.globa.onReachBottom(e) && this.state.curPageType != 1018) this.initData()
+        if (window.global.onReachBottom(e) && this.state.curPageType != 1018) this.initData()
     }
     // 确定渲染那个组件
     CurComponent = (type) =>{
@@ -139,7 +136,7 @@ class SearchResult extends React.Component {
                 com = albumsData.length != 0 ? <SearchAlbum data={albumsData}/> : com
                 break;
             case 1014: 
-                com = videosData.length != 0 ? <SearchVideoList data={videosData}/> : com
+                com = videosData.length != 0 ? <SearchVideoList data={videosData} history={history}/> : com
                 break;
             case 100: 
                 com = artistsData.length != 0 ? <SearchArtist data={artistsData}/> : com

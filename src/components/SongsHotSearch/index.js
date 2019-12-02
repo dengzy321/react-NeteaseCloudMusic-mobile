@@ -20,7 +20,7 @@ class SongsHotSearch extends React.Component {
                     {
                         data.map((item, index) =>
                             <li className='da hotSearch-li' key={index}  onClick={() => addSearchHistory(item.searchWord)}>
-                                <Link to={{ pathname: '/SearchResult', query: { keywords: item.searchWord }}} className='da flex'>
+                                <Link to={{ pathname: '/SearchResult', state: { keywords: item.searchWord }}} className='da flex'>
                                     <span className='index' style={index < 3 ? { color: 'FF1D12' } : {}}>{index + 1}</span>
                                     <div className=''>
                                         <p className='da'>

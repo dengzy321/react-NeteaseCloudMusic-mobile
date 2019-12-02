@@ -34,7 +34,7 @@ class SearchTotal extends React.Component {
     }
     render() {
         const { show, curSongsInfo } = this.state
-        const { data, onChange } = this.props
+        const { data, onChange, history } = this.props
         const toolData = [
             { name: '下一首播放', icon: Iconpath.album },
             { name: '收藏到歌单', icon: Iconpath.favorites_$333 },
@@ -84,7 +84,7 @@ class SearchTotal extends React.Component {
                             <span className='title'>视频</span>
                         </div>
                         <div className='searchContent'>
-                            <SearchVideoList data={data.video.videos} />
+                            <SearchVideoList data={data.video.videos} history={history}/>
                         </div>
                         <button className='moreText' onClick={() => onChange(7, 1014)}>{data.video.moreText} ></button>
                     </div>

@@ -12,22 +12,28 @@ import Dynamic from '@/components/Dynamic'
 class Square extends React.Component {
     state = {
         waterVideoArr: [],
+        waterFallPage: 0,
         dynamicArr: [],
         curIndex: 0
     }
     componentWillMount(){
-        this.initWaterVideo(3100)
+        this.initWaterVideo()
         this.initDynamicInfo()
     }
-    // 获取瀑布流数据
-    initWaterVideo(id){
-        // http.getVideoTabs().then(res =>{
-        //     http.getVideoGroup({ id: id }).then(res2 =>{
-        //         this.setState({ waterVideoArr: res2.datas })
-        //     })
-        // })
-        http.getHotTopic({ limit: 30 }).then(res =>{
-            // this.setState({ waterVideoArr: res2.datas })
+    // 获取瀑布流数据（热门话题）
+    initWaterVideo() {
+        let { waterVideoArr, waterFallPage } = this.state
+        http.getFirstMv({
+            limit: 30,
+            offset: 0
+        }).then(res => {
+            if (res.data.lenght != 0) {
+                waterFallPage ++
+            }
+            this.setState({
+                waterVideoArr: [...waterVideoArr, ...res.data],
+                waterFallPage
+            })
         })
     }
     // 获取动态信息数据
@@ -60,15 +66,15 @@ class Square extends React.Component {
     }
     // 改变tab
     onChange = (curIndex) => {
-        if (curIndex == 0) this.initWaterVideo(4104)
+        if (curIndex == 0) this.initWaterVideo()
         else this.initDynamicInfo()
         this.setState({ curIndex })
     }
     // 滚动加载更多
     onScroll = (e)  =>{
         const { curIndex } = this.state
-        if(window.global.onReachBottom(e)){
-            if (curIndex == 0) this.initWaterVideo(4104)
+        if (window.global.onReachBottom(e)) {
+            if (curIndex == 0) this.initWaterVideo()
             else this.initDynamicInfo()
         }
     }
@@ -77,7 +83,7 @@ class Square extends React.Component {
         return (
             <div className='square' onScroll={this.onScroll}>
                 <div className='nav dcc'>
-                    <span className={curIndex == 0 ? 'navActive' : ''} onClick={this.onChange.bind(this,0)}>广场</span>
+                    <span className={curIndex == 0 ? 'navActive' : ''} onClick={this.onChange.bind(this,0)}>MV</span>
                     <span className={curIndex == 1? 'navActive':''} onClick={this.onChange.bind(this,1)}>动态</span>
                 </div>
                 {curIndex == 0 ? this.MySquare(waterVideoArr) : <Dynamic {...this.props} list={dynamicArr}/> }
