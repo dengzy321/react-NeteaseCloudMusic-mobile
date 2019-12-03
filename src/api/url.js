@@ -184,4 +184,9 @@ export default {
     method: 'get',
     url: '/personalized/privatecontent'
   },
+  // 获取歌单详情
+  getSongSheetDetail: {
+    method: 'get',
+    url: '/playlist/detail'
+  },
 }

@@ -15,11 +15,13 @@ class RecommendSongs extends React.Component {
         this.initSongs()
         this.initNewDish()
     }
+    // 初始化推荐列表
     initSongs = () =>{
         http.getRecommendSongs({ limit: 6 }).then(res =>{
             if(res.code == 200) this.setState({ recommendArr: res.result })
         })
     }
+    // 初始化新碟数据
     initNewDish = () =>{
         if(this.state.curActive == 1) return
         http.getNewDish({ limit: 3 }).then(res =>{
@@ -31,6 +33,7 @@ class RecommendSongs extends React.Component {
             }
         })
     }
+    // 初始化新歌数据
     initNewSongs = () =>{
         if(this.state.curActive == 2) return
         let arr = []
@@ -46,6 +49,13 @@ class RecommendSongs extends React.Component {
             }
         })
     }
+    // 打开歌单详情
+    onSongShootDetail = (id) => {
+        this.props.history.push({
+            pathname: '/SongSheetDetail',
+            state: { id }
+        })
+    }
     render() {
         const { recommendArr, newDishArr, curActive=1 } = this.state
         return (
@@ -55,7 +65,7 @@ class RecommendSongs extends React.Component {
                         <span className='title'>推荐歌单</span>
                         <Link to='/' className='more'>歌单广场</Link>
                     </div>
-                    <SongsGrid data={recommendArr} coverImgUrl='picUrl'/>
+                    <SongsGrid data={recommendArr} coverImgUrl='picUrl' toLocation={this.onSongShootDetail}/>
                 </div>
                 <div className='new-songs'>
                     <div className='ns-header dbc'>

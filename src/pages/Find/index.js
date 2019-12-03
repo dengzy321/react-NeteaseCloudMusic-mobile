@@ -34,10 +34,7 @@ class myCenter extends React.Component {
             <div className='find layout'>
                 {/* banner图 */}
                 <div className='banner'>
-                    <Carousel
-                        autoplay={true}
-                        infinite
-                    >
+                    <Carousel autoplay={true} infinite >
                         {
                             bannerArr.map((item, index) => <img key={index} className='' src={item.pic} alt='' />)
                         }
@@ -55,7 +52,7 @@ class myCenter extends React.Component {
                         )
                     }
                 </div>
-                <RecommendSongs />
+                <RecommendSongs {...this.props}/>
             </div>
         )
     }

@@ -1,0 +1,96 @@
+@import '../../style/variable.less';
+
+.songSheetDetail{
+    .header{
+        background-size: 100%;
+        width: 100%;
+        height: 20rem;
+        position: relative;
+        .songSheetInfo{
+            padding: 2rem 1rem 1rem 1rem;
+            .coverImgBox{
+                position: relative;
+                .coverImg{
+                    width: 8rem;
+                    height: 8rem;
+                    border-radius: 0.2rem;
+                }
+                .icon{
+                    position: absolute;
+                    top: 0.5rem;
+                    right: 0.5rem;
+                    color: #fff;
+                    font-size: 0.8rem;
+                    img{
+                        width: 1rem;
+                        height: auto;
+                        margin-right: 0.3rem;
+                    }
+                }
+            }
+            .songSheetInfo-r{
+                flex: 1;
+                height: 8rem;
+                padding: 0.5rem 0 0.5rem 1rem;
+                box-sizing: border-box;
+                .title{
+                    color: #fff;
+                    font-size: 1.2rem;
+                }
+                .creator{
+                    .avatar{
+                        width: 1.8rem;
+                        height: 1.8rem;
+                        border-radius: 50%;
+                    }
+                    .nickname{
+                       color: rgba(255, 255, 255, 0.8);
+                       font-size: 1rem;
+                       margin: 0 0.5rem; 
+                    }
+                    .icon{
+                        width: 0.8rem;
+                        height: auto;
+                    }
+                }
+                .description{
+                    color: rgba(255, 255, 255, 0.8);
+                    font-size: 0.9rem;
+                    img{
+                        width: 0.9rem;
+                        height: auto;
+                        margin-left: 0.5rem;
+                    }
+                }
+            }
+        }
+        .handleItem{
+            position: absolute;
+            bottom: 0rem;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            .hi-li{
+                flex: 1;
+                text-align: center;
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 0.9rem;
+                img{
+                    width: 1.6rem;
+                    height: auto;
+                    margin-bottom: 0.6rem;
+                }
+            }
+        }
+    }
+    .mainContent{
+        background-color: #fff;
+        border-radius: 1rem 1rem 0 0;
+        height: 100rem;
+        .mcHeader{
+            position: sticky;
+            padding: 2rem 0;
+            border-bottom: 0.1rem solid #f4f4f4;
+        }
+    }
+}

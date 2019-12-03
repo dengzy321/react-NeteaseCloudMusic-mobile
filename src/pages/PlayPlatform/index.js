@@ -63,8 +63,8 @@ class PlayPlatform extends React.Component {
         const { curPlaySong } = this.props
 
         if (rootAudio.paused) {
+            Toast.loading('拼命播放中...', 999)
             let watchPlay = setInterval(() => {
-                Toast.loading('拼命播放中...', 999)
                 if (rootAudio.currentTime > 0) {
                     Toast.hide()
                     clearInterval(watchPlay)

@@ -18,7 +18,7 @@ class SongsGrid extends React.Component {
                 hasLine={false}
                 square={false}
                 renderItem={item => (
-                    <div to='/' className='songsGrid'>
+                    <div className='songsGrid' onClick={this.props.toLocation && this.props.toLocation.bind(this, item.id)}>
                         <div className='pic-box'>
                             <img className='pic' src={item[coverImgUrl]} alt="" />
                             {
