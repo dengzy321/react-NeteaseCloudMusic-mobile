@@ -194,4 +194,9 @@ export default {
     method: 'get',
     url: '/song/detail'
   },
+  // 歌单评论
+  getSongSheetComment: {
+    method: 'get',
+    url: '/comment/playlist'
+  },
 }

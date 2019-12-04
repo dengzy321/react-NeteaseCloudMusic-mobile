@@ -8,7 +8,7 @@ import Iconpath from '@/utils/iconpath'
 import { Progress, Toast } from 'antd-mobile';
 import Loading from '@/components/Loading'
 
-let timer = null, titleTimer = null
+let timer = null, titleTimer
 const rootAudio = document.getElementById('rootAudio')  // audio播放器
 class PlayPlatform extends React.Component {
     state = {
@@ -26,17 +26,21 @@ class PlayPlatform extends React.Component {
             this.initSongUrl(location.state.id)
             this.initSongDetail(location.state.id)
         } else {
-            window.global.onScrollTitle(curPlaySong.name, titleTimer)
+            titleTimer = window.global.onScrollTitle(curPlaySong.name)
             this.setState({
                 songDetail: curPlaySong
             }, () => this.playInfoHandle())
         }
     }
+    componentWillUnmount(){
+        clearInterval(titleTimer)
+    }
     // 获取歌曲详情
     initSongDetail = (ids) => {
         http.getSongDetail({ ids }).then(res => {
             this.props.addPlaySong(res.songs[0])
-            window.global.onScrollTitle(res.songs[0].name, titleTimer)
+            titleTimer = window.global.onScrollTitle(res.songs[0].name)
+            if(res.songs[0].dt >= 100000) res.songs[0].commentCount = parseInt(res.songs[0].dt / 100000) + '万'
             this.setState({
                 songDetail: res.songs[0]
             }, () => this.playInfoHandle())
@@ -131,7 +135,19 @@ class PlayPlatform extends React.Component {
     }
     // 打开评论页面
     onComment = () => {
-        this.props.history.push({ pathname: '/Comment' })
+        let { songDetail } = this.state
+        this.props.history.push({
+            pathname: '/comment',
+            state: { 
+                id: this.props.curPlaySong.id,
+                type: 'song',
+                data: {
+                    avatar: songDetail.al.picUrl,
+                    artist: songDetail.ar[0].name,
+                    name: songDetail.name
+                }
+            }
+        })
     }
     render() {
         const { playState, loopType, isCollect, playPercentage, durationTxt, curplayTimeTxt, songDetail } = this.state
@@ -165,7 +181,7 @@ class PlayPlatform extends React.Component {
                         <img className='dts' src={Iconpath.dts} />
                         <p className='comment' onClick={this.onComment}>
                             <img className='share' src={Iconpath.comment_$fff} />
-                            <b>11万</b>
+                            <b>{songDetail.commentCount}</b>
                         </p>
                         <img className='more' src={Iconpath.more_$fff} />
                     </div>

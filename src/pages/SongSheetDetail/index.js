@@ -8,7 +8,7 @@ import Iconpath from '@/utils/iconpath'
 import { http } from '@/api/http'
 import { ColorExtractor } from 'react-color-extractor'
 
-let titleTimer = null
+let titleTimer
 class SongSheetDetail extends React.Component {
     state = {
         songSheetInfo: {},
@@ -16,12 +16,14 @@ class SongSheetDetail extends React.Component {
     }
     componentDidMount() {
         this.initSongSheetDetail(this.props.location.state.id)
-        console.log(this)
+    }
+    componentWillUnmount(){
+        clearInterval(titleTimer)
     }
     // 获取歌单详情
     initSongSheetDetail = (id) => {
         http.getSongSheetDetail({ id }).then(res => {
-            window.global.onScrollTitle(res.playlist.name, titleTimer)
+            titleTimer = window.global.onScrollTitle(res.playlist.name)
             this.setState({
                 songSheetInfo: res.playlist
             })
@@ -36,6 +38,22 @@ class SongSheetDetail extends React.Component {
         this.props.history.push({
             pathname: '/playPlatform',
             state: { id }
+        })
+    }
+    // 打开评论
+    openComment = () =>{
+        let { songSheetInfo } = this.state
+        this.props.history.push({
+            pathname: '/comment',
+            state: { 
+                id: this.props.location.state.id,
+                type: 'songSheet',
+                data: {
+                    avatar: songSheetInfo.coverImgUrl,
+                    artist: songSheetInfo.creator.nickname,
+                    name: songSheetInfo.name
+                } 
+            }
         })
     }
     render() {
@@ -54,21 +72,21 @@ class SongSheetDetail extends React.Component {
                                 <b>{songSheetInfo.playCount}</b>
                             </span>
                         </p>
-                        <p className='songSheetInfo-r'>
-                            <h3 className='title'>{songSheetInfo.name}</h3>
-                            <div className='creator da'>
+                        <div className='songSheetInfo-r'>
+                            <p className='title'>{songSheetInfo.name}</p>
+                            <p className='creator da'>
                                 <img className='avatar' src={songSheetInfo.creator && songSheetInfo.creator.avatarUrl} alt="" />
                                 <span className='nickname'>{songSheetInfo.creator && songSheetInfo.creator.nickname}</span>
                                 <img className='icon' src={Iconpath.arrow_right_$fff} alt="" />
-                            </div>
-                            <div className='description da'>
+                            </p>
+                            <p className='description da'>
                                 <span className='to-line'>{songSheetInfo.description}</span>
                                 <img src={Iconpath.arrow_right_$fff} alt="" />
-                            </div>
-                        </p>
+                            </p>
+                        </div>
                     </div>
                     <div className='handleItem da'>
-                        <p className='hi-li ddc-v'>
+                        <p className='hi-li ddc-v' onClick={this.openComment}>
                             <img src={Iconpath.news_$fff} alt="" />
                             <b>{songSheetInfo.commentCount}</b>
                         </p>

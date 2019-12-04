@@ -11,7 +11,6 @@ class MainLayout extends React.Component {
         document.title = '网易云音乐'
         // 监听路由变化
         this.props.history.listen(route => {
-            clearTimeout()
             document.body.style = ''
         })
     }

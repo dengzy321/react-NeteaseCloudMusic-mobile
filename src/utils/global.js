@@ -45,15 +45,16 @@ window.global = {
     /**
      * 滚动标题 
      * */ 
-    onScrollTitle: (title,timer) => {
-        if(title.length < 11) {
+    onScrollTitle: (title) => {
+        if(!title || title.length < 11) {
             document.title = title
             return
         }
-        clearTimeout()
-        document.title = title.substring(1, title.length) + title.substring(0, 1)
-        title = document.title.substring(0, title.length)
-        timer = setTimeout(() => window.global.onScrollTitle(title), 500)
+        let timer = setInterval(() => {
+            document.title = title.substring(1, title.length) + title.substring(0, 1)
+            title = document.title.substring(0, title.length)
+        }, 500)
+        return timer
     }
 }
 

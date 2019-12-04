@@ -3,12 +3,12 @@ import './index.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '@/store/actions';
+import { clearInterval } from 'timers';
 
 class BlankLayout extends React.Component {
     componentDidMount(){
         // 监听路由变化
         this.props.history.listen(route => {
-            clearTimeout()
             document.body.style = ''
         })
     }

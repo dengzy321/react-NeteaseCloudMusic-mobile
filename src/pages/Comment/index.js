@@ -14,17 +14,30 @@ class Comment extends React.Component {
         newComments: [],
         page: 0,
         commentsId: '',
-        inputComment: ''
+        inputComment: '',
     }
     componentWillMount() {
         this.setState({
             commentsId: this.props.curPlaySong.id
-        }, () => this.initData())
+        }, () => this.initCommentData())
     }
-    // 获取评论
-    initData = () => {
+    // 获取评论(歌曲, 歌单)
+    initCommentData = () => {
         const { page, commentsId, newComments } = this.state
-        http.getMusicComment({
+
+        let httpType, type = this.props.location.state.type
+        switch (type) {
+            case 'song':
+                httpType = 'getMusicComment'
+                break;
+            case 'songSheet':
+                httpType = 'getSongSheetComment'
+                break;
+            default:
+                break;
+        }
+
+        http[httpType]({
             id: commentsId,
             limit: 20,
             offset: page
@@ -44,7 +57,7 @@ class Comment extends React.Component {
     }
     // 滚动加载
     onScroll = (e) => {
-        if (window.global.onReachBottom(e)) this.initData()
+        if (window.global.onReachBottom(e)) this.initCommentData()
     }
     // 输入评论内容
     onInputComment = (e) => {
@@ -62,25 +75,19 @@ class Comment extends React.Component {
             id: commentsId,
             content: inputComment
         }).then(res => {
-
+            
         })
     }
     render() {
         const { hotComments, newComments, commentsId, inputComment } = this.state
-        const { curPlaySong } = this.props
+        const { curPlaySong, location } = this.props
         return (
             <div className='myComment' onScroll={this.onScroll}>
                 <div className='header da'>
-                    <img className='coverImg' src={curPlaySong.al.picUrl} />
+                    <img className='coverImg' src={location.state.data.avatar} />
                     <div className='songInfo'>
-                        <p className='name'>{curPlaySong.al.name}</p>
-                        <p className='artist'>
-                            {
-                                curPlaySong.ar.map((aItem, aIndex) =>
-                                    <b>{aItem.name}{aIndex+1 != curPlaySong.ar.length && '/'}</b>
-                                )
-                            }
-                        </p>
+                        <p className='name'>{location.state.data.name}</p>
+                        <p className='artist'>{location.state.data.artist}</p>
                     </div>
                     <img className='arrow-rigth' src={Iconpath.arrow_rigth_$999} />
                 </div>
