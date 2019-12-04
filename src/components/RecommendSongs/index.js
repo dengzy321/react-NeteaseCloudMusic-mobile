@@ -15,38 +15,39 @@ class RecommendSongs extends React.Component {
         this.initSongs()
         this.initNewDish()
     }
-    // 初始化推荐列表
+    // 初始化推荐歌单列表
     initSongs = () =>{
-        http.getRecommendSongs({ limit: 6 }).then(res =>{
-            if(res.code == 200) this.setState({ recommendArr: res.result })
+        http.getRecommendSongs({ limit: 6 }).then(res => {
+            res.result.forEach(item => {
+                let c = item.playCount
+                if (c >= 100000000) item.playCount = parseInt(c / 100000000) + '亿'
+                else if (c >= 10000) item.playCount = parseInt(c / 100000) + '万'
+            })
+            this.setState({ recommendArr: res.result })
         })
     }
     // 初始化新碟数据
     initNewDish = () =>{
         if(this.state.curActive == 1) return
         http.getNewDish({ limit: 3 }).then(res =>{
-            if(res.code == 200) {
-                this.setState({
-                    newDishArr: res.albums,
-                    curActive: 1
-                })
-            }
+            this.setState({
+                newDishArr: res.albums,
+                curActive: 1
+            })
         })
     }
     // 初始化新歌数据
     initNewSongs = () =>{
         if(this.state.curActive == 2) return
         let arr = []
-        http.getNewSongs().then(res =>{
-            if(res.code == 200) {
-                res.albums.forEach((item, index) =>{
-                    if(index < 3) arr.push(item) 
-                })
-                this.setState({
-                    newDishArr: arr,
-                    curActive: 2
-                })
-            }
+        http.getNewAlbum().then(res =>{
+            res.albums.forEach((item, index) => {
+                if (index < 3) arr.push(item)
+            })
+            this.setState({
+                newDishArr: arr,
+                curActive: 2
+            })
         })
     }
     // 打开歌单详情
@@ -55,6 +56,20 @@ class RecommendSongs extends React.Component {
             pathname: '/SongSheetDetail',
             state: { id }
         })
+    }
+    // 打开专辑
+    onNewAlbum = (id) => {
+        // this.props.history.push({
+        //     pathname: '/playPlatform',
+        //     state: { id }
+        // })
+    }
+    // 打开新碟
+    onNewDish = (id) => {
+        // this.props.history.push({
+        //     pathname: '/playPlatform',
+        //     state: { id }
+        // })
     }
     render() {
         const { recommendArr, newDishArr, curActive=1 } = this.state
@@ -71,11 +86,11 @@ class RecommendSongs extends React.Component {
                     <div className='ns-header dbc'>
                         <p className='title'>
                             <span className={curActive == 1? 'activeTitle':''} onClick={this.initNewDish}>新碟</span>
-                            <span className={curActive == 2? 'activeTitle':''} onClick={this.initNewSongs}>新歌</span>
+                            <span className={curActive == 2? 'activeTitle':''} onClick={this.initNewSongs}>专辑</span>
                         </p>
                         <Link to='/' className='more'>更多新碟</Link>
                     </div>
-                    <SongsGrid data={newDishArr} coverImgUrl='picUrl'/>
+                    <SongsGrid data={newDishArr} toLocation={curActive == 1 ? this.onNewDish : this.onNewAlbum} coverImgUrl='picUrl'/>
                 </div>
             </div>
         )

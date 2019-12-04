@@ -152,6 +152,11 @@
   height: auto;
   margin-right: 0.2rem;
 }
+.songSheetDetail .mainContent .detail-ul .detail-li .info .infoDetail .icon-hq {
+  width: 2rem;
+  height: auto;
+  margin-right: 0.2rem;
+}
 .songSheetDetail .mainContent .detail-ul .detail-li .info .infoDetail .creator,
 .songSheetDetail .mainContent .detail-ul .detail-li .info .infoDetail .nameSmall {
   color: #999;
@@ -166,4 +171,40 @@
 .songSheetDetail .mainContent .detail-ul .detail-li .icon-more {
   width: 2rem;
   height: auto;
+}
+.songSheetDetail .mainContent .toolHeader {
+  background-color: #fff;
+  padding: 1rem 0;
+  flex: 1;
+}
+.songSheetDetail .mainContent .toolHeader .songsInfo .avatar {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 0.2rem;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+.songSheetDetail .mainContent .toolHeader .songsInfo .name {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  margin-right: 1rem;
+}
+.songSheetDetail .mainContent .toolHeader .songsInfo .artist {
+  color: #999;
+  font-size: 1rem;
+}
+.songSheetDetail .mainContent .toolHeader .songsInfo .btn {
+  border: 0.1rem solid #E82202;
+  background: transparent;
+  border-radius: 1rem;
+  padding: 0.3rem 0.8rem;
+  color: #E82202;
+  font-size: 0.8rem;
+}
+.songSheetDetail .mainContent .toolHeader .tip {
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
 }

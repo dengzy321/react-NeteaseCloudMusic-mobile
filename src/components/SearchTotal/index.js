@@ -17,13 +17,15 @@ import SongsToolModal from '@/components/SongsToolModal'
 class SearchTotal extends React.Component {
     state = {
         show: false,
-        curSongsInfo: '',
+        curSongsInfo: {},
     }
-    onOpenTool = (index) => {
+    // 打开歌曲tool
+    onOpenTool = (index, event) => {
         const { song } = this.props.data
+        if (index >= 0) event.stopPropagation()
         this.setState(state => ({
             show: !state.show,
-            curSongsInfo: song.songs[index]
+            curSongsInfo: index >= 0 ? song.songs[index] : {}
         }))
     }
     // 打开播放歌曲控制台
@@ -192,7 +194,7 @@ class SearchTotal extends React.Component {
                     </div>
                 }
                 <SongsToolModal show={show} data={toolData} closeFN={this.onOpenTool}>
-                    {curSongsInfo &&
+                    {Object.keys(curSongsInfo).length != 0 &&
                         <div className='toolHeader'>
                             <div className='songsInfo da'>
                                 <img className='avatar' src={curSongsInfo.al.picUrl} />

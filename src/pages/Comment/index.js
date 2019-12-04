@@ -18,7 +18,7 @@ class Comment extends React.Component {
     }
     componentWillMount() {
         this.setState({
-            commentsId: this.props.curPlaySong.id
+            commentsId: this.props.location.state.id
         }, () => this.initCommentData())
     }
     // 获取评论(歌曲, 歌单)
@@ -75,7 +75,7 @@ class Comment extends React.Component {
             id: commentsId,
             content: inputComment
         }).then(res => {
-            
+
         })
     }
     render() {
@@ -92,7 +92,7 @@ class Comment extends React.Component {
                     <img className='arrow-rigth' src={Iconpath.arrow_rigth_$999} />
                 </div>
                 <div className='commentContent'>
-                    <h3 className='title'>精彩评论</h3>
+                    {hotComments.length != 0 && <h3 className='title'>精彩评论</h3>}
                     <CommentList data={hotComments} commentsId={commentsId} />
                 </div>
                 <div className='commentContent'>

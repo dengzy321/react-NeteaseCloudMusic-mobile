@@ -11,7 +11,7 @@ import SongsToolModal from '@/components/SongsToolModal'
 class Songs extends React.Component {
     state = {
         show: false,
-        curSongsInfo: null
+        curSongsInfo: {}
     }
     componentDidMount(){
         console.log(this)
@@ -20,10 +20,11 @@ class Songs extends React.Component {
         console.log(nextProps)
     }
     // 打开歌曲tool
-    onOpenTool = (index) =>{
-        this.setState(state =>({
-            curSongsInfo: this.props.data[index],
-            show: !state.show
+    onOpenTool = (index, event) => {
+        if (index >= 0) event.stopPropagation()
+        this.setState(state => ({
+            show: !state.show,
+            curSongsInfo: index >= 0 ? this.props.data[index] : {}
         }))
     }
     // 打开播放歌曲控制台
@@ -67,7 +68,7 @@ class Songs extends React.Component {
                     }
                 </ul>
                 <SongsToolModal show={show} data={toolData} closeFN={this.onOpenTool}>
-                    {   curSongsInfo &&
+                    {Object.keys(curSongsInfo).length != 0 &&
                         <div className='toolHeader'>
                             <div className='songsInfo da'>
                                 <img className='avatar' src={curSongsInfo.artists[0].img1v1Url} />

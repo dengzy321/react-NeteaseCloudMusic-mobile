@@ -7,11 +7,14 @@ import { Link } from 'react-router-dom'
 import Iconpath from '@/utils/iconpath'
 import { http } from '@/api/http'
 import { ColorExtractor } from 'react-color-extractor'
+import SongsToolModal from '@/components/SongsToolModal'
 
 let titleTimer
 class SongSheetDetail extends React.Component {
     state = {
+        show: false,
         songSheetInfo: {},
+        curSongsInfo: {},
         bgColor: []
     }
     componentDidMount() {
@@ -56,8 +59,36 @@ class SongSheetDetail extends React.Component {
             }
         })
     }
+    // 打开Mv视频
+    onMvVideo = (id, event) => {
+        event.stopPropagation()
+        http.getMvUrl({ id })
+    }
+    // 打开歌曲tool
+    onOpenTool = (index, event) => {
+        if (index >=0) event.stopPropagation()
+        let { songSheetInfo } = this.state
+        this.setState(state => ({
+            curSongsInfo: index >= 0 ? songSheetInfo.tracks[index] : {},
+            show: !state.show
+        }))
+    }
     render() {
-        const { songSheetInfo, bgColor } = this.state
+        const { songSheetInfo, curSongsInfo, bgColor, show } = this.state
+        console.log(curSongsInfo)
+        const toolData = [
+            { name: '下一首播放', icon: Iconpath.album },
+            { name: '收藏到歌单', icon: Iconpath.favorites_$333 },
+            { name: '下载', icon: Iconpath.download },
+            { name: '评论', icon: Iconpath.news },
+            { name: '分享', icon: Iconpath.share_$333 },
+            { name: '歌手：邢林团', icon: Iconpath.singer },
+            { name: '专辑', icon: Iconpath.album },
+            { name: '设为铃声', icon: Iconpath.bell_$333 },
+            { name: '购买歌曲', icon: Iconpath.shopCart_$333 },
+            { name: '查看视频', icon: Iconpath.play_$333 },
+            { name: '隐蔽歌曲或歌单', icon: Iconpath.close_circular_$333 }
+        ]
         return (
             <div className='songSheetDetail'>
                 <ColorExtractor getColors={this.getColors}>
@@ -121,8 +152,9 @@ class SongSheetDetail extends React.Component {
                                         <div className='info'>
                                             <p className='name to-line'>{item.name}</p>
                                             <p className='da infoDetail to-line'>
-                                                <img className='icon-sole' src={Iconpath.sole_red} />
-                                                <img className='icon-vip' src={Iconpath.vip2_red} />
+                                                {item.fee == 1 && <img className='icon-vip' src={Iconpath.vip2_red} />}
+                                                {item.copyright == 2 && <img className='icon-sole' src={Iconpath.sole_red} />}
+                                                {item.pop == 100 && <img className='icon-hq' src={Iconpath.hq} />}
                                                 <span className='creator da'>
                                                     {
                                                         item.ar.map((aItem, aIndex) =>
@@ -133,12 +165,27 @@ class SongSheetDetail extends React.Component {
                                                 <span className='nameSmall'>- {item.name}</span>
                                             </p>
                                         </div>
-                                        <img className='icon-play' src={Iconpath.play} />
-                                        <img className='icon-more' src={Iconpath.more_gray} />
+                                        {item.mv > 0 && <img className='icon-play' src={Iconpath.play} onClick={this.onMvVideo.bind(this, 5436712)}/>}
+                                        <img className='icon-more' src={Iconpath.more_gray} onClick={this.onOpenTool.bind(this, index)}/>
                                     </li>
                                 )
                             }
                         </ul>
+                        <SongsToolModal show={show} data={toolData} closeFN={this.onOpenTool}>
+                            {Object.keys(curSongsInfo).length != 0 &&
+                                <div className='toolHeader'>
+                                    <div className='songsInfo da'>
+                                        <img className='avatar' src={curSongsInfo.al.picUrl} />
+                                        <div className='flex'>
+                                            <p className='name'>{curSongsInfo.al.name}</p>
+                                            <p className='artist'>{curSongsInfo.ar[0].name}</p>
+                                        </div>
+                                        <button className='btn'>vip首开5元</button>
+                                    </div>
+                                    <div className='tip'>开通vip畅享千万曲库下载特权</div>
+                                </div>
+                            }
+                        </SongsToolModal>
                     </div>
                 </div>
             </div>

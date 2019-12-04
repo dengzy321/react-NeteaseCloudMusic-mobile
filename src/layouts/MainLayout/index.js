@@ -20,7 +20,7 @@ class MainLayout extends React.Component {
             <div className='mainLayout'>
                 <Header />
                 {children}
-                { Object.keys(curPlaySong).length && <PlayTab history={history}/> }
+                { Object.keys(curPlaySong).length != 0 && <PlayTab history={history}/> }
             </div>
         );
     }

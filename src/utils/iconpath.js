@@ -112,6 +112,7 @@ const arr = [
     'arrow_right_$fff',
     'sole_red',
     'vip2_red',
+    'hq',
 ]
 
 let obj = {}

@@ -49,8 +49,8 @@ export default {
     method: 'get',
     url: '/top/album'
   },
-  //获取新歌（最新专辑）
-  getNewSongs: {
+  //最新专辑
+  getNewAlbum: {
     method: 'get',
     url: '/album/newest'
   },
@@ -198,5 +198,10 @@ export default {
   getSongSheetComment: {
     method: 'get',
     url: '/comment/playlist'
+  },
+  // mv 地址
+  getMvUrl: {
+    method: 'get',
+    url: '/mv/url'
   },
 }
