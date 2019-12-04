@@ -2,6 +2,7 @@ import { createBrowserHistory } from 'history';
 import Loadable from 'react-loadable';
 import Loading from '@/components/Loading';
 import MainLayout from '@/layouts/MainLayout';
+import BlankLayout from '@/layouts/BlankLayout';
 export const history = createBrowserHistory(); 
 
 const Pages = [
@@ -54,22 +55,27 @@ export const routes = [
   },
   {
     path: '/login',
+    layout:BlankLayout,
     component: PagesObj.Login
   },
   {
     path: '/phoneLogin',
+    layout:BlankLayout,
     component: PagesObj.PhoneLogin
   },
   {
     path: '/settings',
+    layout:BlankLayout,
     component: PagesObj.Settings
   },
   {
     path: '/search',
+    layout:BlankLayout,
     component: PagesObj.Search
   },
   {
     path: '/test',
+    layout:BlankLayout,
     component: PagesObj.Test
   },
   {
@@ -78,22 +84,27 @@ export const routes = [
   },
   {
     path: '/searchResult',
+    layout:BlankLayout,
     component: PagesObj.SearchResult
   },
   {
     path: '/playPlatform',
+    layout:BlankLayout,
     component: PagesObj.PlayPlatform
   },
   {
     path: '/comment',
+    layout:BlankLayout,
     component: PagesObj.Comment
   },
   {
     path: '/videoComment',
+    layout:BlankLayout,
     component: PagesObj.VideoComment
   },
   {
     path: '/songSheetDetail',
+    layout:BlankLayout,
     component: PagesObj.SongSheetDetail
   },
 ]

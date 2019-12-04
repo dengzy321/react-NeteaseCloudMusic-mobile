@@ -6,8 +6,9 @@ import './index.css';
 import { http } from '@/api/http'
 import Iconpath from '@/utils/iconpath'
 import { Progress, Toast } from 'antd-mobile';
+import Loading from '@/components/Loading'
 
-let timer = null
+let timer = null, titleTimer = null
 const rootAudio = document.getElementById('rootAudio')  // audio播放器
 class PlayPlatform extends React.Component {
     state = {
@@ -17,32 +18,29 @@ class PlayPlatform extends React.Component {
         durationTxt: '',  // 歌曲总播放时长txt
         curplayTimeTxt: '',  // 歌曲当前播放时长txt
         playPercentage: 0, //播放百分比
+        songDetail: {}, // 歌曲详情
     }
     componentDidMount() {
-        const { curPlaySong } = this.props
-        this.initSongUrl(curPlaySong.id)
-
-        // 处理播放总时长
-        let totalTime, tMin, tSecond;
-        tMin = parseInt(curPlaySong.duration / (1000 * 60))
-        tSecond = parseInt(curPlaySong.duration / 1000) % 60
-        totalTime = `${tMin >= 10? tMin : '0'+tMin}:${tSecond >= 10? tSecond : '0'+tSecond}`
-
-        this.setState({
-            playState: !rootAudio.paused,
-            durationTxt: totalTime,
-            curplayTimeTxt: rootAudio.currentTime > 0? this.playTimeHandle() : '00:00',
-            playPercentage: rootAudio.currentTime / (curPlaySong.duration / 1000) * 100
-        })
-
-        if(!rootAudio.paused){
-            timer = setInterval(() =>{
-                this.setState({
-                    curplayTimeTxt: this.playTimeHandle(),
-                    playPercentage: rootAudio.currentTime / (curPlaySong.duration / 1000) * 100
-                })
-            }, 1000)
+        const { location, curPlaySong } = this.props
+        if (location.state) {
+            this.initSongUrl(location.state.id)
+            this.initSongDetail(location.state.id)
+        } else {
+            window.global.onScrollTitle(curPlaySong.name, titleTimer)
+            this.setState({
+                songDetail: curPlaySong
+            }, () => this.playInfoHandle())
         }
+    }
+    // 获取歌曲详情
+    initSongDetail = (ids) => {
+        http.getSongDetail({ ids }).then(res => {
+            this.props.addPlaySong(res.songs[0])
+            window.global.onScrollTitle(res.songs[0].name, titleTimer)
+            this.setState({
+                songDetail: res.songs[0]
+            }, () => this.playInfoHandle())
+        })
     }
     // 获取歌曲url
     initSongUrl = (id) => {
@@ -50,17 +48,42 @@ class PlayPlatform extends React.Component {
             this.props.addSongUrl(res.data[0].url)
         })
     }
-    // 处理已播放时间txt
-    playTimeHandle = () =>{
+    // 播放信息处理（时间，进度条等 ）
+    playInfoHandle = () => {
+        const { songDetail } = this.state
+        // 处理播放总时长
+        let totalTime, tMin, tSecond;
+        tMin = parseInt(songDetail.dt / (1000 * 60))
+        tSecond = parseInt(songDetail.dt / 1000) % 60
+        totalTime = `${tMin >= 10 ? tMin : '0' + tMin}:${tSecond >= 10 ? tSecond : '0' + tSecond}`
+
+        this.setState({
+            playState: !rootAudio.paused,
+            durationTxt: totalTime,
+            curplayTimeTxt: rootAudio.currentTime > 0 ? this.playTimeHandle() : '00:00',
+            playPercentage: rootAudio.currentTime / (songDetail.dt / 1000) * 100
+        })
+
+        if (!rootAudio.paused) {
+            timer = setInterval(() => {
+                this.setState({
+                    curplayTimeTxt: this.playTimeHandle(),
+                    playPercentage: rootAudio.currentTime / (songDetail.dt / 1000) * 100
+                })
+            }, 1000)
+        }
+    }
+    // 处理已播放时间txt(实现倒计时)
+    playTimeHandle = () => {
         let timeTxt, min, second;
         min = parseInt(rootAudio.currentTime / 60)
-        second = rootAudio.currentTime >60? parseInt(rootAudio.currentTime % 60) : parseInt(rootAudio.currentTime)
-        timeTxt = `${min >= 10? min : '0'+min}:${second >= 10? second : '0'+second}`
+        second = rootAudio.currentTime > 60 ? parseInt(rootAudio.currentTime % 60) : parseInt(rootAudio.currentTime)
+        timeTxt = `${min >= 10 ? min : '0' + min}:${second >= 10 ? second : '0' + second}`
         return timeTxt
     }
     // 切换播放
     changePlay = () => {
-        const { curPlaySong } = this.props
+        const { songDetail } = this.state
 
         if (rootAudio.paused) {
             Toast.loading('拼命播放中...', 999)
@@ -72,10 +95,10 @@ class PlayPlatform extends React.Component {
             }, 100)
 
             rootAudio.play()
-            timer = setInterval(() =>{
+            timer = setInterval(() => {
                 this.setState({
                     curplayTimeTxt: this.playTimeHandle(),
-                    playPercentage: rootAudio.currentTime / (curPlaySong.duration / 1000) * 100
+                    playPercentage: rootAudio.currentTime / (songDetail.dt / 1000) * 100
                 })
             }, 1000)
             this.setState({ playState: true })
@@ -87,12 +110,12 @@ class PlayPlatform extends React.Component {
         }
     }
     // 快进控制
-    onTouchMove = (e) =>{
-        
+    onTouchMove = (e) => {
+
     }
     // 点击切换歌曲
     onSwitchMusic = (type) => {
-        
+
     }
     // 切换循环
     onLoop = () => {
@@ -108,27 +131,30 @@ class PlayPlatform extends React.Component {
     }
     // 打开评论页面
     onComment = () => {
-        this.props.history.push({
-            pathname: '/Comment',
-            query: { curPlaySong: this.props.curPlaySong }
-        })
+        this.props.history.push({ pathname: '/Comment' })
     }
     render() {
-        const { playState, loopType, isCollect, playPercentage, durationTxt, curplayTimeTxt } = this.state
-        const { curPlaySong } = this.props
+        const { playState, loopType, isCollect, playPercentage, durationTxt, curplayTimeTxt, songDetail } = this.state
+        if (Object.keys(songDetail).length == 0) return <Loading />
         return (
             <div className='playPlatform'>
                 <div className='header da'>
                     <img className='arrowLeft' src={Iconpath.arrow_left_$fff} onClick={() => this.props.history.goBack()} />
                     <div className='songInfo'>
-                        <p className='name'>{curPlaySong.name}</p>
-                        <p className='artist'>{curPlaySong.artists[0].name} ></p>
+                        <p className='name'>{songDetail.name}</p>
+                        <p className='artist'>
+                            {
+                                songDetail.ar.map((aItem, aIndex) =>
+                                    <b key={aIndex}>{aItem.name}{aIndex + 1 != songDetail.ar.length && '/'}</b>
+                                )
+                            }
+                        </p>
                     </div>
                     <img className='share' src={Iconpath.share_$fff} />
                 </div>
                 <div className='content dd-vh'>
                     <div className='songCoverBox dd-vh'>
-                        <img className='songCoverImg active' style={{ animationPlayState: playState ? 'running' : 'paused' }} src={curPlaySong.artists[0].img1v1Url} />
+                        <img className='songCoverImg active' style={{ animationPlayState: playState ? 'running' : 'paused' }} src={songDetail.al.picUrl} />
                         <img className='music-controller' style={{ transform: `rotate(${playState ? '-4deg' : '-40deg'})` }} src={Iconpath.music_controller} />
                     </div>
                 </div>

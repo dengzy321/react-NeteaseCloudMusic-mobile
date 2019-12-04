@@ -24,9 +24,9 @@ class Header extends React.Component {
         return (
             <div className='myHeader da'>
                 <img className='menu_icon' src={Iconpath.menu} onClick={this.changeShowStatus} alt=''/>
-                <div className='center dbc'>
+                <div className='center da'>
                     {
-                        tabs.map((item, index) => <NavLink activeClassName='selected' key={index} to={item.url}>{item.title}</NavLink>)
+                        tabs.map((item, index) => <NavLink className='link' activeClassName='selected' key={index} to={item.url}>{item.title}</NavLink>)
                     }
                 </div>
                 <Link to='/search'><img className='search_icon' src={Iconpath.search} alt=''/></Link>

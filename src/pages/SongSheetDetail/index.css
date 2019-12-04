@@ -37,6 +37,9 @@
   color: #fff;
   font-size: 1.2rem;
 }
+.songSheetDetail .header .songSheetInfo .songSheetInfo-r .creator {
+  margin-top: 0.5rem;
+}
 .songSheetDetail .header .songSheetInfo .songSheetInfo-r .creator .avatar {
   width: 1.8rem;
   height: 1.8rem;
@@ -54,6 +57,10 @@
 .songSheetDetail .header .songSheetInfo .songSheetInfo-r .description {
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.9rem;
+  margin-top: 2.2rem;
+}
+.songSheetDetail .header .songSheetInfo .songSheetInfo-r .description span {
+  width: 18rem;
 }
 .songSheetDetail .header .songSheetInfo .songSheetInfo-r .description img {
   width: 0.9rem;
@@ -62,10 +69,10 @@
 }
 .songSheetDetail .header .handleItem {
   position: absolute;
-  bottom: 0rem;
+  bottom: 2.5rem;
   left: 0;
   right: 0;
-  padding: 1rem 2rem;
+  padding: 1rem;
 }
 .songSheetDetail .header .handleItem .hi-li {
   flex: 1;
@@ -80,11 +87,83 @@
 }
 .songSheetDetail .mainContent {
   background-color: #fff;
-  border-radius: 1rem 1rem 0 0;
-  height: 100rem;
+  margin-top: -2rem;
 }
 .songSheetDetail .mainContent .mcHeader {
+  background-color: #fff;
   position: sticky;
-  padding: 2rem 0;
+  top: 0;
+  padding: 1rem 1rem;
   border-bottom: 0.1rem solid #f4f4f4;
+  border-radius: 1rem 1rem 0 0;
+  color: #333;
+  font-size: 1.2rem;
+}
+.songSheetDetail .mainContent .mcHeader .icon {
+  width: 2rem;
+  height: auto;
+  margin-right: 0.5rem;
+}
+.songSheetDetail .mainContent .mcHeader .trackCount {
+  color: #999;
+  font-size: 1rem;
+  flex: 1;
+  margin-left: 0.2rem;
+}
+.songSheetDetail .mainContent .mcHeader .subscribedCount {
+  background-color: #E82202;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.8rem 0.8rem;
+  border-radius: 1.5rem;
+}
+.songSheetDetail .mainContent .detail-ul {
+  padding-bottom: 1rem;
+}
+.songSheetDetail .mainContent .detail-ul .detail-li {
+  padding: 1rem;
+}
+.songSheetDetail .mainContent .detail-ul .detail-li .index {
+  color: #999;
+  font-size: 1.2rem;
+  padding: 0 0.5rem;
+}
+.songSheetDetail .mainContent .detail-ul .detail-li .info {
+  flex: 1;
+  margin-left: 1rem;
+}
+.songSheetDetail .mainContent .detail-ul .detail-li .info .name {
+  width: 20rem;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.songSheetDetail .mainContent .detail-ul .detail-li .info .infoDetail {
+  width: 20rem;
+}
+.songSheetDetail .mainContent .detail-ul .detail-li .info .infoDetail .icon-sole {
+  width: 2rem;
+  height: auto;
+  margin-right: 0.2rem;
+}
+.songSheetDetail .mainContent .detail-ul .detail-li .info .infoDetail .icon-vip {
+  width: 2rem;
+  height: auto;
+  margin-right: 0.2rem;
+}
+.songSheetDetail .mainContent .detail-ul .detail-li .info .infoDetail .creator,
+.songSheetDetail .mainContent .detail-ul .detail-li .info .infoDetail .nameSmall {
+  color: #999;
+  font-size: 0.9rem;
+  padding-left: 0.2rem;
+}
+.songSheetDetail .mainContent .detail-ul .detail-li .icon-play {
+  width: 2rem;
+  height: auto;
+  margin-right: 0.8rem;
+}
+.songSheetDetail .mainContent .detail-ul .detail-li .icon-more {
+  width: 2rem;
+  height: auto;
 }

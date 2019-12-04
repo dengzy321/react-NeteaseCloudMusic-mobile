@@ -32,8 +32,8 @@ class PlayTab extends React.Component {
         const { playState, songId } = this.state
         const { curPlaySong } = this.props
         return(
-            <div className='playTab da' onClick={() => this.props.history.push({pathname: '/playPlatform', query:{id:songId}})}>
-                <img className='coverImg active' style={{ animationPlayState: playState ? 'running' : 'paused' }} src={curPlaySong.artists[0].img1v1Url} />
+            <div className='playTab da' onClick={() => this.props.history.push({pathname: '/playPlatform'})}>
+                <img className='coverImg active' style={{ animationPlayState: playState ? 'running' : 'paused' }} src={curPlaySong.al.picUrl} />
                 <div className='songsInfo'>
                     <p className='songsName to-line'>{curPlaySong.name}</p>
                     <p className='tip'>横滑可以切换上下首</p>

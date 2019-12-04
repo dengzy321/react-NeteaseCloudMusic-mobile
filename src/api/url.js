@@ -189,4 +189,9 @@ export default {
     method: 'get',
     url: '/playlist/detail'
   },
+  // 获取歌曲详情
+  getSongDetail: {
+    method: 'get',
+    url: '/song/detail'
+  },
 }

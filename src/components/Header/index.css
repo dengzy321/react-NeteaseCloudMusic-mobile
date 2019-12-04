@@ -22,6 +22,9 @@
   color: #666;
   font-size: 1.3rem;
 }
+.myHeader .center .link {
+  padding: 1.2rem 0.65rem;
+}
 .myHeader .center .selected {
   font-weight: bold;
   font-size: 1.4rem;

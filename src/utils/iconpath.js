@@ -109,6 +109,9 @@ const arr = [
     'share_$fff',
     'dw_$fff',
     'more_select_$fff',
+    'arrow_right_$fff',
+    'sole_red',
+    'vip2_red',
 ]
 
 let obj = {}

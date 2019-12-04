@@ -16,12 +16,10 @@ class Comment extends React.Component {
         commentsId: '',
         inputComment: ''
     }
-    componentDidMount() {
-        const { id } = this.props.location.query.curPlaySong
+    componentWillMount() {
         this.setState({
-            commentsId: id
+            commentsId: this.props.curPlaySong.id
         }, () => this.initData())
-
     }
     // 获取评论
     initData = () => {
@@ -69,14 +67,20 @@ class Comment extends React.Component {
     }
     render() {
         const { hotComments, newComments, commentsId, inputComment } = this.state
-        const { location } = this.props
+        const { curPlaySong } = this.props
         return (
             <div className='myComment' onScroll={this.onScroll}>
                 <div className='header da'>
-                    <img className='coverImg' src={location.query.curPlaySong.album.artist.img1v1Url} />
+                    <img className='coverImg' src={curPlaySong.al.picUrl} />
                     <div className='songInfo'>
-                        <p className='name'>{location.query.curPlaySong.name}</p>
-                        <p className='artist'>{location.query.curPlaySong.artists[0].name}</p>
+                        <p className='name'>{curPlaySong.al.name}</p>
+                        <p className='artist'>
+                            {
+                                curPlaySong.ar.map((aItem, aIndex) =>
+                                    <b>{aItem.name}{aIndex+1 != curPlaySong.ar.length && '/'}</b>
+                                )
+                            }
+                        </p>
                     </div>
                     <img className='arrow-rigth' src={Iconpath.arrow_rigth_$999} />
                 </div>

@@ -47,10 +47,11 @@ class Dynamic extends React.Component {
         })
     }
     // 打开播放器
-    onPlayMusic = (item) => {
-        const { history, addPlaySong } = this.props
-        addPlaySong(item.json.song)
-        history.push('/playPlatform')
+    onPlayMusicHandle = (item) => {
+        this.props.history.push({
+            pathname: '/playPlatform',
+            state: { id: item.id }
+        })
     }
     // 查看视频
     onViode = (vid) => {
@@ -97,7 +98,7 @@ class Dynamic extends React.Component {
                                         <div className='coverImg'>
                                             <img className='img' src={item.json.song.artists[0].picUrl} alt="" />
                                         </div>
-                                        <div className='creatorBox da' onClick={this.onPlayMusic.bind(this, item)}>
+                                        <div className='creatorBox da' onClick={this.onPlayMusicHandle.bind(this, item)}>
                                             <img className='avatar' src={item.json.song.artists[0].img1v1Url} alt="" />
                                             <p className='ddc-h'>
                                                 <span className='artist'>{item.json.song.artists[0].name}</span>
