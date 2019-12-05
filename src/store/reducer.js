@@ -48,13 +48,8 @@ export default function music(state = initialState, action) {
                 curSongUrl: payload
             })
         case actionTypes.CHANGE_SONGSHEETSORT:
-            if(typeof payload == 'number'){
-                songSheetSort.splice(payload, 1)
-            }else{
-                songSheetSort.push(payload)
-            }
             return Object.assign({}, state, {
-                songSheetSort: [...songSheetSort]
+                songSheetSort: [...payload]
             })
         default:
             return state;

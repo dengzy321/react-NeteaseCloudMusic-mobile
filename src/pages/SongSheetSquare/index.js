@@ -12,9 +12,12 @@ import { Tabs, Carousel } from 'antd-mobile';
 class SongSheetSquare extends React.Component {
     state = {
         tabs: [],
+        curIndex: 0,
+        carouselIndex: 0,
         sortData: {}, //分类数据
         slideIndex: 0,
-        songSheetList: []
+        songSheetList: [],
+        carouselArr: []
     }
     componentDidMount() {
         this.setState({
@@ -38,22 +41,26 @@ class SongSheetSquare extends React.Component {
     }
     // 获取分类下的歌单
     initSongSheet = (params) => {
+        let { carouselArr, curIndex } = this.state
         http.getSortSongSheetList({
             order: 'hot',
             cat: params.title,
             limit: 30
         }).then(res => {
+            if (curIndex == 0) carouselArr = res.playlists.splice(0, 5)
             this.setState({
-                songSheetList: res.playlists
+                songSheetList: res.playlists,
+                carouselArr
             })
         })
     }
     // 切换tab
-    onChange = (params) => {
+    onChange = (params, index) => {
+        this.setState({ curIndex: index })
         this.initSongSheet(params)
     }
     // 打开歌单分类
-    onSort = () =>{
+    onSort = () => {
         this.props.history.push({
             pathname: '/songSheetSort',
             state: {
@@ -61,8 +68,15 @@ class SongSheetSquare extends React.Component {
             }
         })
     }
+    // 打开歌单详情
+    onSongSheetDetail = (id) => {
+        this.props.history.push({
+            pathname: '/SongSheetDetail',
+            state: { id }
+        })
+    }
     render() {
-        const { tabs, songSheetList } = this.state
+        const { tabs, songSheetList, carouselArr, curIndex, carouselIndex } = this.state
         if (tabs.length == 0) return <Loading />
         return (
             <div className='songSheetSquare'>
@@ -70,28 +84,28 @@ class SongSheetSquare extends React.Component {
                     <img src={Iconpath.sort_$666} />
                 </div>
                 <Tabs tabs={tabs} {...this.props} onChange={this.onChange}>
-                    {/* <Carousel className="space-carousel"
-                        frameOverflow="visible"
-                        cellSpacing={10}
-                        slideWidth={0.8}
-                        autoplay
-                        infinite
-                        afterChange={index => this.setState({ slideIndex: index })}
-                    >
-                        {
-                            songSheetList.map((item, index) =>{
-                                return index < 3 &&  
-                                <div key={index} className=''>
-                                    
-                                </div>
-                            })
-                        }
-                    </Carousel> */}
                     <div className=''>
-                        <ul className='songSheet-ul da'>
+                        {curIndex == 0 &&
+                            <Carousel className="space-carousel"
+                                frameOverflow="visible"
+                                cellSpacing={10}
+                                slideWidth={0.8}
+                                dots={false}
+                                autoplay
+                                infinite
+                                afterChange={(carouselIndex) => this.setState({ carouselIndex })}
+                            >
+                                {carouselArr.map((item, index) => (
+                                    <div className='carousel' key={index} style={carouselIndex == index ? { top: '-1rem' } : {}} onClick={this.onSongSheetDetail.bind(this, item.id)}>
+                                        <img className='coverImg' src={item.coverImgUrl} />
+                                    </div>
+                                ))}
+                            </Carousel>
+                        }
+                        <ul className='songSheet-ul da' style={curIndex == 0 ? { paddingTop: '2rem' } : {}}>
                             {
                                 songSheetList.map((item, index) =>
-                                    <li key={index} className='songSheet-li'>
+                                    <li key={index} className='songSheet-li' onClick={this.onSongSheetDetail.bind(this, item.id)}>
                                         <p className='coverImgBox'>
                                             <span className='playCount da'>
                                                 <img className='icon' src={Iconpath.icon_video} />

@@ -26,40 +26,48 @@ class SongSheetSort extends React.Component {
             })
             sortGroup.push(obj)
         }
-        this.setState({ sortGroup }, () => this.getTabList(this.props))
-    }
-    // 获取tab
-    // getTabList = (props) =>{
-    //     let { sortGroup } = this.state
-    //     sortGroup.splice(0, 1)
 
-    //     let obj = { title: '我的歌单广场', editStatus: false, sub: [] }
-    //     props.songSheetSort.forEach(item => {
-    //         item.editStatus = false
-    //         obj.sub.push(item)
-    //     })
-    //     sortGroup = [obj, ...sortGroup]
-    //     this.setState({ sortGroup })
-    // }
+        let obj = {
+            title: '我的歌单',
+            editBtn: false,
+            sub: this.props.songSheetSort.map(item => {
+                item.editStatus = false
+                return item
+            })
+        }
+        this.setState({
+            sortGroup: [obj, ...sortGroup]
+        })
+    }
     // 编辑
-    onEdit = () => {
+    onEdit = (status) => {
         let { sortGroup } = this.state
-        sortGroup.forEach(item => {
-            item.editStatus = !item.editStatus
+        sortGroup.forEach((item, index) => {
+            if (index == 0) item.editBtn = !status
             item.sub.forEach(item2 => {
-                item2.editStatus = !item2.editStatus
+                item2.editStatus = !status
+                item2.isSelect = false
+                sortGroup[0].sub.forEach(item3 => {
+                    if (item2.title == item3.title && index != 0 && !status) {
+                        item2.isSelect = true
+                    }
+                })
             })
         })
         this.setState({ sortGroup })
+        if (status) this.props.changeSongSheetSort(sortGroup[0].sub)
     }
     // 添加 、删除
     onChangeSort = (params) => {
-        this.props.changeSongSheetSort(params)
-        this.onEdit()
+        let { sortGroup } = this.state
+        if (typeof params == 'object') {
+            sortGroup[0].sub.push(params)
+        } else sortGroup[0].sub.splice(params, 1)
+
+        this.setState({ sortGroup })
     }
     render() {
         let { sortGroup } = this.state
-        console.log(sortGroup)
         return (
             <div className='songSheetSort'>
                 <ul className='sort-ul'>
@@ -68,12 +76,16 @@ class SongSheetSort extends React.Component {
                             <li key={index} className='sort-li'>
                                 <div className='header dbc'>
                                     <span className='title'>{item.title}</span>
-                                    {index == 0 && <span className='btn' onClick={this.onEdit}>{item.editStatus ? '关闭' : '编辑'}</span>}
+                                    {index == 0 && <span className='btn' onClick={this.onEdit.bind(this, item.editBtn)}>{item.editBtn ? '关闭' : '编辑'}</span>}
                                 </div>
                                 <ul className='sub-ul da'>
                                     {
                                         item.sub.map((item2, index2) =>
-                                            <li key={index2} className='sub-li dcc to-line' onClick={item.editStatus ? this.onChangeSort.bind(this, index == 0 ? index2 : item2) : () => {}}>
+                                            <li
+                                                key={index2}
+                                                style={item2.isSelect ? {opacity: 0.4} : {}}
+                                                className='sub-li dcc to-line'
+                                                onClick={sortGroup[0].editBtn && !item2.isSelect? this.onChangeSort.bind(this, index == 0 ? index2 : item2) : () => { }}>
                                                 {item2.hot && !item2.editStatus && <img className='icon-hot' src={Iconpath.hot} />}
                                                 {item2.editStatus && index != 0 ? '+' : item2.editStatus && index == 0 ? '-' : ''}
                                                 <span className='subTitle'>{item2.title}</span>

@@ -29,6 +29,22 @@
   width: 1.5rem;
   height: auto;
 }
+.songSheetSquare .space-carousel {
+  margin-top: 5rem;
+  padding: 16px;
+  overflow: hidden;
+}
+.songSheetSquare .space-carousel .slider-list {
+  height: 15rem !important;
+}
+.songSheetSquare .space-carousel .carousel {
+  position: relative;
+}
+.songSheetSquare .space-carousel .carousel .coverImg {
+  width: 100%;
+  height: 15rem;
+  border-radius: 0.5rem;
+}
 .songSheetSquare .songSheet-ul {
   padding: 5rem 0.5rem 1rem 1rem;
   flex-wrap: wrap;
