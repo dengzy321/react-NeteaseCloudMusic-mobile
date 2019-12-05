@@ -28,22 +28,19 @@ class SongSheetSort extends React.Component {
         }
         this.setState({ sortGroup }, () => this.getTabList(this.props))
     }
-    componentWillReceiveProps(nextProps){
-        this.getTabList(nextProps)
-    }
     // 获取tab
-    getTabList = (props) =>{
-        let { sortGroup } = this.state
-        sortGroup.splice(0, 1)
+    // getTabList = (props) =>{
+    //     let { sortGroup } = this.state
+    //     sortGroup.splice(0, 1)
 
-        let obj = { title: '我的歌单广场', editStatus: false, sub: [] }
-        props.songSheetSort.forEach(item => {
-            item.editStatus = false
-            obj.sub.push(item)
-        })
-        sortGroup = [obj, ...sortGroup]
-        this.setState({ sortGroup })
-    }
+    //     let obj = { title: '我的歌单广场', editStatus: false, sub: [] }
+    //     props.songSheetSort.forEach(item => {
+    //         item.editStatus = false
+    //         obj.sub.push(item)
+    //     })
+    //     sortGroup = [obj, ...sortGroup]
+    //     this.setState({ sortGroup })
+    // }
     // 编辑
     onEdit = () => {
         let { sortGroup } = this.state
