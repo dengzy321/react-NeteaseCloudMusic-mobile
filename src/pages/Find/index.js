@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '@/store/actions';
@@ -16,18 +17,25 @@ class myCenter extends React.Component {
     componentDidMount() {
         this.initBanner()
     }
+    // 初始化banner
     initBanner = () => {
         http.getBanner().then(res => {
             this.setState({ bannerArr: res.banners })
         })
     }
+    // 打开页面
+    toLocation = (path) =>{
+        this.props.history.push({
+            pathname: `/${path}`
+        })
+    }
     render() {
         const toolArr = [
-            { icon: Iconpath.calendar, title: '每日推荐' },
-            { icon: Iconpath.music_fill, title: '歌单' },
-            { icon: Iconpath.ranking, title: '排行榜' },
-            { icon: Iconpath.radio_2, title: '电台' },
-            { icon: Iconpath.video_fill, title: '直播' }
+            { icon: Iconpath.calendar, title: '每日推荐', path: 'songSheetSquare' },
+            { icon: Iconpath.music_fill, title: '歌单', path: 'songSheetSquare' },
+            { icon: Iconpath.ranking, title: '排行榜', path: 'songSheetSquare' },
+            { icon: Iconpath.radio_2, title: '电台', path: 'songSheetSquare' },
+            { icon: Iconpath.video_fill, title: '直播', path: 'songSheetSquare' }
         ]
         const { bannerArr } = this.state
         return (
@@ -45,10 +53,10 @@ class myCenter extends React.Component {
                 <div className='da centerNav'>
                     {
                         toolArr.map((item, index) =>
-                            <div key={index} className='dd-vh flex'>
+                            <Link to={'/'+item.path} key={index} className='dd-vh flex'>
                                 <img src={item.icon} alt="" />
                                 <span>{item.title}</span>
-                            </div>
+                            </Link>
                         )
                     }
                 </div>

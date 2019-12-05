@@ -20,7 +20,9 @@ const Pages = [
   'PlayPlatform',
   'Comment',
   'VideoComment',
-  'SongSheetDetail'
+  'SongSheetDetail',
+  'SongSheetSquare',
+  'SongSheetSort',
 ]
 
 let PagesObj = {}
@@ -106,5 +108,15 @@ export const routes = [
     path: '/songSheetDetail',
     layout:BlankLayout,
     component: PagesObj.SongSheetDetail
+  },
+  { 
+    path: '/songSheetSquare',
+    layout:BlankLayout,
+    component: PagesObj.SongSheetSquare
+  },
+  { 
+    path: '/songSheetSort',
+    layout:BlankLayout,
+    component: PagesObj.SongSheetSort
   },
 ]

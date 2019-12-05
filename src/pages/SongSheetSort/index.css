@@ -1,0 +1,44 @@
+.songSheetSort .sort-ul {
+  padding: 1rem 0;
+}
+.songSheetSort .sort-ul .sort-li {
+  margin-bottom: 1rem;
+}
+.songSheetSort .sort-ul .sort-li .header {
+  padding: 1rem;
+}
+.songSheetSort .sort-ul .sort-li .header .title {
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.songSheetSort .sort-ul .sort-li .header .btn {
+  color: #E82202;
+  font-size: 1rem;
+  padding: 0.3rem 1rem;
+  border: 0.1rem solid #E82202;
+  border-radius: 1rem;
+}
+.songSheetSort .sort-ul .sort-li .sub-ul {
+  padding-left: 1rem;
+  flex-wrap: wrap;
+}
+.songSheetSort .sort-ul .sort-li .sub-ul .sub-li {
+  width: 6.75rem;
+  text-align: center;
+  padding: 0.5rem 0;
+  box-sizing: border-box;
+  margin-right: 1rem;
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  background-color: #f5f5f5;
+  border-radius: 1rem;
+}
+.songSheetSort .sort-ul .sort-li .sub-ul .sub-li .icon-hot {
+  width: 1rem;
+  height: auto;
+}
+.songSheetSort .sort-ul .sort-li .sub-ul .sub-li .subTitle {
+  margin-left: 0.5rem;
+}

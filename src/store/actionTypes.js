@@ -8,3 +8,5 @@ export const REMOVE_SEARCHHISTORY = 'REMOVE_SEARCHHISTORY'
 export const ADD_PLAYSONG = 'ADD_PLAYSONG'
 // 添加播放歌曲url地址
 export const ADD_MUSICURL = 'ADD_MUSICURL'
+// 改变歌单广场tab
+export const CHANGE_SONGSHEETSORT = 'CHANGE_SONGSHEETSORT'

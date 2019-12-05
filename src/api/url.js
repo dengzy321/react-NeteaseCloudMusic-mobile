@@ -204,4 +204,14 @@ export default {
     method: 'get',
     url: '/mv/url'
   },
+  // 获取歌单分类
+  getSongSheetSort: {
+    method: 'get',
+    url: '/playlist/catlist'
+  },
+  // 获取歌单分类下的歌单
+  getSortSongSheetList: {
+    method: 'get',
+    url: '/top/playlist'
+  },
 }

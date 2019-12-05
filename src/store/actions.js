@@ -39,3 +39,11 @@ export const addSongUrl = (data) => async (dispatch, getState) => {
         payload: data
     });
 }
+
+//改变歌单广场tab
+export const changeSongSheetSort = (data) => async (dispatch, getState) => {
+    dispatch({
+        type: actionTypes.CHANGE_SONGSHEETSORT,
+        payload: data
+    });
+}

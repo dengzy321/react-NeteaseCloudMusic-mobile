@@ -78,7 +78,7 @@ class RecommendSongs extends React.Component {
                 <div className='recommend'>
                     <div className='re-header dbc'>
                         <span className='title'>推荐歌单</span>
-                        <Link to='/' className='more'>歌单广场</Link>
+                        <Link to='/songSheetSquare' className='more'>歌单广场</Link>
                     </div>
                     <SongsGrid data={recommendArr} coverImgUrl='picUrl' toLocation={this.onSongShootDetail}/>
                 </div>
