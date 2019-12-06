@@ -11,6 +11,7 @@ import { Tabs, Carousel } from 'antd-mobile';
 
 class SongSheetSquare extends React.Component {
     state = {
+        limit: 30,
         tabs: [],
         curIndex: 0,
         carouselIndex: 0,
@@ -24,7 +25,7 @@ class SongSheetSquare extends React.Component {
             tabs: this.props.songSheetSort
         })
         this.initSongSheetSort()
-        this.initSongSheet(this.props.songSheetSort[0])
+        this.initSongSheet()
     }
     // 获取歌单分类
     initSongSheetSort = () => {
@@ -40,12 +41,12 @@ class SongSheetSquare extends React.Component {
         })
     }
     // 获取分类下的歌单
-    initSongSheet = (params) => {
-        let { carouselArr, curIndex } = this.state
+    initSongSheet = () => {
+        let { carouselArr, curIndex, limit } = this.state
         http.getSortSongSheetList({
             order: 'hot',
-            cat: params.title,
-            limit: 30
+            cat: this.props.songSheetSort[curIndex].title,
+            limit: limit
         }).then(res => {
             if (curIndex == 0) carouselArr = res.playlists.splice(0, 5)
             this.setState({
@@ -54,9 +55,21 @@ class SongSheetSquare extends React.Component {
             })
         })
     }
+    // 滚动加载更多
+    onScroll = (e) =>{
+        console.log(e)
+        if(window.global.onReachBottom(e)){
+            this.setState(state =>({
+                limit: state.limit + 30
+            }), this.initSongSheet())
+        }
+    }
     // 切换tab
     onChange = (params, index) => {
-        this.setState({ curIndex: index })
+        this.setState({
+            curIndex: index,
+            limit: 30
+        })
         this.initSongSheet(params)
     }
     // 打开歌单分类
@@ -79,7 +92,7 @@ class SongSheetSquare extends React.Component {
         const { tabs, songSheetList, carouselArr, curIndex, carouselIndex } = this.state
         if (tabs.length == 0) return <Loading />
         return (
-            <div className='songSheetSquare'>
+            <div className='songSheetSquare' onScroll={this.onScroll}>
                 <div className='sortBtn' onClick={this.onSort}>
                     <img src={Iconpath.sort_$666} />
                 </div>

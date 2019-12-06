@@ -1,0 +1,158 @@
+@import '../../style/variable.less';
+
+.songSheetDetail{
+    .header{
+        background-size: 100%;
+        width: 100%;
+        height: 20rem;
+        position: relative;
+        .coverImg{
+            height: 20rem;
+            width: 100%;
+            object-fit: cover;
+        }
+        .curDate{
+            position: absolute;
+            bottom: 4rem;
+            left: 1rem;
+            color: #fff;
+            .day{
+                font-size: 3rem;
+                margin-right: 0.5rem;
+                vertical-align: sub;
+            }
+            .month{
+                display: inline;
+                font-size: 1.5rem;
+            }
+        }
+    }
+    .mainContent{
+        background-color: #fff;
+        margin-top: -2rem;
+        .mcHeader{
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            padding: 1rem 1rem;
+            border-bottom: 0.1rem solid #f4f4f4;
+            border-radius: 1rem 1rem 0 0;
+            color: #333;
+            font-size: 1.2rem;
+            .icon{
+                width: 2rem;
+                height: auto;
+                margin-right: 0.5rem;
+            }
+            .moreSelect{
+                color: #333;
+                font-size: 1rem;
+                .icon-more{
+                    width: 1.5rem;
+                    height: auto;
+                    margin-right: 0.3rem;
+                }
+            }
+        }
+        .detail-ul{
+            padding-bottom: 1rem;
+            .detail-li{
+                padding: 1rem;
+                .index{
+                    color: #999;
+                    font-size: 1.2rem;
+                    width: 1.5rem;
+                    text-align: center;
+                }
+                .info{
+                    flex: 1;
+                    margin-left: 1rem;
+                    .coverImg{
+                        width: 3.2rem;
+                        height: 3.2rem;
+                        object-fit: cover;
+                        border-radius: 0.3rem;
+                        margin-right: 0.6rem;
+                    }
+                    .name{
+                        width: 18rem;
+                        color: #333;
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        margin-bottom: 0.5rem;
+                    }
+                    .infoDetail{
+                        width: 18rem;
+                        .icon-sole{
+                            width: 2rem;
+                            height: auto;
+                            margin-right: 0.2rem;
+                        }
+                        .icon-vip{
+                            width: 2rem;
+                            height: auto;
+                            margin-right: 0.2rem;
+                        }
+                        .icon-hq{
+                            width: 2rem;
+                            height: auto;
+                            margin-right: 0.2rem;
+                        }
+                        .creator, .nameSmall{
+                            color: #999;
+                            font-size: 0.9rem;
+                            padding-left: 0.2rem;
+                        }
+                    }
+                }
+                .icon-play{
+                    width: 2rem;
+                    height: auto;
+                    margin-right: 0.8rem;
+                }
+                .icon-more{
+                    width: 2rem;
+                    height: auto;
+                }
+            }
+        }
+        .toolHeader{
+            background-color: #fff;
+            padding: 1rem 0;
+            flex: 1;
+            .songsInfo{
+                .avatar{
+                    width: 3.4rem;
+                    height: 3.4rem;
+                    border-radius: 0.2rem;
+                    object-fit: cover;
+                    margin-right: 1rem;
+                }
+                .name{
+                    color: #333;
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    margin-bottom: 0.3rem;
+                    margin-right: 1rem;
+                }
+                .artist{
+                    color: #999;
+                    font-size: 1rem;
+                }
+                .btn{
+                    border: 0.1rem solid @main-color;
+                    background: transparent;
+                    border-radius: 1rem;
+                    padding: 0.3rem 0.8rem;
+                    color: @main-color;
+                    font-size: 0.8rem;
+                }
+            }
+            .tip{
+                color: #999;
+                font-size: 0.8rem;
+                margin-top: 0.5rem;
+            }
+        }
+    }
+}

@@ -23,6 +23,8 @@ const Pages = [
   'SongSheetDetail',
   'SongSheetSquare',
   'SongSheetSort',
+  'RecommendedDaily',
+  'RankingList',
 ]
 
 let PagesObj = {}
@@ -118,5 +120,15 @@ export const routes = [
     path: '/songSheetSort',
     layout:BlankLayout,
     component: PagesObj.SongSheetSort
+  },
+  { 
+    path: '/recommendedDaily',
+    layout:BlankLayout,
+    component: PagesObj.RecommendedDaily
+  },
+  { 
+    path: '/rankingList',
+    layout:BlankLayout,
+    component: PagesObj.RankingList
   },
 ]

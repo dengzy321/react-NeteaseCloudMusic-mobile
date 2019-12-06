@@ -214,4 +214,29 @@ export default {
     method: 'get',
     url: '/top/playlist'
   },
+  // 获取每日推荐歌单
+  getRecommendSongSheet: {
+    method: 'get',
+    url: '/recommend/resource'
+  },
+  // 获取每日推荐歌曲
+  getRecommendedDaily: {
+    method: 'get',
+    url: '/recommend/songs'
+  },
+  // 所有榜单
+  getAllRankingList: {
+    method: 'get',
+    url: '/toplist'
+  },
+  // 所有榜单内容摘要
+  getAllRankingDetail: {
+    method: 'get',
+    url: '/toplist/detail'
+  },
+  // 排行榜
+  getSingleRanking: {
+    method: 'get',
+    url: '/top/list'
+  }
 }

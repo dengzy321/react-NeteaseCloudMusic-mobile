@@ -58,11 +58,23 @@ class SongSheetSort extends React.Component {
         if (status) this.props.changeSongSheetSort(sortGroup[0].sub)
     }
     // 添加 、删除
-    onChangeSort = (params) => {
+    onChangeSort = (pIndex, sIndex) => {
         let { sortGroup } = this.state
-        if (typeof params == 'object') {
-            sortGroup[0].sub.push(params)
-        } else sortGroup[0].sub.splice(params, 1)
+
+        // 增加
+        if(pIndex > 0){
+            sortGroup[0].sub.push(JSON.parse(JSON.stringify(sortGroup[pIndex].sub[sIndex])))
+            sortGroup[pIndex].sub[sIndex].isSelect = true
+        }else{ // 删除
+            let curItem = sortGroup[0].sub.splice(sIndex, 1)
+            sortGroup.forEach((item, index) =>{
+                if(index > 0){
+                    item.sub.forEach(item2 =>{
+                        if(item2 == curItem) item2.isSelect = false
+                    })
+                }
+            })
+        }
 
         this.setState({ sortGroup })
     }
@@ -83,9 +95,9 @@ class SongSheetSort extends React.Component {
                                         item.sub.map((item2, index2) =>
                                             <li
                                                 key={index2}
-                                                style={item2.isSelect ? {opacity: 0.4} : {}}
+                                                style={item2.isSelect && index > 0? {opacity: 0.4} : {}}
                                                 className='sub-li dcc to-line'
-                                                onClick={sortGroup[0].editBtn && !item2.isSelect? this.onChangeSort.bind(this, index == 0 ? index2 : item2) : () => { }}>
+                                                onClick={sortGroup[0].editBtn && !item2.isSelect? this.onChangeSort.bind(this, index, index2) : () => { console.log(item2.isSelect) }}>
                                                 {item2.hot && !item2.editStatus && <img className='icon-hot' src={Iconpath.hot} />}
                                                 {item2.editStatus && index != 0 ? '+' : item2.editStatus && index == 0 ? '-' : ''}
                                                 <span className='subTitle'>{item2.title}</span>
