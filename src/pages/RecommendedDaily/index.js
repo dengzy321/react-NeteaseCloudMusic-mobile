@@ -25,7 +25,7 @@ class SongSheetDetail extends React.Component {
         let d = new Date()
         curDate = {
             day: d.getDay() + 1 >= 10 ? d.getDay() + 1 : '0' +(d.getDay() + 1),
-            month: d.getMonth()
+            month: d.getMonth() + 1 >= 10 ? d.getMonth() + 1 : '0' +(d.getMonth() + 1),
         }
         this.setState({ curDate })
     }

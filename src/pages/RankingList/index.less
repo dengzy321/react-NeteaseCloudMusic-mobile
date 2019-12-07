@@ -1,5 +1,73 @@
 @import '../../style/variable.less';
 
 .rankingList{
-    
+    .sup-ul{
+        .sup-li{
+            margin-bottom: 0.5rem;
+            .title{
+                color: #333;
+                font-size: 1.2rem;
+                padding: 1rem 1.2rem;
+            }
+            .sub-ul{
+                flex-wrap: wrap;
+                padding: 0 0.4rem 0 1.2rem;
+                .sub1-li{
+                    margin-bottom: 1rem;
+                    width: 100%;
+                    .coverImg{
+                        position: relative;
+                        img{
+                            width: 7rem;
+                            height: 7rem;
+                            border-radius: 0.3rem;
+                            object-fit: cover;
+                        }
+                        .tip{
+                            position: absolute;
+                            bottom:  0.5rem;
+                            left: 0.5rem;
+                            color: #fff;
+                            font-size: 0.8rem;
+                        }
+                    }
+                    .tracks{
+                        flex: 1;
+                        padding: 0.6rem 0.4rem;
+                        height: 7rem;
+                        box-sizing: border-box;
+                        color: #666;
+                        font-size: 1rem;
+                    }
+                }
+                .sub2-li{
+                    width: 9.333rem;
+                    margin-right: 0.8rem;
+                    margin-bottom: 1rem;
+                    .coverImg{
+                        position: relative;
+                        img{
+                            width: 9.333rem;
+                            height: auto;
+                            border-radius: 0.3rem;
+                        }
+                        .tip{
+                            position: absolute;
+                            bottom:  0.5rem;
+                            left: 0.5rem;
+                            color: #fff;
+                            font-size: 0.8rem;
+                        }
+                    }
+                    .name{
+                        width: 9.3rem;
+                        color: #333;
+                        font-size: 1rem;
+                        padding-top: 0.5rem;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
 }

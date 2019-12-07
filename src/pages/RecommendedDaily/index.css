@@ -17,7 +17,6 @@
 }
 .songSheetDetail .header .curDate .day {
   font-size: 3rem;
-  margin-right: 0.5rem;
   vertical-align: sub;
 }
 .songSheetDetail .header .curDate .month {

@@ -8,6 +8,7 @@ import Iconpath from '@/utils/iconpath'
 import { http } from '@/api/http'
 import { ColorExtractor } from 'react-color-extractor'
 import SongsToolModal from '@/components/SongsToolModal'
+import Loading from '@/components/Loading'
 
 let titleTimer
 class SongSheetDetail extends React.Component {
@@ -75,7 +76,6 @@ class SongSheetDetail extends React.Component {
     }
     render() {
         const { songSheetInfo, curSongsInfo, bgColor, show } = this.state
-        console.log(curSongsInfo)
         const toolData = [
             { name: '下一首播放', icon: Iconpath.album },
             { name: '收藏到歌单', icon: Iconpath.favorites_$333 },
@@ -89,6 +89,7 @@ class SongSheetDetail extends React.Component {
             { name: '查看视频', icon: Iconpath.play_$333 },
             { name: '隐蔽歌曲或歌单', icon: Iconpath.close_circular_$333 }
         ]
+        if(Object.keys(songSheetInfo).length == 0) return <Loading />
         return (
             <div className='songSheetDetail'>
                 <ColorExtractor getColors={this.getColors}>

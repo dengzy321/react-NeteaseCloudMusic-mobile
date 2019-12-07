@@ -25,6 +25,7 @@ const Pages = [
   'SongSheetSort',
   'RecommendedDaily',
   'RankingList',
+  'RadioStation',
 ]
 
 let PagesObj = {}
@@ -127,8 +128,8 @@ export const routes = [
     component: PagesObj.RecommendedDaily
   },
   { 
-    path: '/rankingList',
+    path: '/radioStation',
     layout:BlankLayout,
-    component: PagesObj.RankingList
+    component: PagesObj.RadioStation
   },
 ]
