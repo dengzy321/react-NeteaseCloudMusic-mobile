@@ -249,6 +249,11 @@ export default {
     method: 'get',
     url: '/dj/recommend'
   },
+  // 电台 - 付费精选
+  getDjPaygift: {
+    method: 'get',
+    url: '/dj/paygift'
+  },
   // 电台 - 分类
   getDjCatelist: {
     method: 'get',

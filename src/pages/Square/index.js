@@ -18,7 +18,6 @@ class Square extends React.Component {
     }
     componentWillMount(){
         this.initWaterVideo()
-        this.initDynamicInfo()
     }
     // 获取瀑布流数据（热门话题）
     initWaterVideo() {
@@ -39,7 +38,7 @@ class Square extends React.Component {
     // 获取动态信息数据
     initDynamicInfo() {
         const { dynamicArr } = this.state
-        http.getDynamicInfo({ pagesize: 20 }).then(res =>{
+        http.getDynamicInfo({ pagesize: 20 }).then(res => {
             res.event.forEach(item => {
                 item.json = JSON.parse(item.json)
                 if(item.type == 22) item.json.event.json = JSON.parse(item.json.event.json)

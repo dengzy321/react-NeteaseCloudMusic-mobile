@@ -49,7 +49,13 @@ class PlayPlatform extends React.Component {
     // 获取歌曲url
     initSongUrl = (id) => {
         http.getSongUrl({ id }).then(res => {
-            this.props.addSongUrl(res.data[0].url)
+            if (res.data[0].url) this.props.addSongUrl(res.data[0].url)
+            else{
+                Toast.fail('该歌曲不能播放', 1.5)
+                setTimeout(() => {
+                    this.props.history.goBack()
+                }, 1500)
+            }            
         })
     }
     // 播放信息处理（时间，进度条等 ）

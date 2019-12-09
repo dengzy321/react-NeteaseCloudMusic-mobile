@@ -1,0 +1,34 @@
+.djSort {
+  padding-top: 2rem;
+  box-sizing: border-box;
+}
+.djSort .sort-item {
+  margin-bottom: 2rem;
+}
+.djSort .sort-item .title {
+  color: #333;
+  font-size: 1.2rem;
+  text-align: center;
+  padding-bottom: 1.2rem;
+  border-bottom: 0.1rem solid #f9f9f9;
+}
+.djSort .sort-item .sort-ul {
+  flex-wrap: wrap;
+}
+.djSort .sort-item .sort-ul .sort-li {
+  width: 50%;
+  padding: 0.8rem 0 0.8rem 3rem;
+  box-sizing: border-box;
+  border-bottom: 0.1rem solid #f9f9f9;
+}
+.djSort .sort-item .sort-ul .sort-li .icon {
+  width: 2rem;
+  height: auto;
+  margin-right: 0.5rem;
+}
+.djSort .sort-item .sort-ul .sort-li .name {
+  color: #333;
+  font-size: 1.1rem;
+  font-size: 500;
+  width: 8rem;
+}

@@ -7,7 +7,8 @@
  */
 
 import axios from 'axios';
-import { Toast } from 'antd-mobile';
+import { createBrowserHistory } from 'history';
+const history = createBrowserHistory();
 
 const instance = axios.create({
   //超时时间
@@ -21,7 +22,6 @@ const instance = axios.create({
 // 请求拦截
 instance.interceptors.request.use(function (request) {
   // 在发送请求之前做些什么，例如加入token
-  Toast.loading()
   return request
 }, function (error) {
   // 对请求错误做些什么
@@ -31,13 +31,13 @@ instance.interceptors.request.use(function (request) {
 // 响应拦截
 instance.interceptors.response.use(function (response) {
   const { status, data, headers } = response;
-  Toast.hide()
   if (status === 200) {
-    return headers['content-type'] === 'application/json' ? JSON.parse(data) : JSON.parse(data);
-  } else if (status === 301) {
+    return JSON.parse(data)
+  }
+  else if (status === 301) {
     return response;
-    //跳转登录
-  } else {
+  }
+  else {
     return response;
   }
 }, function (error) {

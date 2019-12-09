@@ -20,7 +20,9 @@
   border-radius: 0.5rem 0 0.5rem 0;
 }
 .radioStation .sortTab {
-  padding: 0.5rem 2.5rem;
+  padding: 0.5rem 2.5rem 1rem 2.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 0.1rem solid #f9f9f9;
 }
 .radioStation .sortTab .sortTab-li .icon {
   width: 3.2rem;
@@ -39,6 +41,17 @@
   color: #333;
   font-size: 1.2rem;
   font-weight: bold;
+}
+.radioStation .header .btn {
+  background-color: transparent;
+  color: #333;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 2rem;
+  border: 0.1rem solid #f5f5f5;
+}
+.radioStation .hotDjList {
+  margin-bottom: 1.5rem;
 }
 .radioStation .hotDjList .hotDjList-ul {
   padding: 0 0.4rem 1rem 1.2rem;
@@ -60,14 +73,47 @@
   position: absolute;
   left: 0;
   top: 0;
-  padding: 0.3rem 0.6rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 0.3rem 0 0.3rem 0;
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   background-color: #E82202;
 }
 .radioStation .hotDjList .hotDjList-ul .hotDjList-li .name {
   color: #333;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.2rem;
+}
+.radioStation .djSort {
+  box-sizing: border-box;
+}
+.radioStation .djSort .sort-item {
+  margin-bottom: 2rem;
+}
+.radioStation .djSort .sort-item .title {
+  color: #333;
+  font-size: 1.2rem;
+  padding-left: 1.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 0.1rem solid #f9f9f9;
+}
+.radioStation .djSort .sort-item .sort-ul {
+  flex-wrap: wrap;
+}
+.radioStation .djSort .sort-item .sort-ul .sort-li {
+  width: 50%;
+  padding: 0.8rem 0 0.8rem 2.5rem;
+  box-sizing: border-box;
+  border-bottom: 0.1rem solid #f9f9f9;
+}
+.radioStation .djSort .sort-item .sort-ul .sort-li .icon {
+  width: 2rem;
+  height: auto;
+  margin-right: 0.5rem;
+}
+.radioStation .djSort .sort-item .sort-ul .sort-li .name {
+  color: #333;
+  font-size: 1.1rem;
+  font-size: 500;
+  width: 8rem;
 }

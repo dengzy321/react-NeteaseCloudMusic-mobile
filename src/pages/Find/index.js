@@ -34,7 +34,7 @@ class myCenter extends React.Component {
             { icon: Iconpath.calendar, title: '每日推荐', path: 'recommendedDaily' },
             { icon: Iconpath.music_fill, title: '歌单', path: 'songSheetSquare' },
             { icon: Iconpath.ranking, title: '排行榜', path: 'rankingList' },
-            { icon: Iconpath.radio_2, title: '电台', path: 'songSheetSquare' },
+            { icon: Iconpath.radio_2, title: '电台', path: 'RadioStation' },
             { icon: Iconpath.video_fill, title: '直播', path: 'songSheetSquare' }
         ]
         const { bannerArr } = this.state

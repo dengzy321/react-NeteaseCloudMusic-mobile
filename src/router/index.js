@@ -26,6 +26,8 @@ const Pages = [
   'RecommendedDaily',
   'RankingList',
   'RadioStation',
+  'DjSort',
+  'DjRanking',
 ]
 
 let PagesObj = {}
@@ -127,9 +129,24 @@ export const routes = [
     layout:BlankLayout,
     component: PagesObj.RecommendedDaily
   },
-  { 
+  {
     path: '/radioStation',
     layout:BlankLayout,
     component: PagesObj.RadioStation
+  },
+  {
+    path: '/rankingList',
+    layout: BlankLayout,
+    component: PagesObj.RankingList
+  },
+  {
+    path: '/djSort',
+    layout: BlankLayout,
+    component: PagesObj.DjSort
+  },
+  {
+    path: '/djRanking',
+    layout: BlankLayout,
+    component: PagesObj.DjRanking
   },
 ]

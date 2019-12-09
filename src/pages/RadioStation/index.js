@@ -11,10 +11,10 @@ import Loading from '@/components/Loading'
 import DjProgram from '@/components/DjProgram'
 
 const sortTab = [
-    { name: '电台分类', icon: Iconpath.dj_sort },
-    { name: '电台排行', icon: Iconpath.dj_rank },
-    { name: '付费精品', icon: Iconpath.dj_vip },
-    { name: '主播学院', icon: Iconpath.dj_college }
+    { name: '电台分类', icon: Iconpath.dj_sort, url: 'djSort' },
+    { name: '电台排行', icon: Iconpath.dj_rank, url: 'djRanking' },
+    { name: '付费精品', icon: Iconpath.dj_vip, url: '' },
+    { name: '主播学院', icon: Iconpath.dj_college, url: 'https://h5.iplay.163.com/st/college/' }
 ]
 
 // type =>>> 1: 节目   2: 推荐电台
@@ -28,22 +28,54 @@ const batchApiId = [
     { id: 453050, name: '知识技能', type: 1 },
     { id: 453051, name: '商业财经', type: 2 },
     { id: 11, name: '人文历史', type: 1 },
-    { id: 13, name: '外语世界', type: 2 }
+    { id: 13, name: '外语世界', type: 2 },
+    { id: 12, name: '旅途|城市', type: 2 },
+    { id: 5, name: '脱口秀', type: 2 },
+    { id: 4001, name: '校园|教育', type: 2 },
 ]
 
 class RadioStation extends React.Component {
     state = {
         bannerArr: [],
         batchHttpData: [], //批量请求数据
+        sortList: []
     }
     componentDidMount() {
         this.initBanner()
+        this.initDjRecommend()
+        this.initDjPaygift()
         this.batchHttp()
+        this.initDjCatelist()
     }
     // 获取banner
     initBanner = () => {
         http.getDjBanner().then(res => {
             this.setState({ bannerArr: res.data })
+        })
+    }
+    // 获取推荐电台
+    initDjRecommend = () => {
+        let { batchHttpData } = this.state
+        http.getDjRecommend().then(res => {
+            batchHttpData[0] = {
+                title: '电台推荐',
+                type: 2,
+                list: res.djRadios.slice(0, 3)
+            }
+            this.setState({ batchHttpData })
+        })
+    }
+    // 获取付费精选
+    initDjPaygift = () => {
+        let { batchHttpData } = this.state
+        http.getDjPaygift().then(res => {
+            batchHttpData[1] = {
+                title: '精品推荐',
+                pay: true,
+                type: 2,
+                list: res.data.list.slice(0, 3)
+            }
+            this.setState({ batchHttpData })
         })
     }
     // 批量请求
@@ -54,10 +86,10 @@ class RadioStation extends React.Component {
                 http.getDjRecommendType({
                     type: item.id
                 }).then(res => {
-                    batchHttpData[index] = {
+                    batchHttpData[index + 2] = {
                         title: item.name,
                         type: item.type,
-                        list: res.djRadios
+                        list: res.djRadios.slice(0, 4)
                     }
                     this.setState({ batchHttpData })
                 })
@@ -65,7 +97,7 @@ class RadioStation extends React.Component {
                 http.getDjRadioHot({
                     cateId: item.id
                 }).then(res => {
-                    batchHttpData[index] = {
+                    batchHttpData[index + 2] = {
                         title: item.name,
                         type: item.type,
                         list: res.djRadios.slice(0,3)
@@ -74,14 +106,39 @@ class RadioStation extends React.Component {
                 })
             }
         })
-
-        setTimeout(() => {
-            console.log(this.state.batchHttpData)
-        }, 3000)
+    }
+    // 获取分类
+    initDjCatelist = () => {
+        http.getDjCatelist().then(res => {
+            res.categories.forEach((item, index) => {
+                item.icon = Iconpath[`dj_${index + 1}`]
+            })
+            let obj1 = {
+                title: '热门分类',
+                sub: res.categories.slice(0, 7)
+            }
+            let obj2 = {
+                title: '更多分类',
+                sub: res.categories.slice(7, 100)
+            }
+            this.setState({
+                sortList: [obj1, obj2]
+            })
+        })
+    }
+    // 跳转路由
+    toLocation = (url) => {
+        if (url.indexOf('http') != -1) {
+            window.location.href = url
+        } else {
+            this.props.history.push({
+                pathname: `/${url}`
+            })
+        }
     }
     render() {
-        const { bannerArr, batchHttpData } = this.state
-        if (batchHttpData.length == 0) return <Loading />
+        const { bannerArr, batchHttpData, sortList } = this.state
+        if (batchHttpData.length < 15 || sortList.length == 0 || bannerArr.length == 0) return <Loading />
         return (
             <div className='radioStation'>
                 <div className='banner'>
@@ -100,7 +157,7 @@ class RadioStation extends React.Component {
                     <ul className='dbc'>
                         {
                             sortTab.map((item, index) =>
-                                <li className='sortTab-li dd-vh' key={index}>
+                                <li className='sortTab-li dd-vh' key={index} onClick={this.toLocation.bind(this,item.url)}>
                                     <img className='icon' src={item.icon} />
                                     <b className='name'>{item.name}</b>
                                 </li>
@@ -115,14 +172,14 @@ class RadioStation extends React.Component {
                                 <div className=''>
                                     <p className='header dbc'>
                                         <span className='title'>{item.title} ></span>
-                                        <button className='btn'>全部</button>
+                                        <button className='btn'>全部播放</button>
                                     </p>
                                     <DjProgram data={item}/>
                                 </div> :
-                                <div className='hotDjList' key={index}>
+                                <div className='hotDjList' style={item.pay ? { background: 'linear-gradient(#F8F1DE,#FFF)' } : {}} key={index}>
                                     <p className='header dbc'>
                                         <span className='title'>{item.title} ></span>
-                                        <button className='btn'>全部</button>
+                                        <button className='btn'>全部播放</button>
                                     </p>
                                     <ul className='hotDjList-ul df'>
                                         {
@@ -130,7 +187,7 @@ class RadioStation extends React.Component {
                                                 <li className='hotDjList-li' key={lIndex}>
                                                     <p className='picBox'>
                                                         <img className='pic' src={lItem.picUrl} />
-                                                        <b className='tip'>精品</b>
+                                                        {lItem.radioFeeType == 2 && <b className='tip'>付费精品</b>}
                                                     </p>
                                                     <h5 className='name'>{lItem.name}</h5>
                                                 </li>
@@ -138,6 +195,25 @@ class RadioStation extends React.Component {
                                         }
                                     </ul>
                                 </div>
+                        )
+                    }
+                </div>
+                <div className='djSort'>
+                    {
+                        sortList.map((item, index) =>
+                            <div key={index} className='sort-item'>
+                                <h3 className='title'>{item.title}</h3>
+                                <ul className='sort-ul da'>
+                                    {
+                                        item.sub.map((sItem, sIndex) =>
+                                            <li className='da sort-li' key={sIndex}>
+                                                <img className='icon' src={sItem.icon} />
+                                                <span className='name'>{sItem.name}</span>
+                                            </li>
+                                        )
+                                    }
+                                </ul>
+                            </div>
                         )
                     }
                 </div>
