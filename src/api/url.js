@@ -238,5 +238,30 @@ export default {
   getSingleRanking: {
     method: 'get',
     url: '/top/list'
-  }
+  },
+  // 电台banner
+  getDjBanner: {
+    method: 'get',
+    url: '/dj/banner'
+  },
+  // 电台 - 推荐
+  getDjRecommend: {
+    method: 'get',
+    url: '/dj/recommend'
+  },
+  // 电台 - 分类
+  getDjCatelist: {
+    method: 'get',
+    url: '/dj/catelist'
+  },
+  // 电台 - 分类推荐
+  getDjRecommendType: {
+    method: 'get',
+    url: '/dj/recommend/type'
+  },
+  // 电台 - 类别热门电台
+  getDjRadioHot: {
+    method: 'get',
+    url: '/dj/radio/hot'
+  },
 }

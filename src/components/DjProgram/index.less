@@ -1,0 +1,59 @@
+@import '../../style/variable.less';
+
+.djProgram{
+    .djProgram-ul{
+        padding: 0.8rem 1.2rem;
+        .djProgram-li{
+            margin-bottom: 1rem;
+            .pic{
+                width: 4rem;
+                height: 4rem;
+                border-radius: 0.2rem;
+            }
+            .info{
+                flex: 1;
+                padding-left: 0.8rem;
+                .name{
+                    color: #333;
+                    font-size: 1.2rem;
+                    margin-bottom: 0.8rem;
+                    font-weight: 500;
+                }
+                .creator{
+                    .avatar{
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        border-radius: 50%;
+                        margin-right: 0.3rem;
+                    }
+                    .nickname{
+                        color: #999;
+                        font-size: 0.9rem;
+                        padding-right: 0.8rem;
+                        margin-right: 0.3rem;
+                        position: relative;
+                        &::after{
+                            content: '';
+                            position: absolute;
+                            height: 0.8rem;
+                            width: 0.1rem;
+                            background-color: #ccc;
+                            top: 0.1rem;
+                            right: -0.4rem;
+                            margin-right: 0.5rem;
+                        }
+                    }
+                    .icon{
+                        width: 0.8rem;
+                        height: auto;
+                        margin-right: 0.2rem;
+                    }
+                    .subCount{
+                        color: #999;
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+}

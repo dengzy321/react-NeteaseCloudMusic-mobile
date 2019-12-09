@@ -116,6 +116,10 @@ const arr = [
     'sort_$666',
     'hot',
     'menu_$666',
+    'dj_college',
+    'dj_rank',
+    'dj_sort',
+    'dj_vip',
 ]
 
 let obj = {}

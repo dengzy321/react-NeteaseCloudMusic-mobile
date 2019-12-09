@@ -1,5 +1,81 @@
 @import '../../style/variable.less';
 
 .radioStation{
-    
+    .banner{
+        padding: 1.5rem 1rem 1rem 1rem;
+        .banner-item{
+            position: relative;
+            .pic{
+                width: 100%;
+                height: 11rem;
+                border-radius: 0.5rem;
+            }
+            .typeTitle{
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                color: #fff;
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
+                background-color: @main-color;
+                border-radius: 0.5rem 0 0.5rem 0;
+            }
+        }
+    }
+    .sortTab{
+        padding: 0.5rem 2.5rem;
+        .sortTab-li{
+            .icon{
+                width: 3.2rem;
+                height: auto;
+                margin-bottom: 0.5rem;
+            }
+            .name{
+                color: #333;
+                font-size: 0.9rem;
+                font-weight: bold;
+            }
+        }
+    }
+    .header{
+        padding: 1rem 1.2rem;
+        .title{
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    }
+    .hotDjList{
+        .hotDjList-ul{
+            padding: 0 0.4rem 1rem 1.2rem;
+            box-sizing: border-box;
+            .hotDjList-li{
+                margin-right: 0.8rem;
+                .picBox{
+                    position: relative;
+                    margin-bottom: 0.5rem;
+                    .pic{
+                        width: 9.333rem;
+                        height: 9.333rem;
+                        border-radius: 0.3rem;
+                    }
+                    .tip{
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        padding: 0.3rem 0.6rem;
+                        border-radius: 0.3rem 0 0.3rem 0;
+                        color: #fff;
+                        font-size: 0.9rem;
+                        background-color: @main-color;
+                    }
+                }
+                .name{
+                    color: #333;
+                    font-size: 1rem;
+                    line-height: 1.2rem;
+                }
+            }
+        }
+    }
 }

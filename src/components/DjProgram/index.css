@@ -1,0 +1,53 @@
+.djProgram .djProgram-ul {
+  padding: 0.8rem 1.2rem;
+}
+.djProgram .djProgram-ul .djProgram-li {
+  margin-bottom: 1rem;
+}
+.djProgram .djProgram-ul .djProgram-li .pic {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.2rem;
+}
+.djProgram .djProgram-ul .djProgram-li .info {
+  flex: 1;
+  padding-left: 0.8rem;
+}
+.djProgram .djProgram-ul .djProgram-li .info .name {
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+.djProgram .djProgram-ul .djProgram-li .info .creator .avatar {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  margin-right: 0.3rem;
+}
+.djProgram .djProgram-ul .djProgram-li .info .creator .nickname {
+  color: #999;
+  font-size: 0.9rem;
+  padding-right: 0.8rem;
+  margin-right: 0.3rem;
+  position: relative;
+}
+.djProgram .djProgram-ul .djProgram-li .info .creator .nickname::after {
+  content: '';
+  position: absolute;
+  height: 0.8rem;
+  width: 0.1rem;
+  background-color: #ccc;
+  top: 0.1rem;
+  right: -0.4rem;
+  margin-right: 0.5rem;
+}
+.djProgram .djProgram-ul .djProgram-li .info .creator .icon {
+  width: 0.8rem;
+  height: auto;
+  margin-right: 0.2rem;
+}
+.djProgram .djProgram-ul .djProgram-li .info .creator .subCount {
+  color: #999;
+  font-size: 0.8rem;
+}
