@@ -269,4 +269,54 @@ export default {
     method: 'get',
     url: '/dj/radio/hot'
   },
+  // 电台 - 节目榜
+  getDjProgramRanking: {
+    method: 'get',
+    url: '/dj/program/toplist'
+  },
+  // 电台 - 24小时节目榜
+  getDjProgramHours: {
+    method: 'get',
+    url: '/dj/program/toplist/hours'
+  },
+  // 电台 - 最热主播榜
+  getDjHotpopular: {
+    method: 'get',
+    url: '/dj/toplist/popular'
+  },
+  // 电台 - 主播新人榜
+  getDjNewcomer: {
+    method: 'get',
+    url: '/dj/toplist/newcomer'
+  },
+  // 电台 - 24小时主播榜
+  getDjPopularHours: {
+    method: 'get',
+    url: '/dj/toplist/hours'
+  },
+  // 电台 - 新晋电台榜/热门电台榜
+  getDjHotRanking: {
+    method: 'get',
+    url: '/dj/toplist'
+  },
+  // 电台 - 付费精品
+  getDjHotPay: {
+    method: 'get',
+    url: '/dj/toplist/pay'
+  },
+  // 电台 - 节目详情
+  getDjProgramDetail: {
+    method: 'get',
+    url: '/dj/program/detail'
+  },
+  // 电台 - 详情
+  getDjDetail: {
+    method: 'get',
+    url: '/dj/detail'
+  },
+  // 电台 - 节目
+  getDjProgram: {
+    method: 'get',
+    url: '/dj/program'
+  },
 }

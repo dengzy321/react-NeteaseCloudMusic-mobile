@@ -28,6 +28,7 @@ const Pages = [
   'RadioStation',
   'DjSort',
   'DjRanking',
+  'DjDetail',
 ]
 
 let PagesObj = {}
@@ -148,5 +149,10 @@ export const routes = [
     path: '/djRanking',
     layout: BlankLayout,
     component: PagesObj.DjRanking
+  },
+  {
+    path: '/djDetail',
+    layout: BlankLayout,
+    component: PagesObj.DjDetail
   },
 ]

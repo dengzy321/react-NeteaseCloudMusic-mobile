@@ -1,5 +1,82 @@
 @import '../../style/variable.less';
 
 .djRanking{
-    
+    background-color: #f5f5f5;
+    .loading{
+        height: 20rem;
+        background-color: #fff;
+    }
+    .header{
+        background-color: #fff;
+        padding: 1rem 1.2rem;
+        .title{
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .arrowRigth{
+            width: 1rem;
+            height: auto;
+            margin-left: 0.5rem;
+        }
+    }
+    .hoursRankimg-ul{
+        padding: 1.2rem 2rem;
+        margin-bottom: 1rem;
+        background-color: #fff;
+        .hoursRankimg-li{
+            width: 7rem;
+            height: auto;
+            .picBox{
+                position: relative;
+                margin-bottom: 0.4rem;
+                .index{
+                    position: absolute;
+                    top: -0.5rem;
+                    left: -0.5rem;
+                    border-radius: 50%;
+                    width: 2rem;
+                    line-height: 2rem;
+                    text-align: center;
+                    color: #FF392D;
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    background-color: #fff;
+                }
+                .pic{
+                    width: 7rem;
+                    height: 7.5rem;
+                    object-fit: cover;
+                    border-radius: 0.3rem;
+                }
+                .popularHours-pic{
+                    width: 6rem;
+                    height: 6.5rem;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+                .icon{
+                    width: 1.5rem;
+                    height: auto;
+                    position: absolute;
+                    bottom: 1.2rem;
+                    right: 0.5rem;
+                }
+                .icon-vip{
+                    width: 1.5rem;
+                    height: auto;
+                    position: absolute;
+                    bottom: 0;
+                    right: 1.2rem;
+                }
+            }
+            .name{
+                color: #333;
+                font-size: 0.91rem;
+                width: 7rem;
+                height: 2.5rem;
+                line-height: 1.2rem;
+            }
+        }
+    }
 }

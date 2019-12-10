@@ -1,0 +1,47 @@
+.djHotPopular {
+  background-color: #fff;
+}
+.djHotPopular .djHotPopular-ul {
+  padding: 1.5rem 1.2rem;
+}
+.djHotPopular .djHotPopular-ul .djHotPopular-li {
+  margin-bottom: 1rem;
+}
+.djHotPopular .djHotPopular-ul .djHotPopular-li .index {
+  width: 1rem;
+  margin-right: 1.2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #999;
+}
+.djHotPopular .djHotPopular-ul .djHotPopular-li .picBox {
+  position: relative;
+}
+.djHotPopular .djHotPopular-ul .djHotPopular-li .picBox .pic {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+}
+.djHotPopular .djHotPopular-ul .djHotPopular-li .picBox .icon-vip {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 1rem;
+  height: auto;
+}
+.djHotPopular .djHotPopular-ul .djHotPopular-li .nickname {
+  color: #333;
+  font-size: 1.1rem;
+  flex: 1;
+  margin-left: 1rem;
+  width: 15rem;
+}
+.djHotPopular .djHotPopular-ul .djHotPopular-li .icon-hot {
+  width: 1rem;
+  height: auto;
+  margin-right: 0.2rem;
+}
+.djHotPopular .djHotPopular-ul .djHotPopular-li .subCount {
+  color: #999;
+  font-size: 0.9rem;
+}

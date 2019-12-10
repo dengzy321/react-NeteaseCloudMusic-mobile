@@ -140,6 +140,7 @@ const arr = [
     'dj_18',
     'dj_19',
     'dj_20',
+    'play2',
 ]
 
 let obj = {}

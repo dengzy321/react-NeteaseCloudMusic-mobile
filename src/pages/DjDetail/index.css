@@ -1,0 +1,97 @@
+.djDetail .header {
+  background-size: 100%;
+  width: 100%;
+  height: 20rem;
+  position: relative;
+}
+.djDetail .header .coverImg {
+  height: 20rem;
+  width: 100%;
+  object-fit: cover;
+}
+.djDetail .header .curDate {
+  position: absolute;
+  bottom: 4rem;
+  left: 1rem;
+  color: #fff;
+}
+.djDetail .header .curDate .day {
+  font-size: 3rem;
+  vertical-align: sub;
+}
+.djDetail .header .curDate .month {
+  display: inline;
+  font-size: 1.5rem;
+}
+.djDetail .mainContent {
+  background-color: #fff;
+  margin-top: -2rem;
+}
+.djDetail .mainContent .mcHeader {
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  padding: 1rem 1rem;
+  border-bottom: 0.1rem solid #f4f4f4;
+  border-radius: 1rem 1rem 0 0;
+  color: #333;
+  font-size: 1.2rem;
+}
+.djDetail .mainContent .mcHeader span {
+  flex: 1;
+}
+.djDetail .mainContent .detail-ul {
+  padding-bottom: 1rem;
+}
+.djDetail .mainContent .detail-ul .detail-li {
+  padding: 1rem;
+}
+.djDetail .mainContent .detail-ul .detail-li .index {
+  color: #999;
+  font-size: 1.2rem;
+  width: 2rem;
+  text-align: center;
+}
+.djDetail .mainContent .detail-ul .detail-li .info {
+  flex: 1;
+}
+.djDetail .mainContent .detail-ul .detail-li .icon-more {
+  width: 2rem;
+  height: auto;
+}
+.djDetail .mainContent .toolHeader {
+  background-color: #fff;
+  padding: 1rem 0;
+  flex: 1;
+}
+.djDetail .mainContent .toolHeader .songsInfo .avatar {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 0.2rem;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+.djDetail .mainContent .toolHeader .songsInfo .name {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  margin-right: 1rem;
+}
+.djDetail .mainContent .toolHeader .songsInfo .artist {
+  color: #999;
+  font-size: 1rem;
+}
+.djDetail .mainContent .toolHeader .songsInfo .btn {
+  border: 0.1rem solid #E82202;
+  background: transparent;
+  border-radius: 1rem;
+  padding: 0.3rem 0.8rem;
+  color: #E82202;
+  font-size: 0.8rem;
+}
+.djDetail .mainContent .toolHeader .tip {
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}

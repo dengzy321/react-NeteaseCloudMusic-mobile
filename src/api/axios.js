@@ -12,7 +12,7 @@ const history = createBrowserHistory();
 
 const instance = axios.create({
   //超时时间
-  timeout: 3000,
+  timeout: 10000,
   //响应前处理
   transformResponse: (responseData) => {
     return responseData;

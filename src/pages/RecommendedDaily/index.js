@@ -10,6 +10,19 @@ import { ColorExtractor } from 'react-color-extractor'
 import SongsToolModal from '@/components/SongsToolModal'
 import Loading from '@/components/Loading'
 
+const toolData = [
+    { name: '下一首播放', icon: Iconpath.album },
+    { name: '收藏到歌单', icon: Iconpath.favorites_$333 },
+    { name: '下载', icon: Iconpath.download },
+    { name: '评论', icon: Iconpath.news },
+    { name: '分享', icon: Iconpath.share_$333 },
+    { name: '歌手：邢林团', icon: Iconpath.singer },
+    { name: '专辑', icon: Iconpath.album },
+    { name: '设为铃声', icon: Iconpath.bell_$333 },
+    { name: '购买歌曲', icon: Iconpath.shopCart_$333 },
+    { name: '查看视频', icon: Iconpath.play_$333 },
+    { name: '隐蔽歌曲或歌单', icon: Iconpath.close_circular_$333 }
+]
 class SongSheetDetail extends React.Component {
     state = {
         show: false,
@@ -60,19 +73,6 @@ class SongSheetDetail extends React.Component {
     }
     render() {
         const { recommendList, curDate, curSongsInfo, show } = this.state
-        const toolData = [
-            { name: '下一首播放', icon: Iconpath.album },
-            { name: '收藏到歌单', icon: Iconpath.favorites_$333 },
-            { name: '下载', icon: Iconpath.download },
-            { name: '评论', icon: Iconpath.news },
-            { name: '分享', icon: Iconpath.share_$333 },
-            { name: '歌手：邢林团', icon: Iconpath.singer },
-            { name: '专辑', icon: Iconpath.album },
-            { name: '设为铃声', icon: Iconpath.bell_$333 },
-            { name: '购买歌曲', icon: Iconpath.shopCart_$333 },
-            { name: '查看视频', icon: Iconpath.play_$333 },
-            { name: '隐蔽歌曲或歌单', icon: Iconpath.close_circular_$333 }
-        ]
         if(recommendList.length == 0) return <Loading/>
         return (
             <div className='songSheetDetail'>

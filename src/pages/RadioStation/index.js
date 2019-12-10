@@ -174,7 +174,7 @@ class RadioStation extends React.Component {
                                         <span className='title'>{item.title} ></span>
                                         <button className='btn'>全部播放</button>
                                     </p>
-                                    <DjProgram data={item}/>
+                                    <DjProgram data={item.list} {...this.props}/>
                                 </div> :
                                 <div className='hotDjList' style={item.pay ? { background: 'linear-gradient(#F8F1DE,#FFF)' } : {}} key={index}>
                                     <p className='header dbc'>
@@ -184,7 +184,7 @@ class RadioStation extends React.Component {
                                     <ul className='hotDjList-ul df'>
                                         {
                                             item.list.map((lItem, lIndex) =>
-                                                <li className='hotDjList-li' key={lIndex}>
+                                                <li className='hotDjList-li' key={lIndex} onClick={() => this.props.history.push({pathname: '/djDetail', state: { id: lItem.id }})}>
                                                     <p className='picBox'>
                                                         <img className='pic' src={lItem.picUrl} />
                                                         {lItem.radioFeeType == 2 && <b className='tip'>付费精品</b>}
