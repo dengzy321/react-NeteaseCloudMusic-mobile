@@ -4,24 +4,35 @@
   height: 20rem;
   position: relative;
 }
-.djDetail .header .coverImg {
-  height: 20rem;
+.djDetail .header .pic {
   width: 100%;
+  height: 20rem;
   object-fit: cover;
 }
-.djDetail .header .curDate {
+.djDetail .header .info {
   position: absolute;
-  bottom: 4rem;
-  left: 1rem;
+  bottom: 3rem;
+  left: 1.2rem;
+  right: 1.2rem;
+}
+.djDetail .header .info .rcmdText {
   color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
 }
-.djDetail .header .curDate .day {
-  font-size: 3rem;
-  vertical-align: sub;
+.djDetail .header .info .subCount {
+  color: #fff;
+  font-size: 1rem;
+  opacity: 0.8;
 }
-.djDetail .header .curDate .month {
-  display: inline;
-  font-size: 1.5rem;
+.djDetail .header .info .btn {
+  background-color: #E82202;
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  color: #fff;
+  font-size: 0.9rem;
+  text-align: center;
+  border: 0;
 }
 .djDetail .mainContent {
   background-color: #fff;
@@ -31,7 +42,6 @@
   background-color: #fff;
   position: sticky;
   top: 0;
-  padding: 1rem 1rem;
   border-bottom: 0.1rem solid #f4f4f4;
   border-radius: 1rem 1rem 0 0;
   color: #333;
@@ -39,6 +49,26 @@
 }
 .djDetail .mainContent .mcHeader span {
   flex: 1;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: bold;
+  position: relative;
+  padding: 1rem;
+}
+.djDetail .mainContent .mcHeader span .count {
+  color: #666;
+  font-size: 0.8rem;
+  margin-left: 0.2rem;
+}
+.djDetail .mainContent .mcHeader .active::after {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 44%;
+  height: 0.2rem;
+  width: 2rem;
+  background-color: #E82202;
 }
 .djDetail .mainContent .detail-ul {
   padding-bottom: 1rem;
@@ -50,10 +80,31 @@
   color: #999;
   font-size: 1.2rem;
   width: 2rem;
+  margin-right: 1.2rem;
   text-align: center;
+}
+.djDetail .mainContent .detail-ul .detail-li .name {
+  color: #333;
+  font-size: 1.1rem;
+  width: 20rem;
+  margin-bottom: 0.6rem;
 }
 .djDetail .mainContent .detail-ul .detail-li .info {
   flex: 1;
+  color: #999;
+  font-size: 0.9rem;
+}
+.djDetail .mainContent .detail-ul .detail-li .info .icon-play3 {
+  width: 1rem;
+  height: auto;
+  margin-left: 0.6rem;
+  margin-right: 0.2rem;
+}
+.djDetail .mainContent .detail-ul .detail-li .info .icon-time {
+  width: 1rem;
+  height: auto;
+  margin-left: 0.6rem;
+  margin-right: 0.2rem;
 }
 .djDetail .mainContent .detail-ul .detail-li .icon-more {
   width: 2rem;

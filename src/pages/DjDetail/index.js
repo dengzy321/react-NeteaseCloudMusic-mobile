@@ -23,36 +23,42 @@ const toolData = [
     { name: '隐蔽歌曲或歌单', icon: Iconpath.close_circular_$333 }
 ]
 
+// 详情模块
 function DetailModule(props) {
     return (
         <div className='detailModule'>
-
+             
         </div>
     )
 }
 
+// 节目模块
 function ProgramModule(props) {
+    if (props.data.length == 0) return <Loading />
     return (
         <div className='programModule'>
             <div className='detail-ul'>
                 <ul>
                     {
                         props.data.map((item, index) =>
-                            <li key={index} className='detail-li da' onClick={this.openPlay.bind(this, item.id)}>
+                            <li key={index} className='detail-li da'>
                                 <span className='index'>{item.serialNum}</span>
-                                <div className='info'>
-                                    <h3 className='name'>{item.name}</h3>
-                                    <p className=''>
-                                        <span className='time'></span>
-                                        <img className='icon-more' src={Iconpath.more_gray}/>
+                                <div className='flex'>
+                                    <h3 className='name to-line'>{item.name}</h3>
+                                    <p className='info da'>
+                                        <span className='date'>{item.date}</span>
+                                        <img className='icon-play3' src={Iconpath.play3}/>
+                                        <span>{item.listenerCount}</span>
+                                        <img className='icon-time' src={Iconpath.time}/>
+                                        <span className='time'>{item.time}</span>
                                     </p>
                                 </div>
-                                <img className='icon-more' src={Iconpath.more_gray} onClick={this.onOpenTool.bind(this, index)} />
+                                <img className='icon-more' src={Iconpath.more_gray}/>
                             </li>
                         )
                     }
                 </ul>
-                <SongsToolModal show={show} data={toolData} closeFN={this.onOpenTool}>
+                {/* <SongsToolModal show={props.show} data={props.toolData} closeFN={this.props.onOpenTool}>
                     {Object.keys(props.curSongsInfo).length != 0 &&
                         <div className='toolHeader'>
                             <div className='songsInfo da'>
@@ -66,7 +72,7 @@ function ProgramModule(props) {
                             <div className='tip'>开通vip畅享千万曲库下载特权</div>
                         </div>
                     }
-                </SongsToolModal>
+                </SongsToolModal> */}
             </div>
         </div>
     )
@@ -76,7 +82,8 @@ class DjDetail extends React.Component {
     state = {
         curActive: 1, //当前激活项
         count: 0,
-        programList: []
+        programsList: [],
+        detailObj: {}
     }
     componentDidMount() {
         document.title = '电台详情'
@@ -86,6 +93,12 @@ class DjDetail extends React.Component {
     // 获取详情
     initDjProgram = (rid) => {
         http.getDjProgram({ rid }).then(res => {
+            res.programs.forEach(item => {
+                let d = new Date(item.createTime)
+                item.date = `${d.getMonth() >= 10 ? d.getMonth() + 1 : '0' + d.getMonth() + 1}-${d.getMonth() >= 10 ? d.getDate() : '0' + d.getDate()}`
+                let t = item.duration
+                item.time = `${parseInt(t / (1000 * 60)) >= 10 ? parseInt(t / (1000 * 60)) : '0' + parseInt(t / (1000 * 60))}:${parseInt((t / 1000) % 60) >= 10 ? parseInt((t / 1000) % 60) : '0' + parseInt((t / 1000) % 60)}`
+            })
             this.setState({
                 count: res.count,
                 programsList: res.programs
@@ -95,28 +108,38 @@ class DjDetail extends React.Component {
     // 获取电台详情
     initDjDetail = (rid) => {
         http.getDjDetail({ rid }).then(res => {
-
+            this.setState({
+                detailObj: res.djRadio
+            })
         })
     }
+    //  切换tab
+    onChange = (index) => {
+        this.setState({ curActive: index })
+    }
     render() {
-        const { programList, curActive, count } = this.state
-        if (programList.length == 0) return <Loading />
+        const { programsList, detailObj, curActive, count } = this.state
         return (
             <div className='djDetail'>
                 <div className='header'>
-                    <img className='coverImg' src={recommendList[0].album.picUrl} />
-                    <p className='curDate'>
-                        <span className='day'>{curDate.day}</span>
-                        <span className='month'>/{curDate.month}</span>
-                    </p>
+                    <img className='pic' src={detailObj.picUrl} />
+                    <div className='da info'>
+                        <p className='flex'>
+                            <h3 className='rcmdText'>{detailObj.rcmdText}</h3>
+                            <span className='subCount'>{detailObj.subCount}已订阅</span>
+                        </p>
+                        <button className='btn dcc'>
+                            {/* <img className='pic' src={detailObj.picUrl} /> */}
+                            <span>订阅</span>
+                        </button>
+                    </div>
                 </div>
-
                 <div className='mainContent'>
                     <div className='mcHeader da'>
-                        <span>详情</span>
-                        <span>节目<b className='count'>16</b></span>
+                        <span className={curActive == 0 ? 'active' : ''} onClick={this.onChange.bind(this, 0)}>详情</span>
+                        <span className={curActive == 1 ? 'active' : ''} onClick={this.onChange.bind(this, 1)}>节目<b className='count'>{count}</b></span>
                     </div>
-                    {curActive == 0 ? <DetailModule {...this.props} /> : <ProgramModule data={programList} count={count} {...this.props} />}
+                    {curActive == 0 ? <DetailModule data={detailObj} {...this.props} /> : <ProgramModule data={programsList} count={count} {...this.props} />}
                 </div>
             </div>
         )
