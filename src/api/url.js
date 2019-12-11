@@ -319,4 +319,9 @@ export default {
     method: 'get',
     url: '/dj/program'
   },
+  // 电台 - 订阅
+  getDjFollow: {
+    method: 'get',
+    url: '/dj/sub'
+  },
 }

@@ -1,0 +1,36 @@
+.paySelected {
+  height: 100%;
+  overflow-y: scroll;
+}
+.paySelected .paySelected-ul {
+  padding: 1.5rem 1.2rem;
+}
+.paySelected .paySelected-ul .paySelected-li {
+  margin-bottom: 1rem;
+}
+.paySelected .paySelected-ul .paySelected-li .pic {
+  width: 8.5rem;
+  height: 8.5rem;
+  border-radius: 0.5rem;
+}
+.paySelected .paySelected-ul .paySelected-li .info {
+  flex: 1;
+  padding-left: 1rem;
+}
+.paySelected .paySelected-ul .paySelected-li .info .name {
+  width: 20rem;
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+.paySelected .paySelected-ul .paySelected-li .info .rcmdText,
+.paySelected .paySelected-ul .paySelected-li .info .new {
+  color: #999;
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
+}
+.paySelected .paySelected-ul .paySelected-li .info .money {
+  color: #E82202;
+  font-size: 1.1rem;
+  margin-top: 0.9rem;
+}

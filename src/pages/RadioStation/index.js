@@ -13,7 +13,7 @@ import DjProgram from '@/components/DjProgram'
 const sortTab = [
     { name: '电台分类', icon: Iconpath.dj_sort, url: 'djSort' },
     { name: '电台排行', icon: Iconpath.dj_rank, url: 'djRanking' },
-    { name: '付费精品', icon: Iconpath.dj_vip, url: '' },
+    { name: '付费精品', icon: Iconpath.dj_vip, url: 'paySelected' },
     { name: '主播学院', icon: Iconpath.dj_college, url: 'https://h5.iplay.163.com/st/college/' }
 ]
 
@@ -43,7 +43,7 @@ class RadioStation extends React.Component {
     componentDidMount() {
         this.initBanner()
         this.initDjRecommend()
-        this.initDjPaygift()
+        this.initDjHotPay()
         this.batchHttp()
         this.initDjCatelist()
     }
@@ -66,14 +66,14 @@ class RadioStation extends React.Component {
         })
     }
     // 获取付费精选
-    initDjPaygift = () => {
+    initDjHotPay = () => {
         let { batchHttpData } = this.state
-        http.getDjPaygift().then(res => {
+        http.getDjHotPay({ limit: 3 }).then(res => {
             batchHttpData[1] = {
                 title: '精品推荐',
                 pay: true,
                 type: 2,
-                list: res.data.list.slice(0, 3)
+                list: res.toplist
             }
             this.setState({ batchHttpData })
         })
