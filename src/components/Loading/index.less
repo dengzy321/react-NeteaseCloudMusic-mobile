@@ -1,50 +1,96 @@
-.comp-loading {
-  height: 100%;
-  animation-delay: 1s;
-  span{
-    border-radius: 50%;
-    background-color: #FF3C5C;
-    margin: 0.6rem;
-    &:before{
-      content: '';
+@import '../../style/variable.less';
+
+.custom-loading{
+  position: fixed;
+  left: 40%;
+  top: 40%;
+  z-index: 9999;
+  .lines{
+    height: 100%;
+    color: #999;
+    font-size: 0.8rem;
+    .tip{
+      margin-left: 0.3rem;
+    }
+    span{
+      width: 0.2rem;
+      background-color: @main-color;
+      margin-right: 0.2rem;
+      border-radius: 0.1rem;
+      animation: translate 1.5s infinite linear;
+    }
+    .lines-1{
+      animation-delay: 0
+    }
+    .lines-2{
+      animation-delay: 200ms
+    }
+    .lines-3{
+      animation-delay: 0
+    }
+    .lines-4{
+      animation-delay: 600ms
+    }
+    @keyframes translate {
+      0% { height: 1rem }
+      50% { height: 0.4rem }
+      100% { height: 1rem }
+    }
+  }
+  .dot{
+    height: 100%;
+    animation-delay: 1s;
+    span{
+      position: relative;
       width: 1rem;
       height: 1rem;
       border-radius: 50%;
       background-color: #FF3C5C;
-      opacity: 0.7;
-      animation: scale 2s infinite cubic-bezier(0, 0, 0.49, 1.02);
-      transition: 0.5s all ease;
-      transform: scale(0);
+      margin: 0.6rem;
+      &:before{
+        position: absolute;
+        content: '';
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background-color: #FF3C5C;
+        opacity: 0.7;
+        animation: scale 2s infinite cubic-bezier(0, 0, 0.49, 1.02);
+        transition: 0.5s all ease;
+        transform: scale(0);
+      }
     }
-  }
-  .item-1 {
-    &:before{
-      animation-delay: 200ms;
+    .item-1 {
+      &:before{
+        animation-delay: 200ms;
+      }
     }
-  }
-  .item-2 {
-    &:before {
-      animation-delay: 400ms;
+    .item-2 {
+      &:before {
+        animation-delay: 400ms;
+      }
     }
-  }
-  .item-3 {
-    &:before {
-      animation-delay: 600ms;
+    .item-3 {
+      &:before {
+        animation-delay: 600ms;
+      }
     }
-  }
-  .item-4 {
-    &:before {
-      animation-delay: 800ms;
+    .item-4 {
+      &:before {
+        animation-delay: 800ms;
+      }
     }
-  }
-  .item-5 {
-    &:before {
-      animation-delay: 1000ms;
+    .item-5 {
+      &:before {
+        animation-delay: 1000ms;
+      }
     }
-  }
-  @keyframes scale {
-    0% { transform: scale(1) }
-    50%,75% { transform: scale(2) }
-    78%, 100% { opacity: 0 }
+    @keyframes scale {
+      0% { transform: scale(1) }
+      50%,75% { transform: scale(2) }
+      78%, 100% { opacity: 0 }
+    }
   }
 }
+
+

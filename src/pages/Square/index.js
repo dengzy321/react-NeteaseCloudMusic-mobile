@@ -9,6 +9,22 @@ import Iconpath from '@/utils/iconpath'
 import WaterfallList from '@/components/WaterfallList'
 import Dynamic from '@/components/Dynamic'
 
+// 广场组件
+function MySquare(data){
+    return(
+        <div className='mySquare'>
+            <div className='ms-header'>
+                <p className='da'>
+                    <span className='name'>云村热评墙</span>
+                    <img className='arrow_right' src={Iconpath.arrow_right_$fff} />
+                </p>
+                <p className='tip'>笑咪咪，今日最搓心评论，你看过几条？</p>
+            </div>
+            <WaterfallList list={data}/>
+        </div>
+    )
+}
+
 class Square extends React.Component {
     state = {
         waterVideoArr: [],
@@ -48,21 +64,6 @@ class Square extends React.Component {
             })
         })
     }
-    // 广场组件
-    MySquare(data){
-        return(
-            <div className='mySquare'>
-                <div className='ms-header'>
-                    <p className='da'>
-                        <span className='name'>云村热评墙</span>
-                        <img className='arrow_right' src={Iconpath.arrow_right_$fff} />
-                    </p>
-                    <p className='tip'>笑咪咪，今日最搓心评论，你看过几条？</p>
-                </div>
-                <WaterfallList list={data}/>
-            </div>
-        )
-    }
     // 改变tab
     onChange = (curIndex) => {
         if (curIndex == 0) this.initWaterVideo()
@@ -85,7 +86,7 @@ class Square extends React.Component {
                     <span className={curIndex == 0 ? 'navActive' : ''} onClick={this.onChange.bind(this,0)}>MV</span>
                     <span className={curIndex == 1? 'navActive':''} onClick={this.onChange.bind(this,1)}>动态</span>
                 </div>
-                {curIndex == 0 ? this.MySquare(waterVideoArr) : <Dynamic {...this.props} list={dynamicArr}/> }
+                {curIndex == 0 ? MySquare(waterVideoArr) : <Dynamic {...this.props} list={dynamicArr}/> }
             </div>
         )
     }

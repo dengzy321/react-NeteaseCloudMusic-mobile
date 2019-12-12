@@ -6,6 +6,7 @@ import * as actions from '@/store/actions';
 import './index.css';
 import { NavLink } from 'react-router-dom'
 import Iconpath from '@/utils/iconpath'
+import Loading from '@/components/Loading'
 
 class Dynamic extends React.Component {
     state = {
@@ -62,6 +63,7 @@ class Dynamic extends React.Component {
     }
     render() {
         const { list } = this.state;
+        if(list.length == 0) return <Loading/>
         return (
             <div className='dynamic'>
                 <ul>

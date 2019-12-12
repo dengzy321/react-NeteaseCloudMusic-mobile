@@ -1,5 +1,7 @@
 .videoList {
   background-color: #f4f4f4;
+  padding-top: 3rem;
+  box-sizing: border-box;
 }
 .videoList .video-li {
   margin-bottom: 0.5rem;

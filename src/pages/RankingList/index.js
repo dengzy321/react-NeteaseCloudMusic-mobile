@@ -52,8 +52,8 @@ class RankingList extends React.Component {
         })
     }
     // 打开页面
-    tolocation = (id) =>{ 
-        if(id){
+    tolocation = (id) => {
+        if (id) {
             this.props.history.push({
                 pathname: '/SongSheetDetail',
                 state: { id }
@@ -82,7 +82,7 @@ class RankingList extends React.Component {
                                                     <div className='tracks ddb'>
                                                         {
                                                             item2.tracks.map((item3, index3) =>
-                                                                <p className='da' key={index3}>
+                                                                <p className='da to-line' key={index3}>
                                                                     <span>{index3 + 1}.</span>
                                                                     <span>{item3.first} - {item3.second}</span>
                                                                 </p>

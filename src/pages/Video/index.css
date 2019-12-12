@@ -1,5 +1,7 @@
 .myVideo {
   padding-top: 5rem;
+  height: 100%;
+  box-sizing: border-box;
 }
 .myVideo .am-tabs-tab-bar-wrap {
   position: fixed;
@@ -7,7 +9,12 @@
   z-index: 99;
   width: 100%;
 }
-.myVideo .am-tabs-top,
-.myVideo .am-tabs-bottom {
-  padding: 3rem 0;
+.myVideo .am-tabs-tab-bar-wrap .am-tabs-default-bar-tab-active {
+  color: #E82202;
+}
+.myVideo .am-tabs-tab-bar-wrap .am-tabs-default-bar-underline {
+  border-color: #E82202;
+}
+.myVideo .am-tabs-horizontal .am-tabs-pane-wrap-inactive {
+  height: 100%;
 }

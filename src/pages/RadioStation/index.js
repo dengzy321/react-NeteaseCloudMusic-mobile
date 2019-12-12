@@ -95,12 +95,13 @@ class RadioStation extends React.Component {
                 })
             } else {
                 http.getDjRadioHot({
+                    limit: 3,
                     cateId: item.id
                 }).then(res => {
                     batchHttpData[index + 2] = {
                         title: item.name,
                         type: item.type,
-                        list: res.djRadios.slice(0,3)
+                        list: res.djRadios
                     }
                     this.setState({ batchHttpData })
                 })

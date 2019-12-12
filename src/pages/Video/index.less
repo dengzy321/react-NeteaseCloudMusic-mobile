@@ -2,13 +2,21 @@
 
 .myVideo{
     padding-top: 5rem;
+    height: 100%;
+    box-sizing: border-box;
     .am-tabs-tab-bar-wrap{
         position: fixed;
         top: 4rem;
         z-index: 99;
         width: 100%;
+        .am-tabs-default-bar-tab-active{
+            color: @main-color;
+        }
+        .am-tabs-default-bar-underline{
+            border-color: @main-color;
+        }
     }
-    .am-tabs-top, .am-tabs-bottom{
-        padding: 3rem 0;
+    .am-tabs-horizontal .am-tabs-pane-wrap-inactive{
+        height: 100%;
     }
 }

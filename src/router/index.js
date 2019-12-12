@@ -30,6 +30,8 @@ const Pages = [
   'DjRanking',
   'DjDetail',
   'PaySelected',
+  'DjProgramHours',
+  'DjPopularHours',
 ]
 
 let PagesObj = {}
@@ -160,5 +162,15 @@ export const routes = [
     path: '/paySelected',
     layout: BlankLayout,
     component: PagesObj.PaySelected
+  },
+  {
+    path: '/djProgramHours',
+    layout: BlankLayout,
+    component: PagesObj.DjProgramHours
+  },
+  {
+    path: '/djPopularHours',
+    layout: BlankLayout,
+    component: PagesObj.DjPopularHours
   },
 ]

@@ -1,0 +1,13 @@
+.djPopularHours {
+  background-color: #fff;
+  height: 100%;
+  overflow-y: scroll;
+  padding-top: 1rem;
+  box-sizing: border-box;
+}
+.djPopularHours .header {
+  padding: 1rem 1.2rem 0.5rem 1.2rem;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+}

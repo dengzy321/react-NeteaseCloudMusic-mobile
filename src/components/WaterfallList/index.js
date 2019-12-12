@@ -7,6 +7,7 @@ import { http } from '@/api/http'
 import * as actions from '@/store/actions';
 import { Tabs } from 'antd-mobile';
 import Iconpath from '@/utils/iconpath'
+import Loading from '@/components/Loading'
 
 class WaterfallList extends React.Component {
     state = {
@@ -58,6 +59,7 @@ class WaterfallList extends React.Component {
     // }
     render(){
         const { leftList, rightList } = this.state
+        if(leftList.length == 0 || rightList.length == 0) return <Loading/> 
         return(
             <div className='waterfall-box df'>
                 <div className='waterfall-list'>

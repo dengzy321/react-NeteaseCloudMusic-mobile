@@ -191,4 +191,5 @@ input:focus,button:focus,textarea:focus,input[type="checkbox"]:focus,label:focus
 
 .layout{
   margin-top: 4rem;
+  box-sizing: border-box;
 }

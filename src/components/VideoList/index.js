@@ -4,31 +4,31 @@ import { bindActionCreators } from 'redux';
 import { http } from '@/api/http'
 import * as actions from '@/store/actions';
 import './index.css';
-import { NavLink } from 'react-router-dom'
 import Iconpath from '@/utils/iconpath'
+import Loading from '@/components/Loading'
 
 class VideoList extends React.Component {
-    state ={
+    state = {
         videoList: []
     }
-    componentDidMount(){
-        
+    componentDidMount() {
+
     }
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps) {
         this.setState({
             videoList: nextProps.data
         })
     }
     // 点赞
-    onLive = (id,praisedStatus) =>{
+    onLive = (id, praisedStatus) => {
         http.changeResourceLive({
             type: 5,
-            t: praisedStatus? 0 : 1,
+            t: praisedStatus ? 0 : 1,
             id: id
-        }).then(res =>{
+        }).then(res => {
             let { videoList } = this.state
-            videoList.forEach(({data}) =>{
-                if(data.vid == id) {
+            videoList.forEach(({ data }) => {
+                if (data.vid == id) {
                     data.praised = !data.praised
                     data.praisedCount = data.praisedCount + 1
                 }
@@ -37,12 +37,12 @@ class VideoList extends React.Component {
         })
     }
     render() {
-        const { history } = this.props
         const { videoList } = this.state
+        if (videoList.length == 0) return <Loading/>
         return (
             <div className='videoList'>
                 <ul>
-                   {
+                    {
                         videoList.map(({ data }, index) =>
                             <li key={index} className='video-li'>
                                 <div className='video-box'>
@@ -55,20 +55,20 @@ class VideoList extends React.Component {
                                 <div className='footer da'>
                                     <img className='avatar' src={data.creator.avatarUrl} />
                                     <span className='nickname'>{data.creator.nickname}</span>
-                                    <span className='live' onClick={this.onLive.bind(this, data.vid,data.praised)}>
-                                        <img src={data.praised? Iconpath.live_red_fill:Iconpath.live} />
-                                        <b style={data.praised? {color:'#FF392D'}:{}}>{data.praisedCount}</b>
+                                    <span className='live' onClick={this.onLive.bind(this, data.vid, data.praised)}>
+                                        <img src={data.praised ? Iconpath.live_red_fill : Iconpath.live} />
+                                        <b style={data.praised ? { color: '#FF392D' } : {}}>{data.praisedCount}</b>
                                     </span>
-                                    <span className='comment' onClick={() => history.push({ pathname: '/VideoComment', state: { vid: data.vid }})}>
+                                    <span className='comment' onClick={() => this.props.history.push({ pathname: '/VideoComment', state: { vid: data.vid } })}>
                                         <img src={Iconpath.comment} />
                                         <b>{data.commentCount}</b>
                                     </span>
                                     <img className='more' src={Iconpath.more_gray} />
                                 </div>
                             </li>
-                           
-                       )
-                   }
+
+                        )
+                    }
                 </ul>
             </div>
         )

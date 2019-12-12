@@ -38,6 +38,9 @@
   color: #666;
   font-size: 1rem;
 }
+.rankingList .sup-ul .sup-li .sub-ul .sub1-li .tracks p {
+  width: 20rem;
+}
 .rankingList .sup-ul .sup-li .sub-ul .sub2-li {
   width: 9.333rem;
   margin-right: 0.8rem;

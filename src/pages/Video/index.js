@@ -10,11 +10,13 @@ import { Tabs } from 'antd-mobile';
 class Video extends React.Component {
     state = {
         tabs: [],
+        curIndex: 0,
         listData: []
     }
     componentWillMount() {
         this.initNavData()
     }
+    // 获取 tab
     initNavData() {
         http.getVideoTabs().then(res => {
             res.data.forEach(item => {
@@ -23,25 +25,29 @@ class Video extends React.Component {
             this.setState({
                 tabs: res.data.slice(1,10)
             }, () => this.initListData(this.state.tabs[0].id))
-            
         }) 
     }
+    // 获取列表数据
     initListData(id) {
         http.getVideoGroup({ id }).then(res => {
             this.setState({
-                listData: res.datas
+                // listData: res.datas
             })
         })
     }
     // 切换改变
-    onChange = (obj) => {
-        this.initListData(obj.id)
+    onChange = (item, index) => {
+        this.setState({
+            curIndex: index,
+            listData: []
+        })
+        this.initListData(item.id)
     }
     render() {
-        const { tabs, listData } = this.state
+        const { tabs, curIndex, listData } = this.state
         return (
             <div className='myVideo'>
-                <Tabs tabs={tabs} onChange={this.onChange}>
+                <Tabs tabs={tabs} page={curIndex} swipeable={false} onChange={this.onChange}>
                     <VideoList data={listData} {...this.props}/>
                 </Tabs>
             </div>

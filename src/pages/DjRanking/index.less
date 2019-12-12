@@ -2,8 +2,23 @@
 
 .djRanking{
     background-color: #f5f5f5;
+    height: 100%;
+    overflow-y: scroll;
+    .am-tabs-tab-bar-wrap{
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background-color: #fff;
+        .am-tabs-default-bar-tab-active{
+            color: @main-color;
+        }
+        .am-tabs-default-bar-underline{
+            border-color: @main-color;
+        }
+    }
     .loading{
-        height: 20rem;
+        height: 100%;
         background-color: #fff;
     }
     .header{
@@ -19,6 +34,10 @@
             height: auto;
             margin-left: 0.5rem;
         }
+    }
+    .programModule, .popularModule, .djModule{
+        padding-top: 4rem;
+        box-sizing: border-box;
     }
     .hoursRankimg-ul{
         padding: 1.2rem 2rem;

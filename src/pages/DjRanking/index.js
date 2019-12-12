@@ -20,11 +20,11 @@ const tabs = [
 
 // 节目榜模块
 function ProgramModule(props) {
-    if (props.programHours.length == 0 || props.programRanking.length == 0) return <div className='loading dcc'><Loading /></div>
+    if (props.programHours.length == 0 || props.programRanking.length == 0) return <Loading/>
     return (
-        <div className=''>
+        <div className='programModule'>
             <div className='hoursRankimg'>
-                <div className='header da'>
+                <div className='header da' onClick={() => props.history.push('/djProgramHours')}>
                     <span className='title'>24小时榜</span>
                     <img className='arrowRigth' src={Iconpath.arrow_rigth} />
                 </div>
@@ -55,14 +55,14 @@ function ProgramModule(props) {
 
 // 主播榜
 function PopularModule(props) {
-    if (props.popularHours.length == 0 || props.hotPopular.length == 0) return <div className='loading dcc'><Loading /></div>
+    if (props.popularHours.length == 0 || props.hotPopular.length == 0) return <Loading/>
     return (
-        <div className=''>
+        <div className='popularModule'>
             <div className='hoursRankimg'>
                 {
                     props.popularHours.map((item, index) =>
                         <div key={index}>
-                            <div className='header da'>
+                            <div className='header da' onClick={() => props.history.push({pathname: '/djPopularHours', state: { index }})}>
                                 <span className='title'>{item.title}</span>
                                 <img className='arrowRigth' src={Iconpath.arrow_rigth} />
                             </div>
@@ -96,9 +96,9 @@ function PopularModule(props) {
 
 // 电台榜
 function DjModule(props) {
-    if (props.payRanking.length == 0 || props.hotDjRanking.length == 0) return <div className='loading dcc'><Loading /></div>
+    if (props.payRanking.length == 0 || props.hotDjRanking.length == 0) return <Loading/>
     return (
-        <div className=''>
+        <div className='djModule'>
             <div className='hoursRankimg'>
                 <div className='header da'>
                     <span className='title'>付费精品榜</span>
@@ -132,6 +132,7 @@ function DjModule(props) {
 class DjRanking extends React.Component {
     state = {
         curTab: 1,
+        page: 0, // 页码
         programHours: [], // 24小时节目榜
         programRanking: [], // 最热节目
         hotPopular: [], //最热主播
@@ -145,15 +146,19 @@ class DjRanking extends React.Component {
     }
     // 24小时节目榜
     initDjProgramHours = () => {
-        http.getDjProgramHours().then(res => {
+        http.getDjProgramHours({
+            limit: 3
+        }).then(res => {
             this.setState({
-                programHours: res.toplist.slice(0, 3)
+                programHours: res.toplist
             })
         })
     }
     // 节目榜
     initDjProgramRanking = () => {
-        http.getDjProgramRanking().then(res => {
+        http.getDjProgramRanking({
+            limit: 30
+        }).then(res => {
             console.log(res)
             this.setState({
                 programRanking: res.toplist
@@ -163,7 +168,9 @@ class DjRanking extends React.Component {
     // 24小时主播榜
     initDjPopularHours = () => {
         let { popularHours } = this.state
-        http.getDjPopularHours().then(res => {
+        http.getDjPopularHours({
+            limit: 30
+        }).then(res => {
             popularHours[0] = {
                 title: '24小时榜',
                 sub: []
@@ -175,7 +182,9 @@ class DjRanking extends React.Component {
     // 主播新人榜
     initDjNewcomer = () => {
         let { popularHours } = this.state
-        http.getDjNewcomer().then(res => {
+        http.getDjNewcomer({
+            limit: 30
+        }).then(res => {
             popularHours[1] = {
                 title: '新人榜',
                 sub: []
@@ -186,7 +195,9 @@ class DjRanking extends React.Component {
     }
     // 最热主播榜
     initDjHotpopular = () => {
-        http.getDjHotpopular().then(res => {
+        http.getDjHotpopular({
+            limit: 30
+        }).then(res => {
             this.setState({
                 hotPopular: res.toplist
             })
@@ -194,18 +205,28 @@ class DjRanking extends React.Component {
     }
     // 付费精品
     initDjHotPay = () => {
-        http.getDjHotPay().then(res => {
+        http.getDjHotPay({
+            limit: 3
+        }).then(res => {
             this.setState({
-                payRanking: res.toplist.slice(0,3)
+                payRanking: res.toplist
             })
         })
     }
     // 热门电台榜
     initDjHotRanking = () => {
-        http.getDjHotRanking().then(res => {
-            this.setState({
-                hotDjRanking: res.toplist
-            })
+        let { page } = this.state
+        http.getDjHotRanking({
+            type: 'hot',
+            limit: 30,
+            offset: page
+        }).then(res => {
+            if(res.toplist.length > 0){
+                this.setState({
+                    hotDjRanking: res.toplist,
+                    page: page + 1
+                })
+            }
         })
     }
     // 切换tab
@@ -227,10 +248,19 @@ class DjRanking extends React.Component {
             curTab: index
         })
     }
+    // 滚动加载更多
+    onScroll = (el) =>{
+        let { curTab } = this.state
+        if(window.global.onReachBottom(el)){
+            if(curTab == 0) this.initDjProgramRanking()
+            else if(curTab == 1) this.initDjHotpopular()
+            else if(curTab == 2) this.initDjHotRanking()
+        }
+    }
     render() {
         const { curTab, programHours, programRanking, hotPopular, popularHours, payRanking, hotDjRanking } = this.state
         return (
-            <div className='djRanking'>
+            <div className='djRanking' onScroll={this.onScroll}>
                 <Tabs tabs={tabs} page={curTab} onChange={this.onChange}>
                     {
                         curTab == 0 ?
