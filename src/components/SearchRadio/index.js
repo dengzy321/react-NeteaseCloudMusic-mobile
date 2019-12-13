@@ -6,10 +6,12 @@ import './index.css';
 import { Link } from 'react-router-dom'
 import { http } from '@/api/http'
 import Iconpath from '@/utils/iconpath'
+import Loading from '@/components/Loading'
 
 class SearchRadio extends React.Component {
     render() {
         const { data } = this.props
+        if(data.length == 0) return <Loading/>
         return (
             <div className='searchRadio'>
                 <ul className='radio-ul'>

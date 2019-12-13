@@ -6,8 +6,22 @@ import './index.css';
 import { Link } from 'react-router-dom'
 import Iconpath from '@/utils/iconpath'
 import { http } from '@/api/http'
+import Loading from '@/components/Loading'
 import SongsToolModal from '@/components/SongsToolModal'
 
+const toolData = [
+    { name: '下一首播放', icon: Iconpath.album },
+    { name: '收藏到歌单', icon: Iconpath.favorites_$333 },
+    { name: '下载', icon: Iconpath.download },
+    { name: '评论', icon: Iconpath.news },
+    { name: '分享', icon: Iconpath.share_$333 },
+    { name: '歌手：邢林团', icon: Iconpath.singer },
+    { name: '专辑', icon: Iconpath.album },
+    { name: '设为铃声', icon: Iconpath.bell_$333 },
+    { name: '购买歌曲', icon: Iconpath.shopCart_$333 },
+    { name: '查看视频', icon: Iconpath.play_$333 },
+    { name: '隐蔽歌曲或歌单', icon: Iconpath.close_circular_$333 }
+]
 class Songs extends React.Component {
     state = {
         show: false,
@@ -37,20 +51,7 @@ class Songs extends React.Component {
     render(){
         const { show, curSongsInfo } = this.state
         const { data } = this.props
-
-        const toolData = [
-            { name: '下一首播放', icon: Iconpath.album },
-            { name: '收藏到歌单', icon: Iconpath.favorites_$333 },
-            { name: '下载', icon: Iconpath.download },
-            { name: '评论', icon: Iconpath.news },
-            { name: '分享', icon: Iconpath.share_$333 },
-            { name: '歌手：邢林团', icon: Iconpath.singer },
-            { name: '专辑', icon: Iconpath.album },
-            { name: '设为铃声', icon: Iconpath.bell_$333 },
-            { name: '购买歌曲', icon: Iconpath.shopCart_$333 },
-            { name: '查看视频', icon: Iconpath.play_$333 },
-            { name: '隐蔽歌曲或歌单', icon: Iconpath.close_circular_$333 }
-        ]
+        if(data.length == 0) return <Loading/>
         return( 
             <div className='mySongs'>
                 <ul className='songs-ul'>

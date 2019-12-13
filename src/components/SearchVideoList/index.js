@@ -6,6 +6,7 @@ import './index.css';
 import { Link } from 'react-router-dom'
 import Iconpath from '@/utils/iconpath'
 import { http } from '@/api/http'
+import Loading from '@/components/Loading'
 
 class SearchVideoList extends React.Component {
     state = {
@@ -32,6 +33,7 @@ class SearchVideoList extends React.Component {
     }
     render() {
         const { data } = this.props;
+        if(data.length == 0) return <Loading/>
         return (
             <div className='searchVideoList'>
                 <ul className='video-ul'>

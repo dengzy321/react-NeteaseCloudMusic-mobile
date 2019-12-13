@@ -77,7 +77,7 @@ class Dynamic extends React.Component {
                                     </div>
                                     <div className='userInfo'>
                                         <p className='da'>
-                                            <span className='name'>{item.user.nickname}</span>
+                                            <span className='name to-line'>{item.user.nickname}</span>
                                             <span className='tip da'>
                                                 <img className='icon' src={Iconpath.vip} />
                                                 <b>年</b>
@@ -150,7 +150,7 @@ class Dynamic extends React.Component {
                                         <div className='creatorBox da'>
                                             <img className='avatar' src={item.json.video.coverUrl} alt="" />
                                             <p className='ddc-h'>
-                                                <span className='artist'>{item.json.video.creator.signature}</span>
+                                                {/* <span className='artist'>{item.json.video.creator.signature? item.json.video.creator.signature : ''}</span> */}
                                                 <span className='name'>{item.json.video.title}</span>
                                             </p>
                                         </div>

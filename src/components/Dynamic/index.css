@@ -28,6 +28,7 @@
 .dynamic .dynamic-li .header .userInfo .name {
   color: #333;
   font-size: 1.2rem;
+  width: 10rem;
 }
 .dynamic .dynamic-li .header .userInfo .tip {
   background-color: #161616;

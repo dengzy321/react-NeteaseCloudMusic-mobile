@@ -12,7 +12,7 @@ function Lines() {
         <span className="lines-3"></span>
         <span className="lines-4"></span>
       </p>
-      <p className='tip'>加载中...</p>
+      <p className='tip'>努力加载中...</p>
     </div>
   )
 }

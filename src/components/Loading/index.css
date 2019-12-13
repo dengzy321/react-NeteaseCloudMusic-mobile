@@ -2,18 +2,19 @@
   position: fixed;
   left: 40%;
   top: 40%;
-  z-index: 9999;
+  z-index: 999;
 }
 .custom-loading .lines {
   height: 100%;
   color: #999;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 .custom-loading .lines .tip {
   margin-left: 0.3rem;
 }
 .custom-loading .lines span {
   width: 0.2rem;
+  height: 0.4rem;
   background-color: #E82202;
   margin-right: 0.2rem;
   border-radius: 0.1rem;

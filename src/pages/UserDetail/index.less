@@ -1,0 +1,131 @@
+@import '../../style/variable.less';
+
+.userDetail{
+    .ud-header{
+        background-size: 100%;
+        width: 100%;
+        height: 20rem;
+        position: relative;
+        .pic{
+            width: 100%;
+            height: 20rem;
+            object-fit: cover;
+        }
+        .info{
+            position: absolute;
+            bottom: 3rem;
+            left: 1.2rem;
+            right: 1.2rem;
+            .avatar{
+                width: 4.5rem;
+                height: 4.5rem;
+                border-radius: 50%;
+                margin-bottom: 2rem;
+            }
+            .nickname{
+                color: #fff;
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+            .followCount{
+                color: #fff;
+                opacity: 0.8;
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+                b{
+                    margin-right: 0.6rem;
+                    padding-right: 0.6rem;
+                    position: relative;
+                    &:first-child::after{
+                        position: absolute;
+                        top: 0.15rem;
+                        right: 0;
+                        content: '';
+                        height: 0.7rem;
+                        width: 0.1rem;
+                        background-color: #fff;
+                    }
+                }
+            }
+            .birthday{
+                color: #fff;
+                font-size: 0.8rem;
+                margin-right: 0.6rem;
+                padding: 0.2rem 0.8rem;
+                border-radius: 0.9rem;
+                background-color: rgba(203, 146, 177, 0.5)
+            }
+            .level{
+                color: #fff;
+                font-size: 0.8rem;
+                padding: 0.2rem 0.6rem;
+                border-radius: 0.9rem;
+                background-color: rgba(255, 255, 255, 0.5)
+            }
+            .btn{
+                .follow{
+                    color: #fff;
+                    font-size: 0.9rem;
+                    background-color: @main-color;
+                    padding: 0.5rem 1rem;
+                    border-radius: 2rem;
+                    border: 0;
+                }
+                .sendNews{
+                    color: #fff;
+                    font-size: 0.9rem;
+                    border: 0;
+                    background-color: rgba(255, 255, 255, 0.6);
+                    padding: 0.4rem 0.8rem;
+                    border-radius: 2rem;
+                    margin-left: 0.8rem;
+                    .icon{
+                        width: 1.2rem;
+                        height: auto;
+                        margin-right: 0.3rem;
+                    }
+                }
+            }
+        }
+    }
+    .mainContent{
+        background-color: #fff;
+        margin-top: -2rem;
+        .mcHeader{
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            border-bottom: 0.1rem solid #f4f4f4;
+            border-radius: 1rem 1rem 0 0;
+            color: #333;
+            font-size: 1.2rem;
+            span{
+                flex: 1;
+                text-align: center;
+                font-size: 1.1rem;
+                color: #333;
+                font-weight: bold;
+                position: relative;
+                padding: 1rem;
+                .count{
+                    color: #666;
+                    font-size: 0.8rem;
+                    margin-left: 0.2rem;
+                }
+            }
+            .active::after{
+                position: absolute;
+                content: '';
+                bottom: 0;
+                left: 44%;
+                height: 0.2rem;
+                width: 2rem;
+                background-color: @main-color;
+            }
+        }
+        .userHome{
+
+        }
+    }
+}

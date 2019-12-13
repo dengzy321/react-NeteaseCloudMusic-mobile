@@ -6,6 +6,7 @@ import './index.css';
 import { Link } from 'react-router-dom'
 import { http } from '@/api/http'
 import Iconpath from '@/utils/iconpath'
+import Loading from '@/components/Loading'
 import SearchVideoList from '@/components/SearchVideoList'
 import SearchSongSheet from '@/components/SearchSongSheet'
 import SearchArtist from '@/components/SearchArtist'
@@ -14,6 +15,19 @@ import SearchRadio from '@/components/SearchRadio'
 import SearchUserList from '@/components/SearchUserList'
 import SongsToolModal from '@/components/SongsToolModal'
 
+const toolData = [
+    { name: '下一首播放', icon: Iconpath.album },
+    { name: '收藏到歌单', icon: Iconpath.favorites_$333 },
+    { name: '下载', icon: Iconpath.download },
+    { name: '评论', icon: Iconpath.news },
+    { name: '分享', icon: Iconpath.share_$333 },
+    { name: '歌手：邢林团', icon: Iconpath.singer },
+    { name: '专辑', icon: Iconpath.album },
+    { name: '设为铃声', icon: Iconpath.bell_$333 },
+    { name: '购买歌曲', icon: Iconpath.shopCart_$333 },
+    { name: '查看视频', icon: Iconpath.play_$333 },
+    { name: '隐蔽歌曲或歌单', icon: Iconpath.close_circular_$333 }
+]
 class SearchTotal extends React.Component {
     state = {
         show: false,
@@ -38,19 +52,7 @@ class SearchTotal extends React.Component {
     render() {
         const { show, curSongsInfo } = this.state
         const { data, onChange, history } = this.props
-        const toolData = [
-            { name: '下一首播放', icon: Iconpath.album },
-            { name: '收藏到歌单', icon: Iconpath.favorites_$333 },
-            { name: '下载', icon: Iconpath.download },
-            { name: '评论', icon: Iconpath.news },
-            { name: '分享', icon: Iconpath.share_$333 },
-            { name: '歌手：邢林团', icon: Iconpath.singer },
-            { name: '专辑', icon: Iconpath.album },
-            { name: '设为铃声', icon: Iconpath.bell_$333 },
-            { name: '购买歌曲', icon: Iconpath.shopCart_$333 },
-            { name: '查看视频', icon: Iconpath.play_$333 },
-            { name: '隐蔽歌曲或歌单', icon: Iconpath.close_circular_$333 }
-        ]
+        if(Object.keys(data).length == 0) return <Loading/>
         return (
             <div className='searchTotal'>
                 {data.song &&

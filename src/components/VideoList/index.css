@@ -63,12 +63,13 @@
 }
 .videoList .video-li .footer .comment b {
   position: absolute;
-  right: -0.3rem;
+  right: -1rem;
   top: -0.2rem;
   font-size: 0.8rem;
   color: #999;
+  min-width: 1rem;
   background-color: #fff;
-  width: 1rem;
+  width: 2rem;
   line-height: 1rem;
   text-align: center;
   border-radius: 50%;

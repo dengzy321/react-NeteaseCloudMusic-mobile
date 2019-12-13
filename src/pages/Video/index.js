@@ -31,7 +31,7 @@ class Video extends React.Component {
     initListData(id) {
         http.getVideoGroup({ id }).then(res => {
             this.setState({
-                // listData: res.datas
+                listData: res.datas
             })
         })
     }

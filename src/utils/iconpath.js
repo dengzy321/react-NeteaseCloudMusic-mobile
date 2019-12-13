@@ -144,6 +144,7 @@ const arr = [
     'play3',
     'time',
     'star',
+    'news2_$fff',
 ]
 
 let obj = {}

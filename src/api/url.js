@@ -1,33 +1,53 @@
 export default {
   //手机登录
   phoneLogin: {
-    method: 'get',
+    method: 'post',
     url: '/login/cellphone'
   },
   //邮箱登录
   emailLogin: {
-    method: 'get',
+    method: 'post',
     url: '/login'
   },
   //发送验证码
   sentVerify: {
-    method: 'get',
+    method: 'post',
     url: '/captcha/sent'
   },
   //验证验证码
   emailLogin: {
-    method: 'get',
+    method: 'post',
     url: '/captcha/verify'
   },
   //注册(修改密码)
   register: {
-    method: 'get',
+    method: 'post',
     url: '/register/cellphone'
   },
   // 退出登录
   logout: {
-    method: 'get',
+    method: 'post',
     url: '/logout'
+  },
+  // 获取用户详情
+  getUserDetail: {
+    method: 'get',
+    url: '/user/detail'
+  },
+  // 获取用户动态
+  getUserEvent: {
+    method: 'get',
+    url: '/user/event'
+  },
+  // 获取用户歌单
+  getUserSongs: {
+    method: 'get',
+    url: '/user/playlist'
+  },
+  // 获取用户信息 , 歌单，收藏，mv, dj 数量
+  getUserSubcount: {
+    method: 'get',
+    url: '/user/subcount'
   },
   //获取banner
   getBanner: {
@@ -178,6 +198,11 @@ export default {
   getExclusiveMv: {
     method: 'get',
     url: '/mv/exclusive/rcmd'
+  },
+  // 获取 mv 数据
+  getMvDetail: {
+    method: 'get',
+    url: '/mv/detail'
   },
   // 独家放送
   getPrivatecontent: {

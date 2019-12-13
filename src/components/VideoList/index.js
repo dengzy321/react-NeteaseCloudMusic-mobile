@@ -53,17 +53,21 @@ class VideoList extends React.Component {
                                 </div>
                                 <h3 className='title to-line'>{data.title}</h3>
                                 <div className='footer da'>
-                                    <img className='avatar' src={data.creator.avatarUrl} />
-                                    <span className='nickname'>{data.creator.nickname}</span>
-                                    <span className='live' onClick={this.onLive.bind(this, data.vid, data.praised)}>
-                                        <img src={data.praised ? Iconpath.live_red_fill : Iconpath.live} />
-                                        <b style={data.praised ? { color: '#FF392D' } : {}}>{data.praisedCount}</b>
-                                    </span>
-                                    <span className='comment' onClick={() => this.props.history.push({ pathname: '/VideoComment', state: { vid: data.vid } })}>
-                                        <img src={Iconpath.comment} />
-                                        <b>{data.commentCount}</b>
-                                    </span>
-                                    <img className='more' src={Iconpath.more_gray} />
+                                    <p className='da' onClick={() => this.props.history.push({pathname: '/userDetail', state:{id:data.creator.userId}})}>
+                                        <img className='avatar' src={data.creator.avatarUrl} />
+                                        <span className='nickname'>{data.creator.nickname}</span>
+                                    </p>
+                                    <p className='flex da-e'>
+                                        <span className='live' onClick={this.onLive.bind(this, data.vid, data.praised)}>
+                                            <img src={data.praised ? Iconpath.live_red_fill : Iconpath.live} />
+                                            <b style={data.praised ? { color: '#FF392D' } : {}}>{data.praisedCount}</b>
+                                        </span>
+                                        <span className='comment' onClick={() => this.props.history.push({ pathname: '/VideoComment', state: { vid: data.vid } })}>
+                                            <img src={Iconpath.comment} />
+                                            <b>{data.commentCount}</b>
+                                        </span>
+                                        <img className='more' src={Iconpath.more_gray} />
+                                    </p>
                                 </div>
                             </li>
 

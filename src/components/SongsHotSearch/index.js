@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import Iconpath from '@/utils/iconpath'
 import { http } from '@/api/http'
 import { Toast } from 'antd-mobile';
+import Loading from '@/components/Loading'
 
 class SongsHotSearch extends React.Component {
     componentDidMount() {
@@ -14,6 +15,7 @@ class SongsHotSearch extends React.Component {
     }
     render() {
         const { data, addSearchHistory } = this.props;
+        if(data.length == 0) return <Loading/>
         return (
             <div className='songsHotSearch'>
                 <ul>
