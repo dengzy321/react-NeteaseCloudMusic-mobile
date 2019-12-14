@@ -71,7 +71,7 @@ class Dynamic extends React.Component {
                         list.map((item, index) =>
                             <li key={index} className='dynamic-li'>
                                 <div className='header da'>
-                                    <div className='avatar-box'>
+                                    <div className='avatar-box' onClick={() => this.props.history.push({pathname: '/userDetail', state:{ id:item.user.userId }})}>
                                         <img className='avatar' src={item.user.avatarUrl} />
                                         <img className='icon' src={Iconpath.vip_fill} />
                                     </div>
@@ -97,8 +97,12 @@ class Dynamic extends React.Component {
                                 {
                                     item.type == 18 &&
                                     <div className='publishModal'>
-                                        <div className='coverImg'>
-                                            <img className='img' src={item.json.song.artists[0].picUrl} alt="" />
+                                        <div className='coverImg da'>
+                                            {
+                                                item.pics.map((pItem, pIndex) =>
+                                                    <img key={pIndex} src={pItem.squareUrl} className='img' />
+                                                )
+                                            }
                                         </div>
                                         <div className='creatorBox da' onClick={this.onPlayMusicHandle.bind(this, item)}>
                                             <img className='avatar' src={item.json.song.artists[0].img1v1Url} alt="" />

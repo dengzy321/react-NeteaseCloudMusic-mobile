@@ -23,4 +23,3 @@ function mapUrlObjToStrObj(urlObj){
 
 export const http = mapUrlObjToFuncObj(HTTP_URL);
 export const URL = mapUrlObjToStrObj(HTTP_URL);
-   

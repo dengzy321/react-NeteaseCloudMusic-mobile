@@ -128,6 +128,7 @@
 .dynamic .dynamic-li .forwardModal .coverImg,
 .dynamic .dynamic-li .videoModal .coverImg {
   position: relative;
+  flex-wrap: wrap;
 }
 .dynamic .dynamic-li .publishModal .coverImg .img,
 .dynamic .dynamic-li .publishModal .coverImg .img,
@@ -137,7 +138,8 @@
 .dynamic .dynamic-li .videoModal .coverImg .img {
   width: 10rem;
   height: auto;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
+  margin-bottom: 0.8rem;
 }
 .dynamic .dynamic-li .publishModal,
 .dynamic .dynamic-li .forwardModal,
@@ -185,7 +187,6 @@
   background-color: #f4f4f4;
   padding-left: 0.5rem;
   border-radius: 0.2rem;
-  margin-top: 0.5rem;
 }
 .dynamic .dynamic-li .creatorBox .avatar {
   width: 2.5rem;
