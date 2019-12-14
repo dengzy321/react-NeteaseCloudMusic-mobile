@@ -10,6 +10,7 @@ import CommentList from '@/components/commentList'
 
 class VideoComment extends React.Component {
     state = {
+        vid: '',
         tabs: [],
         comments: {},
         videoInfo: {},
@@ -19,17 +20,19 @@ class VideoComment extends React.Component {
         isFollowUser: 0, //关注用户
     }
     componentDidMount() {
-        console.log(this)
-        this.initVideoDetail()
-        this.initVideoUrl()
-        this.initVideoComment()
-        this.initRelatedVideo()
+        this.setState({
+            vid: this.props.location.state.vid
+        }, () => {
+            this.initVideoDetail()
+            this.initVideoUrl()
+            this.initVideoComment()
+            this.initRelatedVideo()
+        })
     }
     // 获取视频详情
     initVideoDetail = () => {
-        http.getVideoDetail({
-            id: this.props.location.state.vid
-        }).then(res => {
+        let { vid } = this.state
+        http.getVideoDetail({ id: vid }).then(res => {
             res.data.praised = false
             res.data.collected = false
             this.setState({ videoInfo: res.data })
@@ -37,9 +40,8 @@ class VideoComment extends React.Component {
     }
     // 获取视频播放地址
     initVideoUrl = () => {
-        http.getVideoUrl({
-            id: this.props.location.state.vid
-        }).then(res => {
+        let { vid } = this.state
+        http.getVideoUrl({ id: vid }).then(res => {
             this.setState({
                 url: res.urls[0].url
             })
@@ -47,8 +49,9 @@ class VideoComment extends React.Component {
     }
     // 获取视频评论
     initVideoComment = () => {
+        let { vid } = this.state
         http.getVideoComment({
-            id: this.props.location.state.vid,
+            id: vid,
             limit: 20,
             offset: 0
         }).then(res => {
@@ -57,9 +60,8 @@ class VideoComment extends React.Component {
     }
     // 获取相关视频
     initRelatedVideo = () => {
-        http.getRelatedVideo({
-            id: this.props.location.state.vid
-        }).then(res => {
+        let { vid } = this.state
+        http.getRelatedVideo({ id: vid }).then(res => {
             this.setState({ relatedVideo: res.data })
         })
     }
@@ -122,6 +124,20 @@ class VideoComment extends React.Component {
             this.setState({ videoInfo })
         })
     }
+    // 改变vid
+    onChangeVid = (vid) =>{
+        this.setState({
+            vid: vid,
+            comments: {},
+            videoInfo: {},
+            relatedVideo: []
+        }, () => {
+            this.initVideoDetail()
+            this.initVideoUrl()
+            this.initVideoComment()
+            this.initRelatedVideo()
+        })
+    }
     render() {
         const { url, comments, relatedVideo, videoInfo, inputComment, isFollowUser } = this.state
         return (
@@ -172,7 +188,7 @@ class VideoComment extends React.Component {
                 }
                 <div className='relatedVideo'>
                     <h3 className='myTitle'>相关视频</h3>
-                    <RelatedVideo data={relatedVideo}/>
+                    <RelatedVideo type='0' data={relatedVideo} onChangeVid={this.onChangeVid} {...this.props}/>
                 </div>
                 {comments.hotComments &&
                     <div className='commentContent'>

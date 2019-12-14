@@ -15,47 +15,49 @@ class SearchVideoList extends React.Component {
     componentDidMount() {
 
     }
-    componentWillReceiveProps(nextProps){
-        nextProps.data.forEach(item =>{
+    componentWillReceiveProps(nextProps) {
+        nextProps.data.forEach(item => {
             let minute, second;
-            minute = parseInt(item.durationms / (1000*60))
+            minute = parseInt(item.durationms / (1000 * 60))
             second = item.durationms % 60
-            item.time = `${minute >= 10? minute : '0' + minute}:${second >= 10? second : '0' + second}`
-            item.playNum = item.playTime >= 100000? parseInt(item.playTime/10000)+'万' : item.playTime
+            item.time = `${minute >= 10 ? minute : '0' + minute}:${second >= 10 ? second : '0' + second}`
+            item.playNum = item.playTime >= 100000 ? parseInt(item.playTime / 10000) + '万' : item.playTime
         })
     }
-     // 查看视频
+    // 查看视频
     onViode = (vid) => {
-        this.props.history.push({
-            pathname: '/VideoComment',
-            state: { vid: vid }
-        })
+        if(this.props.type == 0){
+            this.props.onChangeVid(vid)
+        }else{
+            this.props.history.replace({
+                pathname: '/VideoComment',
+                state: { vid }
+            })
+        }
     }
     render() {
         const { data } = this.props;
-        if(data.length == 0) return <Loading/>
+        if (data.length == 0) return <Loading />
         return (
             <div className='searchVideoList'>
                 <ul className='video-ul'>
                     {
                         data.map((item, index) =>
                             <li key={index} className='video-li da' onClick={this.onViode.bind(this, item.vid)}>
-                                <Link to='#' className='da'>
-                                    <div className='coverUrl'>
-                                        <img src={item.coverUrl} />
-                                        <p className='playNum'>
-                                            <img className='icon' src={Iconpath.icon_video} />
-                                            <span>{item.playNum}</span>
-                                        </p>
-                                    </div>
-                                    <div className='videoInfo'>
-                                        <h3 className='title'>{item.title}</h3>
-                                        <p>
-                                            <span className='durationms'>{item.time}</span>
-                                            <span className='userName'>{item.creator[0].userName}</span>    
-                                        </p>
-                                    </div>
-                                </Link>
+                                <div className='coverUrl'>
+                                    <img src={item.coverUrl} />
+                                    <p className='playNum'>
+                                        <img className='icon' src={Iconpath.icon_video} />
+                                        <span>{item.playNum}</span>
+                                    </p>
+                                </div>
+                                <div className='videoInfo'>
+                                    <h3 className='title'>{item.title}</h3>
+                                    <p>
+                                        <span className='durationms'>{item.time}</span>
+                                        <span className='userName'>{item.creator[0].userName}</span>
+                                    </p>
+                                </div>
                             </li>
                         )
                     }

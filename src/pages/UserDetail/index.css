@@ -120,3 +120,39 @@
   width: 2rem;
   background-color: #E82202;
 }
+.userDetail .mainContent .userHome {
+  padding: 1.5rem 1.2rem;
+}
+.userDetail .mainContent .userHome .title {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.userDetail .mainContent .userHome .userInfo {
+  color: #999;
+  font-size: 0.9rem;
+}
+.userDetail .mainContent .userHome .userInfo p {
+  margin-bottom: 0.8rem;
+}
+.userDetail .mainContent .userHome .songSheetList {
+  margin-top: 3rem;
+}
+.userDetail .mainContent .userHome .songSheetList .ss-ul .ss-li {
+  margin-bottom: 1rem;
+}
+.userDetail .mainContent .userHome .songSheetList .ss-ul .ss-li .pic {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.3rem;
+  margin-right: 0.8rem;
+}
+.userDetail .mainContent .userHome .songSheetList .ss-ul .ss-li .info .name {
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+.userDetail .mainContent .userHome .songSheetList .ss-ul .ss-li .info .count {
+  color: #999;
+  font-size: 0.9rem;
+}
