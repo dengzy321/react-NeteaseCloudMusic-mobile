@@ -12,7 +12,7 @@ import Dynamic from '@/components/Dynamic'
 function UserHome(props) {
     return (
         <div className='userHome'>
-
+            
         </div>
     )
 }
