@@ -12,7 +12,7 @@ import { Tabs, Carousel } from 'antd-mobile';
 function SongSheetList(props) {
     // 打开歌单详情
     const onSongSheetDetail = (id) => {
-        this.props.history.push({
+        props.history.push({
             pathname: '/SongSheetDetail',
             state: { id }
         })

@@ -1,0 +1,108 @@
+.myDj {
+  background-color: #f5f5f5;
+}
+.myDj .header {
+  padding: 1rem 1.2rem;
+  background-color: #fff;
+}
+.myDj .header .title {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.myDj .header .count {
+  color: #999;
+  font-size: 1rem;
+  margin-left: 0.3rem;
+}
+.myDj .header .icon_rate {
+  width: 1.5rem;
+  height: auto;
+  margin-right: 0.5rem;
+}
+.myDj .header .icon_rigth {
+  width: 0.8rem;
+  height: auto;
+  margin-left: 0.5rem;
+}
+.myDj .djList {
+  padding-bottom: 0.3rem;
+}
+.myDj .djList .dj-ul .dj-li {
+  padding: 0 1.2rem;
+  margin-bottom: 1rem;
+}
+.myDj .djList .dj-ul .dj-li .pic {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 0.3rem;
+}
+.myDj .djList .dj-ul .dj-li .info {
+  flex: 1;
+  padding: 0 1rem;
+}
+.myDj .djList .dj-ul .dj-li .info .name {
+  color: #333;
+  font-size: 1.2rem;
+}
+.myDj .djList .dj-ul .dj-li .info .rcmdtext {
+  color: #999;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0.5rem 0;
+}
+.myDj .djList .dj-ul .dj-li .info .lastProgramName {
+  color: #999;
+  font-size: 0.9rem;
+}
+.myDj .djList .dj-ul .dj-li .icon {
+  width: 2rem;
+  height: auto;
+  opacity: 0.8;
+}
+.myDj .createDj {
+  margin-bottom: 1rem;
+  background-color: #fff;
+}
+.myDj .liveDj {
+  margin-bottom: 1rem;
+  background-color: #fff;
+}
+.myDj .hotDjList {
+  margin-bottom: 1.5rem;
+  background-color: #fff;
+}
+.myDj .hotDjList .hotDjList-ul {
+  padding: 0 0.4rem 1rem 1.2rem;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+.myDj .hotDjList .hotDjList-ul .hotDjList-li {
+  margin-right: 0.8rem;
+  margin-bottom: 1rem;
+  width: 9.333rem;
+  height: auto;
+}
+.myDj .hotDjList .hotDjList-ul .hotDjList-li .picBox {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+.myDj .hotDjList .hotDjList-ul .hotDjList-li .picBox .pic {
+  width: 9.333rem;
+  height: 9.333rem;
+  border-radius: 0.3rem;
+}
+.myDj .hotDjList .hotDjList-ul .hotDjList-li .picBox .tip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.3rem 0 0.3rem 0;
+  color: #fff;
+  font-size: 0.8rem;
+  background-color: #E82202;
+}
+.myDj .hotDjList .hotDjList-ul .hotDjList-li .name {
+  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}

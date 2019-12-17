@@ -1,0 +1,113 @@
+@import '../../style/variable.less';
+
+.myDj{
+    background-color: #f5f5f5;
+    .header{
+        padding: 1rem 1.2rem;
+        background-color: #fff;
+        .title{
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .count{
+            color: #999;
+            font-size: 1rem;
+            margin-left: 0.3rem;
+        }
+        .icon_rate{
+            width: 1.5rem;
+            height: auto;
+            margin-right: 0.5rem;
+        }
+        .icon_rigth{
+            width: 0.8rem;
+            height: auto;
+            margin-left: 0.5rem;
+        }
+    }
+    .djList{
+        padding-bottom: 0.3rem;
+        .dj-ul{
+            .dj-li{
+                padding: 0 1.2rem;
+                margin-bottom: 1rem;
+                .pic{
+                    width: 5rem;
+                    height: 5rem;
+                    border-radius: 0.3rem;
+                }
+                .info{
+                    flex: 1;
+                    padding: 0 1rem;
+                    .name{
+                        color: #333;
+                        font-size: 1.2rem;
+                    }
+                    .rcmdtext{
+                        color: #999;
+                        font-size: 0.9rem;
+                        margin: 0.5rem 0 0.5rem 0;
+                    }
+                    .lastProgramName{
+                        color: #999;
+                        font-size: 0.9rem;
+                    }
+                }
+                .icon{
+                    width: 2rem;
+                    height: auto;
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+    .createDj{
+        margin-bottom: 1rem;
+        background-color: #fff;
+
+    }
+    .liveDj{
+        margin-bottom: 1rem;
+        background-color: #fff;
+    }
+    .hotDjList{
+        margin-bottom: 1.5rem;
+        background-color: #fff;
+        .hotDjList-ul{
+            padding: 0 0.4rem 1rem 1.2rem;
+            box-sizing: border-box;
+            flex-wrap: wrap;
+            .hotDjList-li{
+                margin-right: 0.8rem;
+                margin-bottom: 1rem;
+                width: 9.333rem;
+                height: auto;
+                .picBox{
+                    position: relative;
+                    margin-bottom: 0.5rem;
+                    .pic{
+                        width: 9.333rem;
+                        height: 9.333rem;
+                        border-radius: 0.3rem;
+                    }
+                    .tip{
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        padding: 0.2rem 0.5rem;
+                        border-radius: 0.3rem 0 0.3rem 0;
+                        color: #fff;
+                        font-size: 0.8rem;
+                        background-color: @main-color;
+                    }
+                }
+                .name{
+                    color: #333;
+                    font-size: 0.9rem;
+                    line-height: 1.2rem;
+                }
+            }
+        }
+    }
+}

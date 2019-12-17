@@ -33,6 +33,7 @@ const Pages = [
   'DjProgramHours',
   'DjPopularHours',
   'UserDetail',
+  'MyDj',
 ]
 
 let PagesObj = {}
@@ -178,5 +179,10 @@ export const routes = [
     path: '/userDetail',
     layout: BlankLayout,
     component: PagesObj.UserDetail
+  },
+  {
+    path: '/myDj',
+    layout: BlankLayout,
+    component: PagesObj.MyDj
   },
 ]

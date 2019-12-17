@@ -349,4 +349,14 @@ export default {
     method: 'get',
     url: '/dj/sub'
   },
+  // 获取用户电台
+  getUserDj: {
+    method: 'get',
+    url: '/user/dj'
+  },
+  // 电台的订阅列表
+  getDjSublist: {
+    method: 'get',
+    url: '/dj/sublist'
+  },
 }

@@ -7,6 +7,7 @@ import './index.css';
 import { NavLink } from 'react-router-dom'
 import Iconpath from '@/utils/iconpath'
 import Loading from '@/components/Loading'
+import Zmage from 'react-zmage'
 
 class Dynamic extends React.Component {
     state = {
@@ -100,7 +101,8 @@ class Dynamic extends React.Component {
                                         <div className='coverImg da'>
                                             {
                                                 item.pics.map((pItem, pIndex) =>
-                                                    <img key={pIndex} src={pItem.squareUrl} className='img' />
+                                                    // <img key={pIndex} src={pItem.squareUrl} className='img' />
+                                                    <Zmage key={pIndex} src={pItem.squareUrl} className='img'/>
                                                 )
                                             }
                                         </div>
@@ -117,7 +119,8 @@ class Dynamic extends React.Component {
                                     item.type == 19 &&
                                     <div className='publishModal'>
                                         <div className='coverImg'>
-                                            <img className='img' src={item.json.album.picUrl} alt="" />
+                                            {/* <img className='img' src={item.json.album.picUrl} alt="" /> */}
+                                            <Zmage src={item.json.album.picUrl} className='img'/>
                                         </div>
                                         <div className='creatorBox da'>
                                             <img className='avatar' src={item.json.album.img80x80} alt="" />
