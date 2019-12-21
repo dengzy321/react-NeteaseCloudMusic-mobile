@@ -1,0 +1,118 @@
+@import '../../style/variable.less';
+
+.myCollect{
+    background-color: #f5f5f5;
+    .tab{
+        background-color: #fff;
+        border-bottom: 0.1rem solid #f5f5f5;
+        .item{
+           flex: 1;
+           color: #333;
+           font-size: 1.1rem;
+           padding: 1.3rem 0;
+           text-align: center;
+        }
+        .active{
+            position: relative;
+            color: @main-color;
+            &::after{
+                position: absolute;
+                content: '';
+                bottom: 0.5rem;
+                left: calc(50% - 1rem);
+                height: 0.1rem;
+                width: 2rem;
+                background-color: @main-color;
+            }
+        }
+    }
+    .content{
+        margin-top: 0.5rem;
+        padding-top: 1rem;
+        box-sizing: border-box;
+        background-color: #fff;
+    }
+    .albumModule{
+        .album-ul{
+            .album-li{
+                padding: 0 1.2rem;
+                margin-bottom: 1.5rem;
+                .picBox{
+                    position: relative;
+                    width: 4rem;
+                    height: 4rem;
+                    .bg{
+                        position: absolute;
+                        top: 0.25rem;
+                        left: 1.2rem;
+                        display: inline-block;
+                        width: 3.5rem;
+                        height: 3.5rem;
+                        border-radius: 50%;
+                        background-color: #333;
+                    }
+                    .pic{
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        width: 4rem;
+                        height: 4rem;
+                        border-radius: 0.4rem;
+                    }
+                }
+                .info{
+                    flex: 1;
+                    padding-left: 1.5rem;
+                    box-sizing: border-box;
+                    .name{
+                        display: block;
+                        color: #333;
+                        font-size: 1.1rem;
+                    }
+                    .artist{
+                        display: block;
+                        color: #999;
+                        font-size: 1rem;
+                        margin-top: 0.5rem;
+                    }
+                }
+                .icon{
+                    width: 2rem;
+                    height: auto;
+                }
+            }
+        }
+    }
+    .artistModule:extend(.myCollect .albumModule all){
+        .info{
+            padding-left: 1rem !important;
+        }
+    }
+    .mvModule:extend(.myCollect .albumModule all){
+        .album-ul{
+            .album-li{
+                .picBox{
+                    width: 8rem;
+                    height: 5rem;
+                    .pic{
+                        width: 8rem;
+                        height: 5rem;
+                        border-radius: 0.3rem;
+                    }
+                }
+                .info{
+                    padding-left: 1rem !important;
+                }
+            }
+        }
+    }
+    .empty{
+        text-align: center;
+        background-color: #fff;
+        padding-top: 5rem;
+        color: #999;
+        font-size: 1rem;
+    }
+}

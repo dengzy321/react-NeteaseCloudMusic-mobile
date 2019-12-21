@@ -7,6 +7,7 @@ import { http } from '@/api/http'
 import Iconpath from '@/utils/iconpath'
 import RelatedVideo from '@/components/SearchVideoList'
 import CommentList from '@/components/commentList'
+import Loading from '@/components/Loading'
 
 class VideoComment extends React.Component {
     state = {
@@ -92,7 +93,7 @@ class VideoComment extends React.Component {
     followUser = (id) => {
         http.changeFollowUser({
             id: id,
-            t: this.state.isFollowUser == 0? 1:0
+            t: this.state.isFollowUser == 0 ? 1 : 0
         }).then(res => {
             this.setState(state => ({
                 isFollowUser: state.isFollowUser == 0 ? 1 : 0
@@ -100,32 +101,32 @@ class VideoComment extends React.Component {
         })
     }
     // 点赞
-    onLive = (id,praisedStatus) =>{
+    onLive = (id, praisedStatus) => {
         http.changeResourceLive({
             type: 5,
-            t: praisedStatus? 0 : 1,
+            t: praisedStatus ? 0 : 1,
             id: id
-        }).then(res =>{
+        }).then(res => {
             let { videoInfo } = this.state
             videoInfo.praised = !videoInfo.praised
-            videoInfo.praisedCount = praisedStatus? videoInfo.praisedCount - 1  : videoInfo.praisedCount + 1
+            videoInfo.praisedCount = praisedStatus ? videoInfo.praisedCount - 1 : videoInfo.praisedCount + 1
             this.setState({ videoInfo })
         })
     }
     // 收藏视频
-    onCollect = (id,collectedStatus) =>{
+    onCollect = (id, collectedStatus) => {
         http.collectVideo({
             id: id,
-            t: collectedStatus? 0 : 1,
-        }).then(res =>{
+            t: collectedStatus ? 0 : 1,
+        }).then(res => {
             let { videoInfo } = this.state
             videoInfo.collected = !videoInfo.collected
-            videoInfo.subscribeCount = collectedStatus? videoInfo.subscribeCount - 1  : videoInfo.subscribeCount + 1
+            videoInfo.subscribeCount = collectedStatus ? videoInfo.subscribeCount - 1 : videoInfo.subscribeCount + 1
             this.setState({ videoInfo })
         })
     }
     // 改变vid
-    onChangeVid = (vid) =>{
+    onChangeVid = (vid) => {
         this.setState({
             vid: vid,
             comments: {},
@@ -140,55 +141,55 @@ class VideoComment extends React.Component {
     }
     render() {
         const { url, comments, relatedVideo, videoInfo, inputComment, isFollowUser } = this.state
+        if (Object.keys(videoInfo).length == 0) return <Loading />
         return (
             <div className='videoComment'>
                 <video ref={el => this.myVideo = el} style={{ width: '100%' }} poster={videoInfo.coverUrl} controls x5-playsinline="" playsinline="" webkit-playsinline="" preload="auto">
                     <source src={url} type="video/mp4" />
                     <source src={url} type="video/ogg" />
                 </video>
-                {Object.keys(videoInfo).length > 0 && 
-                    <div className='videoInfo'>
-                        <p className='videoTitle'>{videoInfo.title}</p>
-                        <div className='videoGroup'>
-                            <ul className='videoGroup-ul da'>
-                                <li className='playCount-li'>{videoInfo.playTime}人观看</li>
-                                {
-                                    videoInfo.videoGroup.map((item, index) => {
-                                        return <li className='videoGroup-li' key={index}>{item.name}</li>
-                                    })
-                                }
-                            </ul>
-                        </div>
-                        <div className='handleTool'>
-                            <ul className='handleTool-ul dbc'>
-                                <li className='handleTool-li dd-vh' onClick={this.onLive.bind(this, videoInfo.vid,videoInfo.praised)}>
-                                    <img className='live' src={videoInfo.praised? Iconpath.live_red_fill:Iconpath.live_$333} />
-                                    <span style={videoInfo.praised? {color:'#FF392D'}:{}}>{videoInfo.praisedCount}</span>
-                                </li>
-                                <li className='handleTool-li dd-vh' onClick={this.onCollect.bind(this, videoInfo.vid,videoInfo.collected)}>
-                                    <img className='collect' src={videoInfo.collected? Iconpath.collect_red:Iconpath.collect_$333} />
-                                    <span style={videoInfo.collected? {color:'#FF392D'}:{}}>{videoInfo.subscribeCount}</span>
-                                </li>
-                                <li className='handleTool-li dd-vh'>
-                                    <img className='comment' src={Iconpath.comment_$333} />
-                                    <span>{videoInfo.commentCount}</span>
-                                </li>
-                                <li className='handleTool-li dd-vh'>
-                                    <img className='share' src={Iconpath.share_$333} />
-                                    <span>{videoInfo.shareCount}</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className='creator da'>
-                            <img className='avatar' src={videoInfo.creator.avatarUrl} />
-                            <span className='nickname'>{videoInfo.creator.nickname}</span>
-                            <button className='btn' onClick={this.followUser.bind(this, videoInfo.creator.userId)}>+ {isFollowUser == 0 ? '关注' :'已关注'}</button>
-                        </div>
+
+                <div className='videoInfo'>
+                    <p className='videoTitle'>{videoInfo.title}</p>
+                    <div className='videoGroup'>
+                        <ul className='videoGroup-ul da'>
+                            <li className='playCount-li'>{videoInfo.playTime}人观看</li>
+                            {
+                                videoInfo.videoGroup.map((item, index) => {
+                                    return <li className='videoGroup-li' key={index}>{item.name}</li>
+                                })
+                            }
+                        </ul>
                     </div>
-                }
+                    <div className='handleTool'>
+                        <ul className='handleTool-ul dbc'>
+                            <li className='handleTool-li dd-vh' onClick={this.onLive.bind(this, videoInfo.vid, videoInfo.praised)}>
+                                <img className='live' src={videoInfo.praised ? Iconpath.live_red_fill : Iconpath.live_$333} />
+                                <span style={videoInfo.praised ? { color: '#FF392D' } : {}}>{videoInfo.praisedCount}</span>
+                            </li>
+                            <li className='handleTool-li dd-vh' onClick={this.onCollect.bind(this, videoInfo.vid, videoInfo.collected)}>
+                                <img className='collect' src={videoInfo.collected ? Iconpath.collect_red : Iconpath.collect_$333} />
+                                <span style={videoInfo.collected ? { color: '#FF392D' } : {}}>{videoInfo.subscribeCount}</span>
+                            </li>
+                            <li className='handleTool-li dd-vh'>
+                                <img className='comment' src={Iconpath.comment_$333} />
+                                <span>{videoInfo.commentCount}</span>
+                            </li>
+                            <li className='handleTool-li dd-vh'>
+                                <img className='share' src={Iconpath.share_$333} />
+                                <span>{videoInfo.shareCount}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className='creator da'>
+                        <img className='avatar' src={videoInfo.creator.avatarUrl} />
+                        <span className='nickname'>{videoInfo.creator.nickname}</span>
+                        <button className='btn' onClick={this.followUser.bind(this, videoInfo.creator.userId)}>+ {isFollowUser == 0 ? '关注' : '已关注'}</button>
+                    </div>
+                </div>
                 <div className='relatedVideo'>
                     <h3 className='myTitle'>相关视频</h3>
-                    <RelatedVideo type='0' data={relatedVideo} onChangeVid={this.onChangeVid} {...this.props}/>
+                    <RelatedVideo type='0' data={relatedVideo} onChangeVid={this.onChangeVid} {...this.props} />
                 </div>
                 {comments.hotComments &&
                     <div className='commentContent'>

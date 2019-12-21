@@ -1,0 +1,215 @@
+@import '../../style/variable.less';
+
+.albumDetail{
+    .header{
+        background-size: 100%;
+        width: 100%;
+        height: 20rem;
+        position: relative;
+        .songSheetInfo{
+            padding: 2rem 1rem 1rem 1rem;
+            .coverImgBox{
+                position: relative;
+                .coverImg{
+                    width: 8rem;
+                    height: 8rem;
+                    border-radius: 0.2rem;
+                }
+                .icon{
+                    position: absolute;
+                    top: 0.5rem;
+                    right: 0.5rem;
+                    color: #fff;
+                    font-size: 0.8rem;
+                    img{
+                        width: 1rem;
+                        height: auto;
+                        margin-right: 0.3rem;
+                    }
+                }
+            }
+            .songSheetInfo-r{
+                flex: 1;
+                height: 8rem;
+                padding: 0.5rem 0 0.5rem 1rem;
+                box-sizing: border-box;
+                .title{
+                    color: #fff;
+                    font-size: 1.2rem;
+                }
+                .creator{
+                    margin-top: 0.5rem;
+                    .avatar{
+                        width: 1.8rem;
+                        height: 1.8rem;
+                        border-radius: 50%;
+                    }
+                    .nickname{
+                       color: rgba(255, 255, 255, 0.8);
+                       font-size: 1rem;
+                       margin: 0 0.5rem; 
+                    }
+                    .icon{
+                        width: 0.8rem;
+                        height: auto;
+                    }
+                }
+                .description{
+                    color: rgba(255, 255, 255, 0.8);
+                    font-size: 0.9rem;
+                    margin-top: 2.2rem;
+                    span{
+                        width: 18rem;
+                    }
+                    img{
+                        width: 0.9rem;
+                        height: auto;
+                        margin-left: 0.5rem;
+                    }
+                }
+            }
+        }
+        .handleItem{
+            position: absolute;
+            bottom: 2.5rem;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            .hi-li{
+                flex: 1;
+                text-align: center;
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 0.9rem;
+                img{
+                    width: 1.6rem;
+                    height: auto;
+                    margin-bottom: 0.6rem;
+                }
+            }
+        }
+    }
+    .mainContent{
+        background-color: #fff;
+        margin-top: -2rem;
+        .mcHeader{
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            padding: 1rem 1rem;
+            border-bottom: 0.1rem solid #f4f4f4;
+            border-radius: 1rem 1rem 0 0;
+            color: #333;
+            font-size: 1.2rem;
+            .icon{
+                width: 2rem;
+                height: auto;
+                margin-right: 0.5rem;
+            }
+            .trackCount{
+                color: #999;
+                font-size: 1rem;
+                flex: 1;
+                margin-left: 0.2rem;
+            }
+            .subscribedCount{
+                background-color: @main-color;
+                color: #fff;
+                font-size: 1rem;
+                padding: 0.8rem 0.8rem;
+                border-radius: 1.5rem;
+            }
+        }
+        .detail-ul{
+            padding-bottom: 1rem;
+            .detail-li{
+                padding: 1rem;
+                .index{
+                    color: #999;
+                    font-size: 1.2rem;
+                    padding: 0 0.5rem;
+                }
+                .info{
+                    flex: 1;
+                    margin-left: 1rem;
+                    .name{
+                        width: 20rem;
+                        color: #333;
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        margin-bottom: 0.5rem;
+                    }
+                    .infoDetail{
+                        width: 20rem;
+                        .icon-sole{
+                            width: 2rem;
+                            height: auto;
+                            margin-right: 0.2rem;
+                        }
+                        .icon-vip{
+                            width: 2rem;
+                            height: auto;
+                            margin-right: 0.2rem;
+                        }
+                        .icon-hq{
+                            width: 2rem;
+                            height: auto;
+                            margin-right: 0.2rem;
+                        }
+                        .creator, .nameSmall{
+                            color: #999;
+                            font-size: 0.9rem;
+                            padding-left: 0.2rem;
+                        }
+                    }
+                }
+                .icon-play{
+                    width: 2rem;
+                    height: auto;
+                    margin-right: 0.8rem;
+                }
+                .icon-more{
+                    width: 2rem;
+                    height: auto;
+                }
+            }
+        }
+        .toolHeader{
+            background-color: #fff;
+            padding: 1rem 0;
+            flex: 1;
+            .songsInfo{
+                .avatar{
+                    width: 3.4rem;
+                    height: 3.4rem;
+                    border-radius: 0.2rem;
+                    object-fit: cover;
+                    margin-right: 1rem;
+                }
+                .name{
+                    color: #333;
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    margin-bottom: 0.3rem;
+                    margin-right: 1rem;
+                }
+                .artist{
+                    color: #999;
+                    font-size: 1rem;
+                }
+                .btn{
+                    border: 0.1rem solid @main-color;
+                    background: transparent;
+                    border-radius: 1rem;
+                    padding: 0.3rem 0.8rem;
+                    color: @main-color;
+                    font-size: 0.8rem;
+                }
+            }
+            .tip{
+                color: #999;
+                font-size: 0.8rem;
+                margin-top: 0.5rem;
+            }
+        }
+    }
+}

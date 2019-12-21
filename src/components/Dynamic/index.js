@@ -21,7 +21,7 @@ class Dynamic extends React.Component {
         this.setState({
             list: nextProps.list
         })
-        console.log(nextProps.list)
+        // console.log(nextProps.list)
     }
     // 替换replace
     replaceStr = (strHtml) =>{
@@ -50,9 +50,10 @@ class Dynamic extends React.Component {
     }
     // 打开播放器
     onPlayMusicHandle = (item) => {
+        // console.log(item)
         this.props.history.push({
             pathname: '/playPlatform',
-            state: { id: item.id }
+            state: { id: item.json.song.id }
         })
     }
     // 查看视频

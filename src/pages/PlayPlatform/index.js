@@ -42,7 +42,7 @@ class PlayPlatform extends React.Component {
             titleTimer = window.global.onScrollTitle(res.songs[0].name)
             if(res.songs[0].dt >= 100000) res.songs[0].commentCount = parseInt(res.songs[0].dt / 100000) + '万'
             this.setState({
-                songDetail: res.songs[0]
+                songDetail: res.songs.length > 0? res.songs[0] : {}
             }, () => this.playInfoHandle())
         })
     }

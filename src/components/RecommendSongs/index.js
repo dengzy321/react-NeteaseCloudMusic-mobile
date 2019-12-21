@@ -59,17 +59,10 @@ class RecommendSongs extends React.Component {
     }
     // 打开专辑
     onNewAlbum = (id) => {
-        // this.props.history.push({
-        //     pathname: '/playPlatform',
-        //     state: { id }
-        // })
-    }
-    // 打开新碟
-    onNewDish = (id) => {
-        // this.props.history.push({
-        //     pathname: '/playPlatform',
-        //     state: { id }
-        // })
+        this.props.history.push({
+            pathname: '/albumDetail',
+            state: { id }
+        })
     }
     render() {
         const { recommendArr, newDishArr, curActive=1 } = this.state
@@ -90,7 +83,7 @@ class RecommendSongs extends React.Component {
                         </p>
                         <Link to='/' className='more'>更多新碟</Link>
                     </div>
-                    <SongsGrid data={newDishArr} toLocation={curActive == 1 ? this.onNewDish : this.onNewAlbum} coverImgUrl='picUrl'/>
+                    <SongsGrid data={newDishArr} toLocation={this.onNewAlbum} coverImgUrl='picUrl'/>
                 </div>
             </div>
         )

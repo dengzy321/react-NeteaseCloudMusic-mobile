@@ -7,46 +7,23 @@ import * as actions from '@/store/actions';
 import './index.css';
 import { Link } from 'react-router-dom'
 import Iconpath from '@/utils/iconpath'
+import { http } from '@/api/http'
 
-
-function MyCom_1 (props){
-    const [ count, setCount ] = useState(0)
-    function handleClick(){
-        setCount(count + 1)
-    }
-    useEffect(() =>{
-        console.log(count)
-    })
-    return(
-        <div>
-            <button onClick={handleClick}>点击</button>
-            <h2>{count}</h2>
-        </div>
-    )
-}
-
-
-class MyCom_2 extends React.Component {
-    render() {
-        return (
-            <div>
-                
-            </div>
-        )
-    }
-}
 
 class Test extends React.Component {
     state = {
         
     }
     componentDidMount() {
+        this.initData()
+    }
+    initData(){
         
     }
     render(){
         return(
             <div>
-               <MyCom_1/>
+               
             </div>
         )
     }

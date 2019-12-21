@@ -359,4 +359,39 @@ export default {
     method: 'get',
     url: '/dj/sublist'
   },
+  // 收藏的歌手列表
+  getArtistSublist: {
+    method: 'get',
+    url: '/artist/sublist'
+  },
+  // 收藏的 MV 列表
+  getMvSublist: {
+    method: 'get',
+    url: '/mv/sublist'
+  },
+  // 获取已收藏专辑列表
+  getAlbumSublist: {
+    method: 'get',
+    url: '/album/sublist'
+  },
+  // 获取专辑内容
+  getAlbumDetail: {
+    method: 'get',
+    url: '/album'
+  },
+  //新歌速递
+  getTopSongs: {
+    method: 'get',
+    url: '/top/song'
+  },
+  // mv 评论
+  getCommentMv: {
+    method: 'get',
+    url: '/comment/mv'
+  },
+  // 相似 mv
+  getSimiMv: {
+    method: 'get',
+    url: '/simi/mv'
+  },
 }

@@ -57,6 +57,14 @@ class WaterfallList extends React.Component {
     //         }
     //     }
     // }
+    
+    // 打开mv
+    onMvDetail(id){
+        this.props.history.push({
+            pathname: '/mvDetail',
+            state: { id }
+        })
+    }
     render(){
         const { leftList, rightList } = this.state
         if(leftList.length == 0 || rightList.length == 0) return <Loading/> 
@@ -66,7 +74,7 @@ class WaterfallList extends React.Component {
                     <ul className='wFall-ul'>
                         {
                             leftList.map((item, index) => 
-                                <li className='wFall-li' key={index}>
+                                <li className='wFall-li' key={index} onClick={this.onMvDetail.bind(this, item.id)}>
                                     <img className='coverImg' src={item.cover} />
                                     <p className='title'>
                                         <span>{item.briefDesc ? item.briefDesc : item.name}</span>
@@ -80,7 +88,7 @@ class WaterfallList extends React.Component {
                     <ul className='wFall-ul'>
                         {
                             rightList.map((item, index) =>
-                                <li className='wFall-li' key={index}>
+                                <li className='wFall-li' key={index} onClick={this.onMvDetail.bind(this, item.id)}>
                                     <img className='coverImg' src={item.cover} />
                                     <p className='title'>
                                         <span>{item.briefDesc ? item.briefDesc : item.name}</span>

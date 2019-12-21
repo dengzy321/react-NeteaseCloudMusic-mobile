@@ -8,6 +8,7 @@ import './index.css';
 import CreateSong from '@/components/CreateSong'
 import SongsGrid from '@/components/SongsGrid'
 import Iconpath from '@/utils/iconpath'
+import { Toast } from 'antd-mobile';
 
 const topNav = [
     { icon: Iconpath.calendar, title: '私人FM' },
@@ -21,11 +22,11 @@ const topNav = [
 class Recommend extends React.Component {
     state = {
         playNav: [
-            { icon: Iconpath.music_black, title: '本地音乐(0)', url: '' },
+            { icon: Iconpath.music_black, title: '本地音乐(0)', url: 'localSongs' },
             { icon: Iconpath.video, title: '最近播放(0)' },
             { icon: Iconpath.dw, title: '下载管理(0)' },
             { icon: Iconpath.fm, title: '我的电台(0)', url: 'myDj' },
-            { icon: Iconpath.collect, title: '我的收藏(0)' }
+            { icon: Iconpath.collect, title: '我的收藏(0)', url: 'myCollect' }
         ],
         recommendArr: [],
         showRecommend: true
@@ -67,6 +68,10 @@ class Recommend extends React.Component {
             state: { id }
         })
     }
+    // 点击tab栏
+    onTab(){
+        Toast.offline('功能待开发')
+    }
     render() {
         const { playNav } = this.state
         return (
@@ -74,10 +79,10 @@ class Recommend extends React.Component {
                 <div className='topNav dbc'>
                     {
                         topNav.map((item, index) =>
-                            <Link key={index} to='/' className='dd-vh'>
+                            <p key={index} className='dd-vh' onClick={this.onTab}>
                                 <img className='icon' src={item.icon} alt='' />
                                 <span>{item.title}</span>
-                            </Link>
+                            </p>
                         )
                     }
                 </div>

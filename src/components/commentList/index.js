@@ -31,7 +31,7 @@ export default function CommentItem({ data = [], commentsId }) {
         item.publishTime = `${year}年${min >= 10 ? min : '0' + min}月${d >= 10 ? d : '0' + d}日`
         item.likeCount = item.likedCount >= 100000 ? (item.likedCount / 10000).toFixed(1) + '万' : item.likedCount
     })
-    if(data.length == 0) return <Loading/>
+    // if(data.length == 0) return <Loading/>
     return (
         <div className='commentItem'>
             <ul className='comment-ul'>

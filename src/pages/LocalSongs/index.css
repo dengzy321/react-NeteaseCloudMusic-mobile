@@ -1,0 +1,83 @@
+.localSongs .header {
+  padding: 1rem 1.2rem;
+  border-bottom: 0.1rem solid #f5f5f5;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: #fff;
+}
+.localSongs .header .icon-video {
+  width: 2rem;
+  height: auto;
+  margin-right: 0.5rem;
+}
+.localSongs .header .name {
+  font-size: 1.2rem;
+  color: #333;
+}
+.localSongs .header .count {
+  font-size: 1rem;
+  color: #999;
+}
+.localSongs .song-ul {
+  padding-top: 5rem;
+}
+.localSongs .song-ul .song-li {
+  padding: 0 1.2rem;
+  margin-bottom: 1.2rem;
+}
+.localSongs .song-ul .song-li .info {
+  flex: 1;
+}
+.localSongs .song-ul .song-li .info .name {
+  color: #333;
+  font-size: 1.2rem;
+  width: 25rem;
+}
+.localSongs .song-ul .song-li .info .artist {
+  color: #999;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  width: 25rem;
+}
+.localSongs .song-ul .song-li .icon-more {
+  width: 2rem;
+  height: auto;
+}
+.localSongs .toolHeader {
+  background-color: #fff;
+  padding: 1rem 0;
+  flex: 1;
+}
+.localSongs .toolHeader .songsInfo .avatar {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 0.2rem;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+.localSongs .toolHeader .songsInfo .name {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  margin-right: 1rem;
+}
+.localSongs .toolHeader .songsInfo .artist {
+  color: #999;
+  font-size: 1rem;
+}
+.localSongs .toolHeader .songsInfo .btn {
+  border: 0.1rem solid #E82202;
+  background: transparent;
+  border-radius: 1rem;
+  padding: 0.3rem 0.8rem;
+  color: #E82202;
+  font-size: 0.8rem;
+}
+.localSongs .toolHeader .tip {
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}

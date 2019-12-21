@@ -34,6 +34,10 @@ const Pages = [
   'DjPopularHours',
   'UserDetail',
   'MyDj',
+  'MyCollect',
+  'AlbumDetail',
+  'LocalSongs',
+  'MvDetail',
 ]
 
 let PagesObj = {}
@@ -184,5 +188,25 @@ export const routes = [
     path: '/myDj',
     layout: BlankLayout,
     component: PagesObj.MyDj
+  },
+  {
+    path: '/myCollect',
+    layout: BlankLayout,
+    component: PagesObj.MyCollect
+  },
+  {
+    path: '/albumDetail',
+    layout: BlankLayout,
+    component: PagesObj.AlbumDetail
+  },
+  {
+    path: '/localSongs',
+    layout: BlankLayout,
+    component: PagesObj.LocalSongs
+  },
+  {
+    path: '/mvDetail',
+    layout: BlankLayout,
+    component: PagesObj.MvDetail
   },
 ]

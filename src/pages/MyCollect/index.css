@@ -1,0 +1,120 @@
+.myCollect {
+  background-color: #f5f5f5;
+}
+.myCollect .tab {
+  background-color: #fff;
+  border-bottom: 0.1rem solid #f5f5f5;
+}
+.myCollect .tab .item {
+  flex: 1;
+  color: #333;
+  font-size: 1.1rem;
+  padding: 1.3rem 0;
+  text-align: center;
+}
+.myCollect .tab .active {
+  position: relative;
+  color: #E82202;
+}
+.myCollect .tab .active::after {
+  position: absolute;
+  content: '';
+  bottom: 0.5rem;
+  left: calc(50% - 1rem);
+  height: 0.1rem;
+  width: 2rem;
+  background-color: #E82202;
+}
+.myCollect .content {
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.myCollect .albumModule .album-ul .album-li,
+.myCollect .artistModule .album-ul .album-li,
+.myCollect .mvModule .album-ul .album-li {
+  padding: 0 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.myCollect .albumModule .album-ul .album-li .picBox,
+.myCollect .artistModule .album-ul .album-li .picBox,
+.myCollect .mvModule .album-ul .album-li .picBox {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+}
+.myCollect .albumModule .album-ul .album-li .picBox .bg,
+.myCollect .artistModule .album-ul .album-li .picBox .bg,
+.myCollect .mvModule .album-ul .album-li .picBox .bg {
+  position: absolute;
+  top: 0.25rem;
+  left: 1.2rem;
+  display: inline-block;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: #333;
+}
+.myCollect .albumModule .album-ul .album-li .picBox .pic,
+.myCollect .artistModule .album-ul .album-li .picBox .pic,
+.myCollect .mvModule .album-ul .album-li .picBox .pic {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.4rem;
+}
+.myCollect .albumModule .album-ul .album-li .info,
+.myCollect .artistModule .album-ul .album-li .info,
+.myCollect .mvModule .album-ul .album-li .info {
+  flex: 1;
+  padding-left: 1.5rem;
+  box-sizing: border-box;
+}
+.myCollect .albumModule .album-ul .album-li .info .name,
+.myCollect .artistModule .album-ul .album-li .info .name,
+.myCollect .mvModule .album-ul .album-li .info .name {
+  display: block;
+  color: #333;
+  font-size: 1.1rem;
+}
+.myCollect .albumModule .album-ul .album-li .info .artist,
+.myCollect .artistModule .album-ul .album-li .info .artist,
+.myCollect .mvModule .album-ul .album-li .info .artist {
+  display: block;
+  color: #999;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+.myCollect .albumModule .album-ul .album-li .icon,
+.myCollect .artistModule .album-ul .album-li .icon,
+.myCollect .mvModule .album-ul .album-li .icon {
+  width: 2rem;
+  height: auto;
+}
+.myCollect .artistModule .info {
+  padding-left: 1rem !important;
+}
+.myCollect .mvModule .album-ul .album-li .picBox {
+  width: 8rem;
+  height: 5rem;
+}
+.myCollect .mvModule .album-ul .album-li .picBox .pic {
+  width: 8rem;
+  height: 5rem;
+  border-radius: 0.3rem;
+}
+.myCollect .mvModule .album-ul .album-li .info {
+  padding-left: 1rem !important;
+}
+.myCollect .empty {
+  text-align: center;
+  background-color: #fff;
+  padding-top: 5rem;
+  color: #999;
+  font-size: 1rem;
+}

@@ -10,7 +10,7 @@ import WaterfallList from '@/components/WaterfallList'
 import Dynamic from '@/components/Dynamic'
 
 // 广场组件
-function MySquare(data){
+function MySquare(data,props){
     return(
         <div className='mySquare'>
             <div className='ms-header'>
@@ -20,7 +20,7 @@ function MySquare(data){
                 </p>
                 <p className='tip'>笑咪咪，今日最搓心评论，你看过几条？</p>
             </div>
-            <WaterfallList list={data}/>
+            <WaterfallList list={data} {...props}/>
         </div>
     )
 }
@@ -86,7 +86,7 @@ class Square extends React.Component {
                     <span className={curIndex == 0 ? 'navActive' : ''} onClick={this.onChange.bind(this,0)}>MV</span>
                     <span className={curIndex == 1? 'navActive':''} onClick={this.onChange.bind(this,1)}>动态</span>
                 </div>
-                {curIndex == 0 ? MySquare(waterVideoArr) : <Dynamic {...this.props} list={dynamicArr}/> }
+                {curIndex == 0 ? MySquare(waterVideoArr, this.props) : <Dynamic {...this.props} list={dynamicArr}/> }
             </div>
         )
     }

@@ -23,7 +23,9 @@
   font-size: 1.3rem;
 }
 .myHeader .center .link {
-  padding: 1.2rem 0.65rem;
+  padding: 1.2rem 0;
+  text-align: center;
+  flex: 1;
 }
 .myHeader .center .selected {
   font-weight: bold;

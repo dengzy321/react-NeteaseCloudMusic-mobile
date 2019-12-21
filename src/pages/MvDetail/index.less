@@ -1,0 +1,123 @@
+@import '../../style/variable.less';
+
+.mvDetail{
+    background-color: #f5f5f5;
+    .videoInfo{
+        background-color: #fff;
+        padding-top: 1rem;
+        margin-bottom: 1rem;
+        .videoTitle{
+            padding: 0 1rem;
+            color: #333;
+            font-size: 1.3rem;
+        }
+        .videoGroup{
+            margin-top: 1rem;
+            padding-left: 1rem;
+            .videoGroup-ul{
+                flex-wrap: wrap;
+                color: #666;
+                font-size: 0.9rem;
+                .playCount-li{
+                    margin-bottom: 1rem;
+                }
+                .videoGroup-li{
+                    background-color: #f5f5ff;
+                    padding: 0.3rem 0.8rem;
+                    border-radius: 20rem;
+                    margin-left: 1rem;
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+        .handleTool{
+            padding-bottom: 1rem;
+            .handleTool-ul{
+                padding: 0 3rem;
+                .handleTool-li{
+                    color: #333;
+                    font-size: 0.8rem;
+                    img{
+                        width: 2rem;
+                        height: auto;
+                        margin-bottom: 0.5rem;
+                    }
+                    .collect{
+                        width: 1.5rem;
+                    }
+                    .comment{
+                        width: 1.7rem;
+                    }
+                    .share{
+                        width: 1.5rem;
+                    }
+                }
+            }
+        }
+        .creator{
+            border-top: 0.1rem solid #f4f4f4;
+            padding: 0.8rem 1rem;
+            .avatar{
+                width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            .nickname{
+                color: #333;
+                font-size: 1rem;
+                padding-left: 1rem;
+                flex: 1;
+            }
+            .btn{
+                color: #fff;
+                font-size: 0.9rem;
+                background-color: @main-color;
+                border-radius: 2rem;
+                border: 0;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+    }
+    .relatedVideo{
+        background-color: #fff;
+        .myTitle{
+            color: #333;
+            font-size: 1.2rem;
+            padding: 1rem 1rem 0 1rem;
+        }
+    }
+    .commentContent{
+        margin-top: 1.5rem;
+        padding-left: 1.5rem;
+        background-color: #fff;
+        .title{
+            color: #333;
+            font-size: 1.2rem;
+            padding: 1rem 0;
+        }
+    }
+    .editContent{
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 4rem;
+        background-color: #fff;
+        box-shadow: 0 -0.2rem 0.5rem 0.1rem #f5f5f5;
+        .input{
+            flex: 1;
+            color: #333;
+            font-size: 1.2rem;
+            padding-left: 1.5rem;
+        }
+        .btn{
+            line-height: 4rem;
+            padding: 0 1.5rem;
+            color: #ccc;
+            font-size: 1.2rem;
+            border: 0;
+            background: transparent;
+        }
+    }
+}

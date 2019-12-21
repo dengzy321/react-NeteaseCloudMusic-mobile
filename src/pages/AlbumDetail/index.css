@@ -1,0 +1,210 @@
+.albumDetail .header {
+  background-size: 100%;
+  width: 100%;
+  height: 20rem;
+  position: relative;
+}
+.albumDetail .header .songSheetInfo {
+  padding: 2rem 1rem 1rem 1rem;
+}
+.albumDetail .header .songSheetInfo .coverImgBox {
+  position: relative;
+}
+.albumDetail .header .songSheetInfo .coverImgBox .coverImg {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 0.2rem;
+}
+.albumDetail .header .songSheetInfo .coverImgBox .icon {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  color: #fff;
+  font-size: 0.8rem;
+}
+.albumDetail .header .songSheetInfo .coverImgBox .icon img {
+  width: 1rem;
+  height: auto;
+  margin-right: 0.3rem;
+}
+.albumDetail .header .songSheetInfo .songSheetInfo-r {
+  flex: 1;
+  height: 8rem;
+  padding: 0.5rem 0 0.5rem 1rem;
+  box-sizing: border-box;
+}
+.albumDetail .header .songSheetInfo .songSheetInfo-r .title {
+  color: #fff;
+  font-size: 1.2rem;
+}
+.albumDetail .header .songSheetInfo .songSheetInfo-r .creator {
+  margin-top: 0.5rem;
+}
+.albumDetail .header .songSheetInfo .songSheetInfo-r .creator .avatar {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+}
+.albumDetail .header .songSheetInfo .songSheetInfo-r .creator .nickname {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  margin: 0 0.5rem;
+}
+.albumDetail .header .songSheetInfo .songSheetInfo-r .creator .icon {
+  width: 0.8rem;
+  height: auto;
+}
+.albumDetail .header .songSheetInfo .songSheetInfo-r .description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin-top: 2.2rem;
+}
+.albumDetail .header .songSheetInfo .songSheetInfo-r .description span {
+  width: 18rem;
+}
+.albumDetail .header .songSheetInfo .songSheetInfo-r .description img {
+  width: 0.9rem;
+  height: auto;
+  margin-left: 0.5rem;
+}
+.albumDetail .header .handleItem {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+}
+.albumDetail .header .handleItem .hi-li {
+  flex: 1;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+.albumDetail .header .handleItem .hi-li img {
+  width: 1.6rem;
+  height: auto;
+  margin-bottom: 0.6rem;
+}
+.albumDetail .mainContent {
+  background-color: #fff;
+  margin-top: -2rem;
+}
+.albumDetail .mainContent .mcHeader {
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  padding: 1rem 1rem;
+  border-bottom: 0.1rem solid #f4f4f4;
+  border-radius: 1rem 1rem 0 0;
+  color: #333;
+  font-size: 1.2rem;
+}
+.albumDetail .mainContent .mcHeader .icon {
+  width: 2rem;
+  height: auto;
+  margin-right: 0.5rem;
+}
+.albumDetail .mainContent .mcHeader .trackCount {
+  color: #999;
+  font-size: 1rem;
+  flex: 1;
+  margin-left: 0.2rem;
+}
+.albumDetail .mainContent .mcHeader .subscribedCount {
+  background-color: #E82202;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.8rem 0.8rem;
+  border-radius: 1.5rem;
+}
+.albumDetail .mainContent .detail-ul {
+  padding-bottom: 1rem;
+}
+.albumDetail .mainContent .detail-ul .detail-li {
+  padding: 1rem;
+}
+.albumDetail .mainContent .detail-ul .detail-li .index {
+  color: #999;
+  font-size: 1.2rem;
+  padding: 0 0.5rem;
+}
+.albumDetail .mainContent .detail-ul .detail-li .info {
+  flex: 1;
+  margin-left: 1rem;
+}
+.albumDetail .mainContent .detail-ul .detail-li .info .name {
+  width: 20rem;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.albumDetail .mainContent .detail-ul .detail-li .info .infoDetail {
+  width: 20rem;
+}
+.albumDetail .mainContent .detail-ul .detail-li .info .infoDetail .icon-sole {
+  width: 2rem;
+  height: auto;
+  margin-right: 0.2rem;
+}
+.albumDetail .mainContent .detail-ul .detail-li .info .infoDetail .icon-vip {
+  width: 2rem;
+  height: auto;
+  margin-right: 0.2rem;
+}
+.albumDetail .mainContent .detail-ul .detail-li .info .infoDetail .icon-hq {
+  width: 2rem;
+  height: auto;
+  margin-right: 0.2rem;
+}
+.albumDetail .mainContent .detail-ul .detail-li .info .infoDetail .creator,
+.albumDetail .mainContent .detail-ul .detail-li .info .infoDetail .nameSmall {
+  color: #999;
+  font-size: 0.9rem;
+  padding-left: 0.2rem;
+}
+.albumDetail .mainContent .detail-ul .detail-li .icon-play {
+  width: 2rem;
+  height: auto;
+  margin-right: 0.8rem;
+}
+.albumDetail .mainContent .detail-ul .detail-li .icon-more {
+  width: 2rem;
+  height: auto;
+}
+.albumDetail .mainContent .toolHeader {
+  background-color: #fff;
+  padding: 1rem 0;
+  flex: 1;
+}
+.albumDetail .mainContent .toolHeader .songsInfo .avatar {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 0.2rem;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+.albumDetail .mainContent .toolHeader .songsInfo .name {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  margin-right: 1rem;
+}
+.albumDetail .mainContent .toolHeader .songsInfo .artist {
+  color: #999;
+  font-size: 1rem;
+}
+.albumDetail .mainContent .toolHeader .songsInfo .btn {
+  border: 0.1rem solid #E82202;
+  background: transparent;
+  border-radius: 1rem;
+  padding: 0.3rem 0.8rem;
+  color: #E82202;
+  font-size: 0.8rem;
+}
+.albumDetail .mainContent .toolHeader .tip {
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}

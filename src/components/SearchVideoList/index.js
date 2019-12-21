@@ -17,9 +17,10 @@ class SearchVideoList extends React.Component {
     }
     componentWillReceiveProps(nextProps) {
         nextProps.data.forEach(item => {
+            let durationms = item.durationms? item.durationms : item.duration
             let minute, second;
-            minute = parseInt(item.durationms / (1000 * 60))
-            second = item.durationms % 60
+            minute = parseInt(durationms / (1000 * 60))
+            second = durationms % 60
             item.time = `${minute >= 10 ? minute : '0' + minute}:${second >= 10 ? second : '0' + second}`
             item.playNum = item.playTime >= 100000 ? parseInt(item.playTime / 10000) + '万' : item.playTime
         })
@@ -43,19 +44,19 @@ class SearchVideoList extends React.Component {
                 <ul className='video-ul'>
                     {
                         data.map((item, index) =>
-                            <li key={index} className='video-li da' onClick={this.onViode.bind(this, item.vid)}>
+                            <li key={index} className='video-li da' onClick={this.onViode.bind(this, item.vid? item.vid:item.id)}>
                                 <div className='coverUrl'>
-                                    <img src={item.coverUrl} />
+                                    <img src={item.coverUrl? item.coverUrl : item.cover} />
                                     <p className='playNum'>
                                         <img className='icon' src={Iconpath.icon_video} />
                                         <span>{item.playNum}</span>
                                     </p>
                                 </div>
                                 <div className='videoInfo'>
-                                    <h3 className='title'>{item.title}</h3>
+                                    <h3 className='title'>{item.title? item.title:item.name}</h3>
                                     <p>
                                         <span className='durationms'>{item.time}</span>
-                                        <span className='userName'>{item.creator[0].userName}</span>
+                                        <span className='userName'>{item.creator? item.creator[0].userName:item.artists[0].userName}</span>
                                     </p>
                                 </div>
                             </li>
