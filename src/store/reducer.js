@@ -18,11 +18,12 @@ const initialState = {
         { title: '古典', hot: true },
         { title: '钢琴', hot: true },
         { title: '吉他', hot: true }
-    ]
+    ],
+    latestPlay: [], //最新播放
 };
 
 export default function music(state = initialState, action) {
-    let { searchHistory, songSheetSort } = state;
+    let { searchHistory, songSheetSort, latestPlay } = state;
     const { type, payload } = action;
     switch (type) {
         case actionTypes.USERINFO_SAVE:
@@ -51,6 +52,16 @@ export default function music(state = initialState, action) {
             return Object.assign({}, state, {
                 songSheetSort: [...payload]
             })
+        case actionTypes.ADD_LATESTPLAY:
+            let isHas = false
+            latestPlay.forEach(item => {
+                if (item.id == payload.id) isHas = true
+            })
+            if (!isHas) {
+                return Object.assign({}, state, {
+                    latestPlay: [...latestPlay, payload]
+                })
+            } else return state
         default:
             return state;
     }

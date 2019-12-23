@@ -10,3 +10,5 @@ export const ADD_PLAYSONG = 'ADD_PLAYSONG'
 export const ADD_MUSICURL = 'ADD_MUSICURL'
 // 改变歌单广场tab
 export const CHANGE_SONGSHEETSORT = 'CHANGE_SONGSHEETSORT'
+// 添加最新播放歌曲
+export const ADD_LATESTPLAY = 'ADD_LATESTPLAY'

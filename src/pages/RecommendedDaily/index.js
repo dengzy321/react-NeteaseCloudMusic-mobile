@@ -9,6 +9,7 @@ import { http } from '@/api/http'
 import { ColorExtractor } from 'react-color-extractor'
 import SongsToolModal from '@/components/SongsToolModal'
 import Loading from '@/components/Loading'
+import { Toast } from 'antd-mobile';
 
 const toolData = [
     { name: '下一首播放', icon: Iconpath.album },
@@ -45,9 +46,16 @@ class SongSheetDetail extends React.Component {
     // 获取歌单详情
     initRecommendedDaily = (id) => {
         http.getRecommendedDaily().then(res => {
-            this.setState({
-                recommendList: res.recommend
-            })
+            if (res.code == 200){
+                this.setState({
+                    recommendList: res.recommend
+                }) 
+            } else {
+                Toast.offline('登录观看更多内容...', 1.5)
+                setTimeout(() => {
+                    this.props.history.push('/login')
+                }, 1500)
+            }
         })
     }
     // 打开播放控制台

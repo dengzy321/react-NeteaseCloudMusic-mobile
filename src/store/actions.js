@@ -47,3 +47,11 @@ export const changeSongSheetSort = (data) => async (dispatch, getState) => {
         payload: data
     });
 }
+
+//添加最新播放歌曲
+export const addLatestPlay = (data) => async (dispatch, getState) => {
+    dispatch({
+        type: actionTypes.ADD_LATESTPLAY,
+        payload: data
+    });
+}

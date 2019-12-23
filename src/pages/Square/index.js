@@ -8,6 +8,7 @@ import * as actions from '@/store/actions';
 import Iconpath from '@/utils/iconpath'
 import WaterfallList from '@/components/WaterfallList'
 import Dynamic from '@/components/Dynamic'
+import { Toast } from 'antd-mobile';
 
 // 广场组件
 function MySquare(data,props){
@@ -55,13 +56,20 @@ class Square extends React.Component {
     initDynamicInfo() {
         const { dynamicArr } = this.state
         http.getDynamicInfo({ pagesize: 20 }).then(res => {
-            res.event.forEach(item => {
-                item.json = JSON.parse(item.json)
-                if(item.type == 22) item.json.event.json = JSON.parse(item.json.event.json)
-            })
-            this.setState({
-                dynamicArr: [...dynamicArr, ...res.event]
-            })
+            if (res.code == 200) {
+                res.event.forEach(item => {
+                    item.json = JSON.parse(item.json)
+                    if (item.type == 22) item.json.event.json = JSON.parse(item.json.event.json)
+                })
+                this.setState({
+                    dynamicArr: [...dynamicArr, ...res.event]
+                })
+            } else {
+                Toast.offline('登录观看更多内容...', 1.5)
+                setTimeout(() => {
+                    this.props.history.push('/login')
+                }, 1500)
+            }
         })
     }
     // 改变tab

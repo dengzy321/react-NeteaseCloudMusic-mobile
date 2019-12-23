@@ -140,6 +140,7 @@
   height: auto;
   border-radius: 0.3rem;
   margin-bottom: 0.8rem;
+  margin-right: 0.5rem;
 }
 .dynamic .dynamic-li .publishModal,
 .dynamic .dynamic-li .forwardModal,

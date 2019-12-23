@@ -15,7 +15,6 @@ class VideoList extends React.Component {
 
     }
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps.data)
         this.setState({
             videoList: nextProps.data
         })

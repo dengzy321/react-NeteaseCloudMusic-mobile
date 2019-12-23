@@ -38,6 +38,8 @@ const Pages = [
   'AlbumDetail',
   'LocalSongs',
   'MvDetail',
+  'LatestPlay',
+  'DownloadManager',
 ]
 
 let PagesObj = {}
@@ -208,5 +210,15 @@ export const routes = [
     path: '/mvDetail',
     layout: BlankLayout,
     component: PagesObj.MvDetail
+  },
+  {
+    path: '/latestPlay',
+    layout: BlankLayout,
+    component: PagesObj.LatestPlay
+  },
+  {
+    path: '/downloadManager',
+    layout: BlankLayout,
+    component: PagesObj.DownloadManager
   },
 ]

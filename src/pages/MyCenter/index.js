@@ -23,8 +23,8 @@ class Recommend extends React.Component {
     state = {
         playNav: [
             { icon: Iconpath.music_black, title: '本地音乐(0)', url: 'localSongs' },
-            { icon: Iconpath.video, title: '最近播放(0)' },
-            { icon: Iconpath.dw, title: '下载管理(0)' },
+            { icon: Iconpath.video, title: '最近播放(0)', url: 'latestPlay' },
+            { icon: Iconpath.dw, title: '下载管理(0)', url: 'downloadManager' },
             { icon: Iconpath.fm, title: '我的电台(0)', url: 'myDj' },
             { icon: Iconpath.collect, title: '我的收藏(0)', url: 'myCollect' }
         ],
@@ -32,8 +32,15 @@ class Recommend extends React.Component {
         showRecommend: true
     }
     componentDidMount() {
+        let { playNav } = this.state
+        playNav[0].title = `本地音乐(100)`
+        playNav[1].title = `最近播放(${this.props.latestPlay.length})`
+        playNav[2].title = `下载管理(0)`
+        playNav[3].title = `我的电台(3)`
+        playNav[4].title = `我的收藏(0)`
+        this.setState({ playNav })
+
         this.initRecommend()
-        this.initUserSubcount()
     }
     // 获取推荐dj列表
     initRecommend() {
@@ -43,18 +50,13 @@ class Recommend extends React.Component {
             })
         })
     }
-    // 获取用户信息 , 歌单，收藏，mv, dj 数量
-    initUserSubcount = () => {
-        let { playNav } = this.state
-        http.getUserSubcount().then(res => {
-            playNav[0].title = `本地音乐(${res.createdPlaylistCount})`
-            playNav[1].title = `最近播放(${res.newProgramCount})`
-            playNav[2].title = `下载管理(${res.subPlaylistCount})`
-            playNav[3].title = `我的电台(${res.djRadioCount})`
-            playNav[4].title = `我的收藏(${res.programCount})`
-            this.setState({ playNav })
-        })
-    }
+    // // 获取用户信息 , 歌单，收藏，mv, dj 数量
+    // initUserSubcount = () => {
+    //     let { playNav } = this.state
+    //     http.getUserSubcount().then(res => {
+            
+    //     })
+    // }
     // 点击关闭推荐列表
     onClose() {
         this.setState({

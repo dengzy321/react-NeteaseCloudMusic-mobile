@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '@/store/actions';
 import './index.css';
-import { http } from '@/api/http'
 import Iconpath from '@/utils/iconpath'
 import Loading from '@/components/Loading'
 import SongsToolModal from '@/components/SongsToolModal'
@@ -22,29 +21,25 @@ const toolData = [
     { name: '隐蔽歌曲或歌单', icon: Iconpath.close_circular_$333 }
 ]
 
-class LocalSongs extends React.Component {
+class LatestPlay extends React.Component {
     state = {
-        topSongs: [],
         curSongsInfo: {},
-        show: false
+        show: false,
+        latestPlay: []
     }
     componentDidMount() {
-        this.initTopSongs()
-    }
-    // 获取新歌速递
-    initTopSongs() {
-        http.getTopSongs().then(res => {
-            this.setState({
-                topSongs: res.data
-            })
+        document.title = '最新播放'
+        console.log(this)
+        this.setState({
+            latestPlay: this.props.latestPlay
         })
     }
     // 打开歌曲tool
     onOpenTool = (index, event) => {
-        if(index >= 0) event.stopPropagation()
+        if (index >= 0) event.stopPropagation()
         this.setState(state => ({
             show: !state.show,
-            curSongsInfo: index >= 0 ? this.state.topSongs[index] : {}
+            curSongsInfo: index >= 0 ? this.state.latestPlay[index] : {}
         }))
     }
     // 打开播放歌曲控制台
@@ -55,25 +50,25 @@ class LocalSongs extends React.Component {
         })
     }
     render() {
-        const { topSongs, curSongsInfo, show } = this.state
-        if (topSongs.length == 0) return <Loading />
+        const { latestPlay, curSongsInfo, show } = this.state
+        if (latestPlay.length == 0) return <div className='empty'>暂无播放记录...</div>
         return (
-            <div className='localSongs'>
+            <div className='latestPlay'>
                 <div className='header da'>
                     <img className='icon-video' src={Iconpath.video} />
                     <span className='name'>全部播放</span>
-                    <span className='count'>（共{topSongs.length}）</span>
+                    <span className='count'>（共{latestPlay.length}）</span>
                 </div>
                 <ul className='song-ul'>
                     {
-                        topSongs.map((item, index) =>
+                        latestPlay.map((item, index) =>
                             <li key={index} className='song-li da' onClick={this.onPlayMusicHandle.bind(this, item)}>
-                                <img className='avatar' src={item.album.picUrl} />
+                                <img className='avatar' src={item.al.picUrl} />
                                 <div className='info'>
                                     <p className='name to-line'>{item.name}</p>
-                                    <p className='artist to-line'>{item.artists[0].name} - {item.name}</p>
+                                    <p className='artist to-line'>{item.ar[0].name} - {item.name}</p>  
                                 </div>
-                                <img className='icon-more' src={Iconpath.more_gray} onClick={this.onOpenTool.bind(this, index)}/>
+                                <img className='icon-more' src={Iconpath.more_gray} onClick={this.onOpenTool.bind(this, index)} />
                             </li>
                         )
                     }
@@ -82,10 +77,10 @@ class LocalSongs extends React.Component {
                     {Object.keys(curSongsInfo).length != 0 &&
                         <div className='toolHeader'>
                             <div className='songsInfo da'>
-                                <img className='avatar' src={curSongsInfo.artists[0].img1v1Url} />
+                            <img className='avatar' src={curSongsInfo.al.picUrl} />
                                 <div className='flex'>
                                     <p className='name'>{curSongsInfo.name}</p>
-                                    <p className='artist'>{curSongsInfo.artists[0].name}</p>
+                                    <p className='artist'>{curSongsInfo.ar[0].name}</p>
                                 </div>
                                 <button className='btn'>vip首开5元</button>
                             </div>
@@ -101,4 +96,4 @@ class LocalSongs extends React.Component {
 export default connect(
     state => state,
     dispatch => bindActionCreators(actions, dispatch)
-)(LocalSongs)
+)(LatestPlay)
