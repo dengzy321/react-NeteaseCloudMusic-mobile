@@ -103,9 +103,9 @@ class Recommend extends React.Component {
                     this.state.showRecommend &&
                     <div className='recommend'>
                         <div className='head da'>
-                            <img className='icon-heart' src={Iconpath.heart} />
+                            <img className='icon-heart' src={Iconpath.heart} alt/>
                             <span className='title'>推荐歌单</span>
-                            <img className='close' onClick={this.onClose.bind(this)} src={Iconpath.close_$ccc} />
+                            <img className='close' onClick={this.onClose.bind(this)} src={Iconpath.close_$ccc} alt/>
                         </div>
                         <SongsGrid data={this.state.recommendArr} toLocation={this.toLocation} coverImgUrl='coverImgUrl' />
                     </div>
