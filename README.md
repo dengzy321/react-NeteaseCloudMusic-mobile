@@ -1,37 +1,34 @@
-# react-NeteaseCloudMusic-mobile
+# 仿网易云音乐（移动端web --- 基于react）
 
 #### 介绍
-react-NeteaseCloudMusic-mobile
+这个项目是前端是基于react，后端是nodejs编写（github社区某大佬提供），之前看到也是基于这个api接口开发了一些项目，但是很多都是用vue开发，所以在空余的时间就用react开发了此项目以供学习
 
 #### 软件架构
-软件架构说明
+前端： react
 
+后端： nodejs （接口文档：https://binaryify.github.io/NeteaseCloudMusicApi  接口源码地址：https://github.com/Binaryify/NeteaseCloudMusicApi）
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  git clone 拉取后台代码到本地
 
-#### 使用说明
+    1.1 安装 npm install （或者用淘宝 cnpm install）
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+    1.2 运行 node app.js
+2.  git clone 拉取前端代码到本地
 
-#### 参与贡献
+    2.1 安装 npm install （或者用淘宝 cnpm install）
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+    2.2 运行 cnpm start
+
+#### 目前实现功能（2020.01.30）
+
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0130/112040_606a0795_2241364.png "仿网易云音乐.png")
+
+#### 软件截图
+
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0130/112139_98307bf5_2241364.png "微信图片_2020013011194413.png")![输入图片说明](https://images.gitee.com/uploads/images/2020/0130/112205_2d2863ce_2241364.png "微信图片_2020013011194412.png")
 
 
 #### 码云特技
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
