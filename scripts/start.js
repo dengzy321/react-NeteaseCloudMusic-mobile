@@ -44,7 +44,8 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
 // const HOST = process.env.HOST || '0.0.0.0';
 // const HOST = '192.168.1.105';
-const HOST = '192.168.3.201';
+// const HOST = '192.168.3.201';
+const HOST = '192.168.138.1';
 
 if (process.env.HOST) {
   console.log(
