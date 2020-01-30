@@ -6,7 +6,7 @@
 #### 软件架构
 前端： react
 
-后端： nodejs （接口文档：https://binaryify.github.io/NeteaseCloudMusicApi  接口源码地址：https://github.com/Binaryify/NeteaseCloudMusicApi）
+后端： nodejs [接口文档](https://binaryify.github.io/NeteaseCloudMusicApi)  [接口源码地址](https://github.com/Binaryify/NeteaseCloudMusicApi)
 
 #### 安装教程
 
@@ -20,15 +20,15 @@
     2.1 安装 npm install （或者用淘宝 cnpm install）
 
     2.2 运行 cnpm start
-
+#### 注意
+  确保你的电脑已经安装node
 #### 目前实现功能（2020.01.30）
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/0130/112040_606a0795_2241364.png "仿网易云音乐.png")
 
 #### 软件截图
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/0130/112139_98307bf5_2241364.png "微信图片_2020013011194413.png")![输入图片说明](https://images.gitee.com/uploads/images/2020/0130/112205_2d2863ce_2241364.png "微信图片_2020013011194412.png")
-
-
-#### 码云特技
-
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0130/114744_eaa57cdf_2241364.png "微信图片_2020013011194413.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0130/114758_b76a2976_2241364.png "微信图片_2020013011194412.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0130/114815_5d5a94a6_2241364.png "微信图片_2020013011194411.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0130/114826_7ec7c58b_2241364.png "微信图片_20200130111944.png")
