@@ -7,7 +7,12 @@
 前端： react
 
 后端： nodejs [接口文档](https://binaryify.github.io/NeteaseCloudMusicApi)  [接口源码地址](https://github.com/Binaryify/NeteaseCloudMusicApi)
+#### 演示地址
+[演示地址](http://music.dengzy.cn) 
 
+地址： http://music.dengzy.cn
+
+演示账号密码： 17725999414  123456
 #### 安装教程
 
 1.  git clone 拉取后台代码到本地
